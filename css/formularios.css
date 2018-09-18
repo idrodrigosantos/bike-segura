@@ -11,10 +11,6 @@ body {
 	margin-left: 1rem;
 }
 
-.featurette-divider {
-    margin: 3rem 0;    
-}
-
 .barra-superior {
     background-color: #0C1824;
 }
@@ -23,6 +19,6 @@ body {
     color: gray;
 }
 
-.botao {
-	float: right;	
+.botao-salvar {
+    float: right;	
 }
