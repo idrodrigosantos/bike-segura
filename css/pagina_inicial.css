@@ -3,15 +3,27 @@
 /* Padding below the footer and lighter body text */
 
 body {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  color: #5a5a5a;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    /* color: #5a5a5a; */
+    background-color: #1B3E5B;
 }
 
 .espaco-botao-navbar {
 	margin-left: 1rem;
 }
 
+.barra-superior{
+  background-color: #0C1824;
+}
+
+.frente{  
+  color: #98C5DB;
+}
+
+.footer{
+  color: gray;
+}
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
@@ -61,7 +73,7 @@ body {
 ------------------------- */
 
 .featurette-divider {
-  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+  margin: 3rem 0; /* Space out the Bootstrap <hr> more */
 }
 
 /* Thin out the marketing headings */
