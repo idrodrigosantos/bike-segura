@@ -163,7 +163,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Bicicletas.cs" />
+    <Compile Include="Models\Historico.cs" />
+    <Compile Include="Models\InformacoesRoubo.cs" />
+    <Compile Include="Models\Marcas.cs" />
+    <Compile Include="Models\NumeroSerie.cs" />
     <Compile Include="Models\Pessoas.cs" />
+    <Compile Include="Models\RelatoRoubo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
