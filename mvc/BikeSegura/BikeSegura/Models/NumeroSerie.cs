@@ -9,5 +9,8 @@ namespace BikeSegura.Models
     {
         public int Id { get; set; }
         public string Numero { get; set; }
+
+        public int BicicletasId { get; set; }
+        public virtual Bicicletas Bicicletas { get; set; }
     }
 }

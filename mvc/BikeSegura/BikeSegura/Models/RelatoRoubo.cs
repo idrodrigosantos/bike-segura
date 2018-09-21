@@ -11,5 +11,10 @@ namespace BikeSegura.Models
         public string Relato { get; set; }
         public string Localidade { get; set; }
         public DateTime Data { get; set; }
+
+        public int PessoasId { get; set; }
+        public virtual Pessoas Pessoas { get; set; }
+        public int InformacoesRouboId { get; set; }
+        public virtual InformacoesRoubo InformacoesRoubo { get; set; }
     }
 }

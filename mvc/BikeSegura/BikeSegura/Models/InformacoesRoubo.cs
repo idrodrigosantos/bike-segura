@@ -11,5 +11,8 @@ namespace BikeSegura.Models
         public string Relato { get; set; }
         public string Localidade { get; set; }
         public DateTime Data { get; set; }
+
+        public int BicicletasId { get; set; }
+        public virtual Bicicletas Bicicletas { get; set; }
     }
 }
