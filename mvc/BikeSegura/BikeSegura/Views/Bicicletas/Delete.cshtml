@@ -1,0 +1,144 @@
+﻿@model BikeSegura.Models.Bicicletas
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Bicicletas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Aro.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aro.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CambioDianteiro.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CambioDianteiro.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CambioTraseiro.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CambioTraseiro.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Freio.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Freio.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Marcas.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marcas.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quadro.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quadro.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Suspensao.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Suspensao.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroSerie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroSerie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Imagem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imagem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Informacoes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Informacoes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlertaRoubo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlertaRoubo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vendendo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vendendo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
