@@ -66,11 +66,11 @@ namespace BikeSegura.Models
         public string Cep { get; set; }
 
         [MinLength(3)]
-        [MaxLength(30)]
+        [MaxLength(40)]
         public string Bairro { get; set; }
 
         [MinLength(5)]
-        [MaxLength(30)]
+        [MaxLength(40)]
         public string Cidade { get; set; }
 
         [EnumDataType(typeof(Opcao))]
@@ -155,22 +155,5 @@ namespace BikeSegura.Models
 
         [DisplayName("Gênero")]
         public string Genero { get; set; }
-
-        [DisplayName("Imagem Perfil")]
-        [MaxLength(45)]
-        public string ImagemPerfil { get; set; }
-
-        [DisplayName("Tipo Sanguíneo")]
-        [MaxLength(3)]
-        public string TipoSanguineo { get; set; }
-
-        [DisplayName("Nome Contato")]
-        [MinLength(5)]
-        [MaxLength(100)]
-        public string PessoaContato { get; set; }
-
-        [DisplayName("Telefone Contato")]
-        [MaxLength(15)]
-        public string TelefoneContato { get; set; }
     }
 }

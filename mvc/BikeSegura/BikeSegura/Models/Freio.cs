@@ -6,7 +6,7 @@ using System.Web;
 
 namespace BikeSegura.Models
 {
-    public class TipoSuspensao
+    public class Freio
     {
         [Key]
         public int Id { get; set; }

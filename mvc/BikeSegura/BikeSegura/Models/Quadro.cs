@@ -6,7 +6,7 @@ using System.Web;
 
 namespace BikeSegura.Models
 {
-    public class TipoQuadro
+    public class Quadro
     {
         [Key]
         public int Id { get; set; }

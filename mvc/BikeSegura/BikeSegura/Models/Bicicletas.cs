@@ -25,7 +25,7 @@ namespace BikeSegura.Models
 
         [Required(ErrorMessage = "Campo Obrigatório")]
         [Display(Name = "Tipo de Bicicleta")]
-        public int TipoBicicletaId { get; set; }
+        public int TipoId { get; set; }
 
         [Required(ErrorMessage = "Campo Obrigatório")]
         public string Cor { get; set; }
@@ -40,16 +40,16 @@ namespace BikeSegura.Models
         public int CambioTraseiroId { get; set; }
 
         [DisplayName("Tipo de Freio")]
-        public int TipoFreioId { get; set; }
+        public int FreioId { get; set; }
 
         [DisplayName("Tipo de Suspensão")]
-        public int TipoSuspensaoId { get; set; }
+        public int SuspensaoId { get; set; }
 
         [DisplayName("Tamanho do Aro")]
-        public int TamanhoAroId { get; set; }
+        public int AroId { get; set; }
 
         [DisplayName("Tipo do Quadro")]
-        public int TipoQuadroId { get; set; }
+        public int QuadroId { get; set; }
 
         [DisplayName("Informações Adicionais")]
         public string Informacoes { get; set; }
@@ -76,12 +76,12 @@ namespace BikeSegura.Models
         }
 
         public virtual Marcas Marcas { get; set; }
-        public virtual TipoBicicleta TipoBicicleta { get; set; }
+        public virtual Tipo Tipo { get; set; }
         public virtual CambioDianteiro CambioDianteiro { get; set; }
         public virtual CambioTraseiro CambioTraseiro { get; set; }
-        public virtual TipoFreio TipoFreio { get; set; }
-        public virtual TipoSuspensao TipoSuspensao { get; set; }
-        public virtual TamanhoAro TamanhoAro { get; set; }
-        public virtual TipoQuadro TipoQuadro { get; set; }
+        public virtual Freio Freio { get; set; }
+        public virtual Suspensao Suspensao { get; set; }
+        public virtual Aro Aro { get; set; }
+        public virtual Quadro Quadro { get; set; }
     }
 }

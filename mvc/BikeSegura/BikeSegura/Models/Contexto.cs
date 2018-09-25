@@ -19,10 +19,10 @@ namespace BikeSegura.Models
         public DbSet<NumeroSerie> NumeroSerie { get; set; }
         public DbSet<Pessoas> Pessoas { get; set; }
         public DbSet<RelatoRoubo> RelatoRoubo { get; set; }
-        public DbSet<TamanhoAro> TamanhoAro { get; set; }
-        public DbSet<TipoBicicleta> TipoBicicleta { get; set; }
-        public DbSet<TipoFreio> TipoFreio { get; set; }
-        public DbSet<TipoQuadro> TipoQuadro { get; set; }
-        public DbSet<TipoSuspensao> TipoSuspensao { get; set; }
+        public DbSet<Aro> Aro { get; set; }
+        public DbSet<Tipo> Tipo { get; set; }
+        public DbSet<Freio> Freio { get; set; }
+        public DbSet<Quadro> Quadro { get; set; }
+        public DbSet<Suspensao> Suspensao { get; set; }
     }
 }

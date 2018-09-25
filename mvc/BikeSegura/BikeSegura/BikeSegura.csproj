@@ -164,12 +164,21 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Bicicletas.cs" />
+    <Compile Include="Models\CambioDianteiro.cs" />
+    <Compile Include="Models\CambioTraseiro.cs" />
+    <Compile Include="Models\Contexto.cs" />
     <Compile Include="Models\Historico.cs" />
     <Compile Include="Models\InformacoesRoubo.cs" />
     <Compile Include="Models\Marcas.cs" />
     <Compile Include="Models\NumeroSerie.cs" />
+    <Compile Include="Models\Perfil.cs" />
     <Compile Include="Models\Pessoas.cs" />
     <Compile Include="Models\RelatoRoubo.cs" />
+    <Compile Include="Models\Aro.cs" />
+    <Compile Include="Models\Tipo.cs" />
+    <Compile Include="Models\Freio.cs" />
+    <Compile Include="Models\Quadro.cs" />
+    <Compile Include="Models\Suspensao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
