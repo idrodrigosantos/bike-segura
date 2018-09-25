@@ -1,2 +1,2 @@
-# bike-segura
-Bike Segura.
+Bike Segura
+Sistema de registro de bicicletas.
