@@ -14,9 +14,9 @@ namespace BikeSegura.Models
 
         //public enum Atual { get; set; }
         [DisplayName("Dono Atual da Bicicleta")]
-        [EnumDataType(typeof(Opcao))]
-        public Opcao Atual { get; set; }
-        public enum Opcao
+        [EnumDataType(typeof(Opcao3))]
+        public Opcao3 Atual { get; set; }
+        public enum Opcao3
         {
             [Display(Name = "Não")]
             Nao = 0,
