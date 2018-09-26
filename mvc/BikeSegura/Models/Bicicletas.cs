@@ -56,9 +56,9 @@ namespace BikeSegura.Models
 
         //public bool AlertaRoubo { get; set; }
         [DisplayName("Alerta de Roubo")]
-        [EnumDataType(typeof(Opcao1))]
-        public Opcao1 AlertaRoubo { get; set; }
-        public enum Opcao1
+        [EnumDataType(typeof(Opcao122))]
+        public Opcao122 AlertaRoubo { get; set; }
+        public enum Opcao122
         {
             Desativado = 0,
             Ativado = 1
@@ -66,9 +66,9 @@ namespace BikeSegura.Models
 
         //public bool Vendendo { get; set; }
         [DisplayName("Bicicleta à Venda")]
-        [EnumDataType(typeof(Opcao2))]
-        public Opcao2 Vendendo { get; set; }
-        public enum Opcao2
+        [EnumDataType(typeof(Opcao233))]
+        public Opcao233 Vendendo { get; set; }
+        public enum Opcao233
         {
             [Display(Name = "Não")]
             Nao = 0,

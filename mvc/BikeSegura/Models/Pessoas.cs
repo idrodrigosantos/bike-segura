@@ -12,70 +12,66 @@ namespace BikeSegura.Models
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Campo Obrigatório")]
-        [DisplayName("Nome Completo*")]
-        [MinLength(5)]
-        [MaxLength(100)]
+        [Required(ErrorMessage = "Nome completo é obrigatório")]
+        [DisplayName("Nome Completo *")]
+        [MinLength(5, ErrorMessage = "Nome deve ter no mínimo 5 caracteres")]
+        [MaxLength(100, ErrorMessage = "Nome deve ter no máximo 100 caracteres")]
         public string Nome { get; set; }
 
-        [Required(ErrorMessage = "Campo Obrigatório")]
-        [DisplayName("Endereço de Email*")]
-        [MinLength(5)]
-        [MaxLength(255)]
+        [Required(ErrorMessage = "Email é obrigatório")]
+        [DisplayName("Endereço de Email *")]
+        [MinLength(5, ErrorMessage = "Email deve ter no mínimo 5 caracteres")]
+        [MaxLength(255, ErrorMessage = "Email deve ter no máximo 255 caracteres")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Campo Obrigatório")]
-        [DisplayName("Confirmar Email*")]
-        [MinLength(5)]
-        [MaxLength(255)]
+        [Required(ErrorMessage = "Você deve confirmar seu Email")]
+        [DisplayName("Confirmar Email *")]
+        [MinLength(5, ErrorMessage = "Email deve ter no mínimo 5 caracteres")]
+        [MaxLength(255, ErrorMessage = "Email deve ter no máximo 255 caracteres")]
         [EmailAddress]
         [Compare("Email")]
         public string ConfirmaEmail { get; set; }
 
-        [Required(ErrorMessage = "Campo Obrigatório")]
-        [DisplayName("Senha*")]
-        [MinLength(5)]
-        [MaxLength(25)]
+        [Required(ErrorMessage = "Senha é obrigatória")]
+        [DisplayName("Senha *")]
+        [MinLength(8, ErrorMessage = "Sua senha deve ter no mínimo 8 caracteres")]
+        [MaxLength(32, ErrorMessage = "Sua senha deve ter no máximo 32 caracteres")]
         [DataType(DataType.Password)]
         public string Senha { get; set; }
 
-        [Required(ErrorMessage = "Campo Obrigatório")]
-        [DisplayName("Confirmar Senha*")]
-        [MinLength(5)]
-        [MaxLength(25)]
+        [Required(ErrorMessage = "Você deve confirmar sua Senha")]
+        [DisplayName("Confirmar Senha *")]
+        [MinLength(8, ErrorMessage = "Sua senha deve ter no mínimo 8 caracteres")]
+        [MaxLength(32, ErrorMessage = "Sua senha deve ter no máximo 32 caracteres")]
         [DataType(DataType.Password)]
         [Compare("Senha")]
         public string ConfirmaSenha { get; set; }
 
         [DisplayName("Endereço")]
-        [MinLength(5)]
-        [MaxLength(150)]
+        [MaxLength(150, ErrorMessage = "Endereço deve ter no máximo 150 caracteres")]
         public string Endereco { get; set; }
 
         [DisplayName("Número")]
-        [MinLength(1)]
-        [MaxLength(20)]
-        public string Numero { get; set; }
+        public int Numero { get; set; }
 
-        [MaxLength(100)]
+        [MaxLength(100, ErrorMessage = "Complemento deve ter no máximo 100 caracteres")]
         public string Complemento { get; set; }
 
         [DisplayName("CEP")]
-        [MaxLength(10)]
+        [MinLength(8, ErrorMessage = "CEP deve ter no máximo 8 caracteres")]
+        [MaxLength(11, ErrorMessage = "CEP deve ter no máximo 11 caracteres")]
         public string Cep { get; set; }
 
-        [MinLength(3)]
-        [MaxLength(40)]
+        [MaxLength(50, ErrorMessage = "Bairro deve ter no máximo 50 caracteres")]
         public string Bairro { get; set; }
 
-        [MinLength(5)]
-        [MaxLength(40)]
+        [MaxLength(50, ErrorMessage = "Cidade deve ter no máximo 50 caracteres")]
         public string Cidade { get; set; }
 
-        [EnumDataType(typeof(Opcao))]
-        public Opcao Estado { get; set; }
-        public enum Opcao
+        [EnumDataType(typeof(OpcaoEstado))]
+        public OpcaoEstado Estado { get; set; }
+        public enum OpcaoEstado
         {
             [Display(Name = "Selecione Estado")]
             Vazio,
@@ -133,27 +129,36 @@ namespace BikeSegura.Models
             TO
         }
 
-        [Required(ErrorMessage = "Campo Obrigatório")]
-        [DisplayName("Telefone*")]
-        [MinLength(4)]
-        [MaxLength(14)]
+        [Required(ErrorMessage = "Telefone é obrigatório")]
+        [DisplayName("Telefone *")]
+        [MinLength(8, ErrorMessage = "Telefone deve ter no mínimo 8 caracteres")]
+        [MaxLength(14, ErrorMessage = "Telefone deve ter no máximo 14 caracteres")]
         public string Telefone { get; set; }
 
-        [MinLength(4)]
-        [MaxLength(15)]
+        [MinLength(8, ErrorMessage = "Celular deve ter no mínimo 8 caracteres")]
+        [MaxLength(14, ErrorMessage = "Celular deve ter no máximo 14 caracteres")]
         public string Celular { get; set; }
 
-        [Required(ErrorMessage = "Campo Obrigatório")]
-        [DisplayName("CPF*")]
-        [MinLength(11)]
-        [MaxLength(14)]
+        [Required(ErrorMessage = "CPF é obrigatório")]
+        [DisplayName("CPF *")]
+        [MinLength(11, ErrorMessage = "CPF deve ter no mínimo 11 caracteres")]
+        [MaxLength(14, ErrorMessage = "CPF deve ter no máximo 14 caracteres")]
         public string Cpf { get; set; }
 
         [DisplayName("Data de Nascimento")]
-        [MaxLength(10)]
-        public string DataNascimento { get; set; }
+        public DateTime DataNascimento { get; set; }
 
         [DisplayName("Gênero")]
-        public string Genero { get; set; }
+        [EnumDataType(typeof(OpcaoGenero))]
+        public OpcaoGenero Genero { get; set; }
+        public enum OpcaoGenero
+        {
+            [Display(Name = "Selecione Gênero")]
+            Vazio,
+            [Display(Name = "Masculino")]
+            M,
+            [Display(Name = "Feminino")]
+            F
+        }
     }
 }
