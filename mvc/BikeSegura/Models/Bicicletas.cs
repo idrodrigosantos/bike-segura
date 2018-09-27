@@ -12,63 +12,54 @@ namespace BikeSegura.Models
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Campo Obrigatório")]
-        [DisplayName("Número de Série*")]
-        public string NumeroSerie { get; set; }
+        //[Required(ErrorMessage = "Número de série é obrigatório")]
+        //[DisplayName("Número de Série")]
+        //[MinLength(5, ErrorMessage = "Número de série deve ter no mínimo 5 caracteres")]
+        //[MaxLength(50, ErrorMessage = "Número de série deve ter no máximo 50 caracteres")]
+        //public string NumeroSerie { get; set; }
 
-        [Required(ErrorMessage = "Campo Obrigatório")]
-        [DisplayName("Marca*")]
+        [Required(ErrorMessage = "Marca é obrigatório")]
         public int MarcasId { get; set; }
 
-        [Required(ErrorMessage = "Campo Obrigatório")]
+        [Required(ErrorMessage = "Modelo é obrigatório")]
+        [MinLength(3, ErrorMessage = "Modelo deve ter no mínimo 3 caracteres")]
+        [MaxLength(45, ErrorMessage = "Modelo deve ter no máximo 45 caracteres")]
         public string Modelo { get; set; }
 
-        [Required(ErrorMessage = "Campo Obrigatório")]
-        [Display(Name = "Tipo de Bicicleta")]
+        [Required(ErrorMessage = "Tipo da bicicleta é obrigatório")]
         public int TipoId { get; set; }
 
-        [Required(ErrorMessage = "Campo Obrigatório")]
+        [Required(ErrorMessage = "Cor é obrigatório")]
+        [MinLength(3, ErrorMessage = "Cor deve ter no mínimo 3 caracteres")]
+        [MaxLength(40, ErrorMessage = "Cor deve ter no máximo 40 caracteres")]
         public string Cor { get; set; }
 
         [DisplayName("Fotos da Bicicleta")]
         public string Imagem { get; set; }
 
-        [DisplayName("Câmbio Dianteiro")]
         public int CambioDianteiroId { get; set; }
-
-        [DisplayName("Câmbio Traseiro")]
         public int CambioTraseiroId { get; set; }
-
-        [DisplayName("Tipo de Freio")]
         public int FreioId { get; set; }
-
-        [DisplayName("Tipo de Suspensão")]
         public int SuspensaoId { get; set; }
-
-        [DisplayName("Tamanho do Aro")]
         public int AroId { get; set; }
-
-        [DisplayName("Tipo do Quadro")]
         public int QuadroId { get; set; }
 
         [DisplayName("Informações Adicionais")]
         public string Informacoes { get; set; }
 
-        //public bool AlertaRoubo { get; set; }
         [DisplayName("Alerta de Roubo")]
-        [EnumDataType(typeof(Opcao122))]
-        public Opcao122 AlertaRoubo { get; set; }
-        public enum Opcao122
+        [EnumDataType(typeof(OpcaoAlertaRoubo))]
+        public OpcaoAlertaRoubo AlertaRoubo { get; set; }
+        public enum OpcaoAlertaRoubo
         {
             Desativado = 0,
             Ativado = 1
         }
 
-        //public bool Vendendo { get; set; }
         [DisplayName("Bicicleta à Venda")]
-        [EnumDataType(typeof(Opcao233))]
-        public Opcao233 Vendendo { get; set; }
-        public enum Opcao233
+        [EnumDataType(typeof(OpcaoVendendo))]
+        public OpcaoVendendo Vendendo { get; set; }
+        public enum OpcaoVendendo
         {
             [Display(Name = "Não")]
             Nao = 0,
