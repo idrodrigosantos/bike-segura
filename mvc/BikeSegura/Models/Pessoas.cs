@@ -164,5 +164,14 @@ namespace BikeSegura.Models
         [DisplayName("Telefone do Contato")]
         [MaxLength(14, ErrorMessage = "Telefone deve ter no máximo 14 caracteres")]
         public string TelefoneContato { get; set; }
+
+        [DisplayName("Tipo de Usuário")]
+        [EnumDataType(typeof(OpcaoUsuario))]
+        public OpcaoUsuario TipoUsuario { get; set; }
+        public enum OpcaoUsuario
+        {
+            Comum,
+            Administrador
+        }
     }
 }

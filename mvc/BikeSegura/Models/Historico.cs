@@ -12,23 +12,26 @@ namespace BikeSegura.Models
         [Key]
         public int Id { get; set; }
 
-        //public enum Atual { get; set; }
-        [DisplayName("Dono Atual da Bicicleta")]
-        [EnumDataType(typeof(Opcao3))]
-        public Opcao3 Atual { get; set; }
-        public enum Opcao3
+        [DisplayName("Situação Atual")]
+        [EnumDataType(typeof(OpcaoSituacao))]
+        public OpcaoSituacao SituacaoAtual { get; set; }
+        public enum OpcaoSituacao
         {
-            [Display(Name = "Não")]
-            Nao = 0,
-            Sim = 1
+            Interno,
+            Externo,
+            Sim
         }
 
-        public string Data { get; set; }
-        //public DateTime Data { get; set; }
+        [DisplayName("Data de Aquisição")]
+        public DateTime DataAquisicao { get; set; }
+
+        [DisplayName("Data de Transferência")]
+        public DateTime DataTransferencia { get; set; }
 
         public int BicicletasId { get; set; }
-        public virtual Bicicletas Bicicletas { get; set; }
         public int PessoasId { get; set; }
+
+        public virtual Bicicletas Bicicletas { get; set; }
         public virtual Pessoas Pessoas { get; set; }
     }
 }

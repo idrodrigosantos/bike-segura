@@ -19,7 +19,6 @@ namespace BikeSegura.Models
         public DbSet<InformacoesRoubo> InformacoesRoubo { get; set; }
         public DbSet<Marcas> Marcas { get; set; }
         public DbSet<NumeroSerie> NumeroSerie { get; set; }
-        public DbSet<Perfil> Perfil { get; set; }
         public DbSet<Pessoas> Pessoas { get; set; }
         public DbSet<Quadro> Quadro { get; set; }
         public DbSet<RelatoRoubo> RelatoRoubo { get; set; }
