@@ -22,15 +22,15 @@ namespace BikeSegura.Models
         [DisplayName("Endereço de Email *")]
         [MinLength(5, ErrorMessage = "Email deve ter no mínimo 5 caracteres")]
         [MaxLength(255, ErrorMessage = "Email deve ter no máximo 255 caracteres")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Digite um endereço de email")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Você deve confirmar seu Email")]
         [DisplayName("Confirmar Email *")]
         [MinLength(5, ErrorMessage = "Email deve ter no mínimo 5 caracteres")]
         [MaxLength(255, ErrorMessage = "Email deve ter no máximo 255 caracteres")]
-        [EmailAddress]
-        [Compare("Email")]
+        [EmailAddress(ErrorMessage = "Digite um endereço de email")]
+        [Compare("Email", ErrorMessage = "Os campos de Email não correspondem")]
         public string ConfirmaEmail { get; set; }
 
         [Required(ErrorMessage = "Senha é obrigatória")]
@@ -45,7 +45,7 @@ namespace BikeSegura.Models
         [MinLength(8, ErrorMessage = "Sua senha deve ter no mínimo 8 caracteres")]
         [MaxLength(32, ErrorMessage = "Sua senha deve ter no máximo 32 caracteres")]
         [DataType(DataType.Password)]
-        [Compare("Senha")]
+        [Compare("Senha", ErrorMessage = "Os campos Senha não correspondem")]
         public string ConfirmaSenha { get; set; }
 
         [DisplayName("Endereço")]
@@ -70,11 +70,9 @@ namespace BikeSegura.Models
         public string Cidade { get; set; }
 
         [EnumDataType(typeof(OpcaoEstado))]
-        public OpcaoEstado Estado { get; set; }
+        public OpcaoEstado? Estado { get; set; }
         public enum OpcaoEstado
-        {
-            [Display(Name = "Selecione Estado")]
-            Vazio,
+        {            
             [Display(Name = "Acre")]
             AC,
             [Display(Name = "Alagoas")]
@@ -146,15 +144,13 @@ namespace BikeSegura.Models
         public string Cpf { get; set; }
 
         [DisplayName("Data de Nascimento")]
-        public DateTime DataNascimento { get; set; }
+        public DateTime? DataNascimento { get; set; }
 
         [DisplayName("Gênero")]
         [EnumDataType(typeof(OpcaoGenero))]
-        public OpcaoGenero Genero { get; set; }
+        public OpcaoGenero? Genero { get; set; }
         public enum OpcaoGenero
-        {
-            [Display(Name = "Selecione Gênero")]
-            Vazio,
+        {            
             [Display(Name = "Masculino")]
             M,
             [Display(Name = "Feminino")]
