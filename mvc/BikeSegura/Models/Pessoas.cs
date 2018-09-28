@@ -93,10 +93,10 @@ namespace BikeSegura.Models
             GO,
             [Display(Name = "Maranhão")]
             MA,
-            [Display(Name = "Mato Grosso do Sul")]
-            MS,
             [Display(Name = "Mato Grosso")]
             MT,
+            [Display(Name = "Mato Grosso do Sul")]
+            MS,
             [Display(Name = "Minas Gerais")]
             MG,
             [Display(Name = "Pará")]
