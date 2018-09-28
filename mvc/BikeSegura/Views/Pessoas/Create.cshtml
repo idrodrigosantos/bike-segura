@@ -132,11 +132,11 @@
                 @Html.ValidationMessageFor(model => model.TelefoneContato, "", new { @class = "text-danger" })
             </div>
 
-            <div class="form-group col-sm-12">
+            @*<div class="form-group col-sm-12">
                 @Html.LabelFor(model => model.TipoUsuario, htmlAttributes: new { @class = "control-label" })
                 @Html.EnumDropDownListFor(model => model.TipoUsuario, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.TipoUsuario, "", new { @class = "text-danger" })
-            </div>
+            </div>*@
 
             <div class="form-group col-sm-12">
                 <div class="botao-salvar">
@@ -144,14 +144,12 @@
                         <i class="fas fa-times"></i>
                         Cancelar
                     </a>
-                    @*<input type="submit" value="Cadastrar" class="btn btn-success" />*@
                     <button type="submit" value="Cadastrar" class="btn btn-success">
                         <i class="fas fa-save"></i>
                         Cadastrar
                     </button>
                 </div>
             </div>
-
         </div>
     </div>
 }
