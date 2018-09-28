@@ -29,7 +29,7 @@ namespace BikeSegura
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.min.css",
-                      "~/Content/pagina-inicial.css",
+                      "~/Content/meu-estilo.css",
                       "~/Content/all.css"));
             //"~/Content/site.css"));
 
