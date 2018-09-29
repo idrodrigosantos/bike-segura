@@ -1,0 +1,111 @@
+﻿@model BikeSegura.Models.Bicicletas
+
+@{
+    ViewBag.Title = "Excluir Bicicleta";
+    Layout = "~/Views/Shared/_Usuario.cshtml";
+}
+
+<div class="container conteudo">
+    <div class="row">
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.Marcas.Nome)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.Marcas.Nome)</label>
+        </div>
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.Modelo)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.Modelo)</label>
+        </div>
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.Tipo.Nome)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.Tipo.Nome)</label>
+        </div>
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.Cor)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.Cor)</label>
+        </div>
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.Imagem)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.Imagem)</label>
+        </div>
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.CambioDianteiro.Velocidade)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.CambioDianteiro.Velocidade)</label>
+        </div>
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.CambioTraseiro.Velocidade)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.CambioTraseiro.Velocidade)</label>
+        </div>
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.Freio.Nome)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.Freio.Nome)</label>
+        </div>
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.Suspensao.Nome)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.Suspensao.Nome)</label>
+        </div>
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.Aro.Medida)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.Aro.Medida)</label>
+        </div>
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.Quadro.Material)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.Quadro.Material)</label>
+        </div>
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.Informacoes)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.Informacoes)</label>
+        </div>
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.AlertaRoubo)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.AlertaRoubo)</label>
+        </div>
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.Vendendo)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.Vendendo)</label>
+        </div>
+        <div class="form-group col-sm-12">
+            <div class="botao-salvar">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <a class="btn btn-primary" href="@Url.Action("Index", "Bicicletas")" role="button">
+                        <i class="fas fa-reply"></i>
+                        Voltar
+                    </a>
+                    <button type="submit" value="Delete" class="btn btn-danger">
+                        <i class="fas fa-times"></i>
+                        Excluir
+                    </button>
+                }
+            </div>
+        </div>
+    </div>
+</div>

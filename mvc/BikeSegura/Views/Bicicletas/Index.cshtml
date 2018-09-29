@@ -1,0 +1,131 @@
+﻿@model IEnumerable<BikeSegura.Models.Bicicletas>
+
+@{
+    ViewBag.Title = "Lista de Bicicletas";
+    Layout = "~/Views/Shared/_Usuario.cshtml";
+}
+
+<div class="container conteudo">
+    <p>
+        <a class="btn btn-success" href="@Url.Action("Create", "Bicicletas")" role="button">
+            <i class="fas fa-plus"></i>
+            Novo Cadastro
+        </a>
+    </p>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Marcas.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Modelo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tipo.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cor)
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.Imagem)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CambioDianteiro.Velocidade)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CambioTraseiro.Velocidade)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Freio.Nome)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Suspensao.Nome)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Aro.Medida)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Quadro.Material)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Informacoes)
+                        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.AlertaRoubo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Vendendo)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Marcas.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Modelo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tipo.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cor)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.Imagem)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CambioDianteiro.Velocidade)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CambioTraseiro.Velocidade)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Freio.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Suspensao.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Aro.Medida)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Quadro.Material)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Informacoes)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AlertaRoubo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Vendendo)
+                        </td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.Id })" role="button">
+                                    <i class="fas fa-pen"></i>
+                                    Editar
+                                </a>
+                                <a class="btn btn-success" href="@Url.Action("Details", new { id = item.Id })" role="button">
+                                    <i class="fas fa-list"></i>
+                                    Detalhes
+                                </a>
+                                <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.Id })" role="button">
+                                    <i class="fas fa-times"></i>
+                                    Excluir
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
