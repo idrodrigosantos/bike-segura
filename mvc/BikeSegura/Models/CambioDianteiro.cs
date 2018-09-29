@@ -14,7 +14,7 @@ namespace BikeSegura.Models
 
         [DisplayName("Câmbio Dianteiro")]
         [MinLength(10, ErrorMessage = "Câmbio dianteiro deve ter no mínimo 10 caracteres")]
-        [MaxLength(13, ErrorMessage = "Câmbio dianteiro deve ter no máximo 13 caracteres")]
+        [MaxLength(20, ErrorMessage = "Câmbio dianteiro deve ter no máximo 20 caracteres")]
         public string Velocidade { get; set; }
     }
 }

@@ -12,17 +12,11 @@ namespace BikeSegura.Models
         [Key]
         public int Id { get; set; }
 
-        //[Required(ErrorMessage = "Número de série é obrigatório")]
-        //[DisplayName("Número de Série")]
-        //[MinLength(5, ErrorMessage = "Número de série deve ter no mínimo 5 caracteres")]
-        //[MaxLength(50, ErrorMessage = "Número de série deve ter no máximo 50 caracteres")]
-        //public string NumeroSerie { get; set; }
-
         [Required(ErrorMessage = "Marca é obrigatório")]
         public int MarcasId { get; set; }
 
         [Required(ErrorMessage = "Modelo é obrigatório")]
-        [MinLength(3, ErrorMessage = "Modelo deve ter no mínimo 3 caracteres")]
+        [MinLength(2, ErrorMessage = "Modelo deve ter no mínimo 3 caracteres")]
         [MaxLength(45, ErrorMessage = "Modelo deve ter no máximo 45 caracteres")]
         public string Modelo { get; set; }
 
