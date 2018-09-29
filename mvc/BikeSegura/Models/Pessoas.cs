@@ -103,6 +103,8 @@ namespace BikeSegura.Models
             PA,
             [Display(Name = "Paraíba")]
             PB,
+            [Display(Name = "Paraná")]
+            PR,
             [Display(Name = "Pernambuco")]
             PE,
             [Display(Name = "Piauí")]
