@@ -1,0 +1,29 @@
+﻿@model BikeSegura.Models.Suspensao
+
+@{
+    ViewBag.Title = "Detalhes Suspensão";
+    Layout = "~/Views/Shared/_Administrador.cshtml";
+}
+
+<div class="container conteudo">
+    <div class="row">
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.Nome)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.Nome)</label>
+        </div>
+        <div class="form-group col-sm-12">
+            <div class="botao-salvar">
+                <a class="btn btn-success" href="@Url.Action("Index", "Suspensaos")" role="button">
+                    <i class="fas fa-reply"></i>
+                    Voltar
+                </a>
+                <a class="btn btn-primary" href="@Url.Action("Edit", "Suspensaos", new { id = Model.Id })" role="button">
+                    <i class="fas fa-pen"></i>
+                    Editar
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
