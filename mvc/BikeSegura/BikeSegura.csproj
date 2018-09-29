@@ -162,8 +162,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BicicletasController.cs" />
+    <Compile Include="Controllers\CambioDianteiroesController.cs" />
+    <Compile Include="Controllers\CambioTraseiroesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MarcasController.cs" />
     <Compile Include="Controllers\PessoasController.cs" />
+    <Compile Include="Controllers\SuspensaosController.cs" />
+    <Compile Include="Controllers\TipoesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -321,6 +326,32 @@
     <Content Include="Views\Bicicletas\Details.cshtml" />
     <Content Include="Views\Bicicletas\Edit.cshtml" />
     <Content Include="Views\Bicicletas\Index.cshtml" />
+    <Content Include="Views\Shared\_Administrador.cshtml" />
+    <Content Include="Views\Marcas\Create.cshtml" />
+    <Content Include="Views\Marcas\Delete.cshtml" />
+    <Content Include="Views\Marcas\Details.cshtml" />
+    <Content Include="Views\Marcas\Edit.cshtml" />
+    <Content Include="Views\Marcas\Index.cshtml" />
+    <Content Include="Views\Tipoes\Create.cshtml" />
+    <Content Include="Views\Tipoes\Delete.cshtml" />
+    <Content Include="Views\Tipoes\Details.cshtml" />
+    <Content Include="Views\Tipoes\Edit.cshtml" />
+    <Content Include="Views\Tipoes\Index.cshtml" />
+    <Content Include="Views\Suspensaos\Create.cshtml" />
+    <Content Include="Views\Suspensaos\Delete.cshtml" />
+    <Content Include="Views\Suspensaos\Details.cshtml" />
+    <Content Include="Views\Suspensaos\Edit.cshtml" />
+    <Content Include="Views\Suspensaos\Index.cshtml" />
+    <Content Include="Views\CambioDianteiroes\Create.cshtml" />
+    <Content Include="Views\CambioDianteiroes\Delete.cshtml" />
+    <Content Include="Views\CambioDianteiroes\Details.cshtml" />
+    <Content Include="Views\CambioDianteiroes\Edit.cshtml" />
+    <Content Include="Views\CambioDianteiroes\Index.cshtml" />
+    <Content Include="Views\CambioTraseiroes\Create.cshtml" />
+    <Content Include="Views\CambioTraseiroes\Delete.cshtml" />
+    <Content Include="Views\CambioTraseiroes\Details.cshtml" />
+    <Content Include="Views\CambioTraseiroes\Edit.cshtml" />
+    <Content Include="Views\CambioTraseiroes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
