@@ -1,0 +1,60 @@
+﻿@model BikeSegura.Models.Historico
+
+@{
+    ViewBag.Title = "Editar Histórico";
+    Layout = "~/Views/Shared/_Usuario.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container conteudo">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="row">
+            <div class="form-group col-sm-12">
+                @Html.LabelFor(model => model.SituacaoAtual, htmlAttributes: new { @class = "control-label" })
+                @Html.EnumDropDownListFor(model => model.SituacaoAtual, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SituacaoAtual, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-6">
+                @Html.LabelFor(model => model.DataAquisicao, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.DataAquisicao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DataAquisicao, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-6">
+                @Html.LabelFor(model => model.DataTransferencia, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.DataTransferencia, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DataTransferencia, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-6">
+                @Html.LabelFor(model => model.BicicletasId, "BicicletasId", htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownList("BicicletasId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.BicicletasId, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-6">
+                @Html.LabelFor(model => model.PessoasId, "PessoasId", htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownList("PessoasId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PessoasId, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-12">
+                <div class="botao-salvar">
+                    <a class="btn btn-danger" href="@Url.Action("Index", "Historicoes")" role="button">
+                        <i class="fas fa-times"></i>
+                        Cancelar
+                    </a>
+                    <button type="submit" value="Save" class="btn btn-success">
+                        <i class="fas fa-save"></i>
+                        Salvar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,57 @@
+﻿@model BikeSegura.Models.Historico
+
+@{
+    ViewBag.Title = "Excluir Histórico";
+    Layout = "~/Views/Shared/_Usuario.cshtml";
+}
+
+<div class="container conteudo">
+    <div class="row">
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.Bicicletas.Modelo)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.Bicicletas.Modelo)</label>
+        </div>
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.Pessoas.Nome)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.Pessoas.Nome)</label>
+        </div>
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.SituacaoAtual)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.SituacaoAtual)</label>
+        </div>
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.DataAquisicao)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.DataAquisicao)</label>
+        </div>
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.DataTransferencia)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.DataTransferencia)</label>
+        </div>
+        <div class="form-group col-sm-12">
+            <div class="botao-salvar">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <a class="btn btn-primary" href="@Url.Action("Index", "Historicoes")" role="button">
+                        <i class="fas fa-reply"></i>
+                        Voltar
+                    </a>
+                    <button type="submit" value="Delete" class="btn btn-danger">
+                        <i class="fas fa-times"></i>
+                        Excluir
+                    </button>
+                }
+            </div>
+        </div>
+    </div>
+</div>

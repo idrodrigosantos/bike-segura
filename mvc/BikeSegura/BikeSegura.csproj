@@ -166,6 +166,7 @@
     <Compile Include="Controllers\CambioDianteiroesController.cs" />
     <Compile Include="Controllers\CambioTraseiroesController.cs" />
     <Compile Include="Controllers\FreiosController.cs" />
+    <Compile Include="Controllers\HistoricoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InformacoesRouboesController.cs" />
     <Compile Include="Controllers\MarcasController.cs" />
@@ -388,6 +389,11 @@
     <Content Include="Views\RelatoRouboes\Details.cshtml" />
     <Content Include="Views\RelatoRouboes\Edit.cshtml" />
     <Content Include="Views\RelatoRouboes\Index.cshtml" />
+    <Content Include="Views\Historicoes\Create.cshtml" />
+    <Content Include="Views\Historicoes\Delete.cshtml" />
+    <Content Include="Views\Historicoes\Details.cshtml" />
+    <Content Include="Views\Historicoes\Edit.cshtml" />
+    <Content Include="Views\Historicoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
