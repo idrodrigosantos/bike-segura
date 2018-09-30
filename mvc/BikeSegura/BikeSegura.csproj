@@ -161,12 +161,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AroesController.cs" />
     <Compile Include="Controllers\BicicletasController.cs" />
     <Compile Include="Controllers\CambioDianteiroesController.cs" />
     <Compile Include="Controllers\CambioTraseiroesController.cs" />
+    <Compile Include="Controllers\FreiosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MarcasController.cs" />
     <Compile Include="Controllers\PessoasController.cs" />
+    <Compile Include="Controllers\QuadroesController.cs" />
     <Compile Include="Controllers\SuspensaosController.cs" />
     <Compile Include="Controllers\TipoesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -352,6 +355,21 @@
     <Content Include="Views\CambioTraseiroes\Details.cshtml" />
     <Content Include="Views\CambioTraseiroes\Edit.cshtml" />
     <Content Include="Views\CambioTraseiroes\Index.cshtml" />
+    <Content Include="Views\Freios\Create.cshtml" />
+    <Content Include="Views\Freios\Delete.cshtml" />
+    <Content Include="Views\Freios\Details.cshtml" />
+    <Content Include="Views\Freios\Edit.cshtml" />
+    <Content Include="Views\Freios\Index.cshtml" />
+    <Content Include="Views\Aroes\Create.cshtml" />
+    <Content Include="Views\Aroes\Delete.cshtml" />
+    <Content Include="Views\Aroes\Details.cshtml" />
+    <Content Include="Views\Aroes\Edit.cshtml" />
+    <Content Include="Views\Aroes\Index.cshtml" />
+    <Content Include="Views\Quadroes\Create.cshtml" />
+    <Content Include="Views\Quadroes\Delete.cshtml" />
+    <Content Include="Views\Quadroes\Details.cshtml" />
+    <Content Include="Views\Quadroes\Edit.cshtml" />
+    <Content Include="Views\Quadroes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
