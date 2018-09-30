@@ -167,10 +167,12 @@
     <Compile Include="Controllers\CambioTraseiroesController.cs" />
     <Compile Include="Controllers\FreiosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InformacoesRouboesController.cs" />
     <Compile Include="Controllers\MarcasController.cs" />
     <Compile Include="Controllers\NumeroSeriesController.cs" />
     <Compile Include="Controllers\PessoasController.cs" />
     <Compile Include="Controllers\QuadroesController.cs" />
+    <Compile Include="Controllers\RelatoRouboesController.cs" />
     <Compile Include="Controllers\SuspensaosController.cs" />
     <Compile Include="Controllers\TipoesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -376,6 +378,16 @@
     <Content Include="Views\NumeroSeries\Details.cshtml" />
     <Content Include="Views\NumeroSeries\Edit.cshtml" />
     <Content Include="Views\NumeroSeries\Index.cshtml" />
+    <Content Include="Views\InformacoesRouboes\Create.cshtml" />
+    <Content Include="Views\InformacoesRouboes\Delete.cshtml" />
+    <Content Include="Views\InformacoesRouboes\Details.cshtml" />
+    <Content Include="Views\InformacoesRouboes\Edit.cshtml" />
+    <Content Include="Views\InformacoesRouboes\Index.cshtml" />
+    <Content Include="Views\RelatoRouboes\Create.cshtml" />
+    <Content Include="Views\RelatoRouboes\Delete.cshtml" />
+    <Content Include="Views\RelatoRouboes\Details.cshtml" />
+    <Content Include="Views\RelatoRouboes\Edit.cshtml" />
+    <Content Include="Views\RelatoRouboes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
