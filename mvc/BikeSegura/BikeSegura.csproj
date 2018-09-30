@@ -168,6 +168,7 @@
     <Compile Include="Controllers\FreiosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MarcasController.cs" />
+    <Compile Include="Controllers\NumeroSeriesController.cs" />
     <Compile Include="Controllers\PessoasController.cs" />
     <Compile Include="Controllers\QuadroesController.cs" />
     <Compile Include="Controllers\SuspensaosController.cs" />
@@ -370,6 +371,11 @@
     <Content Include="Views\Quadroes\Details.cshtml" />
     <Content Include="Views\Quadroes\Edit.cshtml" />
     <Content Include="Views\Quadroes\Index.cshtml" />
+    <Content Include="Views\NumeroSeries\Create.cshtml" />
+    <Content Include="Views\NumeroSeries\Delete.cshtml" />
+    <Content Include="Views\NumeroSeries\Details.cshtml" />
+    <Content Include="Views\NumeroSeries\Edit.cshtml" />
+    <Content Include="Views\NumeroSeries\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -14,7 +14,7 @@ namespace BikeSegura.Models
 
         [Required(ErrorMessage = "Número de série é obrigatório")]
         [DisplayName("Número de Série")]
-        [MinLength(5, ErrorMessage = "Número de série deve ter no mínimo 5 caracteres")]
+        [MinLength(3, ErrorMessage = "Número de série deve ter no mínimo 3 caracteres")]
         [MaxLength(50, ErrorMessage = "Número de série deve ter no máximo 50 caracteres")]
         public string Numero { get; set; }
 
