@@ -1,20 +1,16 @@
 ﻿/*Estilo Global*/
 body {
     padding-top: 3rem;
-    padding-bottom: 5rem;    
+    padding-bottom: 5rem;
     background-color: #1B3E5B;
-}
-
-.espaco-botao-navbar {
-    margin-left: 1rem;
 }
 
 .barra-superior {
     background-color: #0C1824;
 }
 
-.frente {
-    color: #98C5DB;
+.espaco-botao-navbar {
+    margin-left: 1rem;
 }
 
 .footer {
@@ -30,23 +26,16 @@ body {
     padding-top: 2rem;
 }
 
-.botaoCast hover link {
-    color: green;
-}
-
 /*Estilo Carousel*/
-/* Carousel base class */
 .carousel {
     margin-bottom: 4rem;
 }
 
-/* Since positioning the image, we need to help out the caption */
 .carousel-caption {
     bottom: 3rem;
     z-index: 10;
 }
 
-/* Declare heights because of positioning of img element */
 .carousel-item {
     height: 37rem;
     background-color: #777;
@@ -61,7 +50,10 @@ body {
     }
 
 /*Conteúdo Blocos*/
-/* Center align the text within the three columns below the carousel */
+.blocos {
+    color: #98C5DB;
+}
+
 .blocos .col-lg-4 {
     margin-bottom: 1.5rem;
     text-align: center;
@@ -78,10 +70,9 @@ body {
 
 /*Featurettes*/
 .featurette-divider {
-    margin: 3rem 0; /* Space out the Bootstrap <hr> more */
+    margin: 3rem 0;
 }
 
-/* Thin out the marketing headings */
 .featurette-heading {
     font-weight: 300;
     line-height: 1;
@@ -89,8 +80,7 @@ body {
 }
 
 /*CSS Responsivo*/
-@media (min-width: 40em) {
-    /* Bump up size of carousel content */
+@media (min-width: 40em) {    
     .carousel-caption p {
         margin-bottom: 1.25rem;
         font-size: 1.25rem;

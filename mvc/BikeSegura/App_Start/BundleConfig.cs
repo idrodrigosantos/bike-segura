@@ -20,23 +20,12 @@ namespace BikeSegura
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.min.js"));
-
-            //Modelo para adicionar novo script
-            //bundles.Add(new ScriptBundle("~/bundles/plugins").Include(
-            //          "~/Scripts/bootstrap.js",
-            //          ""));
+                      "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.min.css",
-                      "~/Content/meu-estilo.css",
-                      "~/Content/all.css"));
-            //"~/Content/site.css"));
-
-            //bundles.Add(new StyleBundle("~/Content/css-form").Include(
-            //          "~/Content/bootstrap.min.css",
-            //          "~/Content/formulario.css",
-            //          "~/Content/all.css"));
+                      "~/Content/bootstrap.css",
+                      "~/Content/all.css",
+                      "~/Content/meu-estilo.css"));
         }
     }
 }
