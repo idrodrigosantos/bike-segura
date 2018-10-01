@@ -8,46 +8,41 @@
 <div class="container conteudo">
     <div class="row">
         <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.InformacoesRoubo.Relato)</strong></label>
+            <label><strong>Roubo</strong></label>
         </div>
         <div class="col-sm-6">
             <label>@Html.DisplayFor(model => model.InformacoesRoubo.Relato)</label>
         </div>
-
         <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Pessoas.Nome)</strong></label>
+            <label><strong>Relator</strong></label>
         </div>
         <div class="col-sm-6">
             <label>@Html.DisplayFor(model => model.Pessoas.Nome)</label>
         </div>
-
         <div class="col-sm-6">
             <label><strong>@Html.DisplayNameFor(model => model.Relato)</strong></label>
         </div>
         <div class="col-sm-6">
             <label>@Html.DisplayFor(model => model.Relato)</label>
         </div>
-
         <div class="col-sm-6">
             <label><strong>@Html.DisplayNameFor(model => model.Local)</strong></label>
         </div>
         <div class="col-sm-6">
             <label>@Html.DisplayFor(model => model.Local)</label>
         </div>
-
         <div class="col-sm-6">
             <label><strong>@Html.DisplayNameFor(model => model.Data)</strong></label>
         </div>
         <div class="col-sm-6">
             <label>@Html.DisplayFor(model => model.Data)</label>
         </div>
-
         <div class="form-group col-sm-12">
             <div class="botao-salvar">
                 @using (Html.BeginForm())
                 {
                     @Html.AntiForgeryToken()
-                    <a class="btn btn-primary" href="@Url.Action("Index", "RelatoRouboes")" role="button">
+                    <a class="btn btn-success" href="@Url.Action("Index", "RelatoRouboes")" role="button">
                         <i class="fas fa-reply"></i>
                         Voltar
                     </a>
