@@ -12,8 +12,8 @@ namespace BikeSegura.Models
         [Key]
         public int Id { get; set; }
 
-        [DisplayName("Câmbio Traseiro")]
-        [MinLength(10, ErrorMessage = "Câmbio traseiro deve ter no mínimo 10 caracteres")]
+        [Required(ErrorMessage = "Câmbio traseiro é obrigatório")]
+        [DisplayName("Câmbio Traseiro")]        
         [MaxLength(20, ErrorMessage = "Câmbio traseiro deve ter no máximo 20 caracteres")]
         public string Velocidade { get; set; }
     }

@@ -12,9 +12,9 @@ namespace BikeSegura.Models
         [Key]
         public int Id { get; set; }
 
-        [DisplayName("Tamanho do Aro")]
-        [MinLength(5, ErrorMessage = "Tamanho do aro deve ter no mínimo 5 caracteres")]
-        [MaxLength(15, ErrorMessage = "Tamanho do aro deve ter no máximo 15 caracteres")]
+        [Required(ErrorMessage = "Medida do aro é obrigatório")]
+        [DisplayName("Medida do Aro")]        
+        [MaxLength(15, ErrorMessage = "Medida do aro deve ter no máximo 15 caracteres")]
         public string Medida { get; set; }
     }
 }

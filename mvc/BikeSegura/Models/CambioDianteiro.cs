@@ -12,8 +12,8 @@ namespace BikeSegura.Models
         [Key]
         public int Id { get; set; }
 
-        [DisplayName("Câmbio Dianteiro")]
-        [MinLength(10, ErrorMessage = "Câmbio dianteiro deve ter no mínimo 10 caracteres")]
+        [Required(ErrorMessage = "Câmbio dianteiro é obrigatório")]
+        [DisplayName("Câmbio Dianteiro")]        
         [MaxLength(20, ErrorMessage = "Câmbio dianteiro deve ter no máximo 20 caracteres")]
         public string Velocidade { get; set; }
     }

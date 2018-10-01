@@ -12,8 +12,8 @@ namespace BikeSegura.Models
         [Key]
         public int Id { get; set; }
 
-        [DisplayName("Material do Quadro")]
-        [MinLength(3, ErrorMessage = "Material do quadro deve ter no mínimo 3 caracteres")]
+        [Required(ErrorMessage = "Material do quadro é obrigatório")]
+        [DisplayName("Material do Quadro")]        
         [MaxLength(30, ErrorMessage = "Material do quadro deve ter no máximo 30 caracteres")]
         public string Material { get; set; }
     }

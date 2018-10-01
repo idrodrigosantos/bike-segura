@@ -12,8 +12,8 @@ namespace BikeSegura.Models
         [Key]
         public int Id { get; set; }
 
-        [DisplayName("Tipo do Freio")]
-        [MinLength(5, ErrorMessage = "Tipo do freio deve ter no mínimo 5 caracteres")]
+        [Required(ErrorMessage = "Tipo do freio é obrigatório")]
+        [DisplayName("Tipo do Freio")]        
         [MaxLength(30, ErrorMessage = "Tipo do freio deve ter no máximo 30 caracteres")]
         public string Nome { get; set; }
     }

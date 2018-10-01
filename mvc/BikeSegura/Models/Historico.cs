@@ -28,7 +28,10 @@ namespace BikeSegura.Models
         [DisplayName("Data de Transferência")]
         public DateTime DataTransferencia { get; set; }
 
+        [Required(ErrorMessage = "Bicicleta é obrigatório")]
         public int BicicletasId { get; set; }
+
+        [Required(ErrorMessage = "Pessoa é obrigatório")]
         public int PessoasId { get; set; }
 
         public virtual Bicicletas Bicicletas { get; set; }

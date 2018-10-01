@@ -12,15 +12,19 @@ namespace BikeSegura.Models
         [Key]
         public int Id { get; set; }
 
-        [DisplayName("Relato sobre o roubo")]
+        [Required(ErrorMessage = "Informações sobre o roubo é obrigatório")]
+        [DisplayName("Informações sobre o roubo")]
         public string Relato { get; set; }
 
-        [MaxLength(150, ErrorMessage = "Local deve ter no máximo 150 caracteres")]
+        [Required(ErrorMessage = "Local do roubo é obrigatório")]
+        [MaxLength(150, ErrorMessage = "Local do roubo deve ter no máximo 150 caracteres")]
+        [DisplayName("Local onde a bicicleta foi roubada")]
         public string Local { get; set; }
 
         [DisplayName("Data do Roubo")]
         public DateTime Data { get; set; }
 
+        [Required(ErrorMessage = "Bicicleta é obrigatório")]
         public int BicicletasId { get; set; }
         public virtual Bicicletas Bicicletas { get; set; }
     }

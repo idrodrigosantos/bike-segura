@@ -12,9 +12,9 @@ namespace BikeSegura.Models
         [Key]
         public int Id { get; set; }
 
-        [DisplayName("Tipo da Suspensão")]
-        [MinLength(2, ErrorMessage = "Tipo da suspensção deve ter no mínimo 2 caracteres")]
-        [MaxLength(30, ErrorMessage = "Tipo da suspensção deve ter no máximo 40 caracteres")]
+        [Required(ErrorMessage = "Tipo de suspensão é obrigatório")]
+        [DisplayName("Tipo de Suspensão")]        
+        [MaxLength(30, ErrorMessage = "Tipo de suspensção deve ter no máximo 40 caracteres")]
         public string Nome { get; set; }
     }
 }

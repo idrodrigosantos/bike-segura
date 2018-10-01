@@ -12,8 +12,8 @@ namespace BikeSegura.Models
         [Key]
         public int Id { get; set; }
 
-        [DisplayName("Tipo da Bicicleta")]
-        [MinLength(3, ErrorMessage = "Tipo da bicicleta deve ter no mínimo 3 caracteres")]
+        [Required(ErrorMessage = "Tipo da bicicleta é obrigatório")]
+        [DisplayName("Tipo da Bicicleta")]        
         [MaxLength(40, ErrorMessage = "Tipo da bicicleta deve ter no máximo 40 caracteres")]
         public string Nome { get; set; }
     }
