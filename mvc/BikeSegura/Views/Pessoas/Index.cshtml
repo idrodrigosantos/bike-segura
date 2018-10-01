@@ -8,7 +8,7 @@
     <p>
         <a class="btn btn-success" href="@Url.Action("Create", "Pessoas")" role="button">
             <i class="fas fa-plus"></i>
-            Novo Cadastro
+            Cadastrar Usuário
         </a>
     </p>
     <div class="table-responsive">
@@ -16,68 +16,68 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Nome)
-                    </th>
+                        Nome
+                    </th>                    
                     <th>
-                        @Html.DisplayNameFor(model => model.Email)
+                        Endereço de Email
                     </th>
                     @*<th>
-                            @Html.DisplayNameFor(model => model.ConfirmaEmail)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Senha)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.ConfirmaSenha)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Endereco)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Numero)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Complemento)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Cep)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Bairro)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Cidade)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Estado)
-                        </th>*@
-                    <th>
-                        @Html.DisplayNameFor(model => model.Telefone)
+                        @Html.DisplayNameFor(model => model.ConfirmaEmail)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Celular)
+                        @Html.DisplayNameFor(model => model.Senha)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Cpf)
+                        @Html.DisplayNameFor(model => model.ConfirmaSenha)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Endereco)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Numero)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Complemento)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cep)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Bairro)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cidade)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Estado)
+                    </th>*@
+                    <th>
+                        Telefone
+                    </th>
+                    <th>
+                        Celular
+                    </th>
+                    <th>
+                        CPF
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.DataNascimento)
                     </th>
                     @*<th>
-                            @Html.DisplayNameFor(model => model.Genero)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.ImagemPerfil)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.NomeContato)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.TelefoneContato)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.TipoUsuario)
-                        </th>*@
+                        @Html.DisplayNameFor(model => model.Genero)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ImagemPerfil)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NomeContato)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TelefoneContato)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TipoUsuario)
+                    </th>*@
                     <th></th>
                 </tr>
             </thead>
@@ -92,35 +92,35 @@
                             @Html.DisplayFor(modelItem => item.Email)
                         </td>
                         @*<td>
-                                @Html.DisplayFor(modelItem => item.ConfirmaEmail)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Senha)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ConfirmaSenha)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Endereco)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Numero)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Complemento)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Cep)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Bairro)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Cidade)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Estado)
-                            </td>*@
+                            @Html.DisplayFor(modelItem => item.ConfirmaEmail)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Senha)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ConfirmaSenha)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Endereco)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Numero)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Complemento)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cep)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Bairro)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cidade)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Estado)
+                        </td>*@
                         <td>
                             @Html.DisplayFor(modelItem => item.Telefone)
                         </td>
@@ -134,29 +134,29 @@
                             @Html.DisplayFor(modelItem => item.DataNascimento)
                         </td>
                         @*<td>
-                                @Html.DisplayFor(modelItem => item.Genero)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ImagemPerfil)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NomeContato)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TelefoneContato)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TipoUsuario)
-                            </td>*@
+                            @Html.DisplayFor(modelItem => item.Genero)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ImagemPerfil)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeContato)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TelefoneContato)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TipoUsuario)
+                        </td>*@
                         <td>
                             <div class="btn-group" role="group">
-                                <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.Id })" role="button">
-                                    <i class="fas fa-pen"></i>
-                                    Editar
-                                </a>
                                 <a class="btn btn-success" href="@Url.Action("Details", new { id = item.Id })" role="button">
                                     <i class="fas fa-list"></i>
                                     Detalhes
+                                </a>
+                                <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.Id })" role="button">
+                                    <i class="fas fa-pen"></i>
+                                    Editar
                                 </a>
                                 <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.Id })" role="button">
                                     <i class="fas fa-times"></i>
