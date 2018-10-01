@@ -31,12 +31,12 @@ namespace BikeSegura.Models
         [DisplayName("Fotos da Bicicleta")]
         public string Imagem { get; set; }
 
-        public int CambioDianteiroId { get; set; }
-        public int CambioTraseiroId { get; set; }
-        public int FreioId { get; set; }
-        public int SuspensaoId { get; set; }
-        public int AroId { get; set; }
-        public int QuadroId { get; set; }
+        public int? CambioDianteiroId { get; set; }
+        public int? CambioTraseiroId { get; set; }
+        public int? FreioId { get; set; }
+        public int? SuspensaoId { get; set; }
+        public int? AroId { get; set; }
+        public int? QuadroId { get; set; }
 
         [DisplayName("Informações Adicionais")]
         public string Informacoes { get; set; }
