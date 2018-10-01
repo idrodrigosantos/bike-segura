@@ -14,7 +14,7 @@
             <label>@Html.DisplayFor(model => model.Bicicletas.Modelo)</label>
         </div>
         <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Pessoas.Nome)</strong></label>
+            <label><strong>Nome</strong></label>
         </div>
         <div class="col-sm-6">
             <label>@Html.DisplayFor(model => model.Pessoas.Nome)</label>
@@ -42,7 +42,7 @@
                 @using (Html.BeginForm())
                 {
                     @Html.AntiForgeryToken()
-                    <a class="btn btn-primary" href="@Url.Action("Index", "Historicoes")" role="button">
+                    <a class="btn btn-success" href="@Url.Action("Index", "Historicoes")" role="button">
                         <i class="fas fa-reply"></i>
                         Voltar
                     </a>

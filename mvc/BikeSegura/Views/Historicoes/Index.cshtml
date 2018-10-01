@@ -17,10 +17,10 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Bicicletas.Modelo)
+                        Modelo
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Pessoas.Nome)
+                        Nome
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.SituacaoAtual)
@@ -55,13 +55,13 @@
                         </td>
                         <td>
                             <div class="btn-group" role="group">
-                                <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.Id })" role="button">
-                                    <i class="fas fa-pen"></i>
-                                    Editar
-                                </a>
                                 <a class="btn btn-success" href="@Url.Action("Details", new { id = item.Id })" role="button">
                                     <i class="fas fa-list"></i>
                                     Detalhes
+                                </a>
+                                <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.Id })" role="button">
+                                    <i class="fas fa-pen"></i>
+                                    Editar
                                 </a>
                                 <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.Id })" role="button">
                                     <i class="fas fa-times"></i>
