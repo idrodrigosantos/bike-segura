@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,27 +8,11 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
-    @*<div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-            </ul>
-        </div>*@
 
+<body>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top barra-superior">
         <div class="container">
             @Html.ActionLink("Bike Segura", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            @*<a class="navbar-brand" href="#">Bike Segura</a>*@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -55,24 +40,18 @@
         </div>
     </nav>
 
-    @*<div class="body-content">*@
     @RenderBody()
-    @*<hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>*@
+
     <div class="footer">
         <hr>
         <div class="container">
             <p>2018 - Bike Segura</p>
         </div>
     </div>
-    @*</div>*@
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @*Modelo para adicionar novo script*@
-    @*@Scripts.Render("~/bundles/plugins")*@
+    @Scripts.Render("~/bundles/bootstrap")    
     @RenderSection("scripts", required: false)
+
 </body>
 </html>
