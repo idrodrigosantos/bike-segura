@@ -11,11 +11,6 @@
     <div class="container conteudo">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="row">
-            <div class="form-group col-sm-12">
-                @Html.LabelFor(model => model.Relato, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.Relato, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Relato, "", new { @class = "text-danger" })
-            </div>
             <div class="form-group col-sm-6">
                 @Html.LabelFor(model => model.Local, htmlAttributes: new { @class = "control-label" })
                 @Html.EditorFor(model => model.Local, new { htmlAttributes = new { @class = "form-control" } })
@@ -28,13 +23,21 @@
             </div>
             <div class="form-group col-sm-6">
                 @Html.LabelFor(model => model.PessoasId, "Relator", htmlAttributes: new { @class = "control-label" })
-                @Html.DropDownList("PessoasId", null, htmlAttributes: new { @class = "form-control" })
+                @*@Html.DropDownList("PessoasId", null, htmlAttributes: new { @class = "form-control" })*@
+                @Html.DropDownList("PessoasId", (SelectList)ViewBag.MyList, "Selecione Relator", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.PessoasId, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-6">
                 @Html.LabelFor(model => model.InformacoesRouboId, "Roubo", htmlAttributes: new { @class = "control-label" })
-                @Html.DropDownList("InformacoesRouboId", null, htmlAttributes: new { @class = "form-control" })
+                @*@Html.DropDownList("InformacoesRouboId", null, htmlAttributes: new { @class = "form-control" })*@
+                @Html.DropDownList("InformacoesRouboId", (SelectList)ViewBag.MyList, "Selecione Roubo", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.InformacoesRouboId, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-12">
+                @Html.LabelFor(model => model.Relato, htmlAttributes: new { @class = "control-label" })
+                @*@Html.EditorFor(model => model.Relato, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.TextAreaFor(model => model.Relato, new { @class = "form-control", rows = "3" })
+                @Html.ValidationMessageFor(model => model.Relato, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-12">
                 <div class="botao-salvar">

@@ -11,13 +11,8 @@
     <div class="container conteudo">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
-        <div class="row">
-            <div class="form-group col-sm-6">
-                @Html.LabelFor(model => model.Relato, "Informações sobre o roubo", htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.Relato, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Relato, "", new { @class = "text-danger" })
-            </div>
-            <div class="form-group col-sm-6">
+        <div class="row">            
+            <div class="form-group col-sm-12">
                 @Html.LabelFor(model => model.Local, htmlAttributes: new { @class = "control-label" })
                 @Html.EditorFor(model => model.Local, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Local, "", new { @class = "text-danger" })
@@ -28,9 +23,14 @@
                 @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-6">
-                @Html.LabelFor(model => model.BicicletasId, "Bicicleta", htmlAttributes: new { @class = "control-label" })
-                @Html.DropDownList("BicicletasId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.LabelFor(model => model.BicicletasId, "Bicicleta", htmlAttributes: new { @class = "control-label" })                
+                @Html.DropDownList("BicicletasId", (SelectList)ViewBag.MyList, "Selecione Bicicleta", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.BicicletasId, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-12">
+                @Html.LabelFor(model => model.Relato, "Informações sobre o roubo", htmlAttributes: new { @class = "control-label" })
+                @Html.TextAreaFor(model => model.Relato, new { @class = "form-control", rows = "3" })                
+                @Html.ValidationMessageFor(model => model.Relato, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-12">
                 <div class="botao-salvar">
