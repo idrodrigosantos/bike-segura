@@ -23,9 +23,13 @@ namespace BikeSegura.Models
         }
 
         [DisplayName("Data de Aquisição")]
+        //[DataType(DataType.Date)]
+        //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DataAquisicao { get; set; }
 
         [DisplayName("Data de Transferência")]
+        //[DataType(DataType.Date)]
+        //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DataTransferencia { get; set; }
 
         [Required(ErrorMessage = "Bicicleta é obrigatório")]
