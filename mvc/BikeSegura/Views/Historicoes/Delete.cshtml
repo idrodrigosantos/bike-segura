@@ -8,22 +8,28 @@
 <div class="container conteudo">
     <div class="row">
         <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.SituacaoAtual)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.SituacaoAtual)</label>
+        </div>
+        <div class="col-sm-6">
             <label><strong>@Html.DisplayNameFor(model => model.Bicicletas.Modelo)</strong></label>
         </div>
         <div class="col-sm-6">
             <label>@Html.DisplayFor(model => model.Bicicletas.Modelo)</label>
         </div>
         <div class="col-sm-6">
-            <label><strong>Nome</strong></label>
+            <label><strong>Vendedor</strong></label>
         </div>
         <div class="col-sm-6">
             <label>@Html.DisplayFor(model => model.Pessoas.Nome)</label>
         </div>
         <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.SituacaoAtual)</strong></label>
+            <label><strong>Comprador</strong></label>
         </div>
         <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.SituacaoAtual)</label>
+            <label>@Html.DisplayFor(model => model.Pessoas.Nome)</label>
         </div>
         <div class="col-sm-6">
             <label><strong>@Html.DisplayNameFor(model => model.DataAquisicao)</strong></label>

@@ -20,7 +20,10 @@
                         Modelo
                     </th>
                     <th>
-                        Nome
+                        Vendedor
+                    </th>
+                    <th>
+                        Comprador
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.SituacaoAtual)
@@ -40,6 +43,9 @@
                     <tr>
                         <td>
                             @Html.DisplayFor(modelItem => item.Bicicletas.Modelo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pessoas.Nome)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Pessoas.Nome)
