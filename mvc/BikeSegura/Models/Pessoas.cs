@@ -13,18 +13,18 @@ namespace BikeSegura.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Nome completo é obrigatório")]
-        [DisplayName("Nome Completo*")]        
+        [DisplayName("Nome Completo*")]
         [MaxLength(100, ErrorMessage = "Nome completo deve ter no máximo 100 caracteres")]
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "Endereço de email é obrigatório")]
-        [DisplayName("Endereço de Email*")]        
+        [DisplayName("Endereço de Email*")]
         [MaxLength(255, ErrorMessage = "Endereço de email deve ter no máximo 255 caracteres")]
         [EmailAddress(ErrorMessage = "Digite um endereço de email")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Você deve confirmar seu Email")]
-        [DisplayName("Confirmar Email*")]        
+        [DisplayName("Confirmar Email*")]
         [MaxLength(255, ErrorMessage = "Email deve ter no máximo 255 caracteres")]
         [EmailAddress(ErrorMessage = "Digite um endereço de email")]
         [Compare("Email", ErrorMessage = "Os endereços de email não correspondem")]
@@ -144,6 +144,8 @@ namespace BikeSegura.Models
         public string Cpf { get; set; }
 
         [DisplayName("Data de Nascimento")]
+        //[DataType(DataType.Date)]
+        //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DataNascimento { get; set; }
 
         [DisplayName("Gênero")]

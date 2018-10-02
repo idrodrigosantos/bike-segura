@@ -7,10 +7,8 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
     <div class="container conteudo">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
         <div class="row">
             <div class="form-group col-sm-12">
                 @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label" })
@@ -54,7 +52,7 @@
             </div>
             <div class="form-group col-sm-6 col-md-3">
                 @Html.LabelFor(model => model.Cep, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.Cep, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Cep, new { htmlAttributes = new { @class = "form-control cepmask" } })
                 @Html.ValidationMessageFor(model => model.Cep, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-6 col-md-5">
@@ -69,32 +67,39 @@
             </div>
             <div class="form-group col-sm-6 col-md-5">
                 @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label" })
-                @Html.EnumDropDownListFor(model => model.Estado, htmlAttributes: new { @class = "form-control" })
+                @Html.EnumDropDownListFor(model => model.Estado, "Selecione Estado", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-6 col-md-6">
                 @Html.LabelFor(model => model.Telefone, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control telmask" } })
                 @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-6 col-md-6">
                 @Html.LabelFor(model => model.Celular, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.Celular, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Celular, new { htmlAttributes = new { @class = "form-control celmask" } })
                 @Html.ValidationMessageFor(model => model.Celular, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-12 col-md-6">
                 @Html.LabelFor(model => model.Cpf, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control cpfmask" } })
                 @Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-12 col-md-6">
                 @Html.LabelFor(model => model.DataNascimento, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control nascmask" } })                
                 @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-6">
                 @Html.LabelFor(model => model.Genero, htmlAttributes: new { @class = "control-label" })
-                @Html.EnumDropDownListFor(model => model.Genero, htmlAttributes: new { @class = "form-control" })
+                <div class="form-check">
+                    @Html.RadioButtonFor(model => model.Genero, "M")
+                    @Html.Label("Masculino")
+                </div>
+                <div class="form-check">
+                    @Html.RadioButtonFor(model => model.Genero, "F")
+                    @Html.Label("Feminino")
+                </div>
                 @Html.ValidationMessageFor(model => model.Genero, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-6">
@@ -109,7 +114,7 @@
             </div>
             <div class="form-group col-sm-6">
                 @Html.LabelFor(model => model.TelefoneContato, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.TelefoneContato, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.TelefoneContato, new { htmlAttributes = new { @class = "form-control telcontmask" } })
                 @Html.ValidationMessageFor(model => model.TelefoneContato, "", new { @class = "text-danger" })
             </div>
             @*<div class="form-group col-sm-12">
@@ -135,4 +140,25 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+            $('.cepmask').mask('00000-000');
+            $('.telmask').mask('(00) 0000-0000');
+            $('.celmask').mask('(00) 00000-0000');
+            $('.cpfmask').mask('000.000.000-00');
+            $('.nascmask').mask('0000/00/00', { placeholder: "aaaa/mm/dd" });
+        });
+
+        // Para telefones 8 e 9 dígigtos
+        var SPMaskBehavior = function (val) {
+            return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+        },
+            spOptions = {
+                onKeyPress: function (val, e, field, options) {
+                    field.mask(SPMaskBehavior.apply({}, arguments), options);
+                }
+            };
+        $('.telcontmask').mask(SPMaskBehavior, spOptions);
+    </script>
 }

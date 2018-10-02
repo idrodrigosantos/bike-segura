@@ -18,21 +18,21 @@
             </div>
             <div class="form-group col-sm-6">
                 @Html.LabelFor(model => model.DataAquisicao, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.DataAquisicao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.DataAquisicao, new { htmlAttributes = new { @class = "form-control data" } })
                 @Html.ValidationMessageFor(model => model.DataAquisicao, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-6">
                 @Html.LabelFor(model => model.DataTransferencia, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.DataTransferencia, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.DataTransferencia, new { htmlAttributes = new { @class = "form-control data" } })
                 @Html.ValidationMessageFor(model => model.DataTransferencia, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-6">
-                @Html.LabelFor(model => model.BicicletasId, "Bicicleta", htmlAttributes: new { @class = "control-label" })                
+                @Html.LabelFor(model => model.BicicletasId, "Bicicleta", htmlAttributes: new { @class = "control-label" })
                 @Html.DropDownList("BicicletasId", (SelectList)ViewBag.MyList, "Selecione Bicicleta", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.BicicletasId, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-6">
-                @Html.LabelFor(model => model.PessoasId, "Pessoa", htmlAttributes: new { @class = "control-label" })                
+                @Html.LabelFor(model => model.PessoasId, "Pessoa", htmlAttributes: new { @class = "control-label" })
                 @Html.DropDownList("PessoasId", (SelectList)ViewBag.MyList, "Selecione Pessoa", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.PessoasId, "", new { @class = "text-danger" })
             </div>
@@ -54,4 +54,10 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+            $('.data').mask('0000/00/00', { placeholder: "aaaa/mm/dd" });
+        });
+    </script>
 }
