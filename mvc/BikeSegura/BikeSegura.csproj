@@ -392,6 +392,8 @@
     <Content Include="Views\Tipos\Details.cshtml" />
     <Content Include="Views\Tipos\Edit.cshtml" />
     <Content Include="Views\Tipos\Index.cshtml" />
+    <Content Include="Views\Shared\_Administrador.cshtml" />
+    <Content Include="Views\Shared\_Usuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
