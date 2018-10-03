@@ -1,0 +1,41 @@
+﻿@model BikeSegura.Models.NumerosSeries
+
+@{
+    ViewBag.Title = "Cadastro Número de Série";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container conteudo">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="form-group col-sm-6">
+                @Html.LabelFor(model => model.Numero, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-6">
+                @Html.LabelFor(model => model.BicicletasId, "Bicicleta", htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownList("BicicletasId", (SelectList)ViewBag.MyList, "Selecione Bicicleta", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.BicicletasId, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-12">
+                <div class="botao-salvar">
+                    <a class="btn btn-danger" href="@Url.Action("Index", "NumerosSeries")" role="button">
+                        <i class="fas fa-times"></i>
+                        Cancelar
+                    </a>
+                    <button type="submit" value="Create" class="btn btn-success">
+                        <i class="fas fa-save"></i>
+                        Cadastrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

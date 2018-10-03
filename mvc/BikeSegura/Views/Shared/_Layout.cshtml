@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,6 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top barra-superior">
         <div class="container">
@@ -25,17 +23,49 @@
                             Consultar Bicicletas
                         </a>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-bicycle"></i>
+                            Bicicletas
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-list"></i>
+                                Minhas Bicicletas
+                            </a>
+                            <a class="dropdown-item" href="@Url.Action("Create", "Bicicletas")">
+                                <i class="fas fa-pen"></i>
+                                Cadastrar Bicicletas
+                            </a>
+                        </div>
+                    </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <a class="btn btn-outline-primary" href="@Url.Action("Create", "Pessoas")" role="button">
-                        <i class="fas fa-pen"></i>
-                        Cadastre-se
+                <div class="btn-group">
+                    <a class="btn btn-secondary" href="#" role="button">
+                        <i class="fas fa-user"></i>
+                        Perfil
                     </a>
-                    <button class="btn btn-outline-primary espaco-botao-navbar" type="submit">
-                        <i class="fas fa-sign-in-alt"></i>
-                        Entrar
+                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only">Dropdown</span>
                     </button>
-                </form>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">
+                            <i class="fas fa-user-edit"></i>
+                            Editar Perfil
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <i class="fas fa-edit"></i>
+                            Editar Dados
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Sair
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -50,9 +80,7 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")    
-    @Scripts.Render("~/bundles/jquery-mask-plugin")
+    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-
 </body>
 </html>

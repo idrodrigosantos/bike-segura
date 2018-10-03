@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "Detalhes Bicicleta";
-    Layout = "~/Views/Shared/_Usuario.cshtml";
 }
 
 <div class="container conteudo">
@@ -20,10 +19,10 @@
             <label>@Html.DisplayFor(model => model.Modelo)</label>
         </div>
         <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Tipo.Nome)</strong></label>
+            <label><strong>@Html.DisplayNameFor(model => model.Tipos.Nome)</strong></label>
         </div>
         <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Tipo.Nome)</label>
+            <label>@Html.DisplayFor(model => model.Tipos.Nome)</label>
         </div>
         <div class="col-sm-6">
             <label><strong>@Html.DisplayNameFor(model => model.Cor)</strong></label>
@@ -38,40 +37,40 @@
             <label>@Html.DisplayFor(model => model.Imagem)</label>
         </div>
         <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.CambioDianteiro.Velocidade)</strong></label>
+            <label><strong>@Html.DisplayNameFor(model => model.CambiosDianteiros.Velocidade)</strong></label>
         </div>
         <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.CambioDianteiro.Velocidade)</label>
+            <label>@Html.DisplayFor(model => model.CambiosDianteiros.Velocidade)</label>
         </div>
         <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.CambioTraseiro.Velocidade)</strong></label>
+            <label><strong>@Html.DisplayNameFor(model => model.CambiosTraseiros.Velocidade)</strong></label>
         </div>
         <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.CambioTraseiro.Velocidade)</label>
+            <label>@Html.DisplayFor(model => model.CambiosTraseiros.Velocidade)</label>
         </div>
         <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Freio.Nome)</strong></label>
+            <label><strong>@Html.DisplayNameFor(model => model.Freios.Nome)</strong></label>
         </div>
         <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Freio.Nome)</label>
+            <label>@Html.DisplayFor(model => model.Freios.Nome)</label>
         </div>
         <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Suspensao.Nome)</strong></label>
+            <label><strong>@Html.DisplayNameFor(model => model.Suspensoes.Nome)</strong></label>
         </div>
         <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Suspensao.Nome)</label>
+            <label>@Html.DisplayFor(model => model.Suspensoes.Nome)</label>
         </div>
         <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Aro.Medida)</strong></label>
+            <label><strong>@Html.DisplayNameFor(model => model.Aros.Medida)</strong></label>
         </div>
         <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Aro.Medida)</label>
+            <label>@Html.DisplayFor(model => model.Aros.Medida)</label>
         </div>
         <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Quadro.Material)</strong></label>
+            <label><strong>@Html.DisplayNameFor(model => model.Quadros.Material)</strong></label>
         </div>
         <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Quadro.Material)</label>
+            <label>@Html.DisplayFor(model => model.Quadros.Material)</label>
         </div>
         <div class="col-sm-6">
             <label><strong>@Html.DisplayNameFor(model => model.Informacoes)</strong></label>

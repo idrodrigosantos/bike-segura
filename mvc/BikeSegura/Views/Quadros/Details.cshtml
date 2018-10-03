@@ -1,0 +1,28 @@
+﻿@model BikeSegura.Models.Quadros
+
+@{
+    ViewBag.Title = "Detalhes Quadro";
+}
+
+<div class="container conteudo">
+    <div class="row">
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.Material)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.Material)</label>
+        </div>
+        <div class="form-group col-sm-12">
+            <div class="botao-salvar">
+                <a class="btn btn-success" href="@Url.Action("Index", "Quadros")" role="button">
+                    <i class="fas fa-reply"></i>
+                    Voltar
+                </a>
+                <a class="btn btn-primary" href="@Url.Action("Edit", "Quadros", new { id = Model.Id })" role="button">
+                    <i class="fas fa-pen"></i>
+                    Editar
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

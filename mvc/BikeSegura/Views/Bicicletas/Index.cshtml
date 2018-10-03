@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "Lista de Bicicletas";
-    Layout = "~/Views/Shared/_Usuario.cshtml";
 }
 
 <div class="container conteudo">
@@ -23,7 +22,7 @@
                         @Html.DisplayNameFor(model => model.Modelo)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Tipo.Nome)
+                        @Html.DisplayNameFor(model => model.Tipos.Nome)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Cor)
@@ -72,7 +71,7 @@
                             @Html.DisplayFor(modelItem => item.Modelo)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Tipo.Nome)
+                            @Html.DisplayFor(modelItem => item.Tipos.Nome)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Cor)

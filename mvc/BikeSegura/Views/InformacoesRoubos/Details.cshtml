@@ -1,0 +1,46 @@
+﻿@model BikeSegura.Models.InformacoesRoubos
+
+@{
+    ViewBag.Title = "Detalhes Roubo";
+}
+
+<div class="container conteudo">
+    <div class="row">
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.Bicicletas.Modelo)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.Bicicletas.Modelo)</label>
+        </div>
+        <div class="col-sm-6">
+            <label><strong>Informações sobre o roubo</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.Relato)</label>
+        </div>
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.Local)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.Local)</label>
+        </div>
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.Data)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.Data)</label>
+        </div>
+        <div class="form-group col-sm-12">
+            <div class="botao-salvar">
+                <a class="btn btn-success" href="@Url.Action("Index", "InformacoesRoubos")" role="button">
+                    <i class="fas fa-reply"></i>
+                    Voltar
+                </a>
+                <a class="btn btn-primary" href="@Url.Action("Edit", "InformacoesRoubos", new { id = Model.Id })" role="button">
+                    <i class="fas fa-pen"></i>
+                    Editar
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
