@@ -15,26 +15,26 @@ namespace BikeSegura.Models
         [Required(ErrorMessage = "Marca é obrigatório")]
         public int MarcasId { get; set; }
 
-        [Required(ErrorMessage = "Modelo é obrigatório")]        
+        [Required(ErrorMessage = "Modelo é obrigatório")]
         [MaxLength(45, ErrorMessage = "Modelo deve ter no máximo 45 caracteres")]
         public string Modelo { get; set; }
 
         [Required(ErrorMessage = "Tipo da bicicleta é obrigatório")]
-        public int TipoId { get; set; }
+        public int TiposId { get; set; }
 
-        [Required(ErrorMessage = "Cor é obrigatório")]        
+        [Required(ErrorMessage = "Cor é obrigatório")]
         [MaxLength(40, ErrorMessage = "Cor deve ter no máximo 40 caracteres")]
         public string Cor { get; set; }
 
         [DisplayName("Fotos da Bicicleta")]
         public string Imagem { get; set; }
 
-        public int? CambioDianteiroId { get; set; }
-        public int? CambioTraseiroId { get; set; }
-        public int? FreioId { get; set; }
-        public int? SuspensaoId { get; set; }
-        public int? AroId { get; set; }
-        public int? QuadroId { get; set; }
+        public int? CambiosDianteirosId { get; set; }
+        public int? CambiosTraseirosId { get; set; }
+        public int? FreiosId { get; set; }
+        public int? SuspensoesId { get; set; }
+        public int? ArosId { get; set; }
+        public int? QuadrosId { get; set; }
 
         [DisplayName("Informações Adicionais")]
         public string Informacoes { get; set; }
@@ -59,12 +59,12 @@ namespace BikeSegura.Models
         }
 
         public virtual Marcas Marcas { get; set; }
-        public virtual Tipo Tipo { get; set; }
-        public virtual CambioDianteiro CambioDianteiro { get; set; }
-        public virtual CambioTraseiro CambioTraseiro { get; set; }
-        public virtual Freio Freio { get; set; }
-        public virtual Suspensao Suspensao { get; set; }
-        public virtual Aro Aro { get; set; }
-        public virtual Quadro Quadro { get; set; }
+        public virtual Tipos Tipos { get; set; }
+        public virtual CambiosDianteiros CambiosDianteiros { get; set; }
+        public virtual CambiosTraseiros CambiosTraseiros { get; set; }
+        public virtual Freios Freios { get; set; }
+        public virtual Suspensoes Suspensoes { get; set; }
+        public virtual Aros Aros { get; set; }
+        public virtual Quadros Quadros { get; set; }
     }
 }

@@ -7,13 +7,13 @@ using System.Web;
 
 namespace BikeSegura.Models
 {
-    public class NumeroSerie
+    public class NumerosSeries
     {
         [Key]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Número de série é obrigatório")]
-        [DisplayName("Número de Série")]        
+        [DisplayName("Número de Série")]
         [MaxLength(50, ErrorMessage = "Número de série deve ter no máximo 50 caracteres")]
         public string Numero { get; set; }
 

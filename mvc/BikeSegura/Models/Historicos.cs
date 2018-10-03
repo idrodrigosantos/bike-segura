@@ -7,7 +7,7 @@ using System.Web;
 
 namespace BikeSegura.Models
 {
-    public class Historico
+    public class Historicos
     {
         [Key]
         public int Id { get; set; }

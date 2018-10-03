@@ -7,13 +7,13 @@ using System.Web;
 
 namespace BikeSegura.Models
 {
-    public class CambioTraseiro
+    public class CambiosTraseiros
     {
         [Key]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Câmbio traseiro é obrigatório")]
-        [DisplayName("Câmbio Traseiro")]        
+        [DisplayName("Câmbio Traseiro")]
         [MaxLength(20, ErrorMessage = "Câmbio traseiro deve ter no máximo 20 caracteres")]
         public string Velocidade { get; set; }
     }

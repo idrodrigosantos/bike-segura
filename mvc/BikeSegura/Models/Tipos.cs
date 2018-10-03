@@ -7,14 +7,14 @@ using System.Web;
 
 namespace BikeSegura.Models
 {
-    public class Suspensao
+    public class Tipos
     {
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Tipo de suspensão é obrigatório")]
-        [DisplayName("Tipo de Suspensão")]        
-        [MaxLength(30, ErrorMessage = "Tipo de suspensção deve ter no máximo 40 caracteres")]
+        [Required(ErrorMessage = "Tipo da bicicleta é obrigatório")]
+        [DisplayName("Tipo da Bicicleta")]
+        [MaxLength(40, ErrorMessage = "Tipo da bicicleta deve ter no máximo 40 caracteres")]
         public string Nome { get; set; }
     }
 }

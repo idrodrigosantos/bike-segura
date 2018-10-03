@@ -7,7 +7,7 @@ using System.Web;
 
 namespace BikeSegura.Models
 {
-    public class InformacoesRoubo
+    public class InformacoesRoubos
     {
         [Key]
         public int Id { get; set; }

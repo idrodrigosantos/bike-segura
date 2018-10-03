@@ -7,7 +7,7 @@ using System.Web;
 
 namespace BikeSegura.Models
 {
-    public class RelatoRoubo
+    public class RelatosRoubos
     {
         [Key]
         public int Id { get; set; }
@@ -27,12 +27,12 @@ namespace BikeSegura.Models
         public DateTime Data { get; set; }
 
         [Required(ErrorMessage = "Pessoa é obrigatório")]
-        public int PessoasId { get; set; }        
+        public int PessoasId { get; set; }
 
         [Required(ErrorMessage = "Sobre qual bicicleta roubada")]
-        public int InformacoesRouboId { get; set; }
+        public int InformacoesRoubosId { get; set; }
 
         public virtual Pessoas Pessoas { get; set; }
-        public virtual InformacoesRoubo InformacoesRoubo { get; set; }
+        public virtual InformacoesRoubos InformacoesRoubos { get; set; }
     }
 }

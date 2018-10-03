@@ -7,13 +7,13 @@ using System.Web;
 
 namespace BikeSegura.Models
 {
-    public class Aro
+    public class Aros
     {
         [Key]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Medida do aro é obrigatório")]
-        [DisplayName("Medida do Aro")]        
+        [DisplayName("Medida do Aro")]
         [MaxLength(15, ErrorMessage = "Medida do aro deve ter no máximo 15 caracteres")]
         public string Medida { get; set; }
     }

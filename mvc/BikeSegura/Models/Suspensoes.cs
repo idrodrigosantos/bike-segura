@@ -7,14 +7,14 @@ using System.Web;
 
 namespace BikeSegura.Models
 {
-    public class Freio
+    public class Suspensoes
     {
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Tipo do freio é obrigatório")]
-        [DisplayName("Tipo do Freio")]        
-        [MaxLength(30, ErrorMessage = "Tipo do freio deve ter no máximo 30 caracteres")]
+        [Required(ErrorMessage = "Tipo de suspensão é obrigatório")]
+        [DisplayName("Tipo de Suspensão")]
+        [MaxLength(30, ErrorMessage = "Tipo de suspensção deve ter no máximo 40 caracteres")]
         public string Nome { get; set; }
     }
 }

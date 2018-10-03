@@ -10,19 +10,19 @@ namespace BikeSegura.Models
     {
         public Contexto() : base(nameOrConnectionString: "StringConexao") { }
 
-        public DbSet<Aro> Aro { get; set; }
+        public DbSet<Aros> Aros { get; set; }
         public DbSet<Bicicletas> Bicicletas { get; set; }
-        public DbSet<CambioDianteiro> CambioDianteiro { get; set; }
-        public DbSet<CambioTraseiro> CambioTraseiro { get; set; }
-        public DbSet<Freio> Freio { get; set; }
-        public DbSet<Historico> Historico { get; set; }
-        public DbSet<InformacoesRoubo> InformacoesRoubo { get; set; }
+        public DbSet<CambiosDianteiros> CambiosDianteiros { get; set; }
+        public DbSet<CambiosTraseiros> CambiosTraseiros { get; set; }
+        public DbSet<Freios> Freios { get; set; }
+        public DbSet<Historicos> Historicos { get; set; }
+        public DbSet<InformacoesRoubos> InformacoesRoubos { get; set; }
         public DbSet<Marcas> Marcas { get; set; }
-        public DbSet<NumeroSerie> NumeroSerie { get; set; }
+        public DbSet<NumerosSeries> NumerosSeries { get; set; }
         public DbSet<Pessoas> Pessoas { get; set; }
-        public DbSet<Quadro> Quadro { get; set; }
-        public DbSet<RelatoRoubo> RelatoRoubo { get; set; }
-        public DbSet<Suspensao> Suspensao { get; set; }
-        public DbSet<Tipo> Tipo { get; set; }
+        public DbSet<Quadros> Quadros { get; set; }
+        public DbSet<RelatosRoubos> RelatosRoubos { get; set; }
+        public DbSet<Suspensoes> Suspensoes { get; set; }
+        public DbSet<Tipos> Tipos { get; set; }
     }
 }

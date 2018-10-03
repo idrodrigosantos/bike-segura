@@ -143,7 +143,7 @@ namespace BikeSegura.Models
         [MaxLength(14, ErrorMessage = "CPF deve ter no máximo 14 caracteres")]
         public string Cpf { get; set; }
 
-        [DisplayName("Data de Nascimento")]        
+        [DisplayName("Data de Nascimento")]
         //[DataType(DataType.Date)]
         //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = false)]        
         public DateTime? DataNascimento { get; set; }
