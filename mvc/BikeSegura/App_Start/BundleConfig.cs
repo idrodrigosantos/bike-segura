@@ -20,15 +20,12 @@ namespace BikeSegura
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                        "~/Scripts/bootstrap.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                        "~/Scripts/jquery-mask-plugin/jquery.mask.min.js"));
+                      "~/Scripts/bootstrap.js",
+                      "~/Scripts/jquery.mask.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                        "~/Content/bootstrap.css",
-                        "~/Content/all.css",
-                        "~/Content/meu-estilo.css"));
+                      "~/Content/bootstrap.css",
+                      "~/Content/meuestilo.css"));
         }
     }
 }
