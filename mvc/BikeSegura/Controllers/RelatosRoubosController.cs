@@ -10,107 +10,116 @@ using BikeSegura.Models;
 
 namespace BikeSegura.Controllers
 {
-    public class SuspensaosController : Controller
+    public class RelatosRoubosController : Controller
     {
         private Contexto db = new Contexto();
 
-        // GET: Suspensaos
+        // GET: RelatosRoubos
         public ActionResult Index()
         {
-            return View(db.Suspensao.ToList());
+            var relatosRoubos = db.RelatosRoubos.Include(r => r.InformacoesRoubos).Include(r => r.Pessoas);
+            return View(relatosRoubos.ToList());
         }
 
-        // GET: Suspensaos/Details/5
+        // GET: RelatosRoubos/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Suspensao suspensao = db.Suspensao.Find(id);
-            if (suspensao == null)
+            RelatosRoubos relatosRoubos = db.RelatosRoubos.Find(id);
+            if (relatosRoubos == null)
             {
                 return HttpNotFound();
             }
-            return View(suspensao);
+            return View(relatosRoubos);
         }
 
-        // GET: Suspensaos/Create
+        // GET: RelatosRoubos/Create
         public ActionResult Create()
         {
+            ViewBag.InformacoesRoubosId = new SelectList(db.InformacoesRoubos, "Id", "Relato");
+            ViewBag.PessoasId = new SelectList(db.Pessoas, "Id", "Nome");
             return View();
         }
 
-        // POST: Suspensaos/Create
+        // POST: RelatosRoubos/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome")] Suspensao suspensao)
+        public ActionResult Create([Bind(Include = "Id,Relato,Local,Data,PessoasId,InformacoesRoubosId")] RelatosRoubos relatosRoubos)
         {
             if (ModelState.IsValid)
             {
-                db.Suspensao.Add(suspensao);
+                db.RelatosRoubos.Add(relatosRoubos);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(suspensao);
+            ViewBag.InformacoesRoubosId = new SelectList(db.InformacoesRoubos, "Id", "Relato", relatosRoubos.InformacoesRoubosId);
+            ViewBag.PessoasId = new SelectList(db.Pessoas, "Id", "Nome", relatosRoubos.PessoasId);
+            return View(relatosRoubos);
         }
 
-        // GET: Suspensaos/Edit/5
+        // GET: RelatosRoubos/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Suspensao suspensao = db.Suspensao.Find(id);
-            if (suspensao == null)
+            RelatosRoubos relatosRoubos = db.RelatosRoubos.Find(id);
+            if (relatosRoubos == null)
             {
                 return HttpNotFound();
             }
-            return View(suspensao);
+            ViewBag.InformacoesRoubosId = new SelectList(db.InformacoesRoubos, "Id", "Relato", relatosRoubos.InformacoesRoubosId);
+            ViewBag.PessoasId = new SelectList(db.Pessoas, "Id", "Nome", relatosRoubos.PessoasId);
+            return View(relatosRoubos);
         }
 
-        // POST: Suspensaos/Edit/5
+        // POST: RelatosRoubos/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome")] Suspensao suspensao)
+        public ActionResult Edit([Bind(Include = "Id,Relato,Local,Data,PessoasId,InformacoesRoubosId")] RelatosRoubos relatosRoubos)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(suspensao).State = EntityState.Modified;
+                db.Entry(relatosRoubos).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(suspensao);
+            ViewBag.InformacoesRoubosId = new SelectList(db.InformacoesRoubos, "Id", "Relato", relatosRoubos.InformacoesRoubosId);
+            ViewBag.PessoasId = new SelectList(db.Pessoas, "Id", "Nome", relatosRoubos.PessoasId);
+            return View(relatosRoubos);
         }
 
-        // GET: Suspensaos/Delete/5
+        // GET: RelatosRoubos/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Suspensao suspensao = db.Suspensao.Find(id);
-            if (suspensao == null)
+            RelatosRoubos relatosRoubos = db.RelatosRoubos.Find(id);
+            if (relatosRoubos == null)
             {
                 return HttpNotFound();
             }
-            return View(suspensao);
+            return View(relatosRoubos);
         }
 
-        // POST: Suspensaos/Delete/5
+        // POST: RelatosRoubos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Suspensao suspensao = db.Suspensao.Find(id);
-            db.Suspensao.Remove(suspensao);
+            RelatosRoubos relatosRoubos = db.RelatosRoubos.Find(id);
+            db.RelatosRoubos.Remove(relatosRoubos);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

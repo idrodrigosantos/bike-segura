@@ -10,107 +10,107 @@ using BikeSegura.Models;
 
 namespace BikeSegura.Controllers
 {
-    public class CambioTraseiroesController : Controller
+    public class ArosController : Controller
     {
         private Contexto db = new Contexto();
 
-        // GET: CambioTraseiroes
+        // GET: Aros
         public ActionResult Index()
         {
-            return View(db.CambioTraseiro.ToList());
+            return View(db.Aros.ToList());
         }
 
-        // GET: CambioTraseiroes/Details/5
+        // GET: Aros/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CambioTraseiro cambioTraseiro = db.CambioTraseiro.Find(id);
-            if (cambioTraseiro == null)
+            Aros aros = db.Aros.Find(id);
+            if (aros == null)
             {
                 return HttpNotFound();
             }
-            return View(cambioTraseiro);
+            return View(aros);
         }
 
-        // GET: CambioTraseiroes/Create
+        // GET: Aros/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CambioTraseiroes/Create
+        // POST: Aros/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Velocidade")] CambioTraseiro cambioTraseiro)
+        public ActionResult Create([Bind(Include = "Id,Medida")] Aros aros)
         {
             if (ModelState.IsValid)
             {
-                db.CambioTraseiro.Add(cambioTraseiro);
+                db.Aros.Add(aros);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(cambioTraseiro);
+            return View(aros);
         }
 
-        // GET: CambioTraseiroes/Edit/5
+        // GET: Aros/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CambioTraseiro cambioTraseiro = db.CambioTraseiro.Find(id);
-            if (cambioTraseiro == null)
+            Aros aros = db.Aros.Find(id);
+            if (aros == null)
             {
                 return HttpNotFound();
             }
-            return View(cambioTraseiro);
+            return View(aros);
         }
 
-        // POST: CambioTraseiroes/Edit/5
+        // POST: Aros/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Velocidade")] CambioTraseiro cambioTraseiro)
+        public ActionResult Edit([Bind(Include = "Id,Medida")] Aros aros)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(cambioTraseiro).State = EntityState.Modified;
+                db.Entry(aros).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(cambioTraseiro);
+            return View(aros);
         }
 
-        // GET: CambioTraseiroes/Delete/5
+        // GET: Aros/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CambioTraseiro cambioTraseiro = db.CambioTraseiro.Find(id);
-            if (cambioTraseiro == null)
+            Aros aros = db.Aros.Find(id);
+            if (aros == null)
             {
                 return HttpNotFound();
             }
-            return View(cambioTraseiro);
+            return View(aros);
         }
 
-        // POST: CambioTraseiroes/Delete/5
+        // POST: Aros/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CambioTraseiro cambioTraseiro = db.CambioTraseiro.Find(id);
-            db.CambioTraseiro.Remove(cambioTraseiro);
+            Aros aros = db.Aros.Find(id);
+            db.Aros.Remove(aros);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -17,7 +17,7 @@ namespace BikeSegura.Controllers
         // GET: Bicicletas
         public ActionResult Index()
         {
-            var bicicletas = db.Bicicletas.Include(b => b.Aro).Include(b => b.CambioDianteiro).Include(b => b.CambioTraseiro).Include(b => b.Freio).Include(b => b.Marcas).Include(b => b.Quadro).Include(b => b.Suspensao).Include(b => b.Tipo);
+            var bicicletas = db.Bicicletas.Include(b => b.Aros).Include(b => b.CambiosDianteiros).Include(b => b.CambiosTraseiros).Include(b => b.Freios).Include(b => b.Marcas).Include(b => b.Quadros).Include(b => b.Suspensoes).Include(b => b.Tipos);
             return View(bicicletas.ToList());
         }
 
@@ -39,14 +39,14 @@ namespace BikeSegura.Controllers
         // GET: Bicicletas/Create
         public ActionResult Create()
         {
-            ViewBag.AroId = new SelectList(db.Aro, "Id", "Medida");
-            ViewBag.CambioDianteiroId = new SelectList(db.CambioDianteiro, "Id", "Velocidade");
-            ViewBag.CambioTraseiroId = new SelectList(db.CambioTraseiro, "Id", "Velocidade");
-            ViewBag.FreioId = new SelectList(db.Freio, "Id", "Nome");
+            ViewBag.ArosId = new SelectList(db.Aros, "Id", "Medida");
+            ViewBag.CambiosDianteirosId = new SelectList(db.CambiosDianteiros, "Id", "Velocidade");
+            ViewBag.CambiosTraseirosId = new SelectList(db.CambiosTraseiros, "Id", "Velocidade");
+            ViewBag.FreiosId = new SelectList(db.Freios, "Id", "Nome");
             ViewBag.MarcasId = new SelectList(db.Marcas, "Id", "Nome");
-            ViewBag.QuadroId = new SelectList(db.Quadro, "Id", "Material");
-            ViewBag.SuspensaoId = new SelectList(db.Suspensao, "Id", "Nome");
-            ViewBag.TipoId = new SelectList(db.Tipo, "Id", "Nome");
+            ViewBag.QuadrosId = new SelectList(db.Quadros, "Id", "Material");
+            ViewBag.SuspensoesId = new SelectList(db.Suspensoes, "Id", "Nome");
+            ViewBag.TiposId = new SelectList(db.Tipos, "Id", "Nome");
             return View();
         }
 
@@ -55,7 +55,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,MarcasId,Modelo,TipoId,Cor,Imagem,CambioDianteiroId,CambioTraseiroId,FreioId,SuspensaoId,AroId,QuadroId,Informacoes,AlertaRoubo,Vendendo")] Bicicletas bicicletas)
+        public ActionResult Create([Bind(Include = "Id,MarcasId,Modelo,TiposId,Cor,Imagem,CambiosDianteirosId,CambiosTraseirosId,FreiosId,SuspensoesId,ArosId,QuadrosId,Informacoes,AlertaRoubo,Vendendo")] Bicicletas bicicletas)
         {
             if (ModelState.IsValid)
             {
@@ -64,14 +64,14 @@ namespace BikeSegura.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AroId = new SelectList(db.Aro, "Id", "Medida", bicicletas.AroId);
-            ViewBag.CambioDianteiroId = new SelectList(db.CambioDianteiro, "Id", "Velocidade", bicicletas.CambioDianteiroId);
-            ViewBag.CambioTraseiroId = new SelectList(db.CambioTraseiro, "Id", "Velocidade", bicicletas.CambioTraseiroId);
-            ViewBag.FreioId = new SelectList(db.Freio, "Id", "Nome", bicicletas.FreioId);
+            ViewBag.ArosId = new SelectList(db.Aros, "Id", "Medida", bicicletas.ArosId);
+            ViewBag.CambiosDianteirosId = new SelectList(db.CambiosDianteiros, "Id", "Velocidade", bicicletas.CambiosDianteirosId);
+            ViewBag.CambiosTraseirosId = new SelectList(db.CambiosTraseiros, "Id", "Velocidade", bicicletas.CambiosTraseirosId);
+            ViewBag.FreiosId = new SelectList(db.Freios, "Id", "Nome", bicicletas.FreiosId);
             ViewBag.MarcasId = new SelectList(db.Marcas, "Id", "Nome", bicicletas.MarcasId);
-            ViewBag.QuadroId = new SelectList(db.Quadro, "Id", "Material", bicicletas.QuadroId);
-            ViewBag.SuspensaoId = new SelectList(db.Suspensao, "Id", "Nome", bicicletas.SuspensaoId);
-            ViewBag.TipoId = new SelectList(db.Tipo, "Id", "Nome", bicicletas.TipoId);
+            ViewBag.QuadrosId = new SelectList(db.Quadros, "Id", "Material", bicicletas.QuadrosId);
+            ViewBag.SuspensoesId = new SelectList(db.Suspensoes, "Id", "Nome", bicicletas.SuspensoesId);
+            ViewBag.TiposId = new SelectList(db.Tipos, "Id", "Nome", bicicletas.TiposId);
             return View(bicicletas);
         }
 
@@ -87,14 +87,14 @@ namespace BikeSegura.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.AroId = new SelectList(db.Aro, "Id", "Medida", bicicletas.AroId);
-            ViewBag.CambioDianteiroId = new SelectList(db.CambioDianteiro, "Id", "Velocidade", bicicletas.CambioDianteiroId);
-            ViewBag.CambioTraseiroId = new SelectList(db.CambioTraseiro, "Id", "Velocidade", bicicletas.CambioTraseiroId);
-            ViewBag.FreioId = new SelectList(db.Freio, "Id", "Nome", bicicletas.FreioId);
+            ViewBag.ArosId = new SelectList(db.Aros, "Id", "Medida", bicicletas.ArosId);
+            ViewBag.CambiosDianteirosId = new SelectList(db.CambiosDianteiros, "Id", "Velocidade", bicicletas.CambiosDianteirosId);
+            ViewBag.CambiosTraseirosId = new SelectList(db.CambiosTraseiros, "Id", "Velocidade", bicicletas.CambiosTraseirosId);
+            ViewBag.FreiosId = new SelectList(db.Freios, "Id", "Nome", bicicletas.FreiosId);
             ViewBag.MarcasId = new SelectList(db.Marcas, "Id", "Nome", bicicletas.MarcasId);
-            ViewBag.QuadroId = new SelectList(db.Quadro, "Id", "Material", bicicletas.QuadroId);
-            ViewBag.SuspensaoId = new SelectList(db.Suspensao, "Id", "Nome", bicicletas.SuspensaoId);
-            ViewBag.TipoId = new SelectList(db.Tipo, "Id", "Nome", bicicletas.TipoId);
+            ViewBag.QuadrosId = new SelectList(db.Quadros, "Id", "Material", bicicletas.QuadrosId);
+            ViewBag.SuspensoesId = new SelectList(db.Suspensoes, "Id", "Nome", bicicletas.SuspensoesId);
+            ViewBag.TiposId = new SelectList(db.Tipos, "Id", "Nome", bicicletas.TiposId);
             return View(bicicletas);
         }
 
@@ -103,7 +103,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,MarcasId,Modelo,TipoId,Cor,Imagem,CambioDianteiroId,CambioTraseiroId,FreioId,SuspensaoId,AroId,QuadroId,Informacoes,AlertaRoubo,Vendendo")] Bicicletas bicicletas)
+        public ActionResult Edit([Bind(Include = "Id,MarcasId,Modelo,TiposId,Cor,Imagem,CambiosDianteirosId,CambiosTraseirosId,FreiosId,SuspensoesId,ArosId,QuadrosId,Informacoes,AlertaRoubo,Vendendo")] Bicicletas bicicletas)
         {
             if (ModelState.IsValid)
             {
@@ -111,14 +111,14 @@ namespace BikeSegura.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AroId = new SelectList(db.Aro, "Id", "Medida", bicicletas.AroId);
-            ViewBag.CambioDianteiroId = new SelectList(db.CambioDianteiro, "Id", "Velocidade", bicicletas.CambioDianteiroId);
-            ViewBag.CambioTraseiroId = new SelectList(db.CambioTraseiro, "Id", "Velocidade", bicicletas.CambioTraseiroId);
-            ViewBag.FreioId = new SelectList(db.Freio, "Id", "Nome", bicicletas.FreioId);
+            ViewBag.ArosId = new SelectList(db.Aros, "Id", "Medida", bicicletas.ArosId);
+            ViewBag.CambiosDianteirosId = new SelectList(db.CambiosDianteiros, "Id", "Velocidade", bicicletas.CambiosDianteirosId);
+            ViewBag.CambiosTraseirosId = new SelectList(db.CambiosTraseiros, "Id", "Velocidade", bicicletas.CambiosTraseirosId);
+            ViewBag.FreiosId = new SelectList(db.Freios, "Id", "Nome", bicicletas.FreiosId);
             ViewBag.MarcasId = new SelectList(db.Marcas, "Id", "Nome", bicicletas.MarcasId);
-            ViewBag.QuadroId = new SelectList(db.Quadro, "Id", "Material", bicicletas.QuadroId);
-            ViewBag.SuspensaoId = new SelectList(db.Suspensao, "Id", "Nome", bicicletas.SuspensaoId);
-            ViewBag.TipoId = new SelectList(db.Tipo, "Id", "Nome", bicicletas.TipoId);
+            ViewBag.QuadrosId = new SelectList(db.Quadros, "Id", "Material", bicicletas.QuadrosId);
+            ViewBag.SuspensoesId = new SelectList(db.Suspensoes, "Id", "Nome", bicicletas.SuspensoesId);
+            ViewBag.TiposId = new SelectList(db.Tipos, "Id", "Nome", bicicletas.TiposId);
             return View(bicicletas);
         }
 

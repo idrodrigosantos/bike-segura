@@ -10,107 +10,107 @@ using BikeSegura.Models;
 
 namespace BikeSegura.Controllers
 {
-    public class TipoesController : Controller
+    public class CambiosDianteirosController : Controller
     {
         private Contexto db = new Contexto();
 
-        // GET: Tipoes
+        // GET: CambiosDianteiros
         public ActionResult Index()
         {
-            return View(db.Tipo.ToList());
+            return View(db.CambiosDianteiros.ToList());
         }
 
-        // GET: Tipoes/Details/5
+        // GET: CambiosDianteiros/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tipo tipo = db.Tipo.Find(id);
-            if (tipo == null)
+            CambiosDianteiros cambiosDianteiros = db.CambiosDianteiros.Find(id);
+            if (cambiosDianteiros == null)
             {
                 return HttpNotFound();
             }
-            return View(tipo);
+            return View(cambiosDianteiros);
         }
 
-        // GET: Tipoes/Create
+        // GET: CambiosDianteiros/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Tipoes/Create
+        // POST: CambiosDianteiros/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome")] Tipo tipo)
+        public ActionResult Create([Bind(Include = "Id,Velocidade")] CambiosDianteiros cambiosDianteiros)
         {
             if (ModelState.IsValid)
             {
-                db.Tipo.Add(tipo);
+                db.CambiosDianteiros.Add(cambiosDianteiros);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(tipo);
+            return View(cambiosDianteiros);
         }
 
-        // GET: Tipoes/Edit/5
+        // GET: CambiosDianteiros/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tipo tipo = db.Tipo.Find(id);
-            if (tipo == null)
+            CambiosDianteiros cambiosDianteiros = db.CambiosDianteiros.Find(id);
+            if (cambiosDianteiros == null)
             {
                 return HttpNotFound();
             }
-            return View(tipo);
+            return View(cambiosDianteiros);
         }
 
-        // POST: Tipoes/Edit/5
+        // POST: CambiosDianteiros/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome")] Tipo tipo)
+        public ActionResult Edit([Bind(Include = "Id,Velocidade")] CambiosDianteiros cambiosDianteiros)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tipo).State = EntityState.Modified;
+                db.Entry(cambiosDianteiros).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(tipo);
+            return View(cambiosDianteiros);
         }
 
-        // GET: Tipoes/Delete/5
+        // GET: CambiosDianteiros/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tipo tipo = db.Tipo.Find(id);
-            if (tipo == null)
+            CambiosDianteiros cambiosDianteiros = db.CambiosDianteiros.Find(id);
+            if (cambiosDianteiros == null)
             {
                 return HttpNotFound();
             }
-            return View(tipo);
+            return View(cambiosDianteiros);
         }
 
-        // POST: Tipoes/Delete/5
+        // POST: CambiosDianteiros/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Tipo tipo = db.Tipo.Find(id);
-            db.Tipo.Remove(tipo);
+            CambiosDianteiros cambiosDianteiros = db.CambiosDianteiros.Find(id);
+            db.CambiosDianteiros.Remove(cambiosDianteiros);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

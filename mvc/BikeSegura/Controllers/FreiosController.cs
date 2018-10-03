@@ -17,7 +17,7 @@ namespace BikeSegura.Controllers
         // GET: Freios
         public ActionResult Index()
         {
-            return View(db.Freio.ToList());
+            return View(db.Freios.ToList());
         }
 
         // GET: Freios/Details/5
@@ -27,12 +27,12 @@ namespace BikeSegura.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Freio freio = db.Freio.Find(id);
-            if (freio == null)
+            Freios freios = db.Freios.Find(id);
+            if (freios == null)
             {
                 return HttpNotFound();
             }
-            return View(freio);
+            return View(freios);
         }
 
         // GET: Freios/Create
@@ -46,16 +46,16 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome")] Freio freio)
+        public ActionResult Create([Bind(Include = "Id,Nome")] Freios freios)
         {
             if (ModelState.IsValid)
             {
-                db.Freio.Add(freio);
+                db.Freios.Add(freios);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(freio);
+            return View(freios);
         }
 
         // GET: Freios/Edit/5
@@ -65,12 +65,12 @@ namespace BikeSegura.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Freio freio = db.Freio.Find(id);
-            if (freio == null)
+            Freios freios = db.Freios.Find(id);
+            if (freios == null)
             {
                 return HttpNotFound();
             }
-            return View(freio);
+            return View(freios);
         }
 
         // POST: Freios/Edit/5
@@ -78,15 +78,15 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome")] Freio freio)
+        public ActionResult Edit([Bind(Include = "Id,Nome")] Freios freios)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(freio).State = EntityState.Modified;
+                db.Entry(freios).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(freio);
+            return View(freios);
         }
 
         // GET: Freios/Delete/5
@@ -96,12 +96,12 @@ namespace BikeSegura.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Freio freio = db.Freio.Find(id);
-            if (freio == null)
+            Freios freios = db.Freios.Find(id);
+            if (freios == null)
             {
                 return HttpNotFound();
             }
-            return View(freio);
+            return View(freios);
         }
 
         // POST: Freios/Delete/5
@@ -109,8 +109,8 @@ namespace BikeSegura.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Freio freio = db.Freio.Find(id);
-            db.Freio.Remove(freio);
+            Freios freios = db.Freios.Find(id);
+            db.Freios.Remove(freios);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -10,112 +10,116 @@ using BikeSegura.Models;
 
 namespace BikeSegura.Controllers
 {
-    public class InformacoesRouboesController : Controller
+    public class HistoricosController : Controller
     {
         private Contexto db = new Contexto();
 
-        // GET: InformacoesRouboes
+        // GET: Historicos
         public ActionResult Index()
         {
-            var informacoesRoubo = db.InformacoesRoubo.Include(i => i.Bicicletas);
-            return View(informacoesRoubo.ToList());
+            var historicos = db.Historicos.Include(h => h.Bicicletas).Include(h => h.Pessoas);
+            return View(historicos.ToList());
         }
 
-        // GET: InformacoesRouboes/Details/5
+        // GET: Historicos/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            InformacoesRoubo informacoesRoubo = db.InformacoesRoubo.Find(id);
-            if (informacoesRoubo == null)
+            Historicos historicos = db.Historicos.Find(id);
+            if (historicos == null)
             {
                 return HttpNotFound();
             }
-            return View(informacoesRoubo);
+            return View(historicos);
         }
 
-        // GET: InformacoesRouboes/Create
+        // GET: Historicos/Create
         public ActionResult Create()
         {
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo");
+            ViewBag.PessoasId = new SelectList(db.Pessoas, "Id", "Nome");
             return View();
         }
 
-        // POST: InformacoesRouboes/Create
+        // POST: Historicos/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Relato,Local,Data,BicicletasId")] InformacoesRoubo informacoesRoubo)
+        public ActionResult Create([Bind(Include = "Id,SituacaoAtual,DataAquisicao,DataTransferencia,BicicletasId,PessoasId")] Historicos historicos)
         {
             if (ModelState.IsValid)
             {
-                db.InformacoesRoubo.Add(informacoesRoubo);
+                db.Historicos.Add(historicos);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", informacoesRoubo.BicicletasId);
-            return View(informacoesRoubo);
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", historicos.BicicletasId);
+            ViewBag.PessoasId = new SelectList(db.Pessoas, "Id", "Nome", historicos.PessoasId);
+            return View(historicos);
         }
 
-        // GET: InformacoesRouboes/Edit/5
+        // GET: Historicos/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            InformacoesRoubo informacoesRoubo = db.InformacoesRoubo.Find(id);
-            if (informacoesRoubo == null)
+            Historicos historicos = db.Historicos.Find(id);
+            if (historicos == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", informacoesRoubo.BicicletasId);
-            return View(informacoesRoubo);
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", historicos.BicicletasId);
+            ViewBag.PessoasId = new SelectList(db.Pessoas, "Id", "Nome", historicos.PessoasId);
+            return View(historicos);
         }
 
-        // POST: InformacoesRouboes/Edit/5
+        // POST: Historicos/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Relato,Local,Data,BicicletasId")] InformacoesRoubo informacoesRoubo)
+        public ActionResult Edit([Bind(Include = "Id,SituacaoAtual,DataAquisicao,DataTransferencia,BicicletasId,PessoasId")] Historicos historicos)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(informacoesRoubo).State = EntityState.Modified;
+                db.Entry(historicos).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", informacoesRoubo.BicicletasId);
-            return View(informacoesRoubo);
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", historicos.BicicletasId);
+            ViewBag.PessoasId = new SelectList(db.Pessoas, "Id", "Nome", historicos.PessoasId);
+            return View(historicos);
         }
 
-        // GET: InformacoesRouboes/Delete/5
+        // GET: Historicos/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            InformacoesRoubo informacoesRoubo = db.InformacoesRoubo.Find(id);
-            if (informacoesRoubo == null)
+            Historicos historicos = db.Historicos.Find(id);
+            if (historicos == null)
             {
                 return HttpNotFound();
             }
-            return View(informacoesRoubo);
+            return View(historicos);
         }
 
-        // POST: InformacoesRouboes/Delete/5
+        // POST: Historicos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            InformacoesRoubo informacoesRoubo = db.InformacoesRoubo.Find(id);
-            db.InformacoesRoubo.Remove(informacoesRoubo);
+            Historicos historicos = db.Historicos.Find(id);
+            db.Historicos.Remove(historicos);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

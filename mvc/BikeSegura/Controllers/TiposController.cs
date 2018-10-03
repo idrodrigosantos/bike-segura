@@ -10,107 +10,107 @@ using BikeSegura.Models;
 
 namespace BikeSegura.Controllers
 {
-    public class QuadroesController : Controller
+    public class TiposController : Controller
     {
         private Contexto db = new Contexto();
 
-        // GET: Quadroes
+        // GET: Tipos
         public ActionResult Index()
         {
-            return View(db.Quadro.ToList());
+            return View(db.Tipos.ToList());
         }
 
-        // GET: Quadroes/Details/5
+        // GET: Tipos/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Quadro quadro = db.Quadro.Find(id);
-            if (quadro == null)
+            Tipos tipos = db.Tipos.Find(id);
+            if (tipos == null)
             {
                 return HttpNotFound();
             }
-            return View(quadro);
+            return View(tipos);
         }
 
-        // GET: Quadroes/Create
+        // GET: Tipos/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Quadroes/Create
+        // POST: Tipos/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Material")] Quadro quadro)
+        public ActionResult Create([Bind(Include = "Id,Nome")] Tipos tipos)
         {
             if (ModelState.IsValid)
             {
-                db.Quadro.Add(quadro);
+                db.Tipos.Add(tipos);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(quadro);
+            return View(tipos);
         }
 
-        // GET: Quadroes/Edit/5
+        // GET: Tipos/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Quadro quadro = db.Quadro.Find(id);
-            if (quadro == null)
+            Tipos tipos = db.Tipos.Find(id);
+            if (tipos == null)
             {
                 return HttpNotFound();
             }
-            return View(quadro);
+            return View(tipos);
         }
 
-        // POST: Quadroes/Edit/5
+        // POST: Tipos/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Material")] Quadro quadro)
+        public ActionResult Edit([Bind(Include = "Id,Nome")] Tipos tipos)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(quadro).State = EntityState.Modified;
+                db.Entry(tipos).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(quadro);
+            return View(tipos);
         }
 
-        // GET: Quadroes/Delete/5
+        // GET: Tipos/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Quadro quadro = db.Quadro.Find(id);
-            if (quadro == null)
+            Tipos tipos = db.Tipos.Find(id);
+            if (tipos == null)
             {
                 return HttpNotFound();
             }
-            return View(quadro);
+            return View(tipos);
         }
 
-        // POST: Quadroes/Delete/5
+        // POST: Tipos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Quadro quadro = db.Quadro.Find(id);
-            db.Quadro.Remove(quadro);
+            Tipos tipos = db.Tipos.Find(id);
+            db.Tipos.Remove(tipos);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

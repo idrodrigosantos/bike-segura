@@ -10,107 +10,107 @@ using BikeSegura.Models;
 
 namespace BikeSegura.Controllers
 {
-    public class CambioDianteiroesController : Controller
+    public class SuspensoesController : Controller
     {
         private Contexto db = new Contexto();
 
-        // GET: CambioDianteiroes
+        // GET: Suspensoes
         public ActionResult Index()
         {
-            return View(db.CambioDianteiro.ToList());
+            return View(db.Suspensoes.ToList());
         }
 
-        // GET: CambioDianteiroes/Details/5
+        // GET: Suspensoes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CambioDianteiro cambioDianteiro = db.CambioDianteiro.Find(id);
-            if (cambioDianteiro == null)
+            Suspensoes suspensoes = db.Suspensoes.Find(id);
+            if (suspensoes == null)
             {
                 return HttpNotFound();
             }
-            return View(cambioDianteiro);
+            return View(suspensoes);
         }
 
-        // GET: CambioDianteiroes/Create
+        // GET: Suspensoes/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CambioDianteiroes/Create
+        // POST: Suspensoes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Velocidade")] CambioDianteiro cambioDianteiro)
+        public ActionResult Create([Bind(Include = "Id,Nome")] Suspensoes suspensoes)
         {
             if (ModelState.IsValid)
             {
-                db.CambioDianteiro.Add(cambioDianteiro);
+                db.Suspensoes.Add(suspensoes);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(cambioDianteiro);
+            return View(suspensoes);
         }
 
-        // GET: CambioDianteiroes/Edit/5
+        // GET: Suspensoes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CambioDianteiro cambioDianteiro = db.CambioDianteiro.Find(id);
-            if (cambioDianteiro == null)
+            Suspensoes suspensoes = db.Suspensoes.Find(id);
+            if (suspensoes == null)
             {
                 return HttpNotFound();
             }
-            return View(cambioDianteiro);
+            return View(suspensoes);
         }
 
-        // POST: CambioDianteiroes/Edit/5
+        // POST: Suspensoes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Velocidade")] CambioDianteiro cambioDianteiro)
+        public ActionResult Edit([Bind(Include = "Id,Nome")] Suspensoes suspensoes)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(cambioDianteiro).State = EntityState.Modified;
+                db.Entry(suspensoes).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(cambioDianteiro);
+            return View(suspensoes);
         }
 
-        // GET: CambioDianteiroes/Delete/5
+        // GET: Suspensoes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CambioDianteiro cambioDianteiro = db.CambioDianteiro.Find(id);
-            if (cambioDianteiro == null)
+            Suspensoes suspensoes = db.Suspensoes.Find(id);
+            if (suspensoes == null)
             {
                 return HttpNotFound();
             }
-            return View(cambioDianteiro);
+            return View(suspensoes);
         }
 
-        // POST: CambioDianteiroes/Delete/5
+        // POST: Suspensoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CambioDianteiro cambioDianteiro = db.CambioDianteiro.Find(id);
-            db.CambioDianteiro.Remove(cambioDianteiro);
+            Suspensoes suspensoes = db.Suspensoes.Find(id);
+            db.Suspensoes.Remove(suspensoes);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

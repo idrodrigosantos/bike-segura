@@ -10,107 +10,112 @@ using BikeSegura.Models;
 
 namespace BikeSegura.Controllers
 {
-    public class AroesController : Controller
+    public class InformacoesRoubosController : Controller
     {
         private Contexto db = new Contexto();
 
-        // GET: Aroes
+        // GET: InformacoesRoubos
         public ActionResult Index()
         {
-            return View(db.Aro.ToList());
+            var informacoesRoubos = db.InformacoesRoubos.Include(i => i.Bicicletas);
+            return View(informacoesRoubos.ToList());
         }
 
-        // GET: Aroes/Details/5
+        // GET: InformacoesRoubos/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Aro aro = db.Aro.Find(id);
-            if (aro == null)
+            InformacoesRoubos informacoesRoubos = db.InformacoesRoubos.Find(id);
+            if (informacoesRoubos == null)
             {
                 return HttpNotFound();
             }
-            return View(aro);
+            return View(informacoesRoubos);
         }
 
-        // GET: Aroes/Create
+        // GET: InformacoesRoubos/Create
         public ActionResult Create()
         {
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo");
             return View();
         }
 
-        // POST: Aroes/Create
+        // POST: InformacoesRoubos/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Medida")] Aro aro)
+        public ActionResult Create([Bind(Include = "Id,Relato,Local,Data,BicicletasId")] InformacoesRoubos informacoesRoubos)
         {
             if (ModelState.IsValid)
             {
-                db.Aro.Add(aro);
+                db.InformacoesRoubos.Add(informacoesRoubos);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(aro);
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", informacoesRoubos.BicicletasId);
+            return View(informacoesRoubos);
         }
 
-        // GET: Aroes/Edit/5
+        // GET: InformacoesRoubos/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Aro aro = db.Aro.Find(id);
-            if (aro == null)
+            InformacoesRoubos informacoesRoubos = db.InformacoesRoubos.Find(id);
+            if (informacoesRoubos == null)
             {
                 return HttpNotFound();
             }
-            return View(aro);
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", informacoesRoubos.BicicletasId);
+            return View(informacoesRoubos);
         }
 
-        // POST: Aroes/Edit/5
+        // POST: InformacoesRoubos/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Medida")] Aro aro)
+        public ActionResult Edit([Bind(Include = "Id,Relato,Local,Data,BicicletasId")] InformacoesRoubos informacoesRoubos)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(aro).State = EntityState.Modified;
+                db.Entry(informacoesRoubos).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(aro);
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", informacoesRoubos.BicicletasId);
+            return View(informacoesRoubos);
         }
 
-        // GET: Aroes/Delete/5
+        // GET: InformacoesRoubos/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Aro aro = db.Aro.Find(id);
-            if (aro == null)
+            InformacoesRoubos informacoesRoubos = db.InformacoesRoubos.Find(id);
+            if (informacoesRoubos == null)
             {
                 return HttpNotFound();
             }
-            return View(aro);
+            return View(informacoesRoubos);
         }
 
-        // POST: Aroes/Delete/5
+        // POST: InformacoesRoubos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Aro aro = db.Aro.Find(id);
-            db.Aro.Remove(aro);
+            InformacoesRoubos informacoesRoubos = db.InformacoesRoubos.Find(id);
+            db.InformacoesRoubos.Remove(informacoesRoubos);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

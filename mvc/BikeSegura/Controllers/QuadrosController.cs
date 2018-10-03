@@ -10,112 +10,107 @@ using BikeSegura.Models;
 
 namespace BikeSegura.Controllers
 {
-    public class NumeroSeriesController : Controller
+    public class QuadrosController : Controller
     {
         private Contexto db = new Contexto();
 
-        // GET: NumeroSeries
+        // GET: Quadros
         public ActionResult Index()
         {
-            var numeroSerie = db.NumeroSerie.Include(n => n.Bicicletas);
-            return View(numeroSerie.ToList());
+            return View(db.Quadros.ToList());
         }
 
-        // GET: NumeroSeries/Details/5
+        // GET: Quadros/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NumeroSerie numeroSerie = db.NumeroSerie.Find(id);
-            if (numeroSerie == null)
+            Quadros quadros = db.Quadros.Find(id);
+            if (quadros == null)
             {
                 return HttpNotFound();
             }
-            return View(numeroSerie);
+            return View(quadros);
         }
 
-        // GET: NumeroSeries/Create
+        // GET: Quadros/Create
         public ActionResult Create()
         {
-            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo");
             return View();
         }
 
-        // POST: NumeroSeries/Create
+        // POST: Quadros/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Numero,BicicletasId")] NumeroSerie numeroSerie)
+        public ActionResult Create([Bind(Include = "Id,Material")] Quadros quadros)
         {
             if (ModelState.IsValid)
             {
-                db.NumeroSerie.Add(numeroSerie);
+                db.Quadros.Add(quadros);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", numeroSerie.BicicletasId);
-            return View(numeroSerie);
+            return View(quadros);
         }
 
-        // GET: NumeroSeries/Edit/5
+        // GET: Quadros/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NumeroSerie numeroSerie = db.NumeroSerie.Find(id);
-            if (numeroSerie == null)
+            Quadros quadros = db.Quadros.Find(id);
+            if (quadros == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", numeroSerie.BicicletasId);
-            return View(numeroSerie);
+            return View(quadros);
         }
 
-        // POST: NumeroSeries/Edit/5
+        // POST: Quadros/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Numero,BicicletasId")] NumeroSerie numeroSerie)
+        public ActionResult Edit([Bind(Include = "Id,Material")] Quadros quadros)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(numeroSerie).State = EntityState.Modified;
+                db.Entry(quadros).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", numeroSerie.BicicletasId);
-            return View(numeroSerie);
+            return View(quadros);
         }
 
-        // GET: NumeroSeries/Delete/5
+        // GET: Quadros/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NumeroSerie numeroSerie = db.NumeroSerie.Find(id);
-            if (numeroSerie == null)
+            Quadros quadros = db.Quadros.Find(id);
+            if (quadros == null)
             {
                 return HttpNotFound();
             }
-            return View(numeroSerie);
+            return View(quadros);
         }
 
-        // POST: NumeroSeries/Delete/5
+        // POST: Quadros/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            NumeroSerie numeroSerie = db.NumeroSerie.Find(id);
-            db.NumeroSerie.Remove(numeroSerie);
+            Quadros quadros = db.Quadros.Find(id);
+            db.Quadros.Remove(quadros);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
