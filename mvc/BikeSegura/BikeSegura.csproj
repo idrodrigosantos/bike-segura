@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{883A9245-92B6-4DC4-A2B5-1D304E019A24}</ProjectGuid>
+    <ProjectGuid>{B8AE9380-D1AC-4F7B-AA85-E6AB685A947C}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -161,39 +161,39 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AroesController.cs" />
+    <Compile Include="Controllers\ArosController.cs" />
     <Compile Include="Controllers\BicicletasController.cs" />
-    <Compile Include="Controllers\CambioDianteiroesController.cs" />
-    <Compile Include="Controllers\CambioTraseiroesController.cs" />
+    <Compile Include="Controllers\CambiosDianteirosController.cs" />
+    <Compile Include="Controllers\CambiosTraseirosController.cs" />
     <Compile Include="Controllers\FreiosController.cs" />
-    <Compile Include="Controllers\HistoricoesController.cs" />
+    <Compile Include="Controllers\HistoricosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\InformacoesRouboesController.cs" />
+    <Compile Include="Controllers\InformacoesRoubosController.cs" />
     <Compile Include="Controllers\MarcasController.cs" />
-    <Compile Include="Controllers\NumeroSeriesController.cs" />
+    <Compile Include="Controllers\NumerosSeriesController.cs" />
     <Compile Include="Controllers\PessoasController.cs" />
-    <Compile Include="Controllers\QuadroesController.cs" />
-    <Compile Include="Controllers\RelatoRouboesController.cs" />
-    <Compile Include="Controllers\SuspensaosController.cs" />
-    <Compile Include="Controllers\TipoesController.cs" />
+    <Compile Include="Controllers\QuadrosController.cs" />
+    <Compile Include="Controllers\RelatosRoubosController.cs" />
+    <Compile Include="Controllers\SuspensoesController.cs" />
+    <Compile Include="Controllers\TiposController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Aros.cs" />
     <Compile Include="Models\Bicicletas.cs" />
-    <Compile Include="Models\CambioDianteiro.cs" />
-    <Compile Include="Models\CambioTraseiro.cs" />
+    <Compile Include="Models\CambiosDianteiros.cs" />
+    <Compile Include="Models\CambiosTraseiros.cs" />
     <Compile Include="Models\Contexto.cs" />
-    <Compile Include="Models\Historico.cs" />
-    <Compile Include="Models\InformacoesRoubo.cs" />
+    <Compile Include="Models\Freios.cs" />
+    <Compile Include="Models\Historicos.cs" />
+    <Compile Include="Models\InformacoesRoubos.cs" />
     <Compile Include="Models\Marcas.cs" />
-    <Compile Include="Models\NumeroSerie.cs" />
+    <Compile Include="Models\NumerosSeries.cs" />
     <Compile Include="Models\Pessoas.cs" />
-    <Compile Include="Models\RelatoRoubo.cs" />
-    <Compile Include="Models\Aro.cs" />
-    <Compile Include="Models\Tipo.cs" />
-    <Compile Include="Models\Freio.cs" />
-    <Compile Include="Models\Quadro.cs" />
-    <Compile Include="Models\Suspensao.cs" />
+    <Compile Include="Models\Quadros.cs" />
+    <Compile Include="Models\RelatosRoubos.cs" />
+    <Compile Include="Models\Suspensoes.cs" />
+    <Compile Include="Models\Tipos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -219,7 +219,7 @@
     <Content Include="Content\v4-shims.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\meu-estilo.css" />
+    <Content Include="Content\meuestilo.css" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -267,8 +267,6 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\jquery-mask-plugin\jquery.mask.js" />
-    <Content Include="Scripts\jquery-mask-plugin\jquery.mask.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
@@ -294,6 +292,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -321,79 +320,76 @@
     <Content Include="webfonts\fa-brands-400.woff" />
     <Content Include="webfonts\fa-brands-400.ttf" />
     <Content Include="webfonts\fa-brands-400.eot" />
-    <Content Include="Views\Pessoas\Create.cshtml" />
-    <Content Include="Views\Pessoas\Delete.cshtml" />
-    <Content Include="Views\Pessoas\Details.cshtml" />
-    <Content Include="Views\Pessoas\Edit.cshtml" />
-    <Content Include="Views\Pessoas\Index.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Shared\_Usuario.cshtml" />
+    <Content Include="Views\Aros\Create.cshtml" />
+    <Content Include="Views\Aros\Delete.cshtml" />
+    <Content Include="Views\Aros\Details.cshtml" />
+    <Content Include="Views\Aros\Edit.cshtml" />
+    <Content Include="Views\Aros\Index.cshtml" />
     <Content Include="Views\Bicicletas\Create.cshtml" />
     <Content Include="Views\Bicicletas\Delete.cshtml" />
     <Content Include="Views\Bicicletas\Details.cshtml" />
     <Content Include="Views\Bicicletas\Edit.cshtml" />
     <Content Include="Views\Bicicletas\Index.cshtml" />
-    <Content Include="Views\Shared\_Administrador.cshtml" />
-    <Content Include="Views\Marcas\Create.cshtml" />
-    <Content Include="Views\Marcas\Delete.cshtml" />
-    <Content Include="Views\Marcas\Details.cshtml" />
-    <Content Include="Views\Marcas\Edit.cshtml" />
-    <Content Include="Views\Marcas\Index.cshtml" />
-    <Content Include="Views\Tipoes\Create.cshtml" />
-    <Content Include="Views\Tipoes\Delete.cshtml" />
-    <Content Include="Views\Tipoes\Details.cshtml" />
-    <Content Include="Views\Tipoes\Edit.cshtml" />
-    <Content Include="Views\Tipoes\Index.cshtml" />
-    <Content Include="Views\Suspensaos\Create.cshtml" />
-    <Content Include="Views\Suspensaos\Delete.cshtml" />
-    <Content Include="Views\Suspensaos\Details.cshtml" />
-    <Content Include="Views\Suspensaos\Edit.cshtml" />
-    <Content Include="Views\Suspensaos\Index.cshtml" />
-    <Content Include="Views\CambioDianteiroes\Create.cshtml" />
-    <Content Include="Views\CambioDianteiroes\Delete.cshtml" />
-    <Content Include="Views\CambioDianteiroes\Details.cshtml" />
-    <Content Include="Views\CambioDianteiroes\Edit.cshtml" />
-    <Content Include="Views\CambioDianteiroes\Index.cshtml" />
-    <Content Include="Views\CambioTraseiroes\Create.cshtml" />
-    <Content Include="Views\CambioTraseiroes\Delete.cshtml" />
-    <Content Include="Views\CambioTraseiroes\Details.cshtml" />
-    <Content Include="Views\CambioTraseiroes\Edit.cshtml" />
-    <Content Include="Views\CambioTraseiroes\Index.cshtml" />
+    <Content Include="Views\CambiosDianteiros\Create.cshtml" />
+    <Content Include="Views\CambiosDianteiros\Delete.cshtml" />
+    <Content Include="Views\CambiosDianteiros\Details.cshtml" />
+    <Content Include="Views\CambiosDianteiros\Edit.cshtml" />
+    <Content Include="Views\CambiosDianteiros\Index.cshtml" />
+    <Content Include="Views\CambiosTraseiros\Create.cshtml" />
+    <Content Include="Views\CambiosTraseiros\Delete.cshtml" />
+    <Content Include="Views\CambiosTraseiros\Details.cshtml" />
+    <Content Include="Views\CambiosTraseiros\Edit.cshtml" />
+    <Content Include="Views\CambiosTraseiros\Index.cshtml" />
     <Content Include="Views\Freios\Create.cshtml" />
     <Content Include="Views\Freios\Delete.cshtml" />
     <Content Include="Views\Freios\Details.cshtml" />
     <Content Include="Views\Freios\Edit.cshtml" />
     <Content Include="Views\Freios\Index.cshtml" />
-    <Content Include="Views\Aroes\Create.cshtml" />
-    <Content Include="Views\Aroes\Delete.cshtml" />
-    <Content Include="Views\Aroes\Details.cshtml" />
-    <Content Include="Views\Aroes\Edit.cshtml" />
-    <Content Include="Views\Aroes\Index.cshtml" />
-    <Content Include="Views\Quadroes\Create.cshtml" />
-    <Content Include="Views\Quadroes\Delete.cshtml" />
-    <Content Include="Views\Quadroes\Details.cshtml" />
-    <Content Include="Views\Quadroes\Edit.cshtml" />
-    <Content Include="Views\Quadroes\Index.cshtml" />
-    <Content Include="Views\NumeroSeries\Create.cshtml" />
-    <Content Include="Views\NumeroSeries\Delete.cshtml" />
-    <Content Include="Views\NumeroSeries\Details.cshtml" />
-    <Content Include="Views\NumeroSeries\Edit.cshtml" />
-    <Content Include="Views\NumeroSeries\Index.cshtml" />
-    <Content Include="Views\InformacoesRouboes\Create.cshtml" />
-    <Content Include="Views\InformacoesRouboes\Delete.cshtml" />
-    <Content Include="Views\InformacoesRouboes\Details.cshtml" />
-    <Content Include="Views\InformacoesRouboes\Edit.cshtml" />
-    <Content Include="Views\InformacoesRouboes\Index.cshtml" />
-    <Content Include="Views\RelatoRouboes\Create.cshtml" />
-    <Content Include="Views\RelatoRouboes\Delete.cshtml" />
-    <Content Include="Views\RelatoRouboes\Details.cshtml" />
-    <Content Include="Views\RelatoRouboes\Edit.cshtml" />
-    <Content Include="Views\RelatoRouboes\Index.cshtml" />
-    <Content Include="Views\Historicoes\Create.cshtml" />
-    <Content Include="Views\Historicoes\Delete.cshtml" />
-    <Content Include="Views\Historicoes\Details.cshtml" />
-    <Content Include="Views\Historicoes\Edit.cshtml" />
-    <Content Include="Views\Historicoes\Index.cshtml" />
+    <Content Include="Views\Historicos\Create.cshtml" />
+    <Content Include="Views\Historicos\Delete.cshtml" />
+    <Content Include="Views\Historicos\Details.cshtml" />
+    <Content Include="Views\Historicos\Edit.cshtml" />
+    <Content Include="Views\Historicos\Index.cshtml" />
+    <Content Include="Views\InformacoesRoubos\Create.cshtml" />
+    <Content Include="Views\InformacoesRoubos\Delete.cshtml" />
+    <Content Include="Views\InformacoesRoubos\Details.cshtml" />
+    <Content Include="Views\InformacoesRoubos\Edit.cshtml" />
+    <Content Include="Views\InformacoesRoubos\Index.cshtml" />
+    <Content Include="Views\Marcas\Create.cshtml" />
+    <Content Include="Views\Marcas\Delete.cshtml" />
+    <Content Include="Views\Marcas\Details.cshtml" />
+    <Content Include="Views\Marcas\Edit.cshtml" />
+    <Content Include="Views\Marcas\Index.cshtml" />
+    <Content Include="Views\NumerosSeries\Create.cshtml" />
+    <Content Include="Views\NumerosSeries\Delete.cshtml" />
+    <Content Include="Views\NumerosSeries\Details.cshtml" />
+    <Content Include="Views\NumerosSeries\Edit.cshtml" />
+    <Content Include="Views\NumerosSeries\Index.cshtml" />
+    <Content Include="Views\Pessoas\Create.cshtml" />
+    <Content Include="Views\Pessoas\Delete.cshtml" />
+    <Content Include="Views\Pessoas\Details.cshtml" />
+    <Content Include="Views\Pessoas\Edit.cshtml" />
+    <Content Include="Views\Pessoas\Index.cshtml" />
+    <Content Include="Views\Quadros\Create.cshtml" />
+    <Content Include="Views\Quadros\Delete.cshtml" />
+    <Content Include="Views\Quadros\Details.cshtml" />
+    <Content Include="Views\Quadros\Edit.cshtml" />
+    <Content Include="Views\Quadros\Index.cshtml" />
+    <Content Include="Views\RelatosRoubos\Create.cshtml" />
+    <Content Include="Views\RelatosRoubos\Delete.cshtml" />
+    <Content Include="Views\RelatosRoubos\Details.cshtml" />
+    <Content Include="Views\RelatosRoubos\Edit.cshtml" />
+    <Content Include="Views\RelatosRoubos\Index.cshtml" />
+    <Content Include="Views\Suspensoes\Create.cshtml" />
+    <Content Include="Views\Suspensoes\Delete.cshtml" />
+    <Content Include="Views\Suspensoes\Details.cshtml" />
+    <Content Include="Views\Suspensoes\Edit.cshtml" />
+    <Content Include="Views\Suspensoes\Index.cshtml" />
+    <Content Include="Views\Tipos\Create.cshtml" />
+    <Content Include="Views\Tipos\Delete.cshtml" />
+    <Content Include="Views\Tipos\Details.cshtml" />
+    <Content Include="Views\Tipos\Edit.cshtml" />
+    <Content Include="Views\Tipos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -426,9 +422,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>49865</DevelopmentServerPort>
+          <DevelopmentServerPort>50693</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:49865/</IISUrl>
+          <IISUrl>http://localhost:50693/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
