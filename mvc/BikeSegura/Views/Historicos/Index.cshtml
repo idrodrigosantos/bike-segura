@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<BikeSegura.Models.Historicos>
 
 @{
-    ViewBag.Title = "Lista de Históricos";
+    ViewBag.Title = "Lista de Históricos de Bicicletas";
     Layout = "~/Views/Shared/_Usuario.cshtml";
 }
 
@@ -17,7 +17,7 @@
             <thead>
                 <tr>
                     <th>
-                        Modelo
+                        @Html.DisplayNameFor(model => model.Bicicletas.Modelo)
                     </th>
                     <th>
                         Vendedor
@@ -45,10 +45,10 @@
                             @Html.DisplayFor(modelItem => item.Bicicletas.Modelo)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Pessoas.Nome)
+                            @Html.DisplayFor(modelItem => item.Vendedor.Nome)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Pessoas.Nome)
+                            @Html.DisplayFor(modelItem => item.Comprador.Nome)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.SituacaoAtual)

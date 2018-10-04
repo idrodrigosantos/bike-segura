@@ -17,7 +17,7 @@ namespace BikeSegura.Controllers
         // GET: Historicos
         public ActionResult Index()
         {
-            var historicos = db.Historicos.Include(h => h.Bicicletas).Include(h => h.Pessoas);
+            var historicos = db.Historicos.Include(h => h.Bicicletas).Include(h => h.Comprador).Include(h => h.Vendedor);
             return View(historicos.ToList());
         }
 
@@ -40,7 +40,8 @@ namespace BikeSegura.Controllers
         public ActionResult Create()
         {
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo");
-            ViewBag.PessoasId = new SelectList(db.Pessoas, "Id", "Nome");
+            ViewBag.CompradorId = new SelectList(db.Pessoas, "Id", "Nome");
+            ViewBag.VendedorId = new SelectList(db.Pessoas, "Id", "Nome");
             return View();
         }
 
@@ -49,7 +50,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,SituacaoAtual,DataAquisicao,DataTransferencia,BicicletasId,PessoasId")] Historicos historicos)
+        public ActionResult Create([Bind(Include = "Id,SituacaoAtual,DataAquisicao,DataTransferencia,BicicletasId,VendedorId,CompradorId")] Historicos historicos)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +60,8 @@ namespace BikeSegura.Controllers
             }
 
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", historicos.BicicletasId);
-            ViewBag.PessoasId = new SelectList(db.Pessoas, "Id", "Nome", historicos.PessoasId);
+            ViewBag.CompradorId = new SelectList(db.Pessoas, "Id", "Nome", historicos.CompradorId);
+            ViewBag.VendedorId = new SelectList(db.Pessoas, "Id", "Nome", historicos.VendedorId);
             return View(historicos);
         }
 
@@ -76,7 +78,8 @@ namespace BikeSegura.Controllers
                 return HttpNotFound();
             }
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", historicos.BicicletasId);
-            ViewBag.PessoasId = new SelectList(db.Pessoas, "Id", "Nome", historicos.PessoasId);
+            ViewBag.CompradorId = new SelectList(db.Pessoas, "Id", "Nome", historicos.CompradorId);
+            ViewBag.VendedorId = new SelectList(db.Pessoas, "Id", "Nome", historicos.VendedorId);
             return View(historicos);
         }
 
@@ -85,7 +88,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,SituacaoAtual,DataAquisicao,DataTransferencia,BicicletasId,PessoasId")] Historicos historicos)
+        public ActionResult Edit([Bind(Include = "Id,SituacaoAtual,DataAquisicao,DataTransferencia,BicicletasId,VendedorId,CompradorId")] Historicos historicos)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +97,8 @@ namespace BikeSegura.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", historicos.BicicletasId);
-            ViewBag.PessoasId = new SelectList(db.Pessoas, "Id", "Nome", historicos.PessoasId);
+            ViewBag.CompradorId = new SelectList(db.Pessoas, "Id", "Nome", historicos.CompradorId);
+            ViewBag.VendedorId = new SelectList(db.Pessoas, "Id", "Nome", historicos.VendedorId);
             return View(historicos);
         }
 
