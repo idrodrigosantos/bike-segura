@@ -57,4 +57,11 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquerymask")
+
+    <script>
+        $(document).ready(function () {
+            $('.data').mask('0000/00/00', { placeholder: "AAAA/MM/DD" });
+        });
+    </script>
 }
