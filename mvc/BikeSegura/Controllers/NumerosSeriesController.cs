@@ -37,9 +37,13 @@ namespace BikeSegura.Controllers
         }
 
         // GET: NumerosSeries/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo");
+            if(id == null)
+             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo");
+            else
+                ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w=> w.Id == id), "Id", "Modelo");
+
             return View();
         }
 
@@ -54,7 +58,7 @@ namespace BikeSegura.Controllers
             {
                 db.NumerosSeries.Add(numerosSeries);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "NumerosSeries", new { id = numerosSeries.BicicletasId });
             }
 
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", numerosSeries.BicicletasId);

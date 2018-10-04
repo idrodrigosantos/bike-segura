@@ -61,7 +61,7 @@ namespace BikeSegura.Controllers
             {
                 db.Bicicletas.Add(bicicletas);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "NumerosSeries", new { id = bicicletas.Id });
             }
 
             ViewBag.ArosId = new SelectList(db.Aros, "Id", "Medida", bicicletas.ArosId);
