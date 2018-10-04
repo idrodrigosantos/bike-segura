@@ -61,6 +61,9 @@ namespace BikeSegura.Controllers
             {
                 db.Bicicletas.Add(bicicletas);
                 db.SaveChanges();
+                // Antes, após cadastrar a bicicleta a página era redirecionada para a index,
+                //  agora a página é redirecionada para a página de cadastro de número de série
+                //return RedirectToAction("Index");
                 return RedirectToAction("Create", "NumerosSeries", new { id = bicicletas.Id });
             }
 
