@@ -194,6 +194,7 @@
     <Compile Include="Models\RelatosRoubos.cs" />
     <Compile Include="Models\Suspensoes.cs" />
     <Compile Include="Models\Tipos.cs" />
+    <Compile Include="Models\Uploads.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
