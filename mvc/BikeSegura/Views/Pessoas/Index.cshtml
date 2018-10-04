@@ -65,11 +65,11 @@
                     </th>
                     @*<th>
                             @Html.DisplayNameFor(model => model.Genero)
-                        </th>
+                        </th>*@
                         <th>
                             @Html.DisplayNameFor(model => model.ImagemPerfil)
                         </th>
-                        <th>
+                        @*<th>
                             @Html.DisplayNameFor(model => model.NomeContato)
                         </th>
                         <th>
@@ -135,11 +135,12 @@
                         </td>
                         @*<td>
                                 @Html.DisplayFor(modelItem => item.Genero)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ImagemPerfil)
-                            </td>
-                            <td>
+                            </td>*@
+                        <td>
+                            @*@Html.DisplayFor(modelItem => item.ImagemPerfil)*@
+                            <img src="~/Uploads/@item.ImagemPerfil" style="max-width:70px;" />
+                        </td>
+                        @*<td>
                                 @Html.DisplayFor(modelItem => item.NomeContato)
                             </td>
                             <td>

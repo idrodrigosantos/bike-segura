@@ -4,7 +4,8 @@
     ViewBag.Title = "Cadastro Usuário";
 }
 
-@using (Html.BeginForm())
+@*@using (Html.BeginForm())*@
+@using (Html.BeginForm("Create", "Pessoas", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div class="container conteudo">
@@ -102,9 +103,10 @@
                 </div>
                 @Html.ValidationMessageFor(model => model.Genero, "", new { @class = "text-danger" })
             </div>
-            <div class="form-group col-sm-6">
+            <div class="col-sm-6">
                 @Html.LabelFor(model => model.ImagemPerfil, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.ImagemPerfil, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.ImagemPerfil, new { htmlAttributes = new { @class = "form-control" } })*@
+                <input name="arq" class="form-control-file" type="file" />
                 @Html.ValidationMessageFor(model => model.ImagemPerfil, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-6">
