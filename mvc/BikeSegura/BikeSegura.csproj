@@ -219,7 +219,7 @@
     <Content Include="Content\v4-shims.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\meuestilo.css" />
+    <Content Include="Content\meu-estilo.css" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -263,8 +263,8 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.mask.js" />
-    <Content Include="Scripts\jquery.mask.min.js" />
+    <Content Include="Scripts\jquery-mask-plugin\jquery.mask.js" />
+    <Content Include="Scripts\jquery-mask-plugin\jquery.mask.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -347,11 +347,6 @@
     <Content Include="Views\Freios\Details.cshtml" />
     <Content Include="Views\Freios\Edit.cshtml" />
     <Content Include="Views\Freios\Index.cshtml" />
-    <Content Include="Views\Historicos\Create.cshtml" />
-    <Content Include="Views\Historicos\Delete.cshtml" />
-    <Content Include="Views\Historicos\Details.cshtml" />
-    <Content Include="Views\Historicos\Edit.cshtml" />
-    <Content Include="Views\Historicos\Index.cshtml" />
     <Content Include="Views\InformacoesRoubos\Create.cshtml" />
     <Content Include="Views\InformacoesRoubos\Delete.cshtml" />
     <Content Include="Views\InformacoesRoubos\Details.cshtml" />
@@ -394,6 +389,11 @@
     <Content Include="Views\Tipos\Index.cshtml" />
     <Content Include="Views\Shared\_Administrador.cshtml" />
     <Content Include="Views\Shared\_Usuario.cshtml" />
+    <Content Include="Views\Historicos\Create.cshtml" />
+    <Content Include="Views\Historicos\Delete.cshtml" />
+    <Content Include="Views\Historicos\Details.cshtml" />
+    <Content Include="Views\Historicos\Edit.cshtml" />
+    <Content Include="Views\Historicos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
