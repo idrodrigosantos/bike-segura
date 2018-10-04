@@ -35,10 +35,16 @@ namespace BikeSegura.Models
         [Required(ErrorMessage = "Bicicleta é obrigatório")]
         public int BicicletasId { get; set; }
 
-        [Required(ErrorMessage = "Pessoa é obrigatório")]
-        public int PessoasId { get; set; }
+        [DisplayName("Vendedor")]
+        [Required(ErrorMessage = "Vendedor é obrigatório")]
+        public int VendedorId { get; set; }
+
+        [DisplayName("Comprador")]
+        [Required(ErrorMessage = "Comprador é obrigatório")]
+        public int CompradorId { get; set; }
 
         public virtual Bicicletas Bicicletas { get; set; }
-        public virtual Pessoas Pessoas { get; set; }
+        public virtual Pessoas Vendedor { get; set; }
+        public virtual Pessoas Comprador { get; set; }        
     }
 }
