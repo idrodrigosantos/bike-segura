@@ -23,11 +23,11 @@ namespace BikeSegura
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquerymask").Include(
-                      "~/Scripts/jquery.mask.js"));
+                      "~/Scripts/jquery-mask-plugin/jquery.mask.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/meuestilo.css",
+                      "~/Content/meu-estilo.css",
                       "~/Content/all.css"));
         }
     }
