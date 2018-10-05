@@ -4,7 +4,7 @@
     ViewBag.Title = "Editar Usuário";
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Pessoas", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div class="container conteudo">
@@ -104,8 +104,8 @@
                 @Html.ValidationMessageFor(model => model.Genero, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-6">
-                @Html.LabelFor(model => model.ImagemPerfil, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.ImagemPerfil, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.LabelFor(model => model.ImagemPerfil, htmlAttributes: new { @class = "control-label" })                
+                <input type="file" name="arq" class="form-control-file" />
                 @Html.ValidationMessageFor(model => model.ImagemPerfil, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-6">
@@ -148,7 +148,7 @@
             $('.cepmask').mask('00000-000', { placeholder: "00000-000" });
             $('.telmask').mask('(00) 0000-0000', { placeholder: "(DD) 0000-0000" });
             $('.celmask').mask('(00) 00000-0000', { placeholder: "(DD) 00000-0000" });
-            $('.cpfmask').mask('000.000.000-00', { placeholder: "000.000.000-00" });            
+            $('.cpfmask').mask('000.000.000-00', { placeholder: "000.000.000-00" });
         });
 
         // Para telefones 8 e 9 dígigtos

@@ -47,19 +47,11 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,ImagemPerfil,NomeContato,TelefoneContato,TipoUsuario")] Pessoas pessoas)
-        // Foi adiconado 'HttpPostedFileBase arq' no final
         public ActionResult Create([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,ImagemPerfil,NomeContato,TelefoneContato,TipoUsuario")] Pessoas pessoas, HttpPostedFileBase arq)
         {
-            string valor = ""; //código Adiconado
+            string valor = "";
             if (ModelState.IsValid)
             {
-                //Código Anterior
-                /*
-                db.Pessoas.Add(pessoas);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-                */
                 if (arq != null)
                 {
                     Uploads.CriarDiretorio();
@@ -76,9 +68,8 @@ namespace BikeSegura.Controllers
                     {
                         ModelState.AddModelError("", valor);
                     }
-                }                
+                }
             }
-
             return View(pessoas);
         }
 
@@ -102,12 +93,29 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,ImagemPerfil,NomeContato,TelefoneContato,TipoUsuario")] Pessoas pessoas)
+        public ActionResult Edit([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,ImagemPerfil,NomeContato,TelefoneContato,TipoUsuario")] Pessoas pessoas, HttpPostedFileBase arq)
         {
+            string valor = "";
             if (ModelState.IsValid)
             {
-                db.Entry(pessoas).State = EntityState.Modified;
-                db.SaveChanges();
+                if (arq != null)
+                {
+                    Uploads.CriarDiretorio();
+                    string nomearq = DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(arq.FileName);
+                    valor = Uploads.UploadArquivo(arq, nomearq);
+                    if (valor == "sucesso")
+                    {
+                        Uploads.ExcluirArquivo(Request.PhysicalApplicationPath + "Uploads\\" + pessoas.ImagemPerfil);
+                        pessoas.ImagemPerfil = nomearq;
+                        db.Entry(pessoas).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                }
+                else
+                {
+                    db.Entry(pessoas).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             return View(pessoas);
@@ -134,6 +142,7 @@ namespace BikeSegura.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Pessoas pessoas = db.Pessoas.Find(id);
+            Uploads.ExcluirArquivo(Request.PhysicalApplicationPath + "Uploads\\" + pessoas.ImagemPerfil);
             db.Pessoas.Remove(pessoas);
             db.SaveChanges();
             return RedirectToAction("Index");
