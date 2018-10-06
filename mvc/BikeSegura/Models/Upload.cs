@@ -6,40 +6,40 @@ using System.Web;
 
 namespace BikeSegura.Models
 {
-    public class Uploads
+    public class Upload
     {
         public static bool CriarDiretorio()
         {
-            string dir = HttpContext.Current.Request.PhysicalApplicationPath + "Uploads\\";
-            if (!Directory.Exists(dir))
+            string novodiretorio = HttpContext.Current.Request.PhysicalApplicationPath + "Uploads\\";
+            if (!Directory.Exists(novodiretorio))
             {
                 //Caso não exista devermos criar
-                Directory.CreateDirectory(dir);
+                Directory.CreateDirectory(novodiretorio);
                 return true;
             }
             else
                 return false;
         }
-        public static bool ExcluirArquivo(string arq)
+        public static bool ExcluirArquivo(string arquivoimg)
         {
-            if (File.Exists(arq))
+            if (File.Exists(arquivoimg))
             {
-                File.Delete(arq);
+                File.Delete(arquivoimg);
                 return true;
             }
             else
                 return false;
         }
-        public static string UploadArquivo(HttpPostedFileBase flpUpload, string nome)
+        public static string UploadArquivo(HttpPostedFileBase arquivoUpload, string nome)
         {
             try
             {
                 double permitido = 900;
-                if (flpUpload != null)
+                if (arquivoUpload != null)
                 {
-                    string arq = Path.GetFileName(flpUpload.FileName);
-                    double tamanho = Convert.ToDouble(flpUpload.ContentLength) / 1024;
-                    string extensao = Path.GetExtension(flpUpload.FileName);
+                    string arquivoimg = Path.GetFileName(arquivoUpload.FileName);
+                    double tamanho = Convert.ToDouble(arquivoUpload.ContentLength) / 1024;
+                    string extensao = Path.GetExtension(arquivoUpload.FileName);
                     string diretorio = HttpContext.Current.Request.PhysicalApplicationPath + "Uploads\\" + nome;
                     if (tamanho > permitido)
                         return "Tamanho Máximo permitido é de " + permitido + " kb!";
@@ -49,7 +49,7 @@ namespace BikeSegura.Models
                     {
                         if (!File.Exists(diretorio))
                         {
-                            flpUpload.SaveAs(diretorio);
+                            arquivoUpload.SaveAs(diretorio);
                             return "sucesso";
                         }
                         else
