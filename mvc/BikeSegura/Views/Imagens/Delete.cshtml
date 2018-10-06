@@ -1,0 +1,39 @@
+﻿@model BikeSegura.Models.Imagens
+
+@{
+    ViewBag.Title = "Excluir Imagem";
+}
+
+<div class="container conteudo">
+    <div class="row">
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.Bicicletas.Modelo)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.Bicicletas.Modelo)</label>
+        </div>
+        <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.Imagem)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            <label>@Html.DisplayFor(model => model.Imagem)</label>
+        </div>
+
+        <div class="form-group col-sm-12">
+            <div class="botao-salvar">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <a class="btn btn-success" href="@Url.Action("Index", "Imagens")" role="button">
+                        <i class="fas fa-reply"></i>
+                        Voltar
+                    </a>
+                    <button type="submit" value="Delete" class="btn btn-danger">
+                        <i class="fas fa-times"></i>
+                        Excluir
+                    </button>
+                }
+            </div>
+        </div>
+    </div>
+</div>

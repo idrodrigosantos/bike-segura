@@ -16,6 +16,7 @@ namespace BikeSegura.Models
         public DbSet<CambiosTraseiros> CambiosTraseiros { get; set; }
         public DbSet<Freios> Freios { get; set; }
         public DbSet<Historicos> Historicos { get; set; }
+        public DbSet<Imagens> Imagens { get; set; }
         public DbSet<InformacoesRoubos> InformacoesRoubos { get; set; }
         public DbSet<Marcas> Marcas { get; set; }
         public DbSet<NumerosSeries> NumerosSeries { get; set; }

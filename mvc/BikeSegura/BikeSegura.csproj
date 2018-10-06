@@ -168,6 +168,7 @@
     <Compile Include="Controllers\FreiosController.cs" />
     <Compile Include="Controllers\HistoricosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImagensController.cs" />
     <Compile Include="Controllers\InformacoesRoubosController.cs" />
     <Compile Include="Controllers\MarcasController.cs" />
     <Compile Include="Controllers\NumerosSeriesController.cs" />
@@ -186,6 +187,7 @@
     <Compile Include="Models\Contexto.cs" />
     <Compile Include="Models\Freios.cs" />
     <Compile Include="Models\Historicos.cs" />
+    <Compile Include="Models\Imagens.cs" />
     <Compile Include="Models\InformacoesRoubos.cs" />
     <Compile Include="Models\Marcas.cs" />
     <Compile Include="Models\NumerosSeries.cs" />
@@ -194,7 +196,7 @@
     <Compile Include="Models\RelatosRoubos.cs" />
     <Compile Include="Models\Suspensoes.cs" />
     <Compile Include="Models\Tipos.cs" />
-    <Compile Include="Models\Uploads.cs" />
+    <Compile Include="Models\Upload.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -395,6 +397,11 @@
     <Content Include="Views\Historicos\Details.cshtml" />
     <Content Include="Views\Historicos\Edit.cshtml" />
     <Content Include="Views\Historicos\Index.cshtml" />
+    <Content Include="Views\Imagens\Create.cshtml" />
+    <Content Include="Views\Imagens\Delete.cshtml" />
+    <Content Include="Views\Imagens\Details.cshtml" />
+    <Content Include="Views\Imagens\Edit.cshtml" />
+    <Content Include="Views\Imagens\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
