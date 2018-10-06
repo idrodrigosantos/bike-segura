@@ -160,7 +160,7 @@ namespace BikeSegura.Models
         }
 
         [DisplayName("Imagem de Perfil")]
-        public string ImagemPerfil { get; set; }
+        public string Imagem { get; set; }
 
         [DisplayName("Nome do Contato")]
         [MaxLength(100, ErrorMessage = "Nome deve ter no máximo 100 caracteres")]

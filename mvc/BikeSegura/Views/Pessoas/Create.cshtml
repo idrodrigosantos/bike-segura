@@ -103,9 +103,9 @@
                 @Html.ValidationMessageFor(model => model.Genero, "", new { @class = "text-danger" })
             </div>
             <div class="col-sm-6">
-                @Html.LabelFor(model => model.ImagemPerfil, htmlAttributes: new { @class = "control-label" })                
-                <input type="file" name="arq" class="form-control-file" />
-                @Html.ValidationMessageFor(model => model.ImagemPerfil, "", new { @class = "text-danger" })
+                @Html.LabelFor(model => model.Imagem, htmlAttributes: new { @class = "control-label" })                
+                <input type="file" name="arquivoimg" class="form-control-file" />
+                @Html.ValidationMessageFor(model => model.Imagem, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-6">
                 @Html.LabelFor(model => model.NomeContato, htmlAttributes: new { @class = "control-label" })

@@ -47,19 +47,19 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,ImagemPerfil,NomeContato,TelefoneContato,TipoUsuario")] Pessoas pessoas, HttpPostedFileBase arq)
+        public ActionResult Create([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,ImagemPerfil,NomeContato,TelefoneContato,TipoUsuario")] Pessoas pessoas, HttpPostedFileBase arquivoimg)
         {
             string valor = "";
             if (ModelState.IsValid)
             {
-                if (arq != null)
+                if (arquivoimg != null)
                 {
-                    Uploads.CriarDiretorio();
-                    string nomearq = DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(arq.FileName);
-                    valor = Uploads.UploadArquivo(arq, nomearq);
+                    Upload.CriarDiretorio();
+                    string nomearquivo = DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(arquivoimg.FileName);
+                    valor = Upload.UploadArquivo(arquivoimg, nomearquivo);
                     if (valor == "sucesso")
                     {
-                        pessoas.ImagemPerfil = nomearq;
+                        pessoas.Imagem = nomearquivo;
                         db.Pessoas.Add(pessoas);
                         db.SaveChanges();
                         return RedirectToAction("Index");
@@ -93,20 +93,20 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,ImagemPerfil,NomeContato,TelefoneContato,TipoUsuario")] Pessoas pessoas, HttpPostedFileBase arq)
+        public ActionResult Edit([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,ImagemPerfil,NomeContato,TelefoneContato,TipoUsuario")] Pessoas pessoas, HttpPostedFileBase arquivoimg)
         {
             string valor = "";
             if (ModelState.IsValid)
             {
-                if (arq != null)
+                if (arquivoimg != null)
                 {
-                    Uploads.CriarDiretorio();
-                    string nomearq = DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(arq.FileName);
-                    valor = Uploads.UploadArquivo(arq, nomearq);
+                    Upload.CriarDiretorio();
+                    string nomearquivo = DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(arquivoimg.FileName);
+                    valor = Upload.UploadArquivo(arquivoimg, nomearquivo);
                     if (valor == "sucesso")
                     {
-                        Uploads.ExcluirArquivo(Request.PhysicalApplicationPath + "Uploads\\" + pessoas.ImagemPerfil);
-                        pessoas.ImagemPerfil = nomearq;
+                        Upload.ExcluirArquivo(Request.PhysicalApplicationPath + "Uploads\\" + pessoas.Imagem);
+                        pessoas.Imagem = nomearquivo;
                         db.Entry(pessoas).State = EntityState.Modified;
                         db.SaveChanges();
                     }
@@ -142,7 +142,7 @@ namespace BikeSegura.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Pessoas pessoas = db.Pessoas.Find(id);
-            Uploads.ExcluirArquivo(Request.PhysicalApplicationPath + "Uploads\\" + pessoas.ImagemPerfil);
+            Upload.ExcluirArquivo(Request.PhysicalApplicationPath + "Uploads\\" + pessoas.Imagem);
             db.Pessoas.Remove(pessoas);
             db.SaveChanges();
             return RedirectToAction("Index");
