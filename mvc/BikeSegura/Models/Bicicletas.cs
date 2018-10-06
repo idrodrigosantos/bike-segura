@@ -26,9 +26,6 @@ namespace BikeSegura.Models
         [MaxLength(40, ErrorMessage = "Cor deve ter no máximo 40 caracteres")]
         public string Cor { get; set; }
 
-        [DisplayName("Fotos da Bicicleta")]
-        public string Imagem { get; set; }
-
         public int? CambiosDianteirosId { get; set; }
         public int? CambiosTraseirosId { get; set; }
         public int? FreiosId { get; set; }
