@@ -55,7 +55,7 @@ namespace BikeSegura.Controllers
                 if (arquivoimg != null)
                 {
                     Upload.CriarDiretorio();
-                    string nomearquivo = DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(arquivoimg.FileName);
+                    string nomearquivo = "perfil" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(arquivoimg.FileName);
                     valor = Upload.UploadArquivo(arquivoimg, nomearquivo);
                     if (valor == "sucesso")
                     {
@@ -101,7 +101,7 @@ namespace BikeSegura.Controllers
                 if (arquivoimg != null)
                 {
                     Upload.CriarDiretorio();
-                    string nomearquivo = DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(arquivoimg.FileName);
+                    string nomearquivo = "perfil" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(arquivoimg.FileName);
                     valor = Upload.UploadArquivo(arquivoimg, nomearquivo);
                     if (valor == "sucesso")
                     {
