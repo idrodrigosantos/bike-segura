@@ -287,6 +287,23 @@
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\v4-shims.js" />
     <Content Include="Scripts\v4-shims.min.js" />
+    <Content Include="Uploads\caloi-10.jpg" />
+    <Content Include="Uploads\caloi-100.jpg" />
+    <Content Include="Uploads\caloi-andes.jpg" />
+    <Content Include="Uploads\caloi-montana.jpg" />
+    <Content Include="Uploads\caloi-trs.jpg" />
+    <Content Include="Uploads\caloi-ttype.jpg" />
+    <Content Include="Uploads\caloi-twister.jpg" />
+    <Content Include="Uploads\perfil01.jpg" />
+    <Content Include="Uploads\perfil02.jpg" />
+    <Content Include="Uploads\perfil03.jpg" />
+    <Content Include="Uploads\perfil04.jpg" />
+    <Content Include="Uploads\perfil05.jpg" />
+    <Content Include="Uploads\perfil06.jpg" />
+    <Content Include="Uploads\perfil07.jpg" />
+    <Content Include="Uploads\perfil08.jpg" />
+    <Content Include="Uploads\perfil09.jpg" />
+    <Content Include="Uploads\perfil10.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
