@@ -49,23 +49,6 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-
-    @*Ação para apagar a imagem sem atualizar a página*@
-    <script>
-    $(".excluirfoto").click(function () {
-        var id = $(this).attr("rel");
-        $.ajax({
-            dataType: "json",
-            type: "POST",
-            url: "/Imagens/ExcluirFoto",
-            data: { id },
-            success: function (dados) {
-                if (dados == "s")
-                    location.reload();
-            }
-        });
-    });
-    </script>
+    @RenderSection("scripts", required: false)    
 </body>
 </html>

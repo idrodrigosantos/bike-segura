@@ -63,7 +63,6 @@ namespace BikeSegura.Controllers
                 //return RedirectToAction("Index");
                 return RedirectToAction("Create", "NumerosSeries", new { id = numerosSeries.BicicletasId });
             }
-
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", numerosSeries.BicicletasId);
             return View(numerosSeries);
         }

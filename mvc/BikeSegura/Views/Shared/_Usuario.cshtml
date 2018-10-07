@@ -34,6 +34,10 @@
                                 <i class="fas fa-list"></i>
                                 Minhas Bicicletas
                             </a>
+                            <a class="dropdown-item" href="@Url.Action("Create", "Imagens")">
+                                <i class="fas fa-file-image"></i>
+                                Adicionar Fotos da Bicicleta
+                            </a>
                             <a class="dropdown-item" href="@Url.Action("Create", "Bicicletas")">
                                 <i class="fas fa-pen"></i>
                                 Cadastrar Bicicletas
@@ -80,7 +84,24 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")    
+    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    @*Ação para apagar a imagem sem atualizar a página*@
+    <script>
+    $(".excluirfoto").click(function () {
+        var id = $(this).attr("rel");
+        $.ajax({
+            dataType: "json",
+            type: "POST",
+            url: "/Imagens/ExcluirFoto",
+            data: { id },
+            success: function (dados) {
+                if (dados == "s")
+                    location.reload();
+            }
+        });
+    });
+    </script>
 </body>
 </html>
