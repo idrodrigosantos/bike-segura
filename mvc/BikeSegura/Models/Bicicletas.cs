@@ -33,6 +33,10 @@ namespace BikeSegura.Models
         public int? ArosId { get; set; }
         public int? QuadrosId { get; set; }
 
+        [DisplayName("Tamanho do Quadro")]
+        [MaxLength(20, ErrorMessage = "Tamanho do quadro deve ter no máximo 20 caracteres")]
+        public string Tamanho { get; set; }
+
         [DisplayName("Informações Adicionais")]
         public string Informacoes { get; set; }
 
