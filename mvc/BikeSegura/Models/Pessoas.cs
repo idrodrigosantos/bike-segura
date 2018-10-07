@@ -167,9 +167,14 @@ namespace BikeSegura.Models
         public string NomeContato { get; set; }
 
         [DisplayName("Telefone de Contato")]
-        [MinLength(11, ErrorMessage = "Telefone para contato deve ter no mínimo 11 caracteres")]
-        [MaxLength(15, ErrorMessage = "Telefone para contato deve ter no máximo 15 caracteres")]
+        [MinLength(10, ErrorMessage = "Telefone para contato deve ter no mínimo 14 caracteres")]
+        [MaxLength(14, ErrorMessage = "Telefone para contato deve ter no máximo 14 caracteres")]
         public string TelefoneContato { get; set; }
+
+        [DisplayName("Celular de Contato")]
+        [MinLength(11, ErrorMessage = "Celular deve ter no mínimo 11 caracteres")]
+        [MaxLength(15, ErrorMessage = "Celular deve ter no máximo 15 caracteres")]
+        public string CelularContato { get; set; }
 
         [DisplayName("Tipo de Usuário")]
         [EnumDataType(typeof(OpcaoUsuario))]

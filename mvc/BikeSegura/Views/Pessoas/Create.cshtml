@@ -80,17 +80,17 @@
                 @Html.EditorFor(model => model.Celular, new { htmlAttributes = new { @class = "form-control celmask" } })
                 @Html.ValidationMessageFor(model => model.Celular, "", new { @class = "text-danger" })
             </div>
-            <div class="form-group col-sm-12 col-md-6">
+            <div class="form-group col-sm-12 col-md-4">
                 @Html.LabelFor(model => model.Cpf, htmlAttributes: new { @class = "control-label" })
                 @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control cpfmask" } })
                 @Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
             </div>
-            <div class="form-group col-sm-12 col-md-6">
+            <div class="form-group col-sm-6 col-md-4">
                 @Html.LabelFor(model => model.DataNascimento, htmlAttributes: new { @class = "control-label" })
                 @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control nascmask" } })
                 @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
             </div>
-            <div class="form-group col-sm-6">
+            <div class="form-group col-sm-6 col-md-4">
                 @Html.LabelFor(model => model.Genero, htmlAttributes: new { @class = "control-label" })
                 <div class="form-check">
                     @Html.RadioButtonFor(model => model.Genero, "M")
@@ -102,21 +102,26 @@
                 </div>
                 @Html.ValidationMessageFor(model => model.Genero, "", new { @class = "text-danger" })
             </div>
-            <div class="col-sm-6">
-                @Html.LabelFor(model => model.Imagem, htmlAttributes: new { @class = "control-label" })                
-                <input type="file" name="arquivoimg" class="form-control-file" />
-                @Html.ValidationMessageFor(model => model.Imagem, "", new { @class = "text-danger" })
-            </div>
-            <div class="form-group col-sm-6">
-                @Html.LabelFor(model => model.NomeContato, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.NomeContato, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NomeContato, "", new { @class = "text-danger" })
-            </div>
-            <div class="form-group col-sm-6">
-                @Html.LabelFor(model => model.TelefoneContato, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.TelefoneContato, new { htmlAttributes = new { @class = "form-control telcontmask" } })
-                @Html.ValidationMessageFor(model => model.TelefoneContato, "", new { @class = "text-danger" })
-            </div>
+            @*<div class="col-sm-6">
+                    @Html.LabelFor(model => model.Imagem, htmlAttributes: new { @class = "control-label" })
+                    <input type="file" name="arquivoimg" class="form-control-file" />
+                    @Html.ValidationMessageFor(model => model.Imagem, "", new { @class = "text-danger" })
+                </div>*@
+            @*<div class="form-group col-sm-12 col-md-4">
+                    @Html.LabelFor(model => model.NomeContato, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.NomeContato, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NomeContato, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-sm-6 col-md-4">
+                    @Html.LabelFor(model => model.TelefoneContato, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.TelefoneContato, new { htmlAttributes = new { @class = "form-control telmask" } })
+                    @Html.ValidationMessageFor(model => model.TelefoneContato, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-sm-6 col-md-4">
+                    @Html.LabelFor(model => model.CelularContato, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.CelularContato, new { htmlAttributes = new { @class = "form-control celmask" } })
+                    @Html.ValidationMessageFor(model => model.CelularContato, "", new { @class = "text-danger" })
+                </div>*@
             @*<div class="form-group col-sm-12">
                     @Html.LabelFor(model => model.TipoUsuario, htmlAttributes: new { @class = "control-label" })
                     @Html.EnumDropDownListFor(model => model.TipoUsuario, htmlAttributes: new { @class = "form-control" })
