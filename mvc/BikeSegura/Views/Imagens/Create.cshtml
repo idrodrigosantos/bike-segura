@@ -17,7 +17,7 @@
                 @Html.ValidationMessageFor(model => model.Imagem, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-6">
-                @Html.LabelFor(model => model.BicicletasId, "BicicletasId", htmlAttributes: new { @class = "control-label" })
+                @Html.LabelFor(model => model.BicicletasId, "Bicicleta", htmlAttributes: new { @class = "control-label" })
                 @Html.DropDownList("BicicletasId", (SelectList)ViewBag.MyList, "Selecione Bicicleta", new { @class = "form-control" })                
                 @Html.ValidationMessageFor(model => model.BicicletasId, "", new { @class = "text-danger" })
             </div>
