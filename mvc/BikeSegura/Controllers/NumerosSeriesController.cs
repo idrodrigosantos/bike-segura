@@ -19,13 +19,11 @@ namespace BikeSegura.Controllers
         {
             var numerosSeries = db.NumerosSeries.Include(n => n.Bicicletas);
             return View(numerosSeries.ToList());
-        }        
+        }
 
         // GET: NumerosSeries/Details/5
         public ActionResult Details(int? id)
         {
-
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -39,7 +37,7 @@ namespace BikeSegura.Controllers
         }
 
         // GET: NumerosSeries/Create
-        
+
         //public ActionResult Create()
         public ActionResult Create(int? id)
         {
@@ -47,7 +45,7 @@ namespace BikeSegura.Controllers
             if (id == null)
                 ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo");
             else
-                ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w=> w.Id == id), "Id", "Modelo");
+                ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Id == id), "Id", "Modelo");
             return View();
         }
 
@@ -142,13 +140,15 @@ namespace BikeSegura.Controllers
         {
             if (id != null)
             {
-                var bic = db.NumerosSeries.Where(w => w.Numero == id).FirstOrDefault(); return View(bic);
+                var bic = db.NumerosSeries.Where(w => w.Numero == id).FirstOrDefault();
+                //return View(bic);
+                return RedirectToAction("Details", "NumerosSeries", new { id = bic.Id });
             }
             else
             {
                 return View();
+                //return RedirectToAction("Index", "NumerosSeries");
             }
-
         }
     }
 }
