@@ -6,34 +6,45 @@
 }
 
 <div class="container conteudo">
-    <div class="row">
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Bicicletas.Modelo)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Bicicletas.Modelo)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Numero)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Numero)</label>
-        </div>
-        <div class="form-group col-sm-12">
-            <div class="botao-salvar">
-                @using (Html.BeginForm())
-                {
-                    @Html.AntiForgeryToken()
-                    <a class="btn btn-success" href="@Url.Action("Index", "NumerosSeries")" role="button">
-                        <i class="fas fa-reply"></i>
-                        Voltar
-                    </a>
-                    <button type="submit" value="Delete" class="btn btn-danger">
-                        <i class="fas fa-times"></i>
-                        Excluir
-                    </button>
-                }
-            </div>
-        </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Bicicletas.Modelo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Numero)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.Bicicletas.Modelo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Numero)
+                    </td>
+                    <td>
+                        <div class="btn" role="group">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+                                <a class="btn btn-success" href="@Url.Action("Index", "NumerosSeries")" role="button">
+                                    <i class="fas fa-reply"></i>
+                                    Voltar
+                                </a>
+                                <button type="submit" value="Delete" class="btn btn-danger">
+                                    <i class="fas fa-times"></i>
+                                    Excluir
+                                </button>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

@@ -6,48 +6,62 @@
 }
 
 <div class="container conteudo">
-    <div class="row">
-        <div class="col-sm-6">
-            <label><strong>Roubo</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.InformacoesRoubos.Relato)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>Relator</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Pessoas.Nome)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Relato)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Relato)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Local)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Local)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Data)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Data)</label>
-        </div>
-        <div class="form-group col-sm-12">
-            <div class="botao-salvar">
-                <a class="btn btn-success" href="@Url.Action("Index", "RelatosRoubos")" role="button">
-                    <i class="fas fa-reply"></i>
-                    Voltar
-                </a>
-                <a class="btn btn-primary" href="@Url.Action("Edit", "RelatosRoubos", new { id = Model.Id })" role="button">
-                    <i class="fas fa-pen"></i>
-                    Editar
-                </a>
-            </div>
-        </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Roubo
+                    </th>
+                    <th>
+                        Relator
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Relato)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Local)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.InformacoesRoubos.Relato)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Pessoas.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Relato)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Local)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Data)
+                    </td>
+                    <td>
+                        <div class="btn" role="group">
+                            @using (Html.BeginForm())
+                            {
+                                <a class="btn btn-success" href="@Url.Action("Index", "RelatosRoubos")" role="button">
+                                    <i class="fas fa-reply"></i>
+                                    Voltar
+                                </a>
+                                <a class="btn btn-primary" href="@Url.Action("Edit", "RelatosRoubos", new { id = Model.Id })" role="button">
+                                    <i class="fas fa-pen"></i>
+                                    Editar
+                                </a>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

@@ -6,54 +6,68 @@
 }
 
 <div class="container conteudo">
-    <div class="row">
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Bicicletas.Modelo)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Bicicletas.Modelo)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>Vendedor</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Vendedor.Nome)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>Comprador</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Comprador.Nome)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.SituacaoAtual)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.SituacaoAtual)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.DataAquisicao)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.DataAquisicao)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.DataTransferencia)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.DataTransferencia)</label>
-        </div>
-        <div class="form-group col-sm-12">
-            <div class="botao-salvar">
-                <a class="btn btn-success" href="@Url.Action("Index", "Historicos")" role="button">
-                    <i class="fas fa-reply"></i>
-                    Voltar
-                </a>
-                <a class="btn btn-primary" href="@Url.Action("Edit", "Historicos", new { id = Model.Id })" role="button">
-                    <i class="fas fa-pen"></i>
-                    Editar
-                </a>
-            </div>
-        </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Bicicletas.Modelo)
+                    </th>
+                    <th>
+                        Vendedor
+                    </th>
+                    <th>
+                        Comprador
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SituacaoAtual)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataAquisicao)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataTransferencia)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.Bicicletas.Modelo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Vendedor.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Comprador.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.SituacaoAtual)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.DataAquisicao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.DataTransferencia)
+                    </td>
+                    <td>
+                        <div class="btn" role="group">
+                            @using (Html.BeginForm())
+                            {
+                                <a class="btn btn-success" href="@Url.Action("Index", "Historicos")" role="button">
+                                    <i class="fas fa-reply"></i>
+                                    Voltar
+                                </a>
+                                <a class="btn btn-primary" href="@Url.Action("Edit", "Historicos", new { id = Model.Id })" role="button">
+                                    <i class="fas fa-pen"></i>
+                                    Editar
+                                </a>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
