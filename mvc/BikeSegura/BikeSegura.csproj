@@ -419,6 +419,7 @@
     <Content Include="Views\Imagens\Details.cshtml" />
     <Content Include="Views\Imagens\Edit.cshtml" />
     <Content Include="Views\Imagens\Index.cshtml" />
+    <Content Include="Views\NumerosSeries\Buscar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

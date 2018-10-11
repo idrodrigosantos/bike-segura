@@ -19,11 +19,13 @@ namespace BikeSegura.Controllers
         {
             var numerosSeries = db.NumerosSeries.Include(n => n.Bicicletas);
             return View(numerosSeries.ToList());
-        }
+        }        
 
         // GET: NumerosSeries/Details/5
         public ActionResult Details(int? id)
         {
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -133,6 +135,20 @@ namespace BikeSegura.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        // Buscar Número de Série
+        public ActionResult Buscar(string id)
+        {
+            if (id != null)
+            {
+                var bic = db.NumerosSeries.Where(w => w.Numero == id).FirstOrDefault(); return View(bic);
+            }
+            else
+            {
+                return View();
+            }
+
         }
     }
 }

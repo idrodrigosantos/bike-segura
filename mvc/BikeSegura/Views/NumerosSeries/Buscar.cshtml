@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Buscar";
+}
+
+<h2>Buscar</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <input type="text" name="id" />
+
+    <button id="Buscar" value="Buscar" name="Buscar" formmethod="post">Buscar</button>
+}
