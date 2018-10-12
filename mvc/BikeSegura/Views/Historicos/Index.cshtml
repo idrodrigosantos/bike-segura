@@ -53,11 +53,11 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.SituacaoAtual)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DataAquisicao)
+                        <td>                            
+                            @item.DataAquisicao.ToString("dd/MM/yyyy")
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DataTransferencia)
+                        <td>                            
+                            @item.DataTransferencia.ToString("dd/MM/yyyy")
                         </td>
                         <td>
                             <div class="btn" role="group">

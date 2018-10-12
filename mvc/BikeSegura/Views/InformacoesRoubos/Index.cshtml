@@ -44,8 +44,8 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Local)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Data)
+                        <td>                          
+                            @item.Data.ToString("dd/MM/yyyy")
                         </td>
                         <td>
                             <div class="btn" role="group">

@@ -131,7 +131,7 @@
                             @Html.DisplayFor(modelItem => item.Cpf)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.DataNascimento)
+                            @item.DataNascimento.Value.ToString("dd/MM/yyyy")
                         </td>
                         @*<td>
                                 @Html.DisplayFor(modelItem => item.Genero)
