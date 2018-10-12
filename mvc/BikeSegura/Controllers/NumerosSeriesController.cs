@@ -37,7 +37,6 @@ namespace BikeSegura.Controllers
         }
 
         // GET: NumerosSeries/Create
-
         //public ActionResult Create()
         public ActionResult Create(int? id)
         {
@@ -140,10 +139,10 @@ namespace BikeSegura.Controllers
         {
             if (id != null)
             {
-                var bic = db.NumerosSeries.Where(w => w.Numero == id).FirstOrDefault();
-                if (bic != null)
+                var numeroserie = db.NumerosSeries.Where(w => w.Numero == id).FirstOrDefault();
+                if (numeroserie != null)
                 {
-                    return RedirectToAction("Details", "NumerosSeries", new { id = bic.Id });
+                    return RedirectToAction("Details", "NumerosSeries", new { id = numeroserie.Id });
                 }
                 else
                 {
