@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
     <!-- Estilos personalizados para este modelo -->
-    <link href="css/formularios.css" rel="stylesheet">
+    <link href="css/meu-estilo.css" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link href="font-awesome/css/all.css" rel="stylesheet">
@@ -28,12 +28,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            <i class="fas fa-home"></i>
-                            Página Inicial
-                        </a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="consultar_bicicletas.html">
                             <i class="fas fa-search"></i>
@@ -153,8 +147,8 @@
                         <option value="ES">Espirito Santo</option>
                         <option value="GO">Goiás</option>
                         <option value="MA">Maranhão</option>
-                        <option value="MS">Mato Grosso do Sul</option>
                         <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
                         <option value="MG">Minas Gerais</option>
                         <option value="PA">Pará</option>
                         <option value="PB">Paraíba</option>
@@ -186,7 +180,7 @@
                     <label>Telefone</label>
                 </div>
                 <div class="form-group col-sm-8 col-md-5 col-lg-5">
-                    <input type="text" class="form-control" placeholder="Telefone">
+                    <input type="text" class="form-control telmask" placeholder="Telefone">
                 </div>
                 <div class="form-group col-sm-12 col-md-4 col-lg-4">
                     <div class="form-check form-check-inline">
@@ -202,7 +196,7 @@
                     <label>Celular</label>
                 </div>
                 <div class="form-group col-sm-8 col-md-5 col-lg-5">
-                    <input type="text" class="form-control" placeholder="Celular">
+                    <input type="text" class="form-control celmask" placeholder="Celular">
                 </div>
                 <div class="form-group col-sm-12 col-md-4 col-lg-4">
                     <div class="form-check form-check-inline">
@@ -214,7 +208,6 @@
                         <label class="form-check-label" for="inlineRadio2">Privado</label>
                     </div>
                 </div>
-
                 <div class="form-group col-sm-4 col-md-3 col-lg-3">
                     <label>Foto do Perfil</label>
                 </div>
@@ -235,7 +228,7 @@
                     <label>Em Caso de Acidente Contatar</label>
                 </div>
                 <div class="form-group col-sm-4 col-md-3 col-lg-3">
-                    <label>Nome</label>
+                    <label>Nome Contato</label>
                 </div>
                 <div class="form-group col-sm-8 col-md-5 col-lg-5">
                     <input type="text" class="form-control" placeholder="Nome">
@@ -251,10 +244,26 @@
                     </div>
                 </div>
                 <div class="form-group col-sm-4 col-md-3 col-lg-3">
-                    <label>Telefone</label>
+                    <label>Telefone Contato</label>
                 </div>
                 <div class="form-group col-sm-8 col-md-5 col-lg-5">
-                    <input type="text" class="form-control" placeholder="Telefone">
+                    <input type="text" class="form-control telmask" placeholder="Telefone">
+                </div>
+                <div class="form-group col-sm-12 col-md-4 col-lg-4">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio">
+                        <label class="form-check-label" for="inlineRadio1">Público</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio">
+                        <label class="form-check-label" for="inlineRadio2">Privado</label>
+                    </div>
+                </div>
+                <div class="form-group col-sm-4 col-md-3 col-lg-3">
+                    <label>Celular Contato</label>
+                </div>
+                <div class="form-group col-sm-8 col-md-5 col-lg-5">
+                    <input type="text" class="form-control celmask" placeholder="Celular">
                 </div>
                 <div class="form-group col-sm-12 col-md-4 col-lg-4">
                     <div class="form-check form-check-inline">
@@ -293,6 +302,15 @@
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
+    <!-- jQuery Mask -->
+    <script src="js/jquery.mask.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.telmask').mask('(00) 0000-0000', { placeholder: "(DD) 0000-0000" });
+            $('.celmask').mask('(00) 00000-0000', { placeholder: "(DD) 00000-0000" });
+        });
+    </script>
 </body>
 
 </html>

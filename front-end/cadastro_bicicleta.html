@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
     <!-- Estilos personalizados para este modelo -->
-    <link href="css/formularios.css" rel="stylesheet">
+    <link href="css/meu-estilo.css" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link href="font-awesome/css/all.css" rel="stylesheet">
@@ -28,12 +28,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            <i class="fas fa-home"></i>
-                            Página Inicial
-                        </a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="consultar_bicicletas.html">
                             <i class="fas fa-search"></i>
@@ -91,8 +85,6 @@
             <div class="row">
                 <div class="form-group col-sm-12">
                     <label>Número de Série da Bicicleta*</label>
-                </div>
-                <div class="form-group col-sm-12">
                     <input type="text" class="form-control" placeholder="Número de Série">
                 </div>
                 <div class="form-group col-sm-12">
@@ -105,47 +97,9 @@
                     <label>Marca*</label>
                     <select class="form-control">
                         <option>Selecione Marca</option>
-                        <option>Audax</option>
-                        <option>Bianchi</option>
-                        <option>BMC</option>
-                        <option>Bridgestone</option>
-                        <option>Caloi</option>
-                        <option>Cannondale</option>
-                        <option>Cervelo</option>
-                        <option>Dahon</option>
-                        <option>Dalannio</option>
-                        <option>De Rosa</option>
-                        <option>Diamondback</option>
-                        <option>Eddy Merckx</option>
-                        <option>Felt</option>
-                        <option>Focus</option>
-                        <option>FSC</option>
-                        <option>Fuji</option>
-                        <option>Giant</option>
-                        <option>Groove</option>
-                        <option>GT</option>
-                        <option>Hoffmann</option>
-                        <option>Jamis</option>
-                        <option>Kestrel</option>
-                        <option>Kona</option>
-                        <option>Kross</option>
-                        <option>Marin</option>
-                        <option>Merlin</option>
-                        <option>Mérida</option>
-                        <option>MMR</option>
-                        <option>Motobecane</option>
-                        <option>Oggi</option>
-                        <option>Pinarello</option>
-                        <option>Raleigh</option>
-                        <option>Salsa</option>
-                        <option>Santa Cruz</option>
-                        <option>Scott</option>
-                        <option>Sense</option>
-                        <option>Soma</option>
-                        <option>Soul</option>
-                        <option>Specialized</option>
-                        <option>Surly</option>
-                        <option>Trek</option>
+                        <option>Marca A</option>
+                        <option>Marca B</option>
+                        <option>Marca C</option>
                         <option>OUTRA</option>
                     </select>
                 </div>
@@ -174,9 +128,13 @@
                     <label>Cor*</label>
                     <input type="text" class="form-control" placeholder="Cor">
                 </div>
-                <div class="form-group col-sm-12">
+                <div class="form-group col-sm-6">
                     <label>Fotos da Bicicleta</label>
                     <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                </div>
+                <div class="form-group col-sm-6">
+                    <label>Tamanho do Quadro</label>
+                    <input type="text" class="form-control" placeholder="Tamanho do Quadro">
                 </div>
                 <div class="form-group col-sm-6">
                     <label>Câmbio dianteiro</label>
@@ -201,7 +159,7 @@
                         <option>8 velocidades</option>
                         <option>9 velocidades</option>
                         <option>10 velocidade</option>
-                        <option>11 velocidades</option>                        
+                        <option>11 velocidades</option>
                     </select>
                 </div>
                 <div class="form-group col-sm-6">

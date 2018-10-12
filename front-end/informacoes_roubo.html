@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
     <!-- Estilos personalizados para este modelo -->
-    <link href="css/formularios.css" rel="stylesheet">
+    <link href="css/meu-estilo.css" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link href="font-awesome/css/all.css" rel="stylesheet">
@@ -88,23 +88,22 @@
     </nav>
     <div class="container conteudo">
         <div class="row">
-            <div class="col-sm-6">
-                <label>Bicicleta</label>
-            </div>
-            <div class="form-group col-sm-6">
-                <label>Bicicleta A</label>
-            </div>
-            <div class="form-group col-sm-6">
-                <label>Local</label>
-            </div>
-            <div class="form-group col-sm-6">
+            <div class="form-group col-sm-12">
+                <label>Local onde a bicicleta foi roubada</label>
                 <input type="text" class="form-control" placeholder="Local">
             </div>
             <div class="form-group col-sm-6">
-                <label>Data</label>
+                <label>Data do Roubo</label>
+                <input type="text" class="form-control data" placeholder="Data">
             </div>
             <div class="form-group col-sm-6">
-                <input type="text" class="form-control" placeholder="Data">
+                <label>Bicicleta</label>
+                <select class="form-control">
+                    <option>Selecione Bicicleta</option>
+                    <option>Bicicleta A</option>
+                    <option>Bicicleta B</option>
+                    <option>Bicicleta C</option>
+                </select>
             </div>
             <div class="form-group col-sm-12">
                 <label>Informações adicionais</label>
@@ -118,7 +117,7 @@
                     </button>
                     <button type="button" class="btn btn-success">
                         <i class="fas fa-save"></i>
-                        Enviar
+                        Salvar
                     </button>
                 </div>
             </div>
@@ -136,6 +135,14 @@
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
+    <!-- jQuery Mask -->
+    <script src="js/jquery.mask.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.data').mask('00/00/0000', { placeholder: "00/00/0000" });
+        });
+    </script>
 </body>
 
 </html>
