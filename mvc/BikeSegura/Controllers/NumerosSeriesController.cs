@@ -141,13 +141,19 @@ namespace BikeSegura.Controllers
             if (id != null)
             {
                 var bic = db.NumerosSeries.Where(w => w.Numero == id).FirstOrDefault();
-                //return View(bic);
-                return RedirectToAction("Details", "NumerosSeries", new { id = bic.Id });
+                if (bic != null)
+                {
+                    return RedirectToAction("Details", "NumerosSeries", new { id = bic.Id });
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Número de série não foi encontrado");
+                    return View();
+                }
             }
             else
             {
                 return View();
-                //return RedirectToAction("Index", "NumerosSeries");
             }
         }
     }
