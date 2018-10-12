@@ -22,8 +22,8 @@ namespace BikeSegura.Models
         public string Local { get; set; }
 
         [DisplayName("Data do Roubo")]
-        //[DataType(DataType.Date)]
-        //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Data { get; set; }
 
         [Required(ErrorMessage = "Bicicleta é obrigatório")]

@@ -144,8 +144,8 @@ namespace BikeSegura.Models
         public string Cpf { get; set; }
 
         [DisplayName("Data de Nascimento")]
-        //[DataType(DataType.Date)]
-        //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = false)]        
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]        
         public DateTime? DataNascimento { get; set; }
 
         [DisplayName("Gênero")]
