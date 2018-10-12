@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
     <!-- Estilos personalizados para este modelo -->
-    <link href="css/formularios.css" rel="stylesheet">
+    <link href="css/meu-estilo.css" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link href="font-awesome/css/all.css" rel="stylesheet">
@@ -28,12 +28,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            <i class="fas fa-home"></i>
-                            Página Inicial
-                        </a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="consultar_bicicletas.html">
                             <i class="fas fa-search"></i>
@@ -90,36 +84,47 @@
         <form>
             <div class="row">
                 <div class="form-group col-sm-6">
-                    <label>Proprietário Atual</label>
-                </div>
-                <div class="form-group col-sm-6">
-                    <label>Nome A</label>
-                </div>
-                <div class="form-group col-sm-6">
-                    <label>Bicicleta para transferir</label>
-                </div>
-                <div class="form-group col-sm-6">
+                    <label>Situação Atual*</label>
                     <select class="form-control">
-                        <option>Selecione bicicleta</option>
-                        <option>Bicicleta 1</option>
-                        <option>Bicicleta 2</option>
-                        <option>Bicicleta 3</option>
+                        <option>Interno</option>
+                        <option>Externo</option>
+                        <option>Sim</option>
                     </select>
                 </div>
-                <div class="form-group col-sm-12">
-                    <label>Novo Proprietário</label>
-                </div>
-                <div class="form-group col-sm-12">
-                    <label>Nome*</label>
-                    <input type="text" class="form-control" placeholder="Nome">
+                <div class="form-group col-sm-6">
+                    <label>Bicicleta*</label>
+                    <select class="form-control">
+                        <option>Selecione Bicicleta</option>
+                        <option>Bicicleta A</option>
+                        <option>Bicicleta B</option>
+                        <option>Bicicleta C</option>
+                    </select>
                 </div>
                 <div class="form-group col-sm-6">
-                    <label>Email*</label>
-                    <input type="text" class="form-control" placeholder="Email">
+                    <label>Data de Aquisição*</label>
+                    <input type="text" class="form-control data" placeholder="Data">
                 </div>
                 <div class="form-group col-sm-6">
-                    <label>Telefone*</label>
-                    <input type="text" class="form-control" placeholder="Telefone">
+                    <label>Data de Transferência*</label>
+                    <input type="text" class="form-control data" placeholder="Data">
+                </div>
+                <div class="form-group col-sm-6">
+                    <label>Vendedor*</label>
+                    <select class="form-control">
+                        <option>Selecione Vendedor</option>
+                        <option>Vendedor A</option>
+                        <option>Vendedor B</option>
+                        <option>Vendedor C</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label>Comprador*</label>
+                    <select class="form-control">
+                        <option>Selecione Comprador</option>
+                        <option>Comprador 1</option>
+                        <option>Comprador 2</option>
+                        <option>Comprador 3</option>
+                    </select>
                 </div>
                 <div class="form-group col-sm-12">
                     <div class="botao-salvar">
@@ -127,9 +132,9 @@
                             <i class="fas fa-times"></i>
                             Cancelar
                         </button>
-                        <button type="button" class="btn btn-warning">
+                        <button type="button" class="btn btn-success">
                             <i class="fas fa-save"></i>
-                            Transferir
+                            Salvar
                         </button>
                     </div>
                 </div>
@@ -148,6 +153,14 @@
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
+    <!-- jQuery Mask -->
+    <script src="js/jquery.mask.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.data').mask('00/00/0000', { placeholder: "00/00/0000" });
+        });
+    </script>
 </body>
 
 </html>
