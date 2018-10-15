@@ -10,7 +10,10 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top barra-superior">
         <div class="container">
-            @Html.ActionLink("Bike Segura", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <a class="navbar-brand" href="index.html">
+                <img src="~/Img/logo.jpg" class="d-inline-block align-top imagem-logo" alt="">
+                @Html.ActionLink("Bike Segura", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -25,11 +28,11 @@
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    <a class="btn btn-outline-primary" href="@Url.Action("Create", "Pessoas")" role="button">
+                    <a class="btn btn-outline-light" href="@Url.Action("Create", "Pessoas")" role="button">
                         <i class="fas fa-pen"></i>
                         Cadastre-se
                     </a>
-                    <button class="btn btn-outline-primary espaco-botao-navbar" type="submit">
+                    <button class="btn btn-outline-light espaco-botao-navbar" type="submit">
                         <i class="fas fa-sign-in-alt"></i>
                         Entrar
                     </button>
@@ -49,6 +52,6 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)    
+    @RenderSection("scripts", required: false)
 </body>
 </html>
