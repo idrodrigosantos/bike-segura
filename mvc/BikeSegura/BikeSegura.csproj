@@ -210,6 +210,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\brands.css" />
     <Content Include="Content\brands.min.css" />
+    <Content Include="Content\Estilo.css" />
     <Content Include="Content\fontawesome.css" />
     <Content Include="Content\fontawesome.min.css" />
     <Content Include="Content\regular.css" />
@@ -222,7 +223,6 @@
     <Content Include="Content\v4-shims.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\meu-estilo.css" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -232,6 +232,7 @@
     <Content Include="Img\bicicleta04_quadrado.jpg" />
     <Content Include="Img\bicicleta05_quadrado.jpg" />
     <Content Include="Img\bicicleta06_quadrado.jpg" />
+    <Content Include="Img\logo.jpg" />
     <Content Include="Scripts\all.js" />
     <Content Include="Scripts\all.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -420,6 +421,18 @@
     <Content Include="Views\Imagens\Edit.cshtml" />
     <Content Include="Views\Imagens\Index.cshtml" />
     <Content Include="Views\NumerosSeries\Buscar.cshtml" />
+    <Content Include="webfonts\Roboto-Black.ttf" />
+    <Content Include="webfonts\Roboto-BlackItalic.ttf" />
+    <Content Include="webfonts\Roboto-Bold.ttf" />
+    <Content Include="webfonts\Roboto-BoldItalic.ttf" />
+    <Content Include="webfonts\Roboto-Italic.ttf" />
+    <Content Include="webfonts\Roboto-Light.ttf" />
+    <Content Include="webfonts\Roboto-LightItalic.ttf" />
+    <Content Include="webfonts\Roboto-Medium.ttf" />
+    <Content Include="webfonts\Roboto-MediumItalic.ttf" />
+    <Content Include="webfonts\Roboto-Regular.ttf" />
+    <Content Include="webfonts\Roboto-Thin.ttf" />
+    <Content Include="webfonts\Roboto-ThinItalic.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
