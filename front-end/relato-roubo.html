@@ -32,7 +32,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="consultar_bicicletas.html">
+                        <a class="nav-link" href="consultar-bicicletas.html">
                             <i class="fas fa-search"></i>
                             Consultar Bicicletas
                         </a>
@@ -44,11 +44,11 @@
                             Bicicletas
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="lista_bicicletas.html">
+                            <a class="dropdown-item" href="lista-bicicletas.html">
                                 <i class="fas fa-list"></i>
                                 Minhas Bicicletas
                             </a>
-                            <a class="dropdown-item" href="cadastro_bicicleta.html">
+                            <a class="dropdown-item" href="cadastro-bicicleta.html">
                                 <i class="fas fa-pen"></i>
                                 Cadastrar Bicicletas
                             </a>
@@ -65,7 +65,7 @@
                         <span class="sr-only">Dropdown</span>
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="perfil_usuario.html">
+                        <a class="dropdown-item" href="perfil-usuario.html">
                             <i class="fas fa-user-edit"></i>
                             Editar Perfil
                         </a>
@@ -84,20 +84,50 @@
         </div>
     </nav>
     <div class="container conteudo">
-        <form>
-            <div class="row">
-                <div class="form-group col-sm-12">
-                    <label>Número de Série da Bicicleta</label>
-                    <input type="text" class="form-control" placeholder="Número de Série">
-                </div>
-                <div class="form-group col-sm-12">
-                    <a class="btn btn-primary" href="perfil_bicicleta.html" role="button">
-                        <i class="fas fa-search"></i>
-                        Pesquisar Bicicleta
-                    </a>
+        <div class="row">
+            <div class="form-group col-sm-6">
+                <label>Local onde a bicicleta roubada foi vista</label>
+                <input type="text" class="form-control" placeholder="Local">
+            </div>
+            <div class="form-group col-sm-6">
+                <label>Data que a bicicleta roubada foi vista</label>
+                <input type="text" class="form-control data" placeholder="Data">
+            </div>
+            <div class="form-group col-sm-6">
+                <label>Relator</label>
+                <select class="form-control">
+                    <option>Selecione Relator</option>
+                    <option>Relator A</option>
+                    <option>Relator B</option>
+                    <option>Relator C</option>
+                </select>
+            </div>
+            <div class="form-group col-sm-6">
+                <label>Roubo</label>
+                <select class="form-control">
+                    <option>Selecione Roubo</option>
+                    <option>Roubo A</option>
+                    <option>Roubo B</option>
+                    <option>Roubo C</option>
+                </select>
+            </div>
+            <div class="form-group col-sm-12">
+                <label>Relato sobre a bicicleta roubada</label>
+                <textarea class="form-control" rows="3"></textarea>
+            </div>
+            <div class="form-group col-sm-12">
+                <div class="botao-salvar">
+                    <button type="button" class="btn btn-danger">
+                        <i class="fas fa-times"></i>
+                        Cancelar
+                    </button>
+                    <button type="button" class="btn btn-success">
+                        <i class="fas fa-save"></i>
+                        Salvar
+                    </button>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
     <div class="footer">
         <hr>
@@ -110,6 +140,14 @@
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
+    <!-- jQuery Mask -->
+    <script src="js/jquery.mask.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.data').mask('00/00/0000', { placeholder: "00/00/0000" });
+        });
+    </script>
 </body>
 
 </html>

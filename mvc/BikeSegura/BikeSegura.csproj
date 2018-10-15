@@ -230,9 +230,9 @@
     <Content Include="Img\bicicleta01.jpg" />
     <Content Include="Img\bicicleta02.jpg" />
     <Content Include="Img\bicicleta03.jpg" />
-    <Content Include="Img\bicicleta04_quadrado.jpg" />
-    <Content Include="Img\bicicleta05_quadrado.jpg" />
-    <Content Include="Img\bicicleta06_quadrado.jpg" />
+    <Content Include="Img\bicicleta04-quadrado.jpg" />
+    <Content Include="Img\bicicleta05-quadrado.jpg" />
+    <Content Include="Img\bicicleta06-quadrado.jpg" />
     <Content Include="Img\logo.jpg" />
     <Content Include="Scripts\all.js" />
     <Content Include="Scripts\all.min.js" />

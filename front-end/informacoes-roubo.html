@@ -30,9 +30,9 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav mr-auto">                    
                     <li class="nav-item">
-                        <a class="nav-link" href="consultar_bicicletas.html">
+                        <a class="nav-link" href="consultar-bicicletas.html">
                             <i class="fas fa-search"></i>
                             Consultar Bicicletas
                         </a>
@@ -44,11 +44,11 @@
                             Bicicletas
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="lista_bicicletas.html">
+                            <a class="dropdown-item" href="lista-bicicletas.html">
                                 <i class="fas fa-list"></i>
                                 Minhas Bicicletas
                             </a>
-                            <a class="dropdown-item" href="cadastro_bicicleta.html">
+                            <a class="dropdown-item" href="cadastro-bicicleta.html">
                                 <i class="fas fa-pen"></i>
                                 Cadastrar Bicicletas
                             </a>
@@ -65,7 +65,7 @@
                         <span class="sr-only">Dropdown</span>
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="perfil_usuario.html">
+                        <a class="dropdown-item" href="perfil-usuario.html">
                             <i class="fas fa-user-edit"></i>
                             Editar Perfil
                         </a>
@@ -83,63 +83,39 @@
             </div>
         </div>
     </nav>
-    <div class="container lista-bicicletas">
-        <div class="card-deck">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="holder.js/100px180/" alt="Imagem de capa do card">
-                <div class="card-body">
-                    <h5 class="card-title">Número de Série: AAA111</h5>
-                    <p class="card-text">Marca: Marca A</p>
-                    <p class="card-text">Modelo: Modelo A</p>
-                    <p class="card-text">Tipo: Tipo A</p>
-                    <div class="form-group">
-                        <button type="button" class="btn btn-primary">
-                            <i class="fas fa-edit"></i>
-                            Editar Bicicleta
-                        </button>
-                        <a class="btn btn-danger" href="informacoes_roubo.html" role="button">
-                            <i class="fas fa-exclamation-circle"></i>
-                            Alertar Roubo
-                        </a>
-                    </div>
-                </div>
+    <div class="container conteudo">
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <label>Local onde a bicicleta foi roubada</label>
+                <input type="text" class="form-control" placeholder="Local">
             </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="holder.js/100px180/" alt="Imagem de capa do card">
-                <div class="card-body">
-                    <h5 class="card-title">Número de Série: BBB222</h5>
-                    <p class="card-text">Marca: Marca B</p>
-                    <p class="card-text">Modelo: Modelo B</p>
-                    <p class="card-text">Tipo: Tipo B</p>
-                    <div class="form-group">
-                        <button type="button" class="btn btn-primary">
-                            <i class="fas fa-edit"></i>
-                            Editar Bicicleta
-                        </button>
-                        <a class="btn btn-danger" href="informacoes_roubo.html" role="button">
-                            <i class="fas fa-exclamation-circle"></i>
-                            Alertar Roubo
-                        </a>
-                    </div>
-                </div>
+            <div class="form-group col-sm-6">
+                <label>Data do Roubo</label>
+                <input type="text" class="form-control data" placeholder="Data">
             </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="holder.js/100px180/" alt="Imagem de capa do card">
-                <div class="card-body">
-                    <h5 class="card-title">Número de Série: CCC333</h5>
-                    <p class="card-text">Marca: Marca C</p>
-                    <p class="card-text">Modelo: Modelo C</p>
-                    <p class="card-text">Tipo: Tipo C</p>
-                    <div class="form-group">
-                        <button type="button" class="btn btn-primary">
-                            <i class="fas fa-edit"></i>
-                            Editar Bicicleta
-                        </button>
-                        <a class="btn btn-danger" href="informacoes_roubo.html" role="button">
-                            <i class="fas fa-exclamation-circle"></i>
-                            Alertar Roubo
-                        </a>
-                    </div>
+            <div class="form-group col-sm-6">
+                <label>Bicicleta</label>
+                <select class="form-control">
+                    <option>Selecione Bicicleta</option>
+                    <option>Bicicleta A</option>
+                    <option>Bicicleta B</option>
+                    <option>Bicicleta C</option>
+                </select>
+            </div>
+            <div class="form-group col-sm-12">
+                <label>Informações adicionais</label>
+                <textarea class="form-control" rows="3"></textarea>
+            </div>
+            <div class="form-group col-sm-12">
+                <div class="botao-salvar">
+                    <button type="button" class="btn btn-danger">
+                        <i class="fas fa-times"></i>
+                        Cancelar
+                    </button>
+                    <button type="button" class="btn btn-success">
+                        <i class="fas fa-save"></i>
+                        Salvar
+                    </button>
                 </div>
             </div>
         </div>
@@ -155,7 +131,14 @@
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/holder.min.js"></script>
+
+    <!-- jQuery Mask -->
+    <script src="js/jquery.mask.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.data').mask('00/00/0000', { placeholder: "00/00/0000" });
+        });
+    </script>
 </body>
 
 </html>
