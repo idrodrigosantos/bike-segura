@@ -434,6 +434,7 @@
     <Content Include="webfonts\Roboto-Regular.ttf" />
     <Content Include="webfonts\Roboto-Thin.ttf" />
     <Content Include="webfonts\Roboto-ThinItalic.ttf" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
