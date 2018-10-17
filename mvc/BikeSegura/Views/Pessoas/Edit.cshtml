@@ -29,11 +29,17 @@
             <div class="form-group col-sm-6">
                 @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label" })
                 @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control" } })
+                <small class="form-text">
+                    Sua senha deve ter entre 8 e 32 caracteres, os quais devem ser letras e números, sem espaços, caracteres especiais ou emojis.
+                </small>
                 @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-6">
                 @Html.LabelFor(model => model.ConfirmaSenha, htmlAttributes: new { @class = "control-label" })
                 @Html.EditorFor(model => model.ConfirmaSenha, new { htmlAttributes = new { @class = "form-control" } })
+                <small class="form-text">
+                    As senhas digitadas devem ser iguais.
+                </small>
                 @Html.ValidationMessageFor(model => model.ConfirmaSenha, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-12 col-md-8">
@@ -106,6 +112,9 @@
             <div class="form-group col-sm-6">
                 @Html.LabelFor(model => model.Imagem, htmlAttributes: new { @class = "control-label" })
                 <input type="file" name="arquivoimg" class="form-control-file" />
+                <small class="form-text">
+                    Envie imagem no formato .JPG ou .PNG
+                </small>
                 @Html.ValidationMessageFor(model => model.Imagem, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-12 col-md-4">
@@ -123,11 +132,11 @@
                 @Html.EditorFor(model => model.CelularContato, new { htmlAttributes = new { @class = "form-control celmask" } })
                 @Html.ValidationMessageFor(model => model.CelularContato, "", new { @class = "text-danger" })
             </div>
-            <div class="form-group col-sm-12">
+            @*<div class="form-group col-sm-12">
                 @Html.LabelFor(model => model.TipoUsuario, htmlAttributes: new { @class = "control-label" })
                 @Html.EnumDropDownListFor(model => model.TipoUsuario, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.TipoUsuario, "", new { @class = "text-danger" })
-            </div>
+            </div>*@
             <div class="form-group col-sm-12">
                 <div class="botao-salvar">
                     <a class="btn btn-danger" href="@Url.Action("Index", "Pessoas")" role="button">

@@ -60,9 +60,9 @@
                     <th>
                         CPF
                     </th>
-                    <th>
+                    @*<th>
                         @Html.DisplayNameFor(model => model.DataNascimento)
-                    </th>
+                    </th>*@
                     @*<th>
                             @Html.DisplayNameFor(model => model.Genero)
                         </th>*@
@@ -70,14 +70,14 @@
                         @Html.DisplayNameFor(model => model.Imagem)
                     </th>
                     @*<th>
-                            @Html.DisplayNameFor(model => model.NomeContato)
-                        </th>
+                                @Html.DisplayNameFor(model => model.NomeContato)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.TelefoneContato)
+                            </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.TelefoneContato)
+                            @Html.DisplayNameFor(model => model.TipoUsuario)
                         </th>*@
-                    <th>
-                        @Html.DisplayNameFor(model => model.TipoUsuario)
-                    </th>
                     <th></th>
                 </tr>
             </thead>
@@ -130,9 +130,9 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Cpf)
                         </td>
-                        <td>
+                        @*<td>
                             @item.DataNascimento.Value.ToString("dd/MM/yyyy")
-                        </td>
+                        </td>*@
                         @*<td>
                                 @Html.DisplayFor(modelItem => item.Genero)
                             </td>*@
@@ -140,14 +140,14 @@
                             <img src="~/Uploads/@item.Imagem" style="max-width:70px;" />
                         </td>
                         @*<td>
-                                @Html.DisplayFor(modelItem => item.NomeContato)
-                            </td>
+                                    @Html.DisplayFor(modelItem => item.NomeContato)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TelefoneContato)
+                                </td>>
                             <td>
-                                @Html.DisplayFor(modelItem => item.TelefoneContato)
-                            </td>>*@
-                        <td>
-                            @Html.DisplayFor(modelItem => item.TipoUsuario)
-                        </td>
+                                @Html.DisplayFor(modelItem => item.TipoUsuario)
+                            </td>*@
                         <td>
                             <div class="btn" role="group">
                                 <a class="btn btn-success" href="@Url.Action("Details", new { id = item.Id })" role="button">

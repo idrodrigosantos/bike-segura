@@ -11,7 +11,13 @@
             <thead>
                 <tr>
                     <th>
+                        @Html.DisplayNameFor(model => model.Bicicletas.Marcas)
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.Bicicletas.Modelo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Bicicletas.Id)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Imagem)
@@ -22,7 +28,13 @@
             <tbody>
                 <tr>
                     <td>
+                        @Html.DisplayFor(model => model.Bicicletas.Marcas.Nome)
+                    </td>
+                    <td>
                         @Html.DisplayFor(model => model.Bicicletas.Modelo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Bicicletas.Id)
                     </td>
                     <td>
                         @Html.DisplayFor(model => model.Imagem)
