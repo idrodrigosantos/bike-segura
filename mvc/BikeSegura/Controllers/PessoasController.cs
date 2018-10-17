@@ -47,29 +47,15 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,ImagemPerfil,NomeContato,TelefoneContato,CelularContato,TipoUsuario")] Pessoas pessoas, HttpPostedFileBase arquivoimg)
+        public ActionResult Create([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario")] Pessoas pessoas)
         {
-            string valor = "";
             if (ModelState.IsValid)
             {
-                if (arquivoimg != null)
-                {
-                    Upload.CriarDiretorio();
-                    string nomearquivo = "perfil" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(arquivoimg.FileName);
-                    valor = Upload.UploadArquivo(arquivoimg, nomearquivo);
-                    if (valor == "sucesso")
-                    {
-                        pessoas.Imagem = nomearquivo;
-                        db.Pessoas.Add(pessoas);
-                        db.SaveChanges();
-                        return RedirectToAction("Index");
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", valor);
-                    }
-                }
+                db.Pessoas.Add(pessoas);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
+
             return View(pessoas);
         }
 
@@ -93,7 +79,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,ImagemPerfil,NomeContato,TelefoneContato,CelularContato,TipoUsuario")] Pessoas pessoas, HttpPostedFileBase arquivoimg)
+        public ActionResult Edit([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario")] Pessoas pessoas, HttpPostedFileBase arquivoimg)
         {
             string valor = "";
             if (ModelState.IsValid)
