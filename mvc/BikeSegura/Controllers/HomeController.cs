@@ -31,7 +31,12 @@ namespace BikeSegura.Controllers
             return View();
         }
 
-        // Login
+        // Início Login
+        public ActionResult Login()
+        {
+            return View();
+        }
+        
         [HttpPost]
         public ActionResult Login(string email, string senha, string ReturnUrl)
         {
@@ -63,7 +68,8 @@ namespace BikeSegura.Controllers
             {
                 ModelState.AddModelError("", "Usuário/Senha inválidos");
                 return View();
-            }
+            }            
         }
+        // Fim Login
     }
 }
