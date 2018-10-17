@@ -55,8 +55,8 @@
                         Telefone
                     </th>
                     @*<th>
-                        Celular
-                    </th>*@
+                            Celular
+                        </th>*@
                     <th>
                         CPF
                     </th>
@@ -66,18 +66,18 @@
                     @*<th>
                             @Html.DisplayNameFor(model => model.Genero)
                         </th>*@
-                        <th>
-                            @Html.DisplayNameFor(model => model.Imagem)
-                        </th>
-                        @*<th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Imagem)
+                    </th>
+                    @*<th>
                             @Html.DisplayNameFor(model => model.NomeContato)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.TelefoneContato)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.TipoUsuario)
                         </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.TipoUsuario)
+                    </th>
                     <th></th>
                 </tr>
             </thead>
@@ -125,8 +125,8 @@
                             @Html.DisplayFor(modelItem => item.Telefone)
                         </td>
                         @*<td>
-                            @Html.DisplayFor(modelItem => item.Celular)
-                        </td>*@
+                                @Html.DisplayFor(modelItem => item.Celular)
+                            </td>*@
                         <td>
                             @Html.DisplayFor(modelItem => item.Cpf)
                         </td>
@@ -136,7 +136,7 @@
                         @*<td>
                                 @Html.DisplayFor(modelItem => item.Genero)
                             </td>*@
-                        <td>                            
+                        <td>
                             <img src="~/Uploads/@item.Imagem" style="max-width:70px;" />
                         </td>
                         @*<td>
@@ -144,10 +144,10 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.TelefoneContato)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TipoUsuario)
-                            </td>*@
+                            </td>>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TipoUsuario)
+                        </td>
                         <td>
                             <div class="btn" role="group">
                                 <a class="btn btn-success" href="@Url.Action("Details", new { id = item.Id })" role="button">

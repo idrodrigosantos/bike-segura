@@ -10,6 +10,7 @@ using BikeSegura.Models;
 
 namespace BikeSegura.Controllers
 {
+    [Authorize(Roles = "Administrador")]
     public class TiposController : Controller
     {
         private Contexto db = new Contexto();
