@@ -11,7 +11,6 @@ using BikeSegura.Models;
 
 namespace BikeSegura.Controllers
 {
-    [Authorize]
     public class PessoasController : Controller
     {
         private Contexto db = new Contexto();
@@ -21,7 +20,7 @@ namespace BikeSegura.Controllers
         {
             return View(db.Pessoas.ToList());
         }
-        
+
         // GET: Pessoas/Details/5
         public ActionResult Details(int? id)
         {
@@ -37,7 +36,6 @@ namespace BikeSegura.Controllers
             return View(pessoas);
         }
 
-        //[Authorize(Roles = "Administrador")]
         // GET: Pessoas/Create
         public ActionResult Create()
         {
