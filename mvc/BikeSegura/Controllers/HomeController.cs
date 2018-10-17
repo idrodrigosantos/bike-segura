@@ -31,12 +31,12 @@ namespace BikeSegura.Controllers
             return View();
         }
 
-        // Início Login
+        // Login Início
         public ActionResult Login()
         {
             return View();
         }
-        
+
         [HttpPost]
         public ActionResult Login(string email, string senha, string ReturnUrl)
         {
@@ -51,25 +51,33 @@ namespace BikeSegura.Controllers
                 string hash = FormsAuthentication.Encrypt(ticket);
                 HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, hash);
                 if (ticket.IsPersistent)
+                {
                     cookie.Expires = ticket.Expiration;
+                }
                 Response.Cookies.Add(cookie);
                 if (String.IsNullOrEmpty(ReturnUrl))
+                {
                     return RedirectToAction("Index", "Pessoas");
+                }
                 else
                 {
                     var decodedUrl = Server.UrlDecode(ReturnUrl);
                     if (Url.IsLocalUrl(decodedUrl))
+                    {
                         return Redirect(decodedUrl);
+                    }
                     else
+                    {
                         return RedirectToAction("Index", "Pessoas");
+                    }
                 }
             }
             else
             {
-                ModelState.AddModelError("", "Usuário/Senha inválidos");
+                ModelState.AddModelError("", "E-mail ou Senha estão incorretos");
                 return View();
-            }            
+            }
         }
-        // Fim Login
+        // Login Fim
     }
 }

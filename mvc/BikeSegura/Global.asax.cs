@@ -19,7 +19,7 @@ namespace BikeSegura
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
-        // Login
+        // Login Início
         protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)
         {
             var authCookie = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
@@ -33,5 +33,6 @@ namespace BikeSegura
                 }
             }
         }
+        // Login Fim
     }
 }
