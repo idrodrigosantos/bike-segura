@@ -306,6 +306,8 @@
     <Content Include="Uploads\perfil08.jpg" />
     <Content Include="Uploads\perfil09.jpg" />
     <Content Include="Uploads\perfil10.jpg" />
+    <Content Include="Uploads\user01.jpg" />
+    <Content Include="Uploads\user02.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
