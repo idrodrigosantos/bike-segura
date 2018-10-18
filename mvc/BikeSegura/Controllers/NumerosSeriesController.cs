@@ -134,7 +134,7 @@ namespace BikeSegura.Controllers
             base.Dispose(disposing);
         }
 
-        // Buscar Número de Série
+        // Método buscar número de série
         public ActionResult Buscar(string id)
         {
             if (id != null)

@@ -81,9 +81,10 @@ namespace BikeSegura.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario")] Pessoas pessoas, HttpPostedFileBase arquivoimg)
         {
-            string valor = "";
+            string valor = ""; // Faz parte do upload
             if (ModelState.IsValid)
             {
+                // Método upload imagem do perfil
                 if (arquivoimg != null)
                 {
                     Upload.CriarDiretorio();
@@ -97,6 +98,7 @@ namespace BikeSegura.Controllers
                         db.SaveChanges();
                     }
                 }
+                // Fim método upload imagem do perfil
                 else
                 {
                     db.Entry(pessoas).State = EntityState.Modified;

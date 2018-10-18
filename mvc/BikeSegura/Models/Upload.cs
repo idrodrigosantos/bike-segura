@@ -20,6 +20,7 @@ namespace BikeSegura.Models
             else
                 return false;
         }
+
         public static bool ExcluirArquivo(string arquivoimg)
         {
             if (File.Exists(arquivoimg))
@@ -30,6 +31,7 @@ namespace BikeSegura.Models
             else
                 return false;
         }
+
         public static string UploadArquivo(HttpPostedFileBase arquivoUpload, string nome)
         {
             try

@@ -53,6 +53,7 @@ namespace BikeSegura.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Método upload imagem do perfil
                 string valor = "";
                 string nomearquivo = "";
                 if (arquivoimg != null)
@@ -71,6 +72,7 @@ namespace BikeSegura.Controllers
                     }
                     return RedirectToAction("Index");
                 }
+                // Fim método upload imagem do perfil
             }
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", imagens.BicicletasId);
             return View(imagens);
@@ -99,9 +101,10 @@ namespace BikeSegura.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Imagem,BicicletasId")] Imagens imagens, HttpPostedFileBase arquivoimg)
         {
-            string valor = "";
+            string valor = ""; // Faz parte do upload
             if (ModelState.IsValid)
             {
+                // Método upload imagem do perfil
                 if (arquivoimg != null)
                 {
                     Upload.CriarDiretorio();
@@ -115,6 +118,7 @@ namespace BikeSegura.Controllers
                         db.SaveChanges();
                     }
                 }
+                // Fim método upload imagem do perfil
                 else
                 {
                     db.Entry(imagens).State = EntityState.Modified;
