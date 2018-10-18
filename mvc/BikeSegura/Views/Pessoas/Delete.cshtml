@@ -7,6 +7,13 @@
 <div class="container conteudo">
     <div class="row">
         <div class="col-sm-6">
+            <label><strong>@Html.DisplayNameFor(model => model.Imagem)</strong></label>
+        </div>
+        <div class="col-sm-6">
+            @*<label>@Html.DisplayFor(model => model.Imagem)</label>*@
+            <img src="~/Uploads/@Html.DisplayFor(model =>model.Imagem)" style="height:200px;width:200px;" />
+        </div>
+        <div class="col-sm-6">
             <label><strong>@Html.DisplayNameFor(model => model.Nome)</strong></label>
         </div>
         <div class="col-sm-6">
@@ -108,12 +115,6 @@
         <div class="col-sm-6">
             <label>@Html.DisplayFor(model => model.Genero)</label>
         </div>
-        @*<div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Imagem)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Imagem)</label>
-        </div>*@
         <div class="col-sm-6">
             <label><strong>@Html.DisplayNameFor(model => model.NomeContato)</strong></label>
         </div>

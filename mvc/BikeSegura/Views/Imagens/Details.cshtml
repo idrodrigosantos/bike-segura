@@ -37,7 +37,8 @@
                         @Html.DisplayFor(model => model.Bicicletas.Id)
                     </td>
                     <td>
-                        @Html.DisplayFor(model => model.Imagem)
+                        @*@Html.DisplayFor(model => model.Imagem)*@
+                        <img src="~/Uploads/@Html.DisplayFor(model =>model.Imagem)" style="height:140px;width:200px;" />
                     </td>
                     <td>
                         <div class="btn" role="group">
