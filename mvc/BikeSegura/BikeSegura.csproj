@@ -289,6 +289,9 @@
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\v4-shims.js" />
     <Content Include="Scripts\v4-shims.min.js" />
+    <Content Include="Uploads\audax-ventus01.png" />
+    <Content Include="Uploads\audax-ventus02.png" />
+    <Content Include="Uploads\audax-ventus03.png" />
     <Content Include="Uploads\caloi-10.jpg" />
     <Content Include="Uploads\caloi-100.jpg" />
     <Content Include="Uploads\caloi-andes.jpg" />
@@ -296,6 +299,9 @@
     <Content Include="Uploads\caloi-trs.jpg" />
     <Content Include="Uploads\caloi-ttype.jpg" />
     <Content Include="Uploads\caloi-twister.jpg" />
+    <Content Include="Uploads\cannondale-cadd-optimo-sora.png" />
+    <Content Include="Uploads\groove-slap70.png" />
+    <Content Include="Uploads\gts-m1-advanced-new.jpg" />
     <Content Include="Uploads\perfil01.jpg" />
     <Content Include="Uploads\perfil02.jpg" />
     <Content Include="Uploads\perfil03.jpg" />
@@ -306,6 +312,7 @@
     <Content Include="Uploads\perfil08.jpg" />
     <Content Include="Uploads\perfil09.jpg" />
     <Content Include="Uploads\perfil10.jpg" />
+    <Content Include="Uploads\tb_niner.png" />
     <Content Include="Uploads\user01.jpg" />
     <Content Include="Uploads\user02.jpg" />
     <Content Include="Web.config" />
