@@ -24,7 +24,13 @@
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Bicicletas.Cor)
-                    </th>                    
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Bicicletas.AlertaRoubo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Bicicletas.Vendendo)
+                    </th>
                     <th></th>
                 </tr>
             </thead>
@@ -34,7 +40,7 @@
                         @Html.DisplayFor(model => model.Numero)
                     </td>
                     <td>
-                        @Html.DisplayFor(model => model.Bicicletas.MarcasId)
+                        @Html.DisplayFor(model => model.Bicicletas.Marcas.Nome)
                     </td>
                     <td>
                         @Html.DisplayFor(model => model.Bicicletas.Modelo)
@@ -44,6 +50,12 @@
                     </td>
                     <td>
                         @Html.DisplayFor(model => model.Bicicletas.Cor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Bicicletas.AlertaRoubo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Bicicletas.Vendendo)
                     </td>
                     <td>
                         <div class="btn" role="group">
