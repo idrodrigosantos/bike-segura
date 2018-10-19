@@ -10,7 +10,7 @@ using BikeSegura.Models;
 
 namespace BikeSegura.Controllers
 {
-    //[Authorize(Roles = "Administrador")]
+    [Authorize(Roles = "Administrador")]
     public class CambiosTraseirosController : Controller
     {
         private Contexto db = new Contexto();
