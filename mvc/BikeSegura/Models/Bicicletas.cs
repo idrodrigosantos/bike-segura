@@ -45,8 +45,8 @@ namespace BikeSegura.Models
         public OpcaoAlertaRoubo AlertaRoubo { get; set; }
         public enum OpcaoAlertaRoubo
         {
-            Desativado = 0,
-            Ativado = 1
+            Segura = 0,
+            Roubada = 1
         }
 
         [DisplayName("Bicicleta à Venda")]
