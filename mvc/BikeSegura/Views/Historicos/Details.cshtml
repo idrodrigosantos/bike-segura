@@ -11,6 +11,9 @@
             <thead>
                 <tr>
                     <th>
+                        @Html.DisplayNameFor(model => model.Bicicletas.Marcas.Nome)
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.Bicicletas.Modelo)
                     </th>
                     <th>
@@ -20,7 +23,7 @@
                         Comprador
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.SituacaoAtual)
+                        @Html.DisplayNameFor(model => model.TipoTransferencia)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.DataAquisicao)
@@ -34,6 +37,9 @@
             <tbody>
                 <tr>
                     <td>
+                        @Html.DisplayFor(model => model.Bicicletas.Marcas.Nome)
+                    </td>
+                    <td>
                         @Html.DisplayFor(model => model.Bicicletas.Modelo)
                     </td>
                     <td>
@@ -43,7 +49,7 @@
                         @Html.DisplayFor(model => model.Comprador.Nome)
                     </td>
                     <td>
-                        @Html.DisplayFor(model => model.SituacaoAtual)
+                        @Html.DisplayFor(model => model.TipoTransferencia)
                     </td>
                     <td>
                         @Html.DisplayFor(model => model.DataAquisicao)

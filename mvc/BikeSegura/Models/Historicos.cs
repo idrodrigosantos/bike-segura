@@ -12,16 +12,19 @@ namespace BikeSegura.Models
         [Key]
         public int Id { get; set; }
 
-        [DisplayName("Situação Atual")]
-        [EnumDataType(typeof(OpcaoSituacao))]
-        public OpcaoSituacao SituacaoAtual { get; set; }
-        public enum OpcaoSituacao
+        [DisplayName("Tipo de Transferência")]
+        [EnumDataType(typeof(OpcaoTransferencia))]
+        public OpcaoTransferencia TipoTransferencia { get; set; }
+        public enum OpcaoTransferencia
         {
-            Interno,
-            Externo,
-            Sim
+            [Display(Name = "Transferência Interna")]
+            Interna,
+            [Display(Name = "Transferência Externa")]
+            Externa,
+            [Display(Name = "Proprietário Atual")]
+            ProprietarioAtual
         }
-        
+
         [DisplayName("Data de Aquisição")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
@@ -45,6 +48,6 @@ namespace BikeSegura.Models
 
         public virtual Bicicletas Bicicletas { get; set; }
         public virtual Pessoas Vendedor { get; set; }
-        public virtual Pessoas Comprador { get; set; }        
+        public virtual Pessoas Comprador { get; set; }
     }
 }

@@ -88,6 +88,6 @@ Após verificar o número de série, vi que não era de quem estava vendendo.
  Quem estava vendendo se chama João, celular (11)11111-1111', 
 'Centro, São Paulo-SP', '2018-08-29', 2, 2);
 
-insert into historicos (SituacaoAtual, DataAquisicao, DataTransferencia, BicicletasId, VendedorId, CompradorId) values 
+insert into historicos (TipoTransferencia, DataAquisicao, DataTransferencia, BicicletasId, VendedorId, CompradorId) values 
 (0, '2017-01-20', '2018-02-15', 1, 1, 5),
 (0, '2016-10-05', '2018-05-10', 4, 2, 3);

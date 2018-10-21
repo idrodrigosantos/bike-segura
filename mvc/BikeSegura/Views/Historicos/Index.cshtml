@@ -17,6 +17,9 @@
             <thead>
                 <tr>
                     <th>
+                        @Html.DisplayNameFor(model => model.Bicicletas.Marcas.Nome)
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.Bicicletas.Modelo)
                     </th>
                     <th>
@@ -26,7 +29,7 @@
                         Comprador
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.SituacaoAtual)
+                        @Html.DisplayNameFor(model => model.TipoTransferencia)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.DataAquisicao)
@@ -42,6 +45,9 @@
                 {
                     <tr>
                         <td>
+                            @Html.DisplayFor(modelItem => item.Bicicletas.Marcas.Nome)
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.Bicicletas.Modelo)
                         </td>
                         <td>
@@ -51,12 +57,12 @@
                             @Html.DisplayFor(modelItem => item.Comprador.Nome)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.SituacaoAtual)
+                            @Html.DisplayFor(modelItem => item.TipoTransferencia)
                         </td>
-                        <td>                            
+                        <td>
                             @item.DataAquisicao.ToString("dd/MM/yyyy")
                         </td>
-                        <td>                            
+                        <td>
                             @item.DataTransferencia.ToString("dd/MM/yyyy")
                         </td>
                         <td>
