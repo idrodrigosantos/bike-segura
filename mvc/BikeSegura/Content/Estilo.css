@@ -6,8 +6,16 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-.barra-superior {
+.barra-superior-adm {
+    background-color: #2C8693;
+}
+
+.barra-superior-usuario {
     background-color: #F15811;
+}
+
+.barra-superior-publico {
+    background-color: #105187;
 }
 
 .espaco-botao-navbar {
