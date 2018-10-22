@@ -5,6 +5,8 @@ using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using BikeSegura.Models;
@@ -15,12 +17,14 @@ namespace BikeSegura.Controllers
     {
         private Contexto db = new Contexto();
 
+        [Authorize]
         // GET: Pessoas
         public ActionResult Index()
         {
             return View(db.Pessoas.ToList());
         }
 
+        [Authorize]
         // GET: Pessoas/Details/5
         public ActionResult Details(int? id)
         {
@@ -59,6 +63,7 @@ namespace BikeSegura.Controllers
             return View(pessoas);
         }
 
+        [Authorize]
         // GET: Pessoas/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -109,6 +114,7 @@ namespace BikeSegura.Controllers
             return View(pessoas);
         }
 
+        [Authorize]
         // GET: Pessoas/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -145,12 +151,14 @@ namespace BikeSegura.Controllers
             base.Dispose(disposing);
         }
 
+        [Authorize(Roles = "Comum")]
         // GET: DashboardUsuario
         public ActionResult DashboardUsuario()
         {
             return View(db.Pessoas.ToList());
         }
 
+        [Authorize(Roles = "Administrador")]
         // GET: DashboardAdm
         public ActionResult DashboardAdm()
         {

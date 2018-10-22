@@ -14,6 +14,7 @@ namespace BikeSegura.Controllers
     {
         private Contexto db = new Contexto();
 
+        [Authorize]
         // GET: NumerosSeries
         public ActionResult Index()
         {
@@ -36,6 +37,7 @@ namespace BikeSegura.Controllers
             return View(numerosSeries);
         }
 
+        [Authorize]
         // GET: NumerosSeries/Create
         //public ActionResult Create()
         public ActionResult Create(int? id)
@@ -66,6 +68,7 @@ namespace BikeSegura.Controllers
             return View(numerosSeries);
         }
 
+        [Authorize]
         // GET: NumerosSeries/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -99,6 +102,7 @@ namespace BikeSegura.Controllers
             return View(numerosSeries);
         }
 
+        [Authorize]
         // GET: NumerosSeries/Delete/5
         public ActionResult Delete(int? id)
         {

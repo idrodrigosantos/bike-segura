@@ -11,6 +11,7 @@ using BikeSegura.Models;
 
 namespace BikeSegura.Controllers
 {
+    [Authorize]
     public class ImagensController : Controller
     {
         private Contexto db = new Contexto();
