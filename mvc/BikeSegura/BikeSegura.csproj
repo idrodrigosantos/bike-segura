@@ -233,7 +233,9 @@
     <Content Include="Img\bicicleta04-quadrado.jpg" />
     <Content Include="Img\bicicleta05-quadrado.jpg" />
     <Content Include="Img\bicicleta06-quadrado.jpg" />
-    <Content Include="Img\logo.jpg" />
+    <Content Include="Img\logo-adm.png" />
+    <Content Include="Img\logo-publico.png" />
+    <Content Include="Img\logo-usuario.png" />
     <Content Include="Scripts\all.js" />
     <Content Include="Scripts\all.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
