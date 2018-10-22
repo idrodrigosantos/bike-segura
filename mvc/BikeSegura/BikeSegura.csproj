@@ -210,7 +210,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\brands.css" />
     <Content Include="Content\brands.min.css" />
-    <Content Include="Content\Estilo.css" />
+    <Content Include="Content\meu-estilo.css" />
     <Content Include="Content\fontawesome.css" />
     <Content Include="Content\fontawesome.min.css" />
     <Content Include="Content\regular.css" />
