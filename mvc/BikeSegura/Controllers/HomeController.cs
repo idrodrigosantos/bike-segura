@@ -1,12 +1,10 @@
-﻿//using BikeSegura.Models;
-using BikeSegura.Models;
+﻿using BikeSegura.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-//using System.Web.Security;
 
 namespace BikeSegura.Controllers
 {
@@ -59,7 +57,14 @@ namespace BikeSegura.Controllers
                 Response.Cookies.Add(cookie);
                 if (String.IsNullOrEmpty(ReturnUrl))
                 {
-                    return RedirectToAction("Index", "Home");
+                    if (usuarios.TipoUsuario == 0)
+                    {
+                        return RedirectToAction("DashboardUsuario", "Pessoas");
+                    }
+                    else
+                    {
+                        return RedirectToAction("DashboardAdm", "Pessoas");
+                    }
                 }
                 else
                 {
