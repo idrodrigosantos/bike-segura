@@ -444,6 +444,8 @@
     <Content Include="webfonts\Roboto-Thin.ttf" />
     <Content Include="webfonts\Roboto-ThinItalic.ttf" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Pessoas\DashboardUsuario.cshtml" />
+    <Content Include="Views\Pessoas\DashboardAdm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -144,5 +144,17 @@ namespace BikeSegura.Controllers
             }
             base.Dispose(disposing);
         }
+
+        // GET: DashboardUsuario
+        public ActionResult DashboardUsuario()
+        {
+            return View(db.Pessoas.ToList());
+        }
+
+        // GET: DashboardAdm
+        public ActionResult DashboardAdm()
+        {
+            return View(db.Pessoas.ToList());
+        }
     }
 }
