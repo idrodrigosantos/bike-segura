@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Editar Usuário";
+    Layout = "~/Views/Shared/_Usuario.cshtml";
 }
 
 @using (Html.BeginForm("Edit", "Pessoas", FormMethod.Post, new { enctype = "multipart/form-data" }))
