@@ -17,7 +17,7 @@ namespace BikeSegura.Controllers
     {
         private Contexto db = new Contexto();
 
-        [Authorize]
+        //[Authorize]
         // GET: Pessoas
         public ActionResult Index()
         {
