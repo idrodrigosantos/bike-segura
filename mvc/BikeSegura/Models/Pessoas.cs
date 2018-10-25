@@ -33,16 +33,16 @@ namespace BikeSegura.Models
         [Required(ErrorMessage = "Senha é obrigatória")]
         [DisplayName("Senha*")]
         [MinLength(8, ErrorMessage = "Sua senha deve ter no mínimo 8 caracteres")]
-        [MaxLength(32, ErrorMessage = "Sua senha deve ter no máximo 32 caracteres")]
-        [RegularExpression(@"^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{8,32}$", ErrorMessage = "Senha deve ter letras e números")]
+        //[MaxLength(32, ErrorMessage = "Sua senha deve ter no máximo 32 caracteres")]
+        [RegularExpression(@"^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}$", ErrorMessage = "Senha deve ter letras e números")]
         [DataType(DataType.Password)]
         public string Senha { get; set; }
 
         [Required(ErrorMessage = "Você deve confirmar sua Senha")]
         [DisplayName("Confirmar Senha*")]
         [MinLength(8, ErrorMessage = "Sua senha deve ter no mínimo 8 caracteres")]
-        [MaxLength(32, ErrorMessage = "Sua senha deve ter no máximo 32 caracteres")]
-        [RegularExpression(@"^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{8,32}$", ErrorMessage = "Senha deve ter letras e números")]
+        //[MaxLength(32, ErrorMessage = "Sua senha deve ter no máximo 32 caracteres")]
+        [RegularExpression(@"^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}$", ErrorMessage = "Senha deve ter letras e números")]
         [DataType(DataType.Password)]
         [Compare("Senha", ErrorMessage = "As senhas digitadas não correspondem")]
         public string ConfirmaSenha { get; set; }
