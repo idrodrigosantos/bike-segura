@@ -31,7 +31,7 @@ namespace BikeSegura.Controllers
             return View();
         }
 
-        // Login Início
+        // Login início
         public ActionResult Login()
         {
             return View();
@@ -40,7 +40,8 @@ namespace BikeSegura.Controllers
         [HttpPost]
         public ActionResult Login(string email, string senha, string ReturnUrl)
         {
-            Pessoas usuarios = db.Pessoas.Where(t => t.Email == email && t.Senha == senha).ToList().FirstOrDefault();
+            string senhacriptografada = Funcoes.SHA512(senha); //Compara a senha criptografada com a senha digitada
+            Pessoas usuarios = db.Pessoas.Where(t => t.Email == email && t.Senha == senhacriptografada).ToList().FirstOrDefault();
             if (usuarios != null)
             {
                 string permissoes = "";
@@ -85,6 +86,6 @@ namespace BikeSegura.Controllers
                 return View();
             }
         }
-        // Login Fim
+        // Login fim
     }
 }

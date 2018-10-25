@@ -54,7 +54,9 @@ namespace BikeSegura.Controllers
         public ActionResult Create([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario")] Pessoas pessoas)
         {
             if (ModelState.IsValid)
-            {
+            {                
+                pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
+                pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia                
                 db.Pessoas.Add(pessoas);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -99,6 +101,8 @@ namespace BikeSegura.Controllers
                     {
                         Upload.ExcluirArquivo(Request.PhysicalApplicationPath + "Uploads\\" + pessoas.Imagem);
                         pessoas.Imagem = nomearquivo;
+                        pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
+                        pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
                         db.Entry(pessoas).State = EntityState.Modified;
                         db.SaveChanges();
                     }
@@ -106,6 +110,8 @@ namespace BikeSegura.Controllers
                 // Fim método upload imagem do perfil
                 else
                 {
+                    pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
+                    pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
                     db.Entry(pessoas).State = EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -151,14 +157,14 @@ namespace BikeSegura.Controllers
             base.Dispose(disposing);
         }
 
-        [Authorize(Roles = "Comum")]
+        //[Authorize(Roles = "Comum")]
         // GET: DashboardUsuario
         public ActionResult DashboardUsuario()
         {
             return View(db.Pessoas.ToList());
         }
 
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
         // GET: DashboardAdm
         public ActionResult DashboardAdm()
         {
