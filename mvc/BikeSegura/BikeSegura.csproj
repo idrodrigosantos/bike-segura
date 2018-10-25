@@ -186,6 +186,7 @@
     <Compile Include="Models\CambiosTraseiros.cs" />
     <Compile Include="Models\Contexto.cs" />
     <Compile Include="Models\Freios.cs" />
+    <Compile Include="Models\Funcoes.cs" />
     <Compile Include="Models\Historicos.cs" />
     <Compile Include="Models\Imagens.cs" />
     <Compile Include="Models\InformacoesRoubos.cs" />
