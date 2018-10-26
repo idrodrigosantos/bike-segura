@@ -8,7 +8,7 @@
 {
     @Html.AntiForgeryToken()
     <div class="container conteudo">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
         <div class="row">
             <div class="form-group col-sm-12">
                 @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label" })
@@ -150,6 +150,10 @@
                         Cadastrar
                     </button>
                 </div>
+                <!-- Botão para acionar modal -->
+                @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSucesso">
+                        Abrir modal de demonstração
+                    </button>*@
             </div>
         </div>
     </div>
@@ -167,4 +171,40 @@
             $('.cpfmask').mask('000.000.000-00', { placeholder: "000.000.000-00" });
         });
     </script>
+
+    <!-- Modal -->
+    @*<div class="modal fade" id="modalSucesso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sucesso!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Cadastro efetuado com sucesso.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+    @*<script>
+        $(".cadastroajax").click(function () {
+            var id = $(this).attr("rel");
+            $.ajax({
+                dataType: "json",
+                type: "POST",
+                url: "/Pessoas/Create",
+                data: { id },
+                success: function () {
+                    $('#modalSucesso').modal('show');
+                    //location.reload();
+                }
+            });
+        });
+    </script>*@
 }
