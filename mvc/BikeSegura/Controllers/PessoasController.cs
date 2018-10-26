@@ -65,6 +65,22 @@ namespace BikeSegura.Controllers
             return View(pessoas);
         }
 
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public JsonResult Create([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario")] Pessoas pessoas)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
+        //        pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia                
+        //        db.Pessoas.Add(pessoas);
+        //        db.SaveChanges();
+        //        return Json("s");
+        //    }
+
+        //    return Json("n");
+        //}
+
         [Authorize]
         // GET: Pessoas/Edit/5
         public ActionResult Edit(int? id)
