@@ -53,16 +53,41 @@ namespace BikeSegura.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario")] Pessoas pessoas)
         {
-            if (ModelState.IsValid)
-            {                
-                pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
-                pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia                
-                db.Pessoas.Add(pessoas);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+            if (pessoas != null)
+            {
+                // Verifica se o o e-mail já está cadastrado
+                var verificaemail = db.Pessoas.Where(w => w.Email == pessoas.Email).FirstOrDefault();
+                if (verificaemail == null)
+                {
+                    // Se não estiver cadastrado, salva no banco
+                    pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
+                    pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
+                    db.Pessoas.Add(pessoas);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    // Se estiver cadastrado, retorna mensagem de erro
+                    ModelState.AddModelError("", "O e-mail informado está em uso");
+                    return View();
+                }
+            }
+            else
+            {
+                return View(pessoas);
             }
 
-            return View(pessoas);
+            //if (ModelState.IsValid)
+            //{
+            //    pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
+            //    pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia                
+            //    db.Pessoas.Add(pessoas);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+
+            //return View(pessoas);
         }
 
         //[HttpPost]
