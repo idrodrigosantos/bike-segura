@@ -6,91 +6,123 @@
 }
 
 <div class="container conteudo">
+    <div class="table-responsive table-sm">
+        <table class="table table-hover">            
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Marcas.Nome)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Marcas.Nome)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Modelo)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Modelo)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Tipos.Nome)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Tipos.Nome)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Cor)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Cor)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Tamanho)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Tamanho)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.CambiosDianteiros.Velocidade)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.CambiosDianteiros.Velocidade)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.CambiosTraseiros.Velocidade)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.CambiosTraseiros.Velocidade)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Freios.Nome)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Freios.Nome)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Suspensoes.Nome)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Suspensoes.Nome)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Aros.Medida)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Aros.Medida)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Quadros.Material)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Quadros.Material)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Informacoes)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Informacoes)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.AlertaRoubo)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.AlertaRoubo)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Vendendo)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Vendendo)
+                </td>
+            </tr>
+        </table>
+    </div>
     <div class="row">
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Marcas.Nome)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Marcas.Nome)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Modelo)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Modelo)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Tipos.Nome)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Tipos.Nome)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Cor)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Cor)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Tamanho)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Tamanho)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.CambiosDianteiros.Velocidade)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.CambiosDianteiros.Velocidade)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.CambiosTraseiros.Velocidade)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.CambiosTraseiros.Velocidade)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Freios.Nome)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Freios.Nome)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Suspensoes.Nome)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Suspensoes.Nome)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Aros.Medida)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Aros.Medida)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Quadros.Material)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Quadros.Material)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Informacoes)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Informacoes)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.AlertaRoubo)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.AlertaRoubo)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Vendendo)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Vendendo)</label>
-        </div>
         <div class="form-group col-sm-12">
             <div class="botao-salvar">
                 <a class="btn btn-success" href="@Url.Action("Index", "Bicicletas")" role="button">

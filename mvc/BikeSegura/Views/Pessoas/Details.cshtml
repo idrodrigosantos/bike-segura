@@ -11,135 +11,152 @@
             <label><strong>@Html.DisplayNameFor(model => model.Imagem)</strong></label>
         </div>
         <div class="col-sm-6">
-            @*<label>@Html.DisplayFor(model => model.Imagem)</label>*@
-            <img src="~/Uploads/@Html.DisplayFor(model =>model.Imagem)" style="height:200px;width:200px;" />
+            <label>
+                <img src="~/Uploads/@Html.DisplayFor(model =>model.Imagem)" style="height:200px;width:200px;" />
+            </label>
         </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Nome)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Nome)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Email)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Email)</label>
-        </div>
-        @*<div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.ConfirmaEmail)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.ConfirmaEmail)</label>
-        </div>*@
-        @*<div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Senha)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Senha)</label>
-        </div>*@
-        @*<div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.ConfirmaSenha)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.ConfirmaSenha)</label>
-        </div>*@
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Endereco)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Endereco)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Numero)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Numero)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Complemento)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Complemento)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Cep)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Cep)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Bairro)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Bairro)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Cidade)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Cidade)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Estado)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Estado)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Telefone)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Telefone)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Celular)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Celular)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Cpf)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Cpf)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.DataNascimento)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.DataNascimento)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.Genero)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.Genero)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.NomeContato)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.NomeContato)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.TelefoneContato)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.TelefoneContato)</label>
-        </div>
-        <div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.CelularContato)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.CelularContato)</label>
-        </div>
-        @*<div class="col-sm-6">
-            <label><strong>@Html.DisplayNameFor(model => model.TipoUsuario)</strong></label>
-        </div>
-        <div class="col-sm-6">
-            <label>@Html.DisplayFor(model => model.TipoUsuario)</label>
-        </div>*@
+    </div>
+    <div class="table-responsive table-sm">
+        <table class="table table-hover">
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Nome)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Nome)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Email)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Email)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Endereco)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Endereco)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Numero)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Numero)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Complemento)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Complemento)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Cep)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Cep)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Bairro)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Bairro)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Cidade)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Cidade)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Estado)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Estado)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Telefone)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Telefone)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Celular)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Celular)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Cpf)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Cpf)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.DataNascimento)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.DataNascimento)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Genero)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Genero)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.NomeContato)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.NomeContato)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.TelefoneContato)</strong>
+                </td>
+                <td>
+                    <label>@Html.DisplayFor(model => model.TelefoneContato)</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.CelularContato)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.CelularContato)
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
         <div class="form-group col-sm-12">
             <div class="botao-salvar">
                 <a class="btn btn-success" href="@Url.Action("Index", "Pessoas")" role="button">

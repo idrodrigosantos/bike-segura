@@ -18,7 +18,7 @@
             </div>
             <div class="form-group col-sm-6">
                 @Html.LabelFor(model => model.Modelo, "Modelo*", htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.Modelo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Modelo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Modelo da Bicicleta" } })
                 @Html.ValidationMessageFor(model => model.Modelo, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-6 col-lg-4">
@@ -28,12 +28,12 @@
             </div>
             <div class="form-group col-sm-6 col-lg-4">
                 @Html.LabelFor(model => model.Cor, "Cor*", htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.Cor, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Cor, new { htmlAttributes = new { @class = "form-control", @placeholder = "Cor da Bicicleta" } })
                 @Html.ValidationMessageFor(model => model.Cor, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-6 col-lg-4">
                 @Html.LabelFor(model => model.Tamanho, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.Tamanho, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Tamanho, new { htmlAttributes = new { @class = "form-control", @placeholder = "Tamanho do Quadro da Bicicleta" } })
                 @Html.ValidationMessageFor(model => model.Tamanho, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-6">
