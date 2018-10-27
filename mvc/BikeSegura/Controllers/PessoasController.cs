@@ -77,7 +77,6 @@ namespace BikeSegura.Controllers
             {
                 return View(pessoas);
             }
-
             //if (ModelState.IsValid)
             //{
             //    pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
