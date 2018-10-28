@@ -160,5 +160,12 @@ namespace BikeSegura.Controllers
             }
             base.Dispose(disposing);
         }
+
+        // GET: Bicicletas
+        public ActionResult ListaBicicletas()
+        {
+            var bicicletas = db.Bicicletas.Include(b => b.Aros).Include(b => b.CambiosDianteiros).Include(b => b.CambiosTraseiros).Include(b => b.Freios).Include(b => b.Marcas).Include(b => b.Quadros).Include(b => b.Suspensoes).Include(b => b.Tipos);
+            return View(bicicletas.ToList());
+        }
     }
 }
