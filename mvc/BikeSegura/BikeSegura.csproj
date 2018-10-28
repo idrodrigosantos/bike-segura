@@ -266,13 +266,13 @@
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\fontawesome.js" />
     <Content Include="Scripts\fontawesome.min.js" />
+    <Content Include="Scripts\holder.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery-mask-plugin\jquery.mask.js" />
-    <Content Include="Scripts\jquery-mask-plugin\jquery.mask.min.js" />
+    <Content Include="Scripts\jquery.mask.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -449,6 +449,7 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Pessoas\DashboardUsuario.cshtml" />
     <Content Include="Views\Pessoas\DashboardAdm.cshtml" />
+    <Content Include="Views\Bicicletas\ListaBicicletas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
