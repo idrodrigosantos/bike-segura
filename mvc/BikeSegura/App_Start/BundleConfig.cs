@@ -31,7 +31,7 @@ namespace BikeSegura
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.min.css",
                       "~/Content/estilo.css",
-                      "~/Content/font-awesome.min.css"));
+                      "~/Content/fontawesome/all.min.css"));
         }
     }
 }
