@@ -11,7 +11,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top barra-superior-usuario">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">
                 <img src="~/Img/marca-usuario.png" class="d-inline-block align-top imagem-logo" alt="">
                 @Html.ActionLink("Bike Segura", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </a>
@@ -51,7 +51,7 @@
                 </ul>
                 <div class="btn-group">
                     <a class="btn btn-light" href="@Url.Action("DashboardUsuario", "Pessoas")" role="button">
-                        <i class="fas fa-user"></i>                        
+                        <i class="fas fa-user"></i>
                         @User.Identity.Name
                     </a>
                     <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
@@ -89,6 +89,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/holder")
     @RenderSection("scripts", required: false)
 
     @*Ação para apagar a imagem sem atualizar a página*@

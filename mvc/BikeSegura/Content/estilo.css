@@ -44,6 +44,10 @@ body {
     width: 30px;
 }
 
+.lista-bicicletas {
+    color: black;
+}
+
 @font-face {
     font-family: 'Roboto', sans-serif;
     src: url('/webfonts/Roboto-Regular.ttf');
