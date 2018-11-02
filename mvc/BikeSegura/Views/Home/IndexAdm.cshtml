@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "IndexAdm";
+    Layout = "~/Views/Shared/_Administrador.cshtml";
+}
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="first-slide" src="~/Img/bicicleta01.jpg" alt="First slide">
+            <div class="container">
+                <div class="carousel-caption text-left">
+                    <h1>Registre sua Bicicleta.</h1>
+                    <p>Registre sua bicicleta, e aumente as chances de recupera-la em caso de roubo.</p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="second-slide" src="~/Img/bicicleta02.jpg" alt="Second slide">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Consulte Bicicletas.</h1>
+                    <p>
+                        Consulte bicicletas para verificar se não é roubada e confirmar as informações do
+                        proprietário.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="third-slide" src="~/Img/bicicleta03.jpg" alt="Third slide">
+            <div class="container">
+                <div class="carousel-caption text-right">
+                    <h1>Transferência de Proprietário</h1>
+                    <p>Quando for vender sua bicicleta, você poderá transferi-la para o novo proprietário.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Anterior</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Próximo</span>
+    </a>
+</div>
+<div class="container blocos">
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">Alerta de Roubo.</h2>
+            <p class="lead">
+                Você pode emitir um alerta de roubo, informando o local, data e hora que sua bicicleta
+                foi roubada. Caso encontrada, quem encontrou poderá notificar você, informando todos os delalhes
+                de onde a bicicleta foi encontrada.
+            </p>
+        </div>
+        <div class="col-md-5">
+            <img class="featurette-image img-fluid rounded mx-auto d-block" src="~/Img/bicicleta04-quadrado.jpg" alt="Generic placeholder image">
+        </div>
+    </div>
+    <hr class="featurette-divider">
+    <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Notificações.</h2>
+            <p class="lead">
+                Sempre que sua bicicleta for consultada, você irá receber uma notificação
+                sobre a consulta.
+            </p>
+        </div>
+        <div class="col-md-5 order-md-1">
+            <img class="featurette-image img-fluid mx-auto rounded" src="~/Img/bicicleta05-quadrado.jpg" alt="Generic placeholder image">
+        </div>
+    </div>
+    <hr class="featurette-divider">
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">Informações Pessoais</h2>
+            <p class="lead">
+                Tenha um perfil com suas informações pessoais e contato para ser avisado em caso de
+                acidentes.
+            </p>
+        </div>
+        <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" src="~/Img/bicicleta06-quadrado.jpg" alt="Generic placeholder image">
+        </div>
+    </div>
+</div>
