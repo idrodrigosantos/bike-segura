@@ -48,7 +48,8 @@ namespace BikeSegura.Controllers
                 permissoes += usuarios.TipoUsuario + ",";
                 permissoes = permissoes.Substring(0, permissoes.Length - 1);
                 FormsAuthentication.SetAuthCookie(usuarios.Nome, false);
-                FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, usuarios.Email, DateTime.Now, DateTime.Now.AddMinutes(30), false, permissoes);
+                string nome = usuarios.Nome.Contains(' ') ? usuarios.Nome.Split(' ')[0] : usuarios.Nome;
+                FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, usuarios.Id.ToString() + "|" + nome + "|" + usuarios.Email, DateTime.Now, DateTime.Now.AddMinutes(30), false, permissoes);
                 string hash = FormsAuthentication.Encrypt(ticket);
                 HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, hash);
                 if (ticket.IsPersistent)

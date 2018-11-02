@@ -24,5 +24,10 @@ namespace BikeSegura.Models
             }
             return strHex;
         }
+
+        public static string CodigoUsuario()
+        {
+            return "";
+        }
     }
 }

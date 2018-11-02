@@ -88,7 +88,6 @@ namespace BikeSegura.Controllers
 
             //return View(pessoas);
         }
-
         //[HttpPost]
         //[ValidateAntiForgeryToken]
         //public JsonResult Create([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario")] Pessoas pessoas)
@@ -109,16 +108,29 @@ namespace BikeSegura.Controllers
         // GET: Pessoas/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
+            if (System.Web.HttpContext.Current.User.IsInRole("Administrador"))
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Pessoas pessoas = db.Pessoas.Find(id);
+                if (pessoas == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(pessoas);
             }
-            Pessoas pessoas = db.Pessoas.Find(id);
-            if (pessoas == null)
+            else
             {
-                return HttpNotFound();
+                Pessoas pessoas = db.Pessoas.Find(Convert.ToInt32(usu));
+                if (pessoas == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(pessoas);
             }
-            return View(pessoas);
         }
 
         // POST: Pessoas/Edit/5
