@@ -14,7 +14,7 @@ namespace BikeSegura.Controllers
     {
         private Contexto db = new Contexto();
 
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         // GET: NumerosSeries
         public ActionResult Index()
         {
@@ -146,7 +146,7 @@ namespace BikeSegura.Controllers
                 var numeroserie = db.NumerosSeries.Where(w => w.Numero == id).FirstOrDefault();
                 if (numeroserie != null)
                 {
-                    return RedirectToAction("Details", "NumerosSeries", new { id = numeroserie.Id });
+                    return RedirectToAction("DetalhesBusca", "NumerosSeries", new { id = numeroserie.Id });
                 }
                 else
                 {
@@ -158,6 +158,21 @@ namespace BikeSegura.Controllers
             {
                 return View();
             }
+        }
+
+        // GET: NumerosSeries/DetalhesBusca/5
+        public ActionResult DetalhesBusca(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            NumerosSeries numerosSeries = db.NumerosSeries.Find(id);
+            if (numerosSeries == null)
+            {
+                return HttpNotFound();
+            }
+            return View(numerosSeries);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace BikeSegura.Controllers
     {
         private Contexto db = new Contexto();
 
-        //[Authorize]
+        [Authorize(Roles = "Administrador")]
         // GET: Pessoas
         public ActionResult Index()
         {
@@ -28,17 +28,46 @@ namespace BikeSegura.Controllers
         // GET: Pessoas/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
+            if (System.Web.HttpContext.Current.User.IsInRole("Administrador"))
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Pessoas pessoas = db.Pessoas.Find(id);
+                if (pessoas == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(pessoas);
             }
-            Pessoas pessoas = db.Pessoas.Find(id);
-            if (pessoas == null)
+            else
             {
-                return HttpNotFound();
-            }
-            return View(pessoas);
+                Pessoas pessoas = db.Pessoas.Find(Convert.ToInt32(usu));
+                if (pessoas == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(pessoas);
+            }            
         }
+
+        //[Authorize]
+        //// GET: Pessoas/Details/5
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Pessoas pessoas = db.Pessoas.Find(id);
+        //    if (pessoas == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(pessoas);
+        //}
 
         // GET: Pessoas/Create
         public ActionResult Create()
@@ -64,7 +93,7 @@ namespace BikeSegura.Controllers
                     pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
                     db.Pessoas.Add(pessoas);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -172,7 +201,7 @@ namespace BikeSegura.Controllers
             return View(pessoas);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         // GET: Pessoas/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -209,14 +238,18 @@ namespace BikeSegura.Controllers
             base.Dispose(disposing);
         }
 
-        //[Authorize(Roles = "Comum")]
+        [Authorize(Roles = "Comum")]
         // GET: DashboardUsuario
         public ActionResult DashboardUsuario()
         {
-            return View(db.Pessoas.ToList());
+            var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
+            int id = Convert.ToInt32(usu);
+            //var historicos = db.Historicos.Include(h => h.Bicicletas).Include(h => h.Comprador).Include(h => h.Vendedor).Where(x => x.CompradorId == id);
+            var historicos = db.Historicos.Include(h => h.Bicicletas).Include(h => h.Comprador).Include(h => h.Vendedor).Where(x => x.CompradorId == id && (int)x.TipoTransferencia == 2);
+            return View(historicos.ToList());
         }
 
-        //[Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Administrador")]
         // GET: DashboardAdm
         public ActionResult DashboardAdm()
         {

@@ -9,12 +9,12 @@ using System.Web.Mvc;
 using BikeSegura.Models;
 
 namespace BikeSegura.Controllers
-{
-    [Authorize]
+{    
     public class BicicletasController : Controller
     {
         private Contexto db = new Contexto();
 
+        [Authorize(Roles = "Administrador")]
         // GET: Bicicletas
         public ActionResult Index()
         {
@@ -37,6 +37,7 @@ namespace BikeSegura.Controllers
             return View(bicicletas);
         }
 
+        [Authorize]
         // GET: Bicicletas/Create
         public ActionResult Create()
         {
@@ -79,6 +80,7 @@ namespace BikeSegura.Controllers
             return View(bicicletas);
         }
 
+        [Authorize]
         // GET: Bicicletas/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -126,6 +128,7 @@ namespace BikeSegura.Controllers
             return View(bicicletas);
         }
 
+        [Authorize]
         // GET: Bicicletas/Delete/5
         public ActionResult Delete(int? id)
         {
