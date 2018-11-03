@@ -50,7 +50,7 @@ namespace BikeSegura.Controllers
                     return HttpNotFound();
                 }
                 return View(pessoas);
-            }            
+            }
         }
 
         //[Authorize]
@@ -93,7 +93,7 @@ namespace BikeSegura.Controllers
                     pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
                     db.Pessoas.Add(pessoas);
                     db.SaveChanges();
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Login", "Home");
                 }
                 else
                 {
@@ -106,32 +106,7 @@ namespace BikeSegura.Controllers
             {
                 return View(pessoas);
             }
-            //if (ModelState.IsValid)
-            //{
-            //    pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
-            //    pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia                
-            //    db.Pessoas.Add(pessoas);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
-
-            //return View(pessoas);
         }
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public JsonResult Create([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario")] Pessoas pessoas)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
-        //        pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia                
-        //        db.Pessoas.Add(pessoas);
-        //        db.SaveChanges();
-        //        return Json("s");
-        //    }
-
-        //    return Json("n");
-        //}
 
         [Authorize]
         // GET: Pessoas/Edit/5
@@ -255,5 +230,18 @@ namespace BikeSegura.Controllers
         {
             return View(db.Pessoas.ToList());
         }
+
+        // Alerta de sucesso do cadastro do usuário
+        //[HttpPost]
+        //public string alertaCadastro(string Nome, string Email, string ConfirmaEmail, 
+        //    string Senha, string ConfirmaSenha, string Telefone, string Cpf)
+        //{
+        //    if (!String.IsNullOrEmpty(Nome) && !String.IsNullOrEmpty(Email) && !String.IsNullOrEmpty(ConfirmaEmail) && 
+        //        !String.IsNullOrEmpty(Senha) && !String.IsNullOrEmpty(ConfirmaSenha) && !String.IsNullOrEmpty(Telefone) && 
+        //        !String.IsNullOrEmpty(Cpf))
+        //        return "Cadastro realizado com sucesso.";
+        //    else
+        //        return "Campo(s) obrigatório(s).";
+        //}
     }
 }
