@@ -25,6 +25,9 @@ namespace BikeSegura
             bundles.Add(new ScriptBundle("~/bundles/jquerymask").Include(
                       "~/Scripts/jquery.mask.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jqueryjax").Include(
+                      "~/Scripts/jquery.unobtrusive-ajax.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/holder").Include(
                       "~/Scripts/holder.min.js"));
 
