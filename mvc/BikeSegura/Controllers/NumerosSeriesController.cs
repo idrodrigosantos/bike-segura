@@ -62,7 +62,7 @@ namespace BikeSegura.Controllers
                 db.NumerosSeries.Add(numerosSeries);
                 db.SaveChanges();
                 //return RedirectToAction("Index");
-                return RedirectToAction("Create", "NumerosSeries", new { id = numerosSeries.BicicletasId });
+                return RedirectToAction("Create", "NumerosSeries", new { id = numerosSeries.BicicletasId });                
             }
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", numerosSeries.BicicletasId);
             return View(numerosSeries);
@@ -174,5 +174,15 @@ namespace BikeSegura.Controllers
             }
             return View(numerosSeries);
         }
+
+        // Alerta de sucesso do número de série cadastrado
+        //[HttpPost]
+        //public string alertaCadastro(string Numero)
+        //{
+        //    if (!String.IsNullOrEmpty(Numero))                
+        //        return "O número de série: " + Numero + " foi salvo com suscesso.";
+        //    else
+        //        return "Número de série é obrigatório.";
+        //}
     }
 }

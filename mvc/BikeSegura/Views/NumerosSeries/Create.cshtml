@@ -1,4 +1,5 @@
 ﻿@model BikeSegura.Models.NumerosSeries
+@*@model IEnumerable<BikeSegura.Models.NumerosSeries>*@
 
 @{
     ViewBag.Title = "Cadastro Número de Série";
@@ -23,7 +24,7 @@
             </div>
             <div class="form-group col-sm-12">
                 <div class="botao-salvar">
-                    <button type="submit" value="Create" class="btn btn-success">
+                    <button type="submit" value="Create" id="botaoAlerta" class="btn btn-success">
                         <i class="fas fa-list-ul"></i>
                         Salvar Número de Série
                     </button>
@@ -36,11 +37,22 @@
                         Finalizar
                     </a>
                 </div>
-            </div>
+            </div>            
         </div>
     </div>
 }
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryjax")
+
+    @*<script type="text/javascript">
+        $('#botaoAlerta').click(function () {
+            var url = "/NumerosSeries/alertaCadastro";
+            var numero = $("#Numero").val();
+            $.post(url, { Numero: numero }, function (data) {                
+                alert(data);
+            });
+        })
+    </script>*@
 }
