@@ -171,7 +171,7 @@ namespace BikeSegura.Controllers
                     db.Entry(pessoas).State = EntityState.Modified;
                     db.SaveChanges();
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("DashboardUsuario", "Pessoas");
             }
             return View(pessoas);
         }
@@ -228,6 +228,7 @@ namespace BikeSegura.Controllers
         // GET: DashboardAdm
         public ActionResult DashboardAdm()
         {
+            //var pessoas = db.Pessoas.Count();
             return View(db.Pessoas.ToList());
         }
 

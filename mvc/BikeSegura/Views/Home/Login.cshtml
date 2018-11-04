@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Login";    
+    ViewBag.Title = "Entrar";
 }
 
 @using (Html.BeginForm())
@@ -10,23 +10,37 @@
             <div class="row">
                 <div class="form-group col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                     <label>Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" required="required">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="nome@email.com" required="required">
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                     <label>Senha</label>
-                    <input type="password" class="form-control" id="senha" value="" name="senha" placeholder="Senha" required="required">
+                    <input type="password" class="form-control" id="senha" value="" name="senha" placeholder="********" required="required">
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-8 offset-md-2 col-lg-6 offset-lg-3">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">Entrar</button>
+                    <button type="submit" class="btn btn-success btn-lg btn-block">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Entrar
+                    </button>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-sm-6 offset-sm-3">
                     @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                    <p>Se não for cadastrado, clique no botão abaixo para se cadastrar</p>
+                    <p>
+                        <a class="btn btn-lg btn-primary btn-block" href="@Url.Action("Create", "Pessoas")" role="button">
+                            <i class="fas fa-pen"></i>
+                            Cadastre-se
+                        </a>
+                    </p>
                 </div>
             </div>
         </form>
