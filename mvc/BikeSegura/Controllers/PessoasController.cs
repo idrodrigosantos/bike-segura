@@ -84,20 +84,31 @@ namespace BikeSegura.Controllers
         {
             if (pessoas != null)
             {
-                // Verifica se o o e-mail já está cadastrado
+                // Verifica se o e-mail já está cadastrado no banco
                 var verificaemail = db.Pessoas.Where(w => w.Email == pessoas.Email).FirstOrDefault();
                 if (verificaemail == null)
                 {
-                    // Se não estiver cadastrado, salva no banco
-                    pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
-                    pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
-                    db.Pessoas.Add(pessoas);
-                    db.SaveChanges();
-                    return RedirectToAction("Login", "Home");
+                    // Verifica se o CPF já está cadastrado no banco
+                    var verificacpf = db.Pessoas.Where(w => w.Cpf == pessoas.Cpf).FirstOrDefault();
+                    if (verificacpf == null)
+                    {
+                        // Se não estiver cadastrado e-mail ou CPF, salva no banco
+                        pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
+                        pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
+                        db.Pessoas.Add(pessoas);
+                        db.SaveChanges();
+                        return RedirectToAction("Login", "Home");
+                    }
+                    else
+                    {
+                        // Se CPF estiver cadastrado no banco, retorna mensagem de erro
+                        ModelState.AddModelError("", "O CPF informado está em uso");
+                        return View();
+                    }
                 }
                 else
                 {
-                    // Se estiver cadastrado, retorna mensagem de erro
+                    // Se e-mail estiver cadastrado no banco, retorna mensagem de erro
                     ModelState.AddModelError("", "O e-mail informado está em uso");
                     return View();
                 }
