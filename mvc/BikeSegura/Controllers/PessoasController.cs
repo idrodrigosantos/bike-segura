@@ -162,7 +162,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario")] Pessoas pessoas, HttpPostedFileBase arquivoimg)
+        public ActionResult Edit([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario")] Pessoas pessoas, HttpPostedFileBase arquivoimg, string mensagem, string assunto)
         {
             string valor = ""; // Faz parte do upload
             if (ModelState.IsValid)
@@ -175,21 +175,105 @@ namespace BikeSegura.Controllers
                     valor = Upload.UploadArquivo(arquivoimg, nomearquivo);
                     if (valor == "sucesso")
                     {
-                        Upload.ExcluirArquivo(Request.PhysicalApplicationPath + "Uploads\\" + pessoas.Imagem);
-                        pessoas.Imagem = nomearquivo;
-                        pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
-                        pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
-                        db.Entry(pessoas).State = EntityState.Modified;
-                        db.SaveChanges();
+                        if (pessoas != null)
+                        {
+                            // Verifica se o e-mail já está cadastrado no banco
+                            var verificaemail = db.Pessoas.Where(w => w.Email == pessoas.Email).FirstOrDefault();
+                            if (verificaemail == null)
+                            {
+                                // Verifica se o CPF já está cadastrado no banco
+                                var verificacpf = db.Pessoas.Where(w => w.Cpf == pessoas.Cpf).FirstOrDefault();
+                                if (verificacpf == null)
+                                {
+                                    // Se não estiver cadastrado e-mail ou CPF, salva no banco
+                                    pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
+                                    pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
+                                    //Enviar e-mail para o e-mail cadastrado
+                                    mensagem = "Seu cadastro foi efetuado com sucesso.";
+                                    assunto = "Bike Segura - Cadastro";
+                                    if (mensagem != "" && pessoas.Email != "" && assunto != "")
+                                    {
+                                        TempData["MSG"] = Funcoes.EnviarEmail(pessoas.Email, assunto, mensagem);
+                                    }
+                                    Upload.ExcluirArquivo(Request.PhysicalApplicationPath + "Uploads\\" + pessoas.Imagem);
+                                    pessoas.Imagem = nomearquivo;
+                                    pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
+                                    pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
+                                    db.Entry(pessoas).State = EntityState.Modified;
+                                    db.SaveChanges();
+                                    return RedirectToAction("DashboardUsuario", "Pessoas");
+                                }
+                                else
+                                {
+                                    // Se CPF estiver cadastrado no banco, retorna mensagem de erro
+                                    TempData["MSG"] = "warning|Preencha o campo CPF, com um CPF válido."; // Mensagem Toastr
+                                    ModelState.AddModelError("", "O CPF informado está em uso");
+                                    return View();
+                                }
+                            }
+                            else
+                            {
+                                // Se e-mail estiver cadastrado no banco, retorna mensagem de erro
+                                TempData["MSG"] = "warning|Preencha o campo email, com um email válido."; // Mensagem Toastr
+                                ModelState.AddModelError("", "O e-mail informado está em uso");
+                                return View();
+                            }
+                        }
+                        else
+                        {
+                            return View(pessoas);
+                        }
                     }
                 }
                 // Fim método upload imagem do perfil
                 else
                 {
-                    pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
-                    pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
-                    db.Entry(pessoas).State = EntityState.Modified;
-                    db.SaveChanges();
+                    if (pessoas != null)
+                    {
+                        // Verifica se o e-mail já está cadastrado no banco
+                        var verificaemail = db.Pessoas.Where(w => w.Email == pessoas.Email).FirstOrDefault();
+                        if (verificaemail == null)
+                        {
+                            // Verifica se o CPF já está cadastrado no banco
+                            var verificacpf = db.Pessoas.Where(w => w.Cpf == pessoas.Cpf).FirstOrDefault();
+                            if (verificacpf == null)
+                            {
+                                // Se não estiver cadastrado e-mail ou CPF, salva no banco
+                                pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
+                                pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
+                                //Enviar e-mail para o e-mail cadastrado
+                                mensagem = "Seu cadastro foi efetuado com sucesso.";
+                                assunto = "Bike Segura - Cadastro";
+                                if (mensagem != "" && pessoas.Email != "" && assunto != "")
+                                {
+                                    TempData["MSG"] = Funcoes.EnviarEmail(pessoas.Email, assunto, mensagem);
+                                }
+                                pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
+                                pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
+                                db.Entry(pessoas).State = EntityState.Modified;
+                                db.SaveChanges();
+                                return RedirectToAction("DashboardUsuario", "Pessoas");
+                            }
+                            else
+                            {
+                                // Se CPF estiver cadastrado no banco, retorna mensagem de erro
+                                TempData["MSG"] = "warning|Preencha o campo CPF, com um CPF válido."; // Mensagem Toastr
+                                ModelState.AddModelError("", "O CPF informado está em uso");
+                                return View();
+                            }
+                        }
+                        else
+                        {
+                            // Se e-mail estiver cadastrado no banco, retorna mensagem de erro
+                            TempData["MSG"] = "warning|Preencha o campo email, com um email válido."; // Mensagem Toastr
+                            ModelState.AddModelError("", "O e-mail informado está em uso");
+                            return View();
+                        }
+                    }
+                    else
+                    {
+                        return View(pessoas);
+                    }
                 }
                 return RedirectToAction("DashboardUsuario", "Pessoas");
             }
