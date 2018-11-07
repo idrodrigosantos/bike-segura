@@ -80,7 +80,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario")] Pessoas pessoas)
+        public ActionResult Create([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario")] Pessoas pessoas, string mensagem, string assunto)
         {
             if (pessoas != null)
             {
@@ -95,6 +95,17 @@ namespace BikeSegura.Controllers
                         // Se não estiver cadastrado e-mail ou CPF, salva no banco
                         pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
                         pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
+                        //Enviar e-mail para o e-mail cadastrado
+                        mensagem = "Teste Cadastro Sistema";
+                        assunto = "Teste Assunto";
+                        if (mensagem != "" && pessoas.Email != "" && assunto != "")
+                        {
+                            TempData["MSG"] = Funcoes.EnviarEmail(pessoas.Email, assunto, mensagem);
+                        }
+                        else
+                        {
+                            TempData["MSG"] = "warning|Preencha todos os campos";
+                        }
                         db.Pessoas.Add(pessoas);
                         db.SaveChanges();
                         return RedirectToAction("Login", "Home");

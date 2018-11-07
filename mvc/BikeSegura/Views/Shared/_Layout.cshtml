@@ -53,6 +53,48 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/toastr")
     @RenderSection("scripts", required: false)
+
+    @if (TempData["MSG"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            var titulo = "";
+            switch ("@TempData["MSG"].ToString().Split('|')[0]") {
+            case "success":
+                titulo = "SUCESSO";
+                break;
+            case "warning":
+                titulo = "ATENÇÃO";
+                break;
+            case "error":
+                titulo = "ERRO";
+                break;
+            case "info":
+                titulo = "INFORMAÇÃO";
+                break;
+        }
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-bottom-right",
+            "preventDuplicates": true,
+            "onclick": null,
+            "showDuration": "6000",
+            "hideDuration": "6000",
+            "timeOut": "6000",
+            "extendedTimeOut": "6000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+      toastr["@TempData["MSG"].ToString().Split('|')[0]"]("@Html.Raw(TempData["MSG"].ToString().Split('|')[1])", titulo)
+      });
+        </script>
+    }
 </body>
 </html>
