@@ -96,15 +96,11 @@ namespace BikeSegura.Controllers
                         pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
                         pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
                         //Enviar e-mail para o e-mail cadastrado
-                        mensagem = "Teste Cadastro Sistema";
-                        assunto = "Teste Assunto";
+                        mensagem = "Seu cadastro foi efetuado com sucesso.";
+                        assunto = "Bike Segura - Cadastro";
                         if (mensagem != "" && pessoas.Email != "" && assunto != "")
                         {
                             TempData["MSG"] = Funcoes.EnviarEmail(pessoas.Email, assunto, mensagem);
-                        }
-                        else
-                        {
-                            TempData["MSG"] = "warning|Preencha todos os campos";
                         }
                         db.Pessoas.Add(pessoas);
                         db.SaveChanges();
@@ -113,6 +109,7 @@ namespace BikeSegura.Controllers
                     else
                     {
                         // Se CPF estiver cadastrado no banco, retorna mensagem de erro
+                        TempData["MSG"] = "warning|Preencha o campo CPF, com um CPF válido."; // Mensagem Toastr
                         ModelState.AddModelError("", "O CPF informado está em uso");
                         return View();
                     }
@@ -120,6 +117,7 @@ namespace BikeSegura.Controllers
                 else
                 {
                     // Se e-mail estiver cadastrado no banco, retorna mensagem de erro
+                    TempData["MSG"] = "warning|Preencha o campo email, com um email válido."; // Mensagem Toastr
                     ModelState.AddModelError("", "O e-mail informado está em uso");
                     return View();
                 }
