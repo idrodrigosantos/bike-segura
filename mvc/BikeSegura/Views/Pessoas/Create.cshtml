@@ -47,41 +47,6 @@
                 </small>
                 @Html.ValidationMessageFor(model => model.ConfirmaSenha, "", new { @class = "text-danger" })
             </div>
-            @*<div class="form-group col-sm-12 col-md-8">
-                    @Html.LabelFor(model => model.Endereco, htmlAttributes: new { @class = "control-label" })
-                    @Html.EditorFor(model => model.Endereco, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Endereco, "", new { @class = "text-danger" })
-                </div>*@
-            @*<div class="form-group col-sm-6 col-md-4">
-                    @Html.LabelFor(model => model.Numero, htmlAttributes: new { @class = "control-label" })
-                    @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
-                </div>*@
-            @*<div class="form-group col-sm-6 col-md-4">
-                    @Html.LabelFor(model => model.Complemento, htmlAttributes: new { @class = "control-label" })
-                    @Html.EditorFor(model => model.Complemento, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Complemento, "", new { @class = "text-danger" })
-                </div>*@
-            @*<div class="form-group col-sm-6 col-md-3">
-                    @Html.LabelFor(model => model.Cep, htmlAttributes: new { @class = "control-label" })
-                    @Html.EditorFor(model => model.Cep, new { htmlAttributes = new { @class = "form-control cepmask" } })
-                    @Html.ValidationMessageFor(model => model.Cep, "", new { @class = "text-danger" })
-                </div>*@
-            @*<div class="form-group col-sm-6 col-md-5">
-                    @Html.LabelFor(model => model.Bairro, htmlAttributes: new { @class = "control-label" })
-                    @Html.EditorFor(model => model.Bairro, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Bairro, "", new { @class = "text-danger" })
-                </div>*@
-            @*<div class="form-group col-sm-6 col-md-7">
-                    @Html.LabelFor(model => model.Cidade, htmlAttributes: new { @class = "control-label" })
-                    @Html.EditorFor(model => model.Cidade, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Cidade, "", new { @class = "text-danger" })
-                </div>*@
-            @*<div class="form-group col-sm-6 col-md-5">
-                    @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label" })
-                    @Html.EnumDropDownListFor(model => model.Estado, "Selecione Estado", new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
-                </div>*@
             <div class="form-group col-sm-6">
                 @Html.LabelFor(model => model.Telefone, htmlAttributes: new { @class = "control-label" })
                 @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control telmask" } })
@@ -95,13 +60,11 @@
             <div class="form-group col-sm-6">
                 @Html.LabelFor(model => model.Cpf, htmlAttributes: new { @class = "control-label" })
                 @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control cpfmask" } })
+                <small class="form-text">
+                    Digite um CPF válido.
+                </small>
                 @Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
             </div>
-            @*<div class="form-group col-sm-6 col-md-4">
-                    @Html.LabelFor(model => model.DataNascimento, htmlAttributes: new { @class = "control-label" })
-                    @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
-                </div>*@
             <div class="form-group col-sm-6">
                 @Html.LabelFor(model => model.Genero, htmlAttributes: new { @class = "control-label" })
                 <div class="form-check">
@@ -114,31 +77,6 @@
                 </div>
                 @Html.ValidationMessageFor(model => model.Genero, "", new { @class = "text-danger" })
             </div>
-            @*<div class="col-sm-6">
-                    @Html.LabelFor(model => model.Imagem, htmlAttributes: new { @class = "control-label" })
-                    <input type="file" name="arquivoimg" class="form-control-file" />
-                    @Html.ValidationMessageFor(model => model.Imagem, "", new { @class = "text-danger" })
-                </div>*@
-            @*<div class="form-group col-sm-12 col-md-4">
-                    @Html.LabelFor(model => model.NomeContato, htmlAttributes: new { @class = "control-label" })
-                    @Html.EditorFor(model => model.NomeContato, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.NomeContato, "", new { @class = "text-danger" })
-                </div>
-                <div class="form-group col-sm-6 col-md-4">
-                    @Html.LabelFor(model => model.TelefoneContato, htmlAttributes: new { @class = "control-label" })
-                    @Html.EditorFor(model => model.TelefoneContato, new { htmlAttributes = new { @class = "form-control telmask" } })
-                    @Html.ValidationMessageFor(model => model.TelefoneContato, "", new { @class = "text-danger" })
-                </div>
-                <div class="form-group col-sm-6 col-md-4">
-                    @Html.LabelFor(model => model.CelularContato, htmlAttributes: new { @class = "control-label" })
-                    @Html.EditorFor(model => model.CelularContato, new { htmlAttributes = new { @class = "form-control celmask" } })
-                    @Html.ValidationMessageFor(model => model.CelularContato, "", new { @class = "text-danger" })
-                </div>*@
-            @*<div class="form-group col-sm-12">
-                    @Html.LabelFor(model => model.TipoUsuario, htmlAttributes: new { @class = "control-label" })
-                    @Html.EnumDropDownListFor(model => model.TipoUsuario, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.TipoUsuario, "", new { @class = "text-danger" })
-                </div>*@
             <div class="form-group col-sm-12">
                 <div class="botao-salvar">
                     <a class="btn btn-danger" href="@Url.Action("Index", "Home")" role="button">
@@ -170,21 +108,21 @@
     </script>
 
     @*<script type="text/javascript">
-        $('#botaoAlerta').click(function () {
-            var url = "/Pessoas/alertaCadastro";
-            var nome = $("#Nome").val();
-            var email = $("#Email").val();
-            var confirmaemail = $("#ConfirmaEmail").val();
-            var senha = $("#Senha").val();
-            var confirmasenha = $("#ConfirmaSenha").val();
-            var telefone = $("#Telefone").val();
-            var cpf = $("#Cpf").val();
-            $.post(url, {
-                Nome: nome, Email: email, ConfirmaEmail: confirmaemail,
-                Senha: senha, ConfirmaSenha: confirmasenha, Telefone: telefone, Cpf: cpf,
-            }, function (data) {                
-                alert(data);
-            });
-        })
-    </script>*@
+            $('#botaoAlerta').click(function () {
+                var url = "/Pessoas/alertaCadastro";
+                var nome = $("#Nome").val();
+                var email = $("#Email").val();
+                var confirmaemail = $("#ConfirmaEmail").val();
+                var senha = $("#Senha").val();
+                var confirmasenha = $("#ConfirmaSenha").val();
+                var telefone = $("#Telefone").val();
+                var cpf = $("#Cpf").val();
+                $.post(url, {
+                    Nome: nome, Email: email, ConfirmaEmail: confirmaemail,
+                    Senha: senha, ConfirmaSenha: confirmasenha, Telefone: telefone, Cpf: cpf,
+                }, function (data) {
+                    alert(data);
+                });
+            })
+        </script>*@
 }
