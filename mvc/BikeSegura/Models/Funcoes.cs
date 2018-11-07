@@ -51,9 +51,9 @@ namespace BikeSegura.Models
                 SmtpClient cliente = new SmtpClient();
                 //Envia o email
                 cliente.Send(mensagem);
-                return "success|E-mail enviado com sucesso";
+                return "success|Cadastro efetuado com sucesso.";
             }
-            catch { return "error|Erro ao enviar e-mail"; }
+            catch { return "error|Erro ao enviar e-mail de confirmação de cadastro."; }
         }
     }
 }
