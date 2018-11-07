@@ -323,8 +323,13 @@ namespace BikeSegura.Controllers
         {
             var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
             int id = Convert.ToInt32(usu);
-            //var historicos = db.Historicos.Include(h => h.Bicicletas).Include(h => h.Comprador).Include(h => h.Vendedor).Where(x => x.CompradorId == id);
             var historicos = db.Historicos.Include(h => h.Bicicletas).Include(h => h.Comprador).Include(h => h.Vendedor).Where(x => x.CompradorId == id && (int)x.TipoTransferencia == 2);
+            // Consulta banco, número de bicicletas seguras 
+            var totalBikeSegura = db.Bicicletas.Where(w => (int)w.AlertaRoubo == 0).Count();
+            ViewData["TOTALBIKESEGURA"] = totalBikeSegura;
+            // Consulta banco, número de bicicletas roubadas
+            var totalBikeRoubada = db.Bicicletas.Where(w => (int)w.AlertaRoubo == 1).Count();
+            ViewData["TOTALBIKEROUBADA"] = totalBikeRoubada;
             return View(historicos.ToList());
         }
 
