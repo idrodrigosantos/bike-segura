@@ -17,6 +17,16 @@ namespace BikeSegura.Controllers
             return View();
         }
 
+        public ActionResult IndexAdm()
+        {
+            return View();
+        }
+
+        public ActionResult IndexUsuario()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -88,15 +98,5 @@ namespace BikeSegura.Controllers
             }
         }
         // Login fim
-
-        public ActionResult IndexAdm()
-        {
-            return View();
-        }
-
-        public ActionResult IndexUsuario()
-        {
-            return View();
-        }
     }
 }

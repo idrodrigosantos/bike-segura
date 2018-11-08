@@ -54,7 +54,7 @@ namespace BikeSegura.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Método upload imagem do perfil
+                // Método upload imagem da bicicleta
                 string valor = "";
                 string nomearquivo = "";
                 if (arquivoimg != null)
@@ -73,7 +73,7 @@ namespace BikeSegura.Controllers
                     }
                     return RedirectToAction("Index");
                 }
-                // Fim método upload imagem do perfil
+                // Fim método upload imagem da bicicleta
             }
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", imagens.BicicletasId);
             return View(imagens);
@@ -157,16 +157,7 @@ namespace BikeSegura.Controllers
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        // Ação para apagar a imagem sem atualizar a página
+        // Ação para excluir a imagem sem atualizar a página
         [AcceptVerbs(HttpVerbs.Post)]
         [ValidateInput(false)]
         public JsonResult ExcluirFoto(string id)
@@ -182,6 +173,15 @@ namespace BikeSegura.Controllers
             {
                 return Json("n");
             }
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

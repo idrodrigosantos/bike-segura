@@ -22,6 +22,7 @@ namespace BikeSegura.Controllers
             return View(bicicletas.ToList());
         }
 
+        [Authorize]
         // GET: Bicicletas/Details/5
         public ActionResult Details(int? id)
         {
@@ -155,15 +156,6 @@ namespace BikeSegura.Controllers
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
         // GET: Bicicletas/DetalhesBicicletaPublico/5
         public ActionResult DetalhesBicicletaPublico(int? id)
         {
@@ -192,6 +184,15 @@ namespace BikeSegura.Controllers
                 return HttpNotFound();
             }
             return View(bicicletas);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

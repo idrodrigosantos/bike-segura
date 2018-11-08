@@ -129,15 +129,6 @@ namespace BikeSegura.Controllers
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
         // Método buscar número de série - usuário público
         public ActionResult BuscarPublico(string id)
         {
@@ -221,5 +212,14 @@ namespace BikeSegura.Controllers
         //    else
         //        return "Número de série é obrigatório.";
         //}
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }
