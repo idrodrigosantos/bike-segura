@@ -10,6 +10,17 @@
         <table class="table table-hover">
             <tr>
                 <td>
+                    Imagens
+                </td>
+                <td colspan="2">
+                    @foreach (var item in Model.Imagens)
+                    {
+                        <img src="~/Uploads/@item.Imagem" style="height:140px;width:200px;" />
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <strong>@Html.DisplayNameFor(model => model.Marcas.Nome)</strong>
                 </td>
                 <td>
