@@ -202,17 +202,7 @@ namespace BikeSegura.Controllers
             }
             return View(numerosSeries);
         }
-
-        // Alerta de sucesso do número de série cadastrado
-        //[HttpPost]
-        //public string alertaCadastro(string Numero)
-        //{
-        //    if (!String.IsNullOrEmpty(Numero))                
-        //        return "O número de série: " + Numero + " foi salvo com suscesso.";
-        //    else
-        //        return "Número de série é obrigatório.";
-        //}
-
+                
         protected override void Dispose(bool disposing)
         {
             if (disposing)
