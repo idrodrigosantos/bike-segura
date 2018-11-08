@@ -7,9 +7,9 @@
 
 <div class="container conteudo">
     <p>
-        <a class="btn btn-success" href="@Url.Action("Create", "Historicos" )" role="button">
+        <a class="btn btn-success" href="@Url.Action("Create", "Bicicletas" )" role="button">
             <i class="fas fa-plus"></i>
-            Cadastrar Histórico da Bicicleta
+            Cadastrar Bicicleta
         </a>
     </p>
     <div class="table-responsive">
@@ -17,26 +17,23 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Bicicletas.Marcas.Nome)
+                        Marca
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Bicicletas.Modelo)
                     </th>
                     <th>
-                        Vendedor
+                        @Html.DisplayNameFor(model => model.Bicicletas.Tipos.Nome)
                     </th>
                     <th>
-                        Comprador
+                        @Html.DisplayNameFor(model => model.Bicicletas.Cor)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.TipoTransferencia)
+                        @Html.DisplayNameFor(model => model.Bicicletas.AlertaRoubo)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.DataAquisicao)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DataTransferencia)
-                    </th>
+                        @Html.DisplayNameFor(model => model.Bicicletas.Vendendo)
+                    </th>                    
                     <th></th>
                 </tr>
             </thead>
@@ -51,31 +48,28 @@
                             @Html.DisplayFor(modelItem => item.Bicicletas.Modelo)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Vendedor.Nome)
+                            @Html.DisplayFor(modelItem => item.Bicicletas.Tipos.Nome)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Comprador.Nome)
+                            @Html.DisplayFor(modelItem => item.Bicicletas.Cor)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.TipoTransferencia)
+                            @Html.DisplayFor(modelItem => item.Bicicletas.AlertaRoubo)
                         </td>
                         <td>
-                            @item.DataAquisicao.ToString("dd/MM/yyyy")
-                        </td>
-                        <td>
-                            @item.DataTransferencia.ToString("dd/MM/yyyy")
+                            @Html.DisplayFor(modelItem => item.Bicicletas.Vendendo)
                         </td>
                         <td>
                             <div class="btn" role="group">
-                                <a class="btn btn-success" href="@Url.Action("Details", new { id = item.Id })" role="button">
+                                <a class="btn btn-success" href="@Url.Action("Details", "Bicicletas", new { id = item.BicicletasId })" role="button">
                                     <i class="fas fa-list"></i>
                                     Detalhes
                                 </a>
-                                <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.Id })" role="button">
+                                <a class="btn btn-primary" href="@Url.Action("Edit", "Bicicletas", new { id = item.BicicletasId })" role="button">
                                     <i class="fas fa-pen"></i>
                                     Editar
                                 </a>
-                                <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.Id })" role="button">
+                                <a class="btn btn-danger" href="@Url.Action("Delete", "Bicicletas", new { id = item.BicicletasId })" role="button">
                                     <i class="fas fa-times"></i>
                                     Excluir
                                 </a>
