@@ -116,7 +116,7 @@ namespace BikeSegura.Controllers
             {
                 db.Entry(bicicletas).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("DashboardUsuario", "Pessoas");
             }
             ViewBag.ArosId = new SelectList(db.Aros, "Id", "Medida", bicicletas.ArosId);
             ViewBag.CambiosDianteirosId = new SelectList(db.CambiosDianteiros, "Id", "Velocidade", bicicletas.CambiosDianteirosId);
