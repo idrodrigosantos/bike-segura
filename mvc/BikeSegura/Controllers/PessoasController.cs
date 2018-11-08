@@ -308,15 +308,6 @@ namespace BikeSegura.Controllers
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
         [Authorize(Roles = "Comum")]
         // GET: DashboardUsuario
         public ActionResult DashboardUsuario()
@@ -337,7 +328,6 @@ namespace BikeSegura.Controllers
         // GET: DashboardAdm
         public ActionResult DashboardAdm()
         {
-            //var pessoas = db.Pessoas.Count();
             return View(db.Pessoas.ToList());
         }
 
@@ -353,5 +343,61 @@ namespace BikeSegura.Controllers
         //    else
         //        return "Campo(s) obrigatório(s).";
         //}
+
+        [Authorize]
+        // GET: Pessoas/EditarSenha/5
+        public ActionResult EditarSenha(int? id)
+        {
+            var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
+            if (System.Web.HttpContext.Current.User.IsInRole("Administrador"))
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Pessoas pessoas = db.Pessoas.Find(id);
+                if (pessoas == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(pessoas);
+            }
+            else
+            {
+                Pessoas pessoas = db.Pessoas.Find(Convert.ToInt32(usu));
+                if (pessoas == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(pessoas);
+            }
+        }
+
+        // POST: Pessoas/EditarSenha/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditarSenha([Bind(Include = "Id,Senha,ConfirmaSenha")] Pessoas pessoas)
+        {
+            if (ModelState.IsValid)
+            {
+                pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
+                pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
+                db.Entry(pessoas).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("DashboardUsuario", "Pessoas");
+            }
+            return View(pessoas);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }
