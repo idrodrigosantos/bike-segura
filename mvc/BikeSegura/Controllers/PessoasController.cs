@@ -178,11 +178,11 @@ namespace BikeSegura.Controllers
                         if (pessoas != null)
                         {
                             // Verifica se o e-mail já está cadastrado no banco
-                            var verificaemail = db.Pessoas.Where(w => w.Email == pessoas.Email).FirstOrDefault();
+                            var verificaemail = db.Pessoas.Where(w => w.Email == pessoas.Email && w.Id != pessoas.Id).FirstOrDefault();
                             if (verificaemail == null)
                             {
                                 // Verifica se o CPF já está cadastrado no banco
-                                var verificacpf = db.Pessoas.Where(w => w.Cpf == pessoas.Cpf).FirstOrDefault();
+                                var verificacpf = db.Pessoas.Where(w => w.Cpf == pessoas.Cpf && w.Id != pessoas.Id).FirstOrDefault();
                                 if (verificacpf == null)
                                 {
                                     // Se não estiver cadastrado e-mail ou CPF, salva no banco
@@ -231,11 +231,11 @@ namespace BikeSegura.Controllers
                     if (pessoas != null)
                     {
                         // Verifica se o e-mail já está cadastrado no banco
-                        var verificaemail = db.Pessoas.Where(w => w.Email == pessoas.Email).FirstOrDefault();
+                        var verificaemail = db.Pessoas.Where(w => w.Email == pessoas.Email && w.Id != pessoas.Id).FirstOrDefault();
                         if (verificaemail == null)
                         {
                             // Verifica se o CPF já está cadastrado no banco
-                            var verificacpf = db.Pessoas.Where(w => w.Cpf == pessoas.Cpf).FirstOrDefault();
+                            var verificacpf = db.Pessoas.Where(w => w.Cpf == pessoas.Cpf && w.Id != pessoas.Id).FirstOrDefault();
                             if (verificacpf == null)
                             {
                                 // Se não estiver cadastrado e-mail ou CPF, salva no banco
@@ -331,19 +331,6 @@ namespace BikeSegura.Controllers
             return View(db.Pessoas.ToList());
         }
 
-        // Alerta de sucesso do cadastro do usuário
-        //[HttpPost]
-        //public string alertaCadastro(string Nome, string Email, string ConfirmaEmail, 
-        //    string Senha, string ConfirmaSenha, string Telefone, string Cpf)
-        //{
-        //    if (!String.IsNullOrEmpty(Nome) && !String.IsNullOrEmpty(Email) && !String.IsNullOrEmpty(ConfirmaEmail) && 
-        //        !String.IsNullOrEmpty(Senha) && !String.IsNullOrEmpty(ConfirmaSenha) && !String.IsNullOrEmpty(Telefone) && 
-        //        !String.IsNullOrEmpty(Cpf))
-        //        return "Cadastro realizado com sucesso.";
-        //    else
-        //        return "Campo(s) obrigatório(s).";
-        //}
-
         [Authorize]
         // GET: Pessoas/EditarSenha/5
         public ActionResult EditarSenha(int? id)
@@ -380,15 +367,19 @@ namespace BikeSegura.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditarSenha([Bind(Include = "Id,Senha,ConfirmaSenha")] Pessoas pessoas)
         {
-            if (ModelState.IsValid)
+            try
             {
-                pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
-                pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
-                db.Entry(pessoas).State = EntityState.Modified;
+                Pessoas pes = db.Pessoas.Find(pessoas.Id);
+                pes.Senha = Funcoes.SHA512(pes.Senha); //Criptografia
+                pes.ConfirmaSenha = Funcoes.SHA512(pes.ConfirmaSenha); //Criptografia
+                db.Entry(pes).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("DashboardUsuario", "Pessoas");
             }
-            return View(pessoas);
+            catch
+            {
+                return View(pessoas);
+            }
         }
 
         protected override void Dispose(bool disposing)
