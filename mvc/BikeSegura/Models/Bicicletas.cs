@@ -67,5 +67,6 @@ namespace BikeSegura.Models
         public virtual Suspensoes Suspensoes { get; set; }
         public virtual Aros Aros { get; set; }
         public virtual Quadros Quadros { get; set; }
+        public virtual ICollection<Imagens> Imagens { get; set; }
     }
 }
