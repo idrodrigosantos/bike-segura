@@ -57,7 +57,7 @@ namespace BikeSegura.Controllers
             {
                 db.Historicos.Add(historicos);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ListaBicicletas", "Historicos");
             }
 
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", historicos.BicicletasId);
@@ -95,7 +95,7 @@ namespace BikeSegura.Controllers
             {
                 db.Entry(historicos).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("DashboardUsuario", "Pessoas");
             }
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", historicos.BicicletasId);
             ViewBag.CompradorId = new SelectList(db.Pessoas, "Id", "Nome", historicos.CompradorId);
@@ -128,9 +128,18 @@ namespace BikeSegura.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        
         // Lista de Bicicletas do Usuário
         public ActionResult ListaBicicletas()
+        {
+            var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
+            int id = Convert.ToInt32(usu);
+            var historicos = db.Historicos.Include(h => h.Bicicletas).Include(h => h.Comprador).Include(h => h.Vendedor).Where(x => x.CompradorId == id && (int)x.TipoTransferencia == 2);
+            return View(historicos.ToList());
+        }
+
+        // Lista Histórico Bicicleta
+        public ActionResult HistoricoBicicleta()
         {
             var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
             int id = Convert.ToInt32(usu);

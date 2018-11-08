@@ -435,6 +435,7 @@
     <Content Include="Views\NumerosSeries\DetalhesBuscaUsuario.cshtml" />
     <Content Include="Views\Bicicletas\DetalhesBicicletaUsuario.cshtml" />
     <Content Include="Views\Pessoas\EditarSenha.cshtml" />
+    <Content Include="Views\Historicos\HistoricoBicicleta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
