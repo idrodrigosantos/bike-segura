@@ -60,8 +60,7 @@ namespace BikeSegura.Controllers
             if (ModelState.IsValid)
             {
                 db.NumerosSeries.Add(numerosSeries);
-                db.SaveChanges();
-                //return RedirectToAction("Index");
+                db.SaveChanges();                
                 return RedirectToAction("Create", "NumerosSeries", new { id = numerosSeries.BicicletasId });
             }
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", numerosSeries.BicicletasId);
