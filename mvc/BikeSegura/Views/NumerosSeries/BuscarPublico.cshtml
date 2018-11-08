@@ -1,0 +1,26 @@
+﻿@model BikeSegura.Models.NumerosSeries
+
+@{
+    ViewBag.Title = "Buscar Número de Série";    
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container conteudo">        
+        <div class="row">            
+            <div class="form-group col-lg-8 offset-lg-2">
+                @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+                @Html.LabelFor(model => model.Numero, "Número de Série da Bicicleta", htmlAttributes: new { @class = "control-label" })
+                <input class="form-control" type="text" name="id" />
+                @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-lg-8 offset-lg-2">
+                <button class="btn btn-primary" id="Buscar" value="Buscar" name="Buscar" formmethod="post">
+                    <i class="fas fa-search"></i>
+                    Pesquisar Bicicleta
+                </button>
+            </div>
+        </div>
+    </div>
+}

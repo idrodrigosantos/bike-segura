@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using BikeSegura.Models;
 
 namespace BikeSegura.Controllers
-{    
+{
     public class BicicletasController : Controller
     {
         private Contexto db = new Contexto();
@@ -162,6 +162,36 @@ namespace BikeSegura.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        // GET: Bicicletas/DetalhesBicicletaPublico/5
+        public ActionResult DetalhesBicicletaPublico(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Bicicletas bicicletas = db.Bicicletas.Find(id);
+            if (bicicletas == null)
+            {
+                return HttpNotFound();
+            }
+            return View(bicicletas);
+        }
+
+        // GET: Bicicletas/DetalhesBicicletaUsuario/5
+        public ActionResult DetalhesBicicletaUsuario(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Bicicletas bicicletas = db.Bicicletas.Find(id);
+            if (bicicletas == null)
+            {
+                return HttpNotFound();
+            }
+            return View(bicicletas);
         }
     }
 }

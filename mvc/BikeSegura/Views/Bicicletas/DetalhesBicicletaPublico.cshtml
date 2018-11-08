@@ -2,12 +2,12 @@
 
 @{
     ViewBag.Title = "Detalhes Bicicleta";
-    Layout = "~/Views/Shared/_Usuario.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="container conteudo">
     <div class="table-responsive table-sm">
-        <table class="table table-hover">            
+        <table class="table table-hover">
             <tr>
                 <td>
                     <strong>@Html.DisplayNameFor(model => model.Marcas.Nome)</strong>
@@ -121,19 +121,5 @@
                 </td>
             </tr>
         </table>
-    </div>
-    <div class="row">
-        <div class="form-group col-sm-12">
-            <div class="botao-salvar">
-                <a class="btn btn-success" href="@Url.Action("DashboardUsuario", "Pessoas")" role="button">
-                    <i class="fas fa-reply"></i>
-                    Voltar
-                </a>
-                <a class="btn btn-primary" href="@Url.Action("Edit", "Bicicletas", new { id = Model.Id })" role="button">
-                    <i class="fas fa-pen"></i>
-                    Editar
-                </a>
-            </div>
-        </div>
     </div>
 </div>

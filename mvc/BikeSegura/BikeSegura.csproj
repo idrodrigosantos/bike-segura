@@ -401,7 +401,7 @@
     <Content Include="Views\Imagens\Details.cshtml" />
     <Content Include="Views\Imagens\Edit.cshtml" />
     <Content Include="Views\Imagens\Index.cshtml" />
-    <Content Include="Views\NumerosSeries\Buscar.cshtml" />
+    <Content Include="Views\NumerosSeries\BuscarPublico.cshtml" />
     <Content Include="Fonts\Roboto-Black.ttf" />
     <Content Include="Fonts\Roboto-BlackItalic.ttf" />
     <Content Include="Fonts\Roboto-Bold.ttf" />
@@ -429,7 +429,11 @@
     <Content Include="Views\Historicos\ListaBicicletas.cshtml" />
     <Content Include="Views\Home\IndexUsuario.cshtml" />
     <Content Include="Views\Home\IndexAdm.cshtml" />
-    <Content Include="Views\NumerosSeries\DetalhesBusca.cshtml" />
+    <Content Include="Views\NumerosSeries\DetalhesBuscaPublico.cshtml" />
+    <Content Include="Views\Bicicletas\DetalhesBicicletaPublico.cshtml" />
+    <Content Include="Views\NumerosSeries\BuscarUsuario.cshtml" />
+    <Content Include="Views\NumerosSeries\DetalhesBuscaUsuario.cshtml" />
+    <Content Include="Views\Bicicletas\DetalhesBicicletaUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

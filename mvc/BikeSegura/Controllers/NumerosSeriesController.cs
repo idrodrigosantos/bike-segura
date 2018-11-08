@@ -62,7 +62,7 @@ namespace BikeSegura.Controllers
                 db.NumerosSeries.Add(numerosSeries);
                 db.SaveChanges();
                 //return RedirectToAction("Index");
-                return RedirectToAction("Create", "NumerosSeries", new { id = numerosSeries.BicicletasId });                
+                return RedirectToAction("Create", "NumerosSeries", new { id = numerosSeries.BicicletasId });
             }
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", numerosSeries.BicicletasId);
             return View(numerosSeries);
@@ -138,15 +138,37 @@ namespace BikeSegura.Controllers
             base.Dispose(disposing);
         }
 
-        // Método buscar número de série
-        public ActionResult Buscar(string id)
+        // Método buscar número de série - usuário público
+        public ActionResult BuscarPublico(string id)
         {
             if (id != null)
             {
                 var numeroserie = db.NumerosSeries.Where(w => w.Numero == id).FirstOrDefault();
                 if (numeroserie != null)
                 {
-                    return RedirectToAction("DetalhesBusca", "NumerosSeries", new { id = numeroserie.Id });
+                    return RedirectToAction("DetalhesBuscaPublico", "NumerosSeries", new { id = numeroserie.Id });
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Número de série não foi encontrado");
+                    return View();
+                }
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        // Método buscar número de série - usuário logado
+        public ActionResult BuscarUsuario(string id)
+        {
+            if (id != null)
+            {
+                var numeroserie = db.NumerosSeries.Where(w => w.Numero == id).FirstOrDefault();
+                if (numeroserie != null)
+                {
+                    return RedirectToAction("DetalhesBuscaUsuario", "NumerosSeries", new { id = numeroserie.Id });
                 }
                 else
                 {
@@ -161,7 +183,22 @@ namespace BikeSegura.Controllers
         }
 
         // GET: NumerosSeries/DetalhesBusca/5
-        public ActionResult DetalhesBusca(int? id)
+        public ActionResult DetalhesBuscaPublico(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            NumerosSeries numerosSeries = db.NumerosSeries.Find(id);
+            if (numerosSeries == null)
+            {
+                return HttpNotFound();
+            }
+            return View(numerosSeries);
+        }
+
+        // GET: NumerosSeries/DetalhesBuscaUsuario/5
+        public ActionResult DetalhesBuscaUsuario(int? id)
         {
             if (id == null)
             {

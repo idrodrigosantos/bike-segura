@@ -1,0 +1,79 @@
+﻿@model BikeSegura.Models.NumerosSeries
+
+@{
+    ViewBag.Title = "Detalhes Número de Série";
+    Layout = "~/Views/Shared/_Usuario.cshtml";
+}
+
+<div class="container conteudo">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Numero)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Bicicletas.Marcas)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Bicicletas.Modelo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Bicicletas.Tipos)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Bicicletas.Cor)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Bicicletas.AlertaRoubo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Bicicletas.Vendendo)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.Numero)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Bicicletas.Marcas.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Bicicletas.Modelo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Bicicletas.Tipos.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Bicicletas.Cor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Bicicletas.AlertaRoubo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Bicicletas.Vendendo)
+                    </td>
+                    <td>
+                        <div class="btn" role="group">
+                            @using (Html.BeginForm())
+                            {
+                                <a class="btn btn-success" href="@Url.Action("DetalhesBicicletaUsuario", "Bicicletas", new { id = Model.Id })" role="button">
+                                    <i class="fas fa-list"></i>
+                                    Detalhes Bicicleta
+                                </a>
+                                <a class="btn btn-danger" href="@Url.Action("Create", "RelatosRoubos")" role="button">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    Alerta de Roubo
+                                </a>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
