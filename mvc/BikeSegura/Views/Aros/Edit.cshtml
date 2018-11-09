@@ -8,7 +8,6 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    @Html.AntiForgeryToken()
     <div class="container conteudo">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)

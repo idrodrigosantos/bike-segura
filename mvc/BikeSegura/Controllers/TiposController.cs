@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BikeSegura.Models;
+using static BikeSegura.Models.Tipos;
 
 namespace BikeSegura.Controllers
 {
@@ -18,7 +19,9 @@ namespace BikeSegura.Controllers
         // GET: Tipos
         public ActionResult Index()
         {
-            return View(db.Tipos.ToList());
+            //return View(db.Tipos.ToList());
+            //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
+            return View(db.Tipos.Where(w => w.Ativo == 0).ToList());
         }
 
         // GET: Tipos/Details/5
@@ -47,7 +50,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome")] Tipos tipos)
+        public ActionResult Create([Bind(Include = "Id,Nome,Ativo")] Tipos tipos)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +82,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome")] Tipos tipos)
+        public ActionResult Edit([Bind(Include = "Id,Nome,Ativo")] Tipos tipos)
         {
             if (ModelState.IsValid)
             {
@@ -111,7 +114,9 @@ namespace BikeSegura.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Tipos tipos = db.Tipos.Find(id);
-            db.Tipos.Remove(tipos);
+            //db.Tipos.Remove(tipos);
+            //Antes excluia do banco, agora altera o status
+            tipos.Ativo = (OpcaoStatusTipos)1;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

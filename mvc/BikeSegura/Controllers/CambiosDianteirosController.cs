@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BikeSegura.Models;
+using static BikeSegura.Models.CambiosDianteiros;
 
 namespace BikeSegura.Controllers
 {
@@ -18,7 +19,9 @@ namespace BikeSegura.Controllers
         // GET: CambiosDianteiros
         public ActionResult Index()
         {
-            return View(db.CambiosDianteiros.ToList());
+            //return View(db.CambiosDianteiros.ToList());
+            //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
+            return View(db.CambiosDianteiros.Where(w => w.Ativo == 0).ToList());
         }
 
         // GET: CambiosDianteiros/Details/5
@@ -47,7 +50,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Velocidade")] CambiosDianteiros cambiosDianteiros)
+        public ActionResult Create([Bind(Include = "Id,Velocidade,Ativo")] CambiosDianteiros cambiosDianteiros)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +82,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Velocidade")] CambiosDianteiros cambiosDianteiros)
+        public ActionResult Edit([Bind(Include = "Id,Velocidade,Ativo")] CambiosDianteiros cambiosDianteiros)
         {
             if (ModelState.IsValid)
             {
@@ -111,7 +114,9 @@ namespace BikeSegura.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             CambiosDianteiros cambiosDianteiros = db.CambiosDianteiros.Find(id);
-            db.CambiosDianteiros.Remove(cambiosDianteiros);
+            //db.CambiosDianteiros.Remove(cambiosDianteiros);
+            //Antes excluia do banco, agora altera o status
+            cambiosDianteiros.Ativo = (OpcaoStatusCambiosDianteiros)1;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -7,10 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BikeSegura.Models;
+using static BikeSegura.Models.Aros;
 
 namespace BikeSegura.Controllers
 {
-    [Authorize(Roles = "Administrador")]
+    //[Authorize(Roles = "Administrador")]
     public class ArosController : Controller
     {
         private Contexto db = new Contexto();
@@ -18,7 +19,9 @@ namespace BikeSegura.Controllers
         // GET: Aros
         public ActionResult Index()
         {
-            return View(db.Aros.ToList());
+            //return View(db.Aros.ToList());
+            //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
+            return View(db.Aros.Where(w => w.Ativo == 0).ToList());
         }
 
         // GET: Aros/Details/5
@@ -47,7 +50,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Medida")] Aros aros)
+        public ActionResult Create([Bind(Include = "Id,Medida,Ativo")] Aros aros)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +82,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Medida")] Aros aros)
+        public ActionResult Edit([Bind(Include = "Id,Medida,Ativo")] Aros aros)
         {
             if (ModelState.IsValid)
             {
@@ -111,7 +114,9 @@ namespace BikeSegura.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Aros aros = db.Aros.Find(id);
-            db.Aros.Remove(aros);
+            //db.Aros.Remove(aros);
+            //Antes excluia do banco, agora altera o status
+            aros.Ativo = (OpcaoStatusAros)1;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

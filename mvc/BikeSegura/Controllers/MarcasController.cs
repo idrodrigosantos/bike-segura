@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BikeSegura.Models;
+using static BikeSegura.Models.Marcas;
 
 namespace BikeSegura.Controllers
 {
@@ -18,7 +19,9 @@ namespace BikeSegura.Controllers
         // GET: Marcas
         public ActionResult Index()
         {
-            return View(db.Marcas.ToList());
+            //return View(db.Marcas.ToList());
+            //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
+            return View(db.Marcas.Where(w => w.Ativo == 0).ToList());
         }
 
         // GET: Marcas/Details/5
@@ -47,7 +50,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome")] Marcas marcas)
+        public ActionResult Create([Bind(Include = "Id,Nome,Ativo")] Marcas marcas)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +82,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome")] Marcas marcas)
+        public ActionResult Edit([Bind(Include = "Id,Nome,Ativo")] Marcas marcas)
         {
             if (ModelState.IsValid)
             {
@@ -111,7 +114,9 @@ namespace BikeSegura.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Marcas marcas = db.Marcas.Find(id);
-            db.Marcas.Remove(marcas);
+            //db.Marcas.Remove(marcas);
+            //Antes excluia do banco, agora altera o status
+            marcas.Ativo = (OpcaoStatusMarcas)1;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

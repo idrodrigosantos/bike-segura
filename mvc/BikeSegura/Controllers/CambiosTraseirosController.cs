@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BikeSegura.Models;
+using static BikeSegura.Models.CambiosTraseiros;
 
 namespace BikeSegura.Controllers
 {
@@ -18,7 +19,9 @@ namespace BikeSegura.Controllers
         // GET: CambiosTraseiros
         public ActionResult Index()
         {
-            return View(db.CambiosTraseiros.ToList());
+            //return View(db.CambiosTraseiros.ToList());
+            //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
+            return View(db.CambiosTraseiros.Where(w => w.Ativo == 0).ToList());
         }
 
         // GET: CambiosTraseiros/Details/5
@@ -47,7 +50,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Velocidade")] CambiosTraseiros cambiosTraseiros)
+        public ActionResult Create([Bind(Include = "Id,Velocidade,Ativo")] CambiosTraseiros cambiosTraseiros)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +82,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Velocidade")] CambiosTraseiros cambiosTraseiros)
+        public ActionResult Edit([Bind(Include = "Id,Velocidade,Ativo")] CambiosTraseiros cambiosTraseiros)
         {
             if (ModelState.IsValid)
             {
@@ -111,7 +114,9 @@ namespace BikeSegura.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             CambiosTraseiros cambiosTraseiros = db.CambiosTraseiros.Find(id);
-            db.CambiosTraseiros.Remove(cambiosTraseiros);
+            //db.CambiosTraseiros.Remove(cambiosTraseiros);
+            //Antes excluia do banco, agora altera o status
+            cambiosTraseiros.Ativo = (OpcaoStatusCambiosTraseiros)1;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

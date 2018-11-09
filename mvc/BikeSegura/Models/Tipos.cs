@@ -16,5 +16,13 @@ namespace BikeSegura.Models
         [DisplayName("Tipo da Bicicleta")]
         [MaxLength(40, ErrorMessage = "Tipo da bicicleta deve ter no máximo 40 caracteres")]
         public string Nome { get; set; }
+
+        [EnumDataType(typeof(OpcaoStatusTipos))]
+        public OpcaoStatusTipos Ativo { get; set; }
+        public enum OpcaoStatusTipos
+        {
+            Sim,
+            Nao
+        }
     }
 }

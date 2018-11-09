@@ -16,5 +16,13 @@ namespace BikeSegura.Models
         [DisplayName("Medida do Aro")]
         [MaxLength(15, ErrorMessage = "Medida do aro deve ter no máximo 15 caracteres")]
         public string Medida { get; set; }
+        
+        [EnumDataType(typeof(OpcaoStatusAros))]
+        public OpcaoStatusAros Ativo { get; set; }
+        public enum OpcaoStatusAros
+        {
+            Sim,
+            Nao
+        }
     }
 }

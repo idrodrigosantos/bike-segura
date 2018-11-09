@@ -16,5 +16,13 @@ namespace BikeSegura.Models
         [DisplayName("Tipo do Freio")]
         [MaxLength(30, ErrorMessage = "Tipo do freio deve ter no máximo 30 caracteres")]
         public string Nome { get; set; }
+
+        [EnumDataType(typeof(OpcaoStatusFreios))]
+        public OpcaoStatusFreios Ativo { get; set; }
+        public enum OpcaoStatusFreios
+        {
+            Sim,
+            Nao
+        }
     }
 }

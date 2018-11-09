@@ -16,5 +16,13 @@ namespace BikeSegura.Models
         [DisplayName("Material do Quadro")]
         [MaxLength(30, ErrorMessage = "Material do quadro deve ter no máximo 30 caracteres")]
         public string Material { get; set; }
+
+        [EnumDataType(typeof(OpcaoStatusQuadros))]
+        public OpcaoStatusQuadros Ativo { get; set; }
+        public enum OpcaoStatusQuadros
+        {
+            Sim,
+            Nao
+        }
     }
 }

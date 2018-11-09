@@ -16,5 +16,13 @@ namespace BikeSegura.Models
         [DisplayName("Câmbio Traseiro")]
         [MaxLength(20, ErrorMessage = "Câmbio traseiro deve ter no máximo 20 caracteres")]
         public string Velocidade { get; set; }
+
+        [EnumDataType(typeof(OpcaoStatusCambiosTraseiros))]
+        public OpcaoStatusCambiosTraseiros Ativo { get; set; }
+        public enum OpcaoStatusCambiosTraseiros
+        {
+            Sim,
+            Nao
+        }
     }
 }

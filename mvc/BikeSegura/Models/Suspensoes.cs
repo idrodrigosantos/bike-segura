@@ -16,5 +16,13 @@ namespace BikeSegura.Models
         [DisplayName("Tipo de Suspensão")]
         [MaxLength(30, ErrorMessage = "Tipo de suspensção deve ter no máximo 40 caracteres")]
         public string Nome { get; set; }
+
+        [EnumDataType(typeof(OpcaoStatusSuspensoes))]
+        public OpcaoStatusSuspensoes Ativo { get; set; }
+        public enum OpcaoStatusSuspensoes
+        {
+            Sim,
+            Nao
+        }
     }
 }

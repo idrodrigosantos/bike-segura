@@ -16,5 +16,13 @@ namespace BikeSegura.Models
         [DisplayName("Nome da Marca")]
         [MaxLength(30, ErrorMessage = "Nome da marca deve ter no máximo 30 caracteres")]
         public string Nome { get; set; }
+
+        [EnumDataType(typeof(OpcaoStatusMarcas))]
+        public OpcaoStatusMarcas Ativo { get; set; }
+        public enum OpcaoStatusMarcas
+        {
+            Sim,
+            Nao
+        }
     }
 }
