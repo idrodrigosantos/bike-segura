@@ -41,15 +41,15 @@ namespace BikeSegura.Controllers
         [Authorize]
         // GET: Bicicletas/Create
         public ActionResult Create()
-        {
-            ViewBag.ArosId = new SelectList(db.Aros, "Id", "Medida");
-            ViewBag.CambiosDianteirosId = new SelectList(db.CambiosDianteiros, "Id", "Velocidade");
-            ViewBag.CambiosTraseirosId = new SelectList(db.CambiosTraseiros, "Id", "Velocidade");
-            ViewBag.FreiosId = new SelectList(db.Freios, "Id", "Nome");
-            ViewBag.MarcasId = new SelectList(db.Marcas, "Id", "Nome");
-            ViewBag.QuadrosId = new SelectList(db.Quadros, "Id", "Material");
-            ViewBag.SuspensoesId = new SelectList(db.Suspensoes, "Id", "Nome");
-            ViewBag.TiposId = new SelectList(db.Tipos, "Id", "Nome");
+        {            
+            ViewBag.ArosId = new SelectList(db.Aros.Where(w => w.Ativo == 0), "Id", "Medida");
+            ViewBag.CambiosDianteirosId = new SelectList(db.CambiosDianteiros.Where(w => w.Ativo == 0), "Id", "Velocidade");
+            ViewBag.CambiosTraseirosId = new SelectList(db.CambiosTraseiros.Where(w => w.Ativo == 0), "Id", "Velocidade");
+            ViewBag.FreiosId = new SelectList(db.Freios.Where(w => w.Ativo == 0), "Id", "Nome");
+            ViewBag.MarcasId = new SelectList(db.Marcas.Where(w => w.Ativo == 0), "Id", "Nome");
+            ViewBag.QuadrosId = new SelectList(db.Quadros.Where(w => w.Ativo == 0), "Id", "Material");
+            ViewBag.SuspensoesId = new SelectList(db.Suspensoes.Where(w => w.Ativo == 0), "Id", "Nome");
+            ViewBag.TiposId = new SelectList(db.Tipos.Where(w => w.Ativo == 0), "Id", "Nome");
             return View();
         }
 
@@ -94,14 +94,14 @@ namespace BikeSegura.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ArosId = new SelectList(db.Aros, "Id", "Medida", bicicletas.ArosId);
-            ViewBag.CambiosDianteirosId = new SelectList(db.CambiosDianteiros, "Id", "Velocidade", bicicletas.CambiosDianteirosId);
-            ViewBag.CambiosTraseirosId = new SelectList(db.CambiosTraseiros, "Id", "Velocidade", bicicletas.CambiosTraseirosId);
-            ViewBag.FreiosId = new SelectList(db.Freios, "Id", "Nome", bicicletas.FreiosId);
-            ViewBag.MarcasId = new SelectList(db.Marcas, "Id", "Nome", bicicletas.MarcasId);
-            ViewBag.QuadrosId = new SelectList(db.Quadros, "Id", "Material", bicicletas.QuadrosId);
-            ViewBag.SuspensoesId = new SelectList(db.Suspensoes, "Id", "Nome", bicicletas.SuspensoesId);
-            ViewBag.TiposId = new SelectList(db.Tipos, "Id", "Nome", bicicletas.TiposId);
+            ViewBag.ArosId = new SelectList(db.Aros.Where(w => w.Ativo == 0), "Id", "Medida", bicicletas.ArosId);
+            ViewBag.CambiosDianteirosId = new SelectList(db.CambiosDianteiros.Where(w => w.Ativo == 0), "Id", "Velocidade", bicicletas.CambiosDianteirosId);
+            ViewBag.CambiosTraseirosId = new SelectList(db.CambiosTraseiros.Where(w => w.Ativo == 0), "Id", "Velocidade", bicicletas.CambiosTraseirosId);
+            ViewBag.FreiosId = new SelectList(db.Freios.Where(w => w.Ativo == 0), "Id", "Nome", bicicletas.FreiosId);
+            ViewBag.MarcasId = new SelectList(db.Marcas.Where(w => w.Ativo == 0), "Id", "Nome", bicicletas.MarcasId);
+            ViewBag.QuadrosId = new SelectList(db.Quadros.Where(w => w.Ativo == 0), "Id", "Material", bicicletas.QuadrosId);
+            ViewBag.SuspensoesId = new SelectList(db.Suspensoes.Where(w => w.Ativo == 0), "Id", "Nome", bicicletas.SuspensoesId);
+            ViewBag.TiposId = new SelectList(db.Tipos.Where(w => w.Ativo == 0), "Id", "Nome", bicicletas.TiposId);
             return View(bicicletas);
         }
 
