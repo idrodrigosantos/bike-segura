@@ -148,28 +148,27 @@ namespace BikeSegura.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario")] Pessoas pessoas, HttpPostedFileBase arquivoimg)
         {
-            string valor = ""; // Faz parte do upload
+            string valor = ""; // Faz parte do upload da imagem
             if (ModelState.IsValid)
             {
-                // Método upload imagem do perfil
-                if (arquivoimg != null)
+                if (pessoas != null)
                 {
-                    Upload.CriarDiretorio();
-                    string nomearquivo = "perfil" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(arquivoimg.FileName);
-                    valor = Upload.UploadArquivo(arquivoimg, nomearquivo);
-                    if (valor == "sucesso")
+                    // Verifica se o e-mail já está cadastrado no banco
+                    var verificaemail = db.Pessoas.Where(w => w.Email == pessoas.Email && w.Id != pessoas.Id).FirstOrDefault();
+                    if (verificaemail == null)
                     {
-                        if (pessoas != null)
+                        // Verifica se o CPF já está cadastrado no banco
+                        var verificacpf = db.Pessoas.Where(w => w.Cpf == pessoas.Cpf && w.Id != pessoas.Id).FirstOrDefault();
+                        if (verificacpf == null)
                         {
-                            // Verifica se o e-mail já está cadastrado no banco
-                            var verificaemail = db.Pessoas.Where(w => w.Email == pessoas.Email && w.Id != pessoas.Id).FirstOrDefault();
-                            if (verificaemail == null)
+                            if (arquivoimg != null)
                             {
-                                // Verifica se o CPF já está cadastrado no banco
-                                var verificacpf = db.Pessoas.Where(w => w.Cpf == pessoas.Cpf && w.Id != pessoas.Id).FirstOrDefault();
-                                if (verificacpf == null)
+                                Upload.CriarDiretorio();
+                                string nomearquivo = "perfil" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(arquivoimg.FileName);
+                                valor = Upload.UploadArquivo(arquivoimg, nomearquivo);
+                                if (valor == "sucesso")
                                 {
-                                    // Se não estiver cadastrado e-mail ou CPF, salva no banco                                                                        
+                                    // Se não estiver cadastrado e-mail ou CPF, salva no banco  junto com a imagem                                                                       
                                     Upload.ExcluirArquivo(Request.PhysicalApplicationPath + "Uploads\\" + pessoas.Imagem);
                                     pessoas.Imagem = nomearquivo;
                                     db.Entry(pessoas).State = EntityState.Modified;
@@ -178,62 +177,30 @@ namespace BikeSegura.Controllers
                                 }
                                 else
                                 {
-                                    // Se CPF estiver cadastrado no banco, retorna mensagem de erro                                    
-                                    ModelState.AddModelError("", "O CPF informado está em uso");
-                                    return View();
+                                    ModelState.AddModelError("", valor);
                                 }
                             }
                             else
                             {
-                                // Se e-mail estiver cadastrado no banco, retorna mensagem de erro                                
-                                ModelState.AddModelError("", "O e-mail informado está em uso");
-                                return View();
-                            }
-                        }
-                        else
-                        {
-                            return View(pessoas);
-                        }
-                    }
-                }
-                // Fim método upload imagem do perfil
-                else
-                {
-                    if (pessoas != null)
-                    {
-                        // Verifica se o e-mail já está cadastrado no banco
-                        var verificaemail = db.Pessoas.Where(w => w.Email == pessoas.Email && w.Id != pessoas.Id).FirstOrDefault();
-                        if (verificaemail == null)
-                        {
-                            // Verifica se o CPF já está cadastrado no banco
-                            var verificacpf = db.Pessoas.Where(w => w.Cpf == pessoas.Cpf && w.Id != pessoas.Id).FirstOrDefault();
-                            if (verificacpf == null)
-                            {
-                                // Se não estiver cadastrado e-mail ou CPF, salva no banco
                                 db.Entry(pessoas).State = EntityState.Modified;
                                 db.SaveChanges();
                                 return RedirectToAction("DashboardUsuario", "Pessoas");
                             }
-                            else
-                            {
-                                // Se CPF estiver cadastrado no banco, retorna mensagem de erro                                
-                                ModelState.AddModelError("", "O CPF informado está em uso");
-                                return View();
-                            }
                         }
                         else
                         {
-                            // Se e-mail estiver cadastrado no banco, retorna mensagem de erro                            
-                            ModelState.AddModelError("", "O e-mail informado está em uso");
+                            // Se CPF estiver cadastrado no banco, retorna mensagem de erro                                    
+                            ModelState.AddModelError("", "O CPF informado está em uso");
                             return View();
                         }
                     }
                     else
                     {
-                        return View(pessoas);
+                        // Se e-mail estiver cadastrado no banco, retorna mensagem de erro                                
+                        ModelState.AddModelError("", "O e-mail informado está em uso");
+                        return View();
                     }
                 }
-                return RedirectToAction("DashboardUsuario", "Pessoas");
             }
             return View(pessoas);
         }
