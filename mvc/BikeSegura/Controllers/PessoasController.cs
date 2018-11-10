@@ -53,22 +53,6 @@ namespace BikeSegura.Controllers
             }
         }
 
-        //[Authorize]
-        //// GET: Pessoas/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Pessoas pessoas = db.Pessoas.Find(id);
-        //    if (pessoas == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(pessoas);
-        //}
-
         // GET: Pessoas/Create
         public ActionResult Create()
         {
