@@ -24,7 +24,7 @@ namespace BikeSegura.Controllers
             return View(db.CambiosDianteiros.Where(w => w.Ativo == 0).ToList());
         }
 
-        // GET: CambiosDianteiros/Details/5
+        // GET: CambiosDianteiros/Details
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -46,8 +46,6 @@ namespace BikeSegura.Controllers
         }
 
         // POST: CambiosDianteiros/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Velocidade,Ativo")] CambiosDianteiros cambiosDianteiros)
@@ -58,11 +56,10 @@ namespace BikeSegura.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(cambiosDianteiros);
         }
 
-        // GET: CambiosDianteiros/Edit/5
+        // GET: CambiosDianteiros/Edit
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,9 +74,7 @@ namespace BikeSegura.Controllers
             return View(cambiosDianteiros);
         }
 
-        // POST: CambiosDianteiros/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: CambiosDianteiros/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Velocidade,Ativo")] CambiosDianteiros cambiosDianteiros)
@@ -93,7 +88,7 @@ namespace BikeSegura.Controllers
             return View(cambiosDianteiros);
         }
 
-        // GET: CambiosDianteiros/Delete/5
+        // GET: CambiosDianteiros/Delete
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -108,7 +103,7 @@ namespace BikeSegura.Controllers
             return View(cambiosDianteiros);
         }
 
-        // POST: CambiosDianteiros/Delete/5
+        // POST: CambiosDianteiros/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

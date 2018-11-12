@@ -24,7 +24,7 @@ namespace BikeSegura.Controllers
             return View(db.Tipos.Where(w => w.Ativo == 0).ToList());
         }
 
-        // GET: Tipos/Details/5
+        // GET: Tipos/Details
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -46,8 +46,6 @@ namespace BikeSegura.Controllers
         }
 
         // POST: Tipos/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Nome,Ativo")] Tipos tipos)
@@ -58,11 +56,10 @@ namespace BikeSegura.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(tipos);
         }
 
-        // GET: Tipos/Edit/5
+        // GET: Tipos/Edit
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,9 +74,7 @@ namespace BikeSegura.Controllers
             return View(tipos);
         }
 
-        // POST: Tipos/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Tipos/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Nome,Ativo")] Tipos tipos)
@@ -93,7 +88,7 @@ namespace BikeSegura.Controllers
             return View(tipos);
         }
 
-        // GET: Tipos/Delete/5
+        // GET: Tipos/Delete
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -108,7 +103,7 @@ namespace BikeSegura.Controllers
             return View(tipos);
         }
 
-        // POST: Tipos/Delete/5
+        // POST: Tipos/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

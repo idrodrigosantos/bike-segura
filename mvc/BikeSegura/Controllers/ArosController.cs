@@ -11,7 +11,7 @@ using static BikeSegura.Models.Aros;
 
 namespace BikeSegura.Controllers
 {
-    //[Authorize(Roles = "Administrador")]
+    [Authorize(Roles = "Administrador")]
     public class ArosController : Controller
     {
         private Contexto db = new Contexto();
@@ -24,7 +24,7 @@ namespace BikeSegura.Controllers
             return View(db.Aros.Where(w => w.Ativo == 0).ToList());
         }
 
-        // GET: Aros/Details/5
+        // GET: Aros/Details
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -46,8 +46,6 @@ namespace BikeSegura.Controllers
         }
 
         // POST: Aros/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Medida,Ativo")] Aros aros)
@@ -58,11 +56,10 @@ namespace BikeSegura.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(aros);
         }
 
-        // GET: Aros/Edit/5
+        // GET: Aros/Edit
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,9 +74,7 @@ namespace BikeSegura.Controllers
             return View(aros);
         }
 
-        // POST: Aros/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Aros/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Medida,Ativo")] Aros aros)
@@ -93,7 +88,7 @@ namespace BikeSegura.Controllers
             return View(aros);
         }
 
-        // GET: Aros/Delete/5
+        // GET: Aros/Delete
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -108,7 +103,7 @@ namespace BikeSegura.Controllers
             return View(aros);
         }
 
-        // POST: Aros/Delete/5
+        // POST: Aros/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

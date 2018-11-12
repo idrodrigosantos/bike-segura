@@ -24,7 +24,7 @@ namespace BikeSegura.Controllers
             return View(db.CambiosTraseiros.Where(w => w.Ativo == 0).ToList());
         }
 
-        // GET: CambiosTraseiros/Details/5
+        // GET: CambiosTraseiros/Details
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -46,8 +46,6 @@ namespace BikeSegura.Controllers
         }
 
         // POST: CambiosTraseiros/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Velocidade,Ativo")] CambiosTraseiros cambiosTraseiros)
@@ -58,11 +56,10 @@ namespace BikeSegura.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(cambiosTraseiros);
         }
 
-        // GET: CambiosTraseiros/Edit/5
+        // GET: CambiosTraseiros/Edit
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,9 +74,7 @@ namespace BikeSegura.Controllers
             return View(cambiosTraseiros);
         }
 
-        // POST: CambiosTraseiros/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: CambiosTraseiros/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Velocidade,Ativo")] CambiosTraseiros cambiosTraseiros)
@@ -93,7 +88,7 @@ namespace BikeSegura.Controllers
             return View(cambiosTraseiros);
         }
 
-        // GET: CambiosTraseiros/Delete/5
+        // GET: CambiosTraseiros/Delete
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -108,7 +103,7 @@ namespace BikeSegura.Controllers
             return View(cambiosTraseiros);
         }
 
-        // POST: CambiosTraseiros/Delete/5
+        // POST: CambiosTraseiros/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -24,7 +24,7 @@ namespace BikeSegura.Controllers
             return View(db.Suspensoes.Where(w => w.Ativo == 0).ToList());
         }
 
-        // GET: Suspensoes/Details/5
+        // GET: Suspensoes/Details
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -46,8 +46,6 @@ namespace BikeSegura.Controllers
         }
 
         // POST: Suspensoes/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Nome,Ativo")] Suspensoes suspensoes)
@@ -58,11 +56,10 @@ namespace BikeSegura.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(suspensoes);
         }
 
-        // GET: Suspensoes/Edit/5
+        // GET: Suspensoes/Edit
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,9 +74,7 @@ namespace BikeSegura.Controllers
             return View(suspensoes);
         }
 
-        // POST: Suspensoes/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Suspensoes/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Nome,Ativo")] Suspensoes suspensoes)
@@ -93,7 +88,7 @@ namespace BikeSegura.Controllers
             return View(suspensoes);
         }
 
-        // GET: Suspensoes/Delete/5
+        // GET: Suspensoes/Delete
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -108,7 +103,7 @@ namespace BikeSegura.Controllers
             return View(suspensoes);
         }
 
-        // POST: Suspensoes/Delete/5
+        // POST: Suspensoes/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
