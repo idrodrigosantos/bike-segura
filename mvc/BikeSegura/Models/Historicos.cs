@@ -46,6 +46,14 @@ namespace BikeSegura.Models
         [Required(ErrorMessage = "Comprador é obrigatório")]
         public int CompradorId { get; set; }
 
+        [EnumDataType(typeof(OpcaoStatusHistoricos))]
+        public OpcaoStatusHistoricos Ativo { get; set; }
+        public enum OpcaoStatusHistoricos
+        {
+            Sim,
+            Nao
+        }
+
         public virtual Bicicletas Bicicletas { get; set; }
         public virtual Pessoas Vendedor { get; set; }
         public virtual Pessoas Comprador { get; set; }

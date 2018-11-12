@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BikeSegura.Models;
+using static BikeSegura.Models.NumerosSeries;
 
 namespace BikeSegura.Controllers
 {
@@ -19,7 +20,9 @@ namespace BikeSegura.Controllers
         public ActionResult Index()
         {
             var numerosSeries = db.NumerosSeries.Include(n => n.Bicicletas);
-            return View(numerosSeries.ToList());
+            //return View(numerosSeries.ToList());
+            //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
+            return View(numerosSeries.Where(w => w.Ativo == 0).ToList());
         }
 
         // GET: NumerosSeries/Details/5
@@ -41,12 +44,12 @@ namespace BikeSegura.Controllers
         // GET: NumerosSeries/Create
         //public ActionResult Create()
         public ActionResult Create(int? id)
-        {            
-            var consultanumero = db.NumerosSeries.Where(w => w.BicicletasId == id).Select(s => s.Numero).FirstOrDefault();            
+        {
+            var consultanumero = db.NumerosSeries.Where(w => w.BicicletasId == id).Select(s => s.Numero).FirstOrDefault();
             ViewData["CONSULTANUMERO"] = consultanumero;
             //ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo");            
             if (id == null)
-                ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo");
+                ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0), "Id", "Modelo");
             else
                 ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Id == id), "Id", "Modelo");
             return View();
@@ -57,7 +60,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Numero,BicicletasId")] NumerosSeries numerosSeries)
+        public ActionResult Create([Bind(Include = "Id,Numero,BicicletasId,Ativo")] NumerosSeries numerosSeries)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +85,7 @@ namespace BikeSegura.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", numerosSeries.BicicletasId);
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0), "Id", "Modelo", numerosSeries.BicicletasId);
             return View(numerosSeries);
         }
 
@@ -91,7 +94,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Numero,BicicletasId")] NumerosSeries numerosSeries)
+        public ActionResult Edit([Bind(Include = "Id,Numero,BicicletasId,Ativo")] NumerosSeries numerosSeries)
         {
             if (ModelState.IsValid)
             {
@@ -125,7 +128,9 @@ namespace BikeSegura.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             NumerosSeries numerosSeries = db.NumerosSeries.Find(id);
-            db.NumerosSeries.Remove(numerosSeries);
+            //db.NumerosSeries.Remove(numerosSeries);
+            //Antes excluia do banco, agora altera o status
+            numerosSeries.Ativo = (OpcaoStatusNumerosSeries)1;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

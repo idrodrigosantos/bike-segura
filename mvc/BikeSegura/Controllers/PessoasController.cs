@@ -10,6 +10,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using BikeSegura.Models;
+using static BikeSegura.Models.Pessoas;
 
 namespace BikeSegura.Controllers
 {
@@ -21,7 +22,9 @@ namespace BikeSegura.Controllers
         // GET: Pessoas
         public ActionResult Index()
         {
-            return View(db.Pessoas.ToList());
+            //return View(db.Pessoas.ToList());
+            //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
+            return View(db.Pessoas.Where(w => w.Ativo == 0).ToList());
         }
 
         [Authorize]
@@ -64,7 +67,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario")] Pessoas pessoas, string mensagem, string assunto)
+        public ActionResult Create([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario,Ativo")] Pessoas pessoas, string mensagem, string assunto)
         {
             if (pessoas != null)
             {
@@ -146,7 +149,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario")] Pessoas pessoas, HttpPostedFileBase arquivoimg)
+        public ActionResult Edit([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario,Ativo")] Pessoas pessoas, HttpPostedFileBase arquivoimg)
         {
             string valor = ""; // Faz parte do upload da imagem
             if (ModelState.IsValid)
@@ -228,7 +231,9 @@ namespace BikeSegura.Controllers
         {
             Pessoas pessoas = db.Pessoas.Find(id);
             Upload.ExcluirArquivo(Request.PhysicalApplicationPath + "Uploads\\" + pessoas.Imagem);
-            db.Pessoas.Remove(pessoas);
+            //db.Pessoas.Remove(pessoas);
+            //Antes excluia do banco, agora altera o status
+            pessoas.Ativo = (OpcaoStatusPessoas)1;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

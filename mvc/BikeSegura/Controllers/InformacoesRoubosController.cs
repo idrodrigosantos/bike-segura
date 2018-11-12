@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BikeSegura.Models;
+using static BikeSegura.Models.InformacoesRoubos;
 
 namespace BikeSegura.Controllers
 {
@@ -19,7 +20,9 @@ namespace BikeSegura.Controllers
         public ActionResult Index()
         {
             var informacoesRoubos = db.InformacoesRoubos.Include(i => i.Bicicletas);
-            return View(informacoesRoubos.ToList());
+            //return View(informacoesRoubos.ToList());
+            //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
+            return View(informacoesRoubos.Where(w => w.Ativo == 0).ToList());
         }
 
         // GET: InformacoesRoubos/Details/5
@@ -40,7 +43,7 @@ namespace BikeSegura.Controllers
         // GET: InformacoesRoubos/Create
         public ActionResult Create()
         {
-            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo");
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0), "Id", "Modelo");
             return View();
         }
 
@@ -49,7 +52,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Relato,Local,Data,BicicletasId")] InformacoesRoubos informacoesRoubos)
+        public ActionResult Create([Bind(Include = "Id,Relato,Local,Data,BicicletasId,Ativo")] InformacoesRoubos informacoesRoubos)
         {
             if (ModelState.IsValid)
             {
@@ -74,7 +77,7 @@ namespace BikeSegura.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", informacoesRoubos.BicicletasId);
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0), "Id", "Modelo", informacoesRoubos.BicicletasId);
             return View(informacoesRoubos);
         }
 
@@ -83,7 +86,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Relato,Local,Data,BicicletasId")] InformacoesRoubos informacoesRoubos)
+        public ActionResult Edit([Bind(Include = "Id,Relato,Local,Data,BicicletasId,Ativo")] InformacoesRoubos informacoesRoubos)
         {
             if (ModelState.IsValid)
             {
@@ -116,7 +119,9 @@ namespace BikeSegura.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             InformacoesRoubos informacoesRoubos = db.InformacoesRoubos.Find(id);
-            db.InformacoesRoubos.Remove(informacoesRoubos);
+            //db.InformacoesRoubos.Remove(informacoesRoubos);
+            //Antes excluia do banco, agora altera o status
+            informacoesRoubos.Ativo = (OpcaoStatusInformacoesRoubos)1;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

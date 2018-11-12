@@ -32,6 +32,14 @@ namespace BikeSegura.Models
         [Required(ErrorMessage = "Sobre qual bicicleta roubada")]
         public int InformacoesRoubosId { get; set; }
 
+        [EnumDataType(typeof(OpcaoStatusRelatosRoubos))]
+        public OpcaoStatusRelatosRoubos Ativo { get; set; }
+        public enum OpcaoStatusRelatosRoubos
+        {
+            Sim,
+            Nao
+        }
+
         public virtual Pessoas Pessoas { get; set; }
         public virtual InformacoesRoubos InformacoesRoubos { get; set; }
     }

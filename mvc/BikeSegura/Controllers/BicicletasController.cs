@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BikeSegura.Models;
+using static BikeSegura.Models.Bicicletas;
 
 namespace BikeSegura.Controllers
 {
@@ -19,7 +20,9 @@ namespace BikeSegura.Controllers
         public ActionResult Index()
         {
             var bicicletas = db.Bicicletas.Include(b => b.Aros).Include(b => b.CambiosDianteiros).Include(b => b.CambiosTraseiros).Include(b => b.Freios).Include(b => b.Marcas).Include(b => b.Quadros).Include(b => b.Suspensoes).Include(b => b.Tipos);
-            return View(bicicletas.ToList());
+            //return View(bicicletas.ToList());
+            //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
+            return View(bicicletas.Where(w => w.Ativo == 0).ToList());
         }
 
         [Authorize]
@@ -58,7 +61,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,MarcasId,Modelo,TiposId,Cor,Imagem,CambiosDianteirosId,CambiosTraseirosId,FreiosId,SuspensoesId,ArosId,QuadrosId,Informacoes,Tamanho,AlertaRoubo,Vendendo")] Bicicletas bicicletas)
+        public ActionResult Create([Bind(Include = "Id,MarcasId,Modelo,TiposId,Cor,Imagem,CambiosDianteirosId,CambiosTraseirosId,FreiosId,SuspensoesId,ArosId,QuadrosId,Informacoes,Tamanho,AlertaRoubo,Vendendo,Ativo")] Bicicletas bicicletas)
         {
             if (ModelState.IsValid)
             {
@@ -110,7 +113,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,MarcasId,Modelo,TiposId,Cor,Imagem,CambiosDianteirosId,CambiosTraseirosId,FreiosId,SuspensoesId,ArosId,QuadrosId,Informacoes,Tamanho,AlertaRoubo,Vendendo")] Bicicletas bicicletas)
+        public ActionResult Edit([Bind(Include = "Id,MarcasId,Modelo,TiposId,Cor,Imagem,CambiosDianteirosId,CambiosTraseirosId,FreiosId,SuspensoesId,ArosId,QuadrosId,Informacoes,Tamanho,AlertaRoubo,Vendendo,Ativo")] Bicicletas bicicletas)
         {
             if (ModelState.IsValid)
             {
@@ -151,7 +154,9 @@ namespace BikeSegura.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Bicicletas bicicletas = db.Bicicletas.Find(id);
-            db.Bicicletas.Remove(bicicletas);
+            //db.Bicicletas.Remove(bicicletas);
+            //Antes excluia do banco, agora altera o status
+            bicicletas.Ativo = (OpcaoStatusBicicletas)1;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

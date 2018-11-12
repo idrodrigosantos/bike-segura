@@ -59,6 +59,14 @@ namespace BikeSegura.Models
             Sim = 1
         }
 
+        [EnumDataType(typeof(OpcaoStatusBicicletas))]
+        public OpcaoStatusBicicletas Ativo { get; set; }
+        public enum OpcaoStatusBicicletas
+        {
+            Sim,
+            Nao
+        }
+
         public virtual Marcas Marcas { get; set; }
         public virtual Tipos Tipos { get; set; }
         public virtual CambiosDianteiros CambiosDianteiros { get; set; }

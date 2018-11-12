@@ -186,5 +186,13 @@ namespace BikeSegura.Models
             Comum,
             Administrador
         }
+
+        [EnumDataType(typeof(OpcaoStatusPessoas))]
+        public OpcaoStatusPessoas Ativo { get; set; }
+        public enum OpcaoStatusPessoas
+        {
+            Sim,
+            Nao
+        }
     }
 }

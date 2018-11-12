@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BikeSegura.Models;
+using static BikeSegura.Models.Imagens;
 
 namespace BikeSegura.Controllers
 {
@@ -20,7 +21,9 @@ namespace BikeSegura.Controllers
         public ActionResult Index()
         {
             var imagens = db.Imagens.Include(i => i.Bicicletas);
-            return View(imagens.ToList());
+            //return View(imagens.ToList());
+            //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
+            return View(imagens.Where(w => w.Ativo == 0).ToList());
         }
 
         // GET: Imagens/Details/5
@@ -41,7 +44,7 @@ namespace BikeSegura.Controllers
         // GET: Imagens/Create
         public ActionResult Create()
         {
-            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo");
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0), "Id", "Modelo");
             return View();
         }
 
@@ -50,7 +53,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Imagem,BicicletasId")] Imagens imagens, IEnumerable<HttpPostedFileBase> arquivoimg)
+        public ActionResult Create([Bind(Include = "Id,Imagem,BicicletasId,Ativo")] Imagens imagens, IEnumerable<HttpPostedFileBase> arquivoimg)
         {
             if (ModelState.IsValid)
             {
@@ -62,7 +65,7 @@ namespace BikeSegura.Controllers
                     Upload.CriarDiretorio();
                     foreach (HttpPostedFileBase a in arquivoimg) //a de arquivo
                     {
-                        nomearquivo = "bicicleta" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + Path.GetExtension(a.FileName);                        
+                        nomearquivo = "bicicleta" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + Path.GetExtension(a.FileName);
                         valor = Upload.UploadArquivo(a, nomearquivo);
                         if (valor == "sucesso")
                         {
@@ -91,7 +94,7 @@ namespace BikeSegura.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", imagens.BicicletasId);
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0), "Id", "Modelo", imagens.BicicletasId);
             return View(imagens);
         }
 
@@ -100,7 +103,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Imagem,BicicletasId")] Imagens imagens, HttpPostedFileBase arquivoimg)
+        public ActionResult Edit([Bind(Include = "Id,Imagem,BicicletasId,Ativo")] Imagens imagens, HttpPostedFileBase arquivoimg)
         {
             string valor = ""; // Faz parte do upload
             if (ModelState.IsValid)
@@ -152,7 +155,9 @@ namespace BikeSegura.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Imagens imagens = db.Imagens.Find(id);
-            db.Imagens.Remove(imagens);
+            //db.Imagens.Remove(imagens);
+            //Antes excluia do banco, agora altera o status
+            imagens.Ativo = (OpcaoStatusImagens)1;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

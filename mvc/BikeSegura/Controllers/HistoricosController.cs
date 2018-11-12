@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BikeSegura.Models;
+using static BikeSegura.Models.Historicos;
 
 namespace BikeSegura.Controllers
 {
@@ -19,7 +20,9 @@ namespace BikeSegura.Controllers
         public ActionResult Index()
         {
             var historicos = db.Historicos.Include(h => h.Bicicletas).Include(h => h.Comprador).Include(h => h.Vendedor);
-            return View(historicos.ToList());
+            //return View(historicos.ToList());
+            //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
+            return View(historicos.Where(w => w.Ativo == 0).ToList());
         }
 
         // GET: Historicos/Details/5
@@ -40,9 +43,9 @@ namespace BikeSegura.Controllers
         // GET: Historicos/Create
         public ActionResult Create()
         {
-            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo");
-            ViewBag.CompradorId = new SelectList(db.Pessoas, "Id", "Nome");
-            ViewBag.VendedorId = new SelectList(db.Pessoas, "Id", "Nome");
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0), "Id", "Modelo");
+            ViewBag.CompradorId = new SelectList(db.Pessoas.Where(w => w.Ativo == 0), "Id", "Nome");
+            ViewBag.VendedorId = new SelectList(db.Pessoas.Where(w => w.Ativo == 0), "Id", "Nome");
             return View();
         }
 
@@ -51,7 +54,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,SituacaoAtual,DataAquisicao,DataTransferencia,BicicletasId,VendedorId,CompradorId")] Historicos historicos)
+        public ActionResult Create([Bind(Include = "Id,SituacaoAtual,DataAquisicao,DataTransferencia,BicicletasId,VendedorId,CompradorId,Ativo")] Historicos historicos)
         {
             if (ModelState.IsValid)
             {
@@ -78,9 +81,9 @@ namespace BikeSegura.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", historicos.BicicletasId);
-            ViewBag.CompradorId = new SelectList(db.Pessoas, "Id", "Nome", historicos.CompradorId);
-            ViewBag.VendedorId = new SelectList(db.Pessoas, "Id", "Nome", historicos.VendedorId);
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0), "Id", "Modelo", historicos.BicicletasId);
+            ViewBag.CompradorId = new SelectList(db.Pessoas.Where(w => w.Ativo == 0), "Id", "Nome", historicos.CompradorId);
+            ViewBag.VendedorId = new SelectList(db.Pessoas.Where(w => w.Ativo == 0), "Id", "Nome", historicos.VendedorId);
             return View(historicos);
         }
 
@@ -89,7 +92,7 @@ namespace BikeSegura.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,SituacaoAtual,DataAquisicao,DataTransferencia,BicicletasId,VendedorId,CompradorId")] Historicos historicos)
+        public ActionResult Edit([Bind(Include = "Id,SituacaoAtual,DataAquisicao,DataTransferencia,BicicletasId,VendedorId,CompradorId,Ativo")] Historicos historicos)
         {
             if (ModelState.IsValid)
             {
@@ -124,11 +127,13 @@ namespace BikeSegura.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Historicos historicos = db.Historicos.Find(id);
-            db.Historicos.Remove(historicos);
+            //db.Historicos.Remove(historicos);
+            //Antes excluia do banco, agora altera o status
+            historicos.Ativo = (OpcaoStatusHistoricos)1;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        
+
         // Lista de Bicicletas do Usuário
         public ActionResult ListaBicicletas()
         {
