@@ -41,8 +41,10 @@ namespace BikeSegura.Controllers
         // GET: NumerosSeries/Create
         //public ActionResult Create()
         public ActionResult Create(int? id)
-        {
-            //ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo");
+        {            
+            var consultanumero = db.NumerosSeries.Where(w => w.BicicletasId == id).Select(s => s.Numero).FirstOrDefault();            
+            ViewData["CONSULTANUMERO"] = consultanumero;
+            //ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo");            
             if (id == null)
                 ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo");
             else
@@ -60,7 +62,7 @@ namespace BikeSegura.Controllers
             if (ModelState.IsValid)
             {
                 db.NumerosSeries.Add(numerosSeries);
-                db.SaveChanges();                
+                db.SaveChanges();
                 return RedirectToAction("Create", "NumerosSeries", new { id = numerosSeries.BicicletasId });
             }
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", numerosSeries.BicicletasId);
@@ -201,7 +203,7 @@ namespace BikeSegura.Controllers
             }
             return View(numerosSeries);
         }
-                
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
