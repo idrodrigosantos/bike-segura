@@ -26,7 +26,7 @@ namespace BikeSegura.Controllers
         }
 
         [Authorize]
-        // GET: Bicicletas/Details/5
+        // GET: Bicicletas/Details
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -44,7 +44,7 @@ namespace BikeSegura.Controllers
         [Authorize]
         // GET: Bicicletas/Create
         public ActionResult Create()
-        {            
+        {
             ViewBag.ArosId = new SelectList(db.Aros.Where(w => w.Ativo == 0), "Id", "Medida");
             ViewBag.CambiosDianteirosId = new SelectList(db.CambiosDianteiros.Where(w => w.Ativo == 0), "Id", "Velocidade");
             ViewBag.CambiosTraseirosId = new SelectList(db.CambiosTraseiros.Where(w => w.Ativo == 0), "Id", "Velocidade");
@@ -57,8 +57,6 @@ namespace BikeSegura.Controllers
         }
 
         // POST: Bicicletas/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,MarcasId,Modelo,TiposId,Cor,Imagem,CambiosDianteirosId,CambiosTraseirosId,FreiosId,SuspensoesId,ArosId,QuadrosId,Informacoes,Tamanho,AlertaRoubo,Vendendo,Ativo")] Bicicletas bicicletas)
@@ -72,7 +70,6 @@ namespace BikeSegura.Controllers
                 //return RedirectToAction("Index");
                 return RedirectToAction("Create", "NumerosSeries", new { id = bicicletas.Id });
             }
-
             ViewBag.ArosId = new SelectList(db.Aros, "Id", "Medida", bicicletas.ArosId);
             ViewBag.CambiosDianteirosId = new SelectList(db.CambiosDianteiros, "Id", "Velocidade", bicicletas.CambiosDianteirosId);
             ViewBag.CambiosTraseirosId = new SelectList(db.CambiosTraseiros, "Id", "Velocidade", bicicletas.CambiosTraseirosId);
@@ -85,7 +82,7 @@ namespace BikeSegura.Controllers
         }
 
         [Authorize]
-        // GET: Bicicletas/Edit/5
+        // GET: Bicicletas/Edit
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -108,9 +105,7 @@ namespace BikeSegura.Controllers
             return View(bicicletas);
         }
 
-        // POST: Bicicletas/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Bicicletas/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,MarcasId,Modelo,TiposId,Cor,Imagem,CambiosDianteirosId,CambiosTraseirosId,FreiosId,SuspensoesId,ArosId,QuadrosId,Informacoes,Tamanho,AlertaRoubo,Vendendo,Ativo")] Bicicletas bicicletas)
@@ -132,8 +127,8 @@ namespace BikeSegura.Controllers
             return View(bicicletas);
         }
 
-        [Authorize]
-        // GET: Bicicletas/Delete/5
+        [Authorize(Roles = "Administrador")]
+        // GET: Bicicletas/Delete
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -148,7 +143,7 @@ namespace BikeSegura.Controllers
             return View(bicicletas);
         }
 
-        // POST: Bicicletas/Delete/5
+        // POST: Bicicletas/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -158,10 +153,10 @@ namespace BikeSegura.Controllers
             //Antes excluia do banco, agora altera o status
             bicicletas.Ativo = (OpcaoStatusBicicletas)1;
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("DashboardUsuario", "Pessoas");
         }
 
-        // GET: Bicicletas/DetalhesBicicletaPublico/5
+        // GET: Bicicletas/DetalhesBicicletaPublico
         public ActionResult DetalhesBicicletaPublico(int? id)
         {
             if (id == null)
@@ -176,7 +171,8 @@ namespace BikeSegura.Controllers
             return View(bicicletas);
         }
 
-        // GET: Bicicletas/DetalhesBicicletaUsuario/5
+        [Authorize]
+        // GET: Bicicletas/DetalhesBicicletaUsuario
         public ActionResult DetalhesBicicletaUsuario(int? id)
         {
             if (id == null)

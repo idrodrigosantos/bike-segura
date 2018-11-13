@@ -25,7 +25,8 @@ namespace BikeSegura.Controllers
             return View(numerosSeries.Where(w => w.Ativo == 0).ToList());
         }
 
-        // GET: NumerosSeries/Details/5
+        [Authorize]
+        // GET: NumerosSeries/Details
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -56,8 +57,6 @@ namespace BikeSegura.Controllers
         }
 
         // POST: NumerosSeries/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Numero,BicicletasId,Ativo")] NumerosSeries numerosSeries)
@@ -73,7 +72,7 @@ namespace BikeSegura.Controllers
         }
 
         [Authorize]
-        // GET: NumerosSeries/Edit/5
+        // GET: NumerosSeries/Edit
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -89,9 +88,7 @@ namespace BikeSegura.Controllers
             return View(numerosSeries);
         }
 
-        // POST: NumerosSeries/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: NumerosSeries/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Numero,BicicletasId,Ativo")] NumerosSeries numerosSeries)
@@ -106,8 +103,8 @@ namespace BikeSegura.Controllers
             return View(numerosSeries);
         }
 
-        [Authorize]
-        // GET: NumerosSeries/Delete/5
+        [Authorize(Roles = "Administrador")]
+        // GET: NumerosSeries/Delete
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -122,7 +119,7 @@ namespace BikeSegura.Controllers
             return View(numerosSeries);
         }
 
-        // POST: NumerosSeries/Delete/5
+        // POST: NumerosSeries/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -157,6 +154,7 @@ namespace BikeSegura.Controllers
             }
         }
 
+        [Authorize]
         // Método buscar número de série - usuário logado
         public ActionResult BuscarUsuario(string id)
         {
@@ -179,7 +177,7 @@ namespace BikeSegura.Controllers
             }
         }
 
-        // GET: NumerosSeries/DetalhesBusca/5
+        // GET: NumerosSeries/DetalhesBusca
         public ActionResult DetalhesBuscaPublico(int? id)
         {
             if (id == null)
@@ -194,7 +192,8 @@ namespace BikeSegura.Controllers
             return View(numerosSeries);
         }
 
-        // GET: NumerosSeries/DetalhesBuscaUsuario/5
+        [Authorize]
+        // GET: NumerosSeries/DetalhesBuscaUsuario
         public ActionResult DetalhesBuscaUsuario(int? id)
         {
             if (id == null)

@@ -27,20 +27,6 @@ namespace BikeSegura.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
         // Login início
         public ActionResult Login()
         {
@@ -71,10 +57,12 @@ namespace BikeSegura.Controllers
                 {
                     if (usuarios.TipoUsuario == 0)
                     {
+                        // Se for usuário comum
                         return RedirectToAction("DashboardUsuario", "Pessoas");
                     }
                     else
                     {
+                        // Se for administrador
                         return RedirectToAction("DashboardAdm", "Pessoas");
                     }
                 }

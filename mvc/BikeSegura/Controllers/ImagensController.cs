@@ -11,12 +11,12 @@ using BikeSegura.Models;
 using static BikeSegura.Models.Imagens;
 
 namespace BikeSegura.Controllers
-{
-    [Authorize]
+{    
     public class ImagensController : Controller
     {
         private Contexto db = new Contexto();
 
+        [Authorize(Roles = "Administrador")]
         // GET: Imagens
         public ActionResult Index()
         {
@@ -26,7 +26,8 @@ namespace BikeSegura.Controllers
             return View(imagens.Where(w => w.Ativo == 0).ToList());
         }
 
-        // GET: Imagens/Details/5
+        [Authorize]
+        // GET: Imagens/Details
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -41,6 +42,7 @@ namespace BikeSegura.Controllers
             return View(imagens);
         }
 
+        [Authorize]
         // GET: Imagens/Create
         public ActionResult Create()
         {
@@ -49,8 +51,6 @@ namespace BikeSegura.Controllers
         }
 
         // POST: Imagens/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Imagem,BicicletasId,Ativo")] Imagens imagens, IEnumerable<HttpPostedFileBase> arquivoimg)
@@ -74,7 +74,7 @@ namespace BikeSegura.Controllers
                             db.SaveChanges();
                         }
                     }
-                    return RedirectToAction("Index");
+                    return RedirectToAction("ListaUsuario", "Imagens");
                 }
                 // Fim método upload imagem da bicicleta
             }
@@ -82,7 +82,8 @@ namespace BikeSegura.Controllers
             return View(imagens);
         }
 
-        // GET: Imagens/Edit/5
+        [Authorize]
+        // GET: Imagens/Edit
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -98,9 +99,7 @@ namespace BikeSegura.Controllers
             return View(imagens);
         }
 
-        // POST: Imagens/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Imagens/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Imagem,BicicletasId,Ativo")] Imagens imagens, HttpPostedFileBase arquivoimg)
@@ -128,13 +127,14 @@ namespace BikeSegura.Controllers
                     db.Entry(imagens).State = EntityState.Modified;
                     db.SaveChanges();
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("ListaUsuario", "Imagens");
             }
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", imagens.BicicletasId);
             return View(imagens);
         }
 
-        // GET: Imagens/Delete/5
+        [Authorize]
+        // GET: Imagens/Delete
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -149,7 +149,7 @@ namespace BikeSegura.Controllers
             return View(imagens);
         }
 
-        // POST: Imagens/Delete/5
+        // POST: Imagens/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -159,10 +159,10 @@ namespace BikeSegura.Controllers
             //Antes excluia do banco, agora altera o status
             imagens.Ativo = (OpcaoStatusImagens)1;
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ListaUsuario", "Imagens");
         }
 
-        // Ação para excluir a imagem sem atualizar a página
+        // Ação para excluir a imagem sem precisar confirmar Delete
         [AcceptVerbs(HttpVerbs.Post)]
         [ValidateInput(false)]
         public JsonResult ExcluirFoto(string id)
@@ -178,6 +178,16 @@ namespace BikeSegura.Controllers
             {
                 return Json("n");
             }
+        }
+
+        [Authorize]
+        // Index de Imagens do Usuário
+        public ActionResult ListaUsuario()
+        {
+            var imagens = db.Imagens.Include(i => i.Bicicletas);
+            //return View(imagens.ToList());
+            //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
+            return View(imagens.Where(w => w.Ativo == 0).ToList());
         }
 
         protected override void Dispose(bool disposing)

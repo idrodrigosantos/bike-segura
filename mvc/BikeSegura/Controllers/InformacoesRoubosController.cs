@@ -11,11 +11,11 @@ using static BikeSegura.Models.InformacoesRoubos;
 
 namespace BikeSegura.Controllers
 {
-    [Authorize]
     public class InformacoesRoubosController : Controller
     {
         private Contexto db = new Contexto();
 
+        [Authorize(Roles = "Administrador")]
         // GET: InformacoesRoubos
         public ActionResult Index()
         {
@@ -25,7 +25,8 @@ namespace BikeSegura.Controllers
             return View(informacoesRoubos.Where(w => w.Ativo == 0).ToList());
         }
 
-        // GET: InformacoesRoubos/Details/5
+        [Authorize]
+        // GET: InformacoesRoubos/Details
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -40,6 +41,7 @@ namespace BikeSegura.Controllers
             return View(informacoesRoubos);
         }
 
+        [Authorize]
         // GET: InformacoesRoubos/Create
         public ActionResult Create()
         {
@@ -48,8 +50,6 @@ namespace BikeSegura.Controllers
         }
 
         // POST: InformacoesRoubos/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Relato,Local,Data,BicicletasId,Ativo")] InformacoesRoubos informacoesRoubos)
@@ -58,14 +58,14 @@ namespace BikeSegura.Controllers
             {
                 db.InformacoesRoubos.Add(informacoesRoubos);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ListaUsuario", "InformacoesRoubos");
             }
-
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", informacoesRoubos.BicicletasId);
             return View(informacoesRoubos);
         }
 
-        // GET: InformacoesRoubos/Edit/5
+        [Authorize]
+        // GET: InformacoesRoubos/Edit
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -81,9 +81,7 @@ namespace BikeSegura.Controllers
             return View(informacoesRoubos);
         }
 
-        // POST: InformacoesRoubos/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: InformacoesRoubos/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Relato,Local,Data,BicicletasId,Ativo")] InformacoesRoubos informacoesRoubos)
@@ -92,13 +90,14 @@ namespace BikeSegura.Controllers
             {
                 db.Entry(informacoesRoubos).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ListaUsuario", "InformacoesRoubos");
             }
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", informacoesRoubos.BicicletasId);
             return View(informacoesRoubos);
         }
 
-        // GET: InformacoesRoubos/Delete/5
+        [Authorize]
+        // GET: InformacoesRoubos/Delete
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,7 +112,7 @@ namespace BikeSegura.Controllers
             return View(informacoesRoubos);
         }
 
-        // POST: InformacoesRoubos/Delete/5
+        // POST: InformacoesRoubos/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -123,7 +122,17 @@ namespace BikeSegura.Controllers
             //Antes excluia do banco, agora altera o status
             informacoesRoubos.Ativo = (OpcaoStatusInformacoesRoubos)1;
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ListaUsuario", "InformacoesRoubos");
+        }
+
+        [Authorize]
+        // GET: InformacoesRoubos
+        public ActionResult ListaUsuario()
+        {
+            var informacoesRoubos = db.InformacoesRoubos.Include(i => i.Bicicletas);
+            //return View(informacoesRoubos.ToList());
+            //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
+            return View(informacoesRoubos.Where(w => w.Ativo == 0).ToList());
         }
 
         protected override void Dispose(bool disposing)

@@ -11,11 +11,11 @@ using static BikeSegura.Models.Historicos;
 
 namespace BikeSegura.Controllers
 {
-    [Authorize]
     public class HistoricosController : Controller
     {
         private Contexto db = new Contexto();
 
+        [Authorize(Roles = "Administrador")]
         // GET: Historicos
         public ActionResult Index()
         {
@@ -25,7 +25,8 @@ namespace BikeSegura.Controllers
             return View(historicos.Where(w => w.Ativo == 0).ToList());
         }
 
-        // GET: Historicos/Details/5
+        [Authorize]
+        // GET: Historicos/Details
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -40,6 +41,7 @@ namespace BikeSegura.Controllers
             return View(historicos);
         }
 
+        [Authorize]
         // GET: Historicos/Create
         public ActionResult Create()
         {
@@ -50,11 +52,9 @@ namespace BikeSegura.Controllers
         }
 
         // POST: Historicos/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,SituacaoAtual,DataAquisicao,DataTransferencia,BicicletasId,VendedorId,CompradorId,Ativo")] Historicos historicos)
+        public ActionResult Create([Bind(Include = "Id,TipoTransferencia,DataAquisicao,DataTransferencia,BicicletasId,VendedorId,CompradorId,Ativo")] Historicos historicos)
         {
             if (ModelState.IsValid)
             {
@@ -62,14 +62,14 @@ namespace BikeSegura.Controllers
                 db.SaveChanges();
                 return RedirectToAction("ListaBicicletas", "Historicos");
             }
-
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", historicos.BicicletasId);
             ViewBag.CompradorId = new SelectList(db.Pessoas, "Id", "Nome", historicos.CompradorId);
             ViewBag.VendedorId = new SelectList(db.Pessoas, "Id", "Nome", historicos.VendedorId);
             return View(historicos);
         }
 
-        // GET: Historicos/Edit/5
+        [Authorize]
+        // GET: Historicos/Edit
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -87,12 +87,10 @@ namespace BikeSegura.Controllers
             return View(historicos);
         }
 
-        // POST: Historicos/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Historicos/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,SituacaoAtual,DataAquisicao,DataTransferencia,BicicletasId,VendedorId,CompradorId,Ativo")] Historicos historicos)
+        public ActionResult Edit([Bind(Include = "Id,TipoTransferencia,DataAquisicao,DataTransferencia,BicicletasId,VendedorId,CompradorId,Ativo")] Historicos historicos)
         {
             if (ModelState.IsValid)
             {
@@ -106,7 +104,8 @@ namespace BikeSegura.Controllers
             return View(historicos);
         }
 
-        // GET: Historicos/Delete/5
+        [Authorize(Roles = "Administrador")]
+        // GET: Historicos/Delete
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -121,7 +120,7 @@ namespace BikeSegura.Controllers
             return View(historicos);
         }
 
-        // POST: Historicos/Delete/5
+        // POST: Historicos/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -134,17 +133,9 @@ namespace BikeSegura.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize]
         // Lista de Bicicletas do Usuário
         public ActionResult ListaBicicletas()
-        {
-            var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
-            int id = Convert.ToInt32(usu);
-            var historicos = db.Historicos.Include(h => h.Bicicletas).Include(h => h.Comprador).Include(h => h.Vendedor).Where(x => x.CompradorId == id && (int)x.TipoTransferencia == 2);
-            return View(historicos.ToList());
-        }
-
-        // Lista Histórico Bicicleta
-        public ActionResult HistoricoBicicleta()
         {
             var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
             int id = Convert.ToInt32(usu);

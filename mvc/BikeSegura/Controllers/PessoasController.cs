@@ -28,7 +28,7 @@ namespace BikeSegura.Controllers
         }
 
         [Authorize]
-        // GET: Pessoas/Details/5
+        // GET: Pessoas/Details
         public ActionResult Details(int? id)
         {
             var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
@@ -63,8 +63,6 @@ namespace BikeSegura.Controllers
         }
 
         // POST: Pessoas/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario,Ativo")] Pessoas pessoas, string mensagem, string assunto)
@@ -116,7 +114,7 @@ namespace BikeSegura.Controllers
         }
 
         [Authorize]
-        // GET: Pessoas/Edit/5
+        // GET: Pessoas/Edit
         public ActionResult Edit(int? id)
         {
             var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
@@ -144,9 +142,7 @@ namespace BikeSegura.Controllers
             }
         }
 
-        // POST: Pessoas/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Pessoas/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario,Ativo")] Pessoas pessoas, HttpPostedFileBase arquivoimg)
@@ -209,7 +205,7 @@ namespace BikeSegura.Controllers
         }
 
         [Authorize(Roles = "Administrador")]
-        // GET: Pessoas/Delete/5
+        // GET: Pessoas/Delete
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -224,7 +220,7 @@ namespace BikeSegura.Controllers
             return View(pessoas);
         }
 
-        // POST: Pessoas/Delete/5
+        // POST: Pessoas/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -262,7 +258,7 @@ namespace BikeSegura.Controllers
         }
 
         [Authorize]
-        // GET: Pessoas/EditarSenha/5
+        // GET: Pessoas/EditarSenha
         public ActionResult EditarSenha(int? id)
         {
             var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
@@ -290,9 +286,7 @@ namespace BikeSegura.Controllers
             }
         }
 
-        // POST: Pessoas/EditarSenha/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Pessoas/EditarSenha
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditarSenha([Bind(Include = "Id,Senha,ConfirmaSenha")] Pessoas pessoas)
