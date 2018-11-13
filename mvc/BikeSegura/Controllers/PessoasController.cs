@@ -170,6 +170,8 @@ namespace BikeSegura.Controllers
                                     // Se não estiver cadastrado e-mail ou CPF, salva no banco  junto com a imagem                                                                       
                                     Upload.ExcluirArquivo(Request.PhysicalApplicationPath + "Uploads\\" + pessoas.Imagem);
                                     pessoas.Imagem = nomearquivo;
+                                    pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
+                                    pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
                                     db.Entry(pessoas).State = EntityState.Modified;
                                     db.SaveChanges();
                                     return RedirectToAction("DashboardUsuario", "Pessoas");
@@ -181,6 +183,8 @@ namespace BikeSegura.Controllers
                             }
                             else
                             {
+                                pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
+                                pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
                                 db.Entry(pessoas).State = EntityState.Modified;
                                 db.SaveChanges();
                                 return RedirectToAction("DashboardUsuario", "Pessoas");
