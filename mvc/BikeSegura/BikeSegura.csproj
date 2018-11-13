@@ -321,8 +321,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Aros\Create.cshtml" />
     <Content Include="Views\Aros\Delete.cshtml" />
@@ -435,7 +433,9 @@
     <Content Include="Views\NumerosSeries\DetalhesBuscaUsuario.cshtml" />
     <Content Include="Views\Bicicletas\DetalhesBicicletaUsuario.cshtml" />
     <Content Include="Views\Pessoas\EditarSenha.cshtml" />
-    <Content Include="Views\Historicos\HistoricoBicicleta.cshtml" />
+    <Content Include="Views\InformacoesRoubos\ListaUsuario.cshtml" />
+    <Content Include="Views\RelatosRoubos\ListaUsuario.cshtml" />
+    <Content Include="Views\Imagens\ListaUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
