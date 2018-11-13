@@ -8,10 +8,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BikeSegura.Models;
-using static BikeSegura.Models.Imagens;
 
 namespace BikeSegura.Controllers
-{    
+{
     public class ImagensController : Controller
     {
         private Contexto db = new Contexto();
@@ -21,9 +20,7 @@ namespace BikeSegura.Controllers
         public ActionResult Index()
         {
             var imagens = db.Imagens.Include(i => i.Bicicletas);
-            //return View(imagens.ToList());
-            //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
-            return View(imagens.Where(w => w.Ativo == 0).ToList());
+            return View(imagens.ToList());
         }
 
         [Authorize]
@@ -53,7 +50,7 @@ namespace BikeSegura.Controllers
         // POST: Imagens/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Imagem,BicicletasId,Ativo")] Imagens imagens, IEnumerable<HttpPostedFileBase> arquivoimg)
+        public ActionResult Create([Bind(Include = "Id,Imagem,BicicletasId")] Imagens imagens, IEnumerable<HttpPostedFileBase> arquivoimg)
         {
             if (ModelState.IsValid)
             {
@@ -102,7 +99,7 @@ namespace BikeSegura.Controllers
         // POST: Imagens/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Imagem,BicicletasId,Ativo")] Imagens imagens, HttpPostedFileBase arquivoimg)
+        public ActionResult Edit([Bind(Include = "Id,Imagem,BicicletasId")] Imagens imagens, HttpPostedFileBase arquivoimg)
         {
             string valor = ""; // Faz parte do upload
             if (ModelState.IsValid)
@@ -155,9 +152,7 @@ namespace BikeSegura.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Imagens imagens = db.Imagens.Find(id);
-            //db.Imagens.Remove(imagens);
-            //Antes excluia do banco, agora altera o status
-            imagens.Ativo = (OpcaoStatusImagens)1;
+            db.Imagens.Remove(imagens);
             db.SaveChanges();
             return RedirectToAction("ListaUsuario", "Imagens");
         }
@@ -185,9 +180,7 @@ namespace BikeSegura.Controllers
         public ActionResult ListaUsuario()
         {
             var imagens = db.Imagens.Include(i => i.Bicicletas);
-            //return View(imagens.ToList());
-            //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
-            return View(imagens.Where(w => w.Ativo == 0).ToList());
+            return View(imagens.ToList());
         }
 
         protected override void Dispose(bool disposing)

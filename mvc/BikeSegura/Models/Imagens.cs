@@ -18,14 +18,6 @@ namespace BikeSegura.Models
         [Required(ErrorMessage = "Bicicleta é obrigatório")]
         public int BicicletasId { get; set; }
 
-        [EnumDataType(typeof(OpcaoStatusImagens))]
-        public OpcaoStatusImagens Ativo { get; set; }
-        public enum OpcaoStatusImagens
-        {
-            Sim,
-            Nao
-        }
-
         public virtual Bicicletas Bicicletas { get; set; }
     }
 }
