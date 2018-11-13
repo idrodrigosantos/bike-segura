@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Lista de Bicicletas";
-    Layout = "~/Views/Shared/_Usuario.cshtml";
+    Layout = "~/Views/Shared/_Administrador.cshtml";
 }
 
 <div class="container conteudo">
@@ -27,28 +27,7 @@
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Cor)
-                    </th>
-                    @*<th>
-                            @Html.DisplayNameFor(model => model.CambioDianteiro.Velocidade)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.CambioTraseiro.Velocidade)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Freio.Nome)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Suspensao.Nome)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Aro.Medida)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Quadro.Material)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Informacoes)
-                        </th>*@
+                    </th>                    
                     <th>
                         @Html.DisplayNameFor(model => model.AlertaRoubo)
                     </th>
@@ -73,28 +52,7 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Cor)
-                        </td>
-                        @*<td>
-                                @Html.DisplayFor(modelItem => item.CambioDianteiro.Velocidade)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CambioTraseiro.Velocidade)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Freio.Nome)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Suspensao.Nome)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Aro.Medida)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Quadro.Material)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Informacoes)
-                            </td>*@
+                        </td>                        
                         <td>
                             @Html.DisplayFor(modelItem => item.AlertaRoubo)
                         </td>

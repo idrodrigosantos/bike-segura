@@ -36,15 +36,14 @@
                     <td>
                         @Html.DisplayFor(model => model.Bicicletas.Id)
                     </td>
-                    <td>
-                        @*@Html.DisplayFor(model => model.Imagem)*@
+                    <td>                        
                         <img src="~/Uploads/@Html.DisplayFor(model =>model.Imagem)" style="height:140px;width:200px;" />
                     </td>
                     <td>
                         <div class="btn" role="group">
                             @using (Html.BeginForm())
                             {
-                                <a class="btn btn-success" href="@Url.Action("Index", "Imagens")" role="button">
+                                <a class="btn btn-success" href="@Url.Action("ListaUsuario", "Imagens")" role="button">
                                     <i class="fas fa-reply"></i>
                                     Voltar
                                 </a>

@@ -106,23 +106,4 @@
             $('.cpfmask').mask('000.000.000-00', { placeholder: "000.000.000-00" });
         });
     </script>
-
-    @*<script type="text/javascript">
-            $('#botaoAlerta').click(function () {
-                var url = "/Pessoas/alertaCadastro";
-                var nome = $("#Nome").val();
-                var email = $("#Email").val();
-                var confirmaemail = $("#ConfirmaEmail").val();
-                var senha = $("#Senha").val();
-                var confirmasenha = $("#ConfirmaSenha").val();
-                var telefone = $("#Telefone").val();
-                var cpf = $("#Cpf").val();
-                $.post(url, {
-                    Nome: nome, Email: email, ConfirmaEmail: confirmaemail,
-                    Senha: senha, ConfirmaSenha: confirmasenha, Telefone: telefone, Cpf: cpf,
-                }, function (data) {
-                    alert(data);
-                });
-            })
-        </script>*@
 }

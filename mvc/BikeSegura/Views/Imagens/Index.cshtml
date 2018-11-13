@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Lista de Imagens";
-    Layout = "~/Views/Shared/_Usuario.cshtml";
+    Layout = "~/Views/Shared/_Administrador.cshtml";
 }
 
 <div class="container conteudo">
@@ -34,36 +34,36 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Bicicletas.Marcas.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Bicicletas.Modelo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Bicicletas.Id)
-                    </td>
-                    <td>
-                        <img src="~/Uploads/@item.Imagem" style="max-width:70px;" />
-                    </td>
-                    <td>
-                        <div class="btn" role="group">
-                            <a class="btn btn-success" href="@Url.Action("Details", new { id = item.Id })" role="button">
-                                <i class="fas fa-list"></i>
-                                Detalhes
-                            </a>
-                            <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.Id })" role="button">
-                                <i class="fas fa-pen"></i>
-                                Editar
-                            </a>
-                            <a class="btn btn-danger excluirfoto" href="#" role="button" rel="@item.Id">
-                                <i class="fas fa-times"></i>
-                                Excluir
-                            </a>
-                        </div>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Bicicletas.Marcas.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Bicicletas.Modelo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Bicicletas.Id)
+                        </td>
+                        <td>
+                            <img src="~/Uploads/@item.Imagem" style="max-width:70px;" />
+                        </td>
+                        <td>
+                            <div class="btn" role="group">
+                                <a class="btn btn-success" href="@Url.Action("Details", new { id = item.Id })" role="button">
+                                    <i class="fas fa-list"></i>
+                                    Detalhes
+                                </a>
+                                <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.Id })" role="button">
+                                    <i class="fas fa-pen"></i>
+                                    Editar
+                                </a>
+                                <a class="btn btn-danger excluirfoto" href="#" role="button" rel="@item.Id">
+                                    <i class="fas fa-times"></i>
+                                    Excluir
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>

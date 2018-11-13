@@ -61,18 +61,18 @@
                         </td>
                         <td>
                             <div class="btn" role="group">
-                                <a class="btn btn-success" href="@Url.Action("Details", "Bicicletas", new { id = item.BicicletasId })" role="button">
+                                <a class="btn btn-success" href="@Url.Action("Details", "Historicos", new { id = item.Id })" role="button">
                                     <i class="fas fa-list"></i>
-                                    Detalhes
+                                    Histórico
                                 </a>
-                                <a class="btn btn-primary" href="@Url.Action("Edit", "Bicicletas", new { id = item.BicicletasId })" role="button">
+                                <a class="btn btn-warning" href="@Url.Action("Edit", "Historicos", new { id = item.Id })" role="button">
                                     <i class="fas fa-pen"></i>
-                                    Editar
+                                    Transferir
                                 </a>
-                                <a class="btn btn-danger" href="@Url.Action("Delete", "Bicicletas", new { id = item.BicicletasId })" role="button">
+                                @*<a class="btn btn-danger" href="@Url.Action("Delete", "Historicos", new { id = item.Id })" role="button">
                                     <i class="fas fa-times"></i>
                                     Excluir
-                                </a>
+                                </a>*@
                             </div>
                         </td>
                     </tr>

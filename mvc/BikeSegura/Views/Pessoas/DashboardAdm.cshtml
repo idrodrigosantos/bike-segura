@@ -6,14 +6,12 @@
 
 <div class="container conteudo">
     <h2>DashboardAdm</h2>
-    @*<canvas id="myChart" width="400" height="400"></canvas>*@
     <canvas class="my-4 w-100" id="myChart" width="900" height="380" style="background-color:white;"></canvas>
     <canvas class="my-4 w-100" id="myChart2" width="900" height="380" style="background-color:white;"></canvas>
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/chartjs")
-
     <script>
         var ctx = document.getElementById("myChart").getContext('2d');
         var myChart = new Chart(ctx, {
@@ -53,7 +51,6 @@
             }
         });
     </script>
-
     <script>
         var ctx = document.getElementById("myChart2");
         var myChart = new Chart(ctx, {
