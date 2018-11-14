@@ -70,9 +70,9 @@
                                     Editar
                                 </a>
                                 @*<a class="btn btn-danger" href="@Url.Action("Delete", "Bicicletas", new { id = item.BicicletasId })" role="button">
-                                    <i class="fas fa-times"></i>
-                                    Excluir
-                                </a>*@
+                                        <i class="fas fa-times"></i>
+                                        Excluir
+                                    </a>*@
                             </div>
                         </td>
                     </tr>
@@ -81,14 +81,16 @@
         </table>
     </div>
     <br />
-    <h3>Número de Bicicletas Seguras e Roubadas</h3>
-    <canvas class="my-4 w-100" id="myChart" width="900" height="380" style="background-color:white;"></canvas>
+    <h4>Número de Bicicletas Seguras e Roubadas</h4>
+    <canvas class="my-4 w-100" id="myChart1" width="900" height="380" style="background-color:white;"></canvas>
+    <h4>Número de Bicicletas à Venda</h4>
+    <canvas class="my-4 w-100" id="myChart2" width="900" height="380" style="background-color:white;"></canvas>
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/chartjs")
     <script>
-        var ctx = document.getElementById("myChart").getContext('2d');
+        var ctx = document.getElementById("myChart1").getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'pie',
             data: {
@@ -103,6 +105,37 @@
                     borderColor: [
                         'rgba(0, 153, 0, 1)',
                         'rgba(255,99,132,1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+    <script>
+        var ctx = document.getElementById("myChart2").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ["Bicicletas que NÃO estão à Venda", "Bicicletas à Venda"],
+                datasets: [{
+                    label: 'Número de Bicicletas',
+                    data: [@ViewData["TOTALBIKESEMVENDER"], @ViewData["TOTALBIKEVENDENDO"]],
+                    backgroundColor: [
+                        'rgba(0, 102, 255, 1)',
+                        'rgba(255, 255, 102, 1)'
+                    ],
+                    borderColor: [
+                        'rgba(0, 0, 255, 1)',
+                        'rgba(255,255,0,1)'
                     ],
                     borderWidth: 1
                 }]

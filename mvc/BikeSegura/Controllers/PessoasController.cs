@@ -251,6 +251,12 @@ namespace BikeSegura.Controllers
             // Consulta banco, número de bicicletas roubadas
             var totalBikeRoubada = db.Bicicletas.Where(w => (int)w.AlertaRoubo == 1).Count();
             ViewData["TOTALBIKEROUBADA"] = totalBikeRoubada;
+            // Consulta banco, número de bicicletas que não está a venda 
+            var totalBikeSemVender = db.Bicicletas.Where(w => (int)w.Vendendo == 0).Count();
+            ViewData["TOTALBIKESEMVENDER"] = totalBikeSemVender;
+            // Consulta banco, número de bicicletas que estão a venda
+            var totalBikeVendendo = db.Bicicletas.Where(w => (int)w.Vendendo == 1).Count();
+            ViewData["TOTALBIKEVENDENDO"] = totalBikeVendendo;
             return View(historicos.ToList());
         }
 
