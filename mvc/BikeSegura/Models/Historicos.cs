@@ -35,6 +35,7 @@ namespace BikeSegura.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DataTransferencia { get; set; }
 
+        [DisplayName("Bicicleta")]
         [Required(ErrorMessage = "Bicicleta é obrigatório")]
         public int BicicletasId { get; set; }
 
