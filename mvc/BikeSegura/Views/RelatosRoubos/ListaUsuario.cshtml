@@ -17,6 +17,15 @@
             <thead>
                 <tr>
                     <th>
+                        Cidade do Relato
+                    </th>
+                    <th>
+                        Estado do Relato
+                    </th>
+                    <th>
+                        Local Adicional
+                    </th>
+                    <th>
                         Roubo
                     </th>
                     <th>
@@ -26,10 +35,7 @@
                         Relato
                     </th>
                     <th>
-                        Local
-                    </th>
-                    <th>
-                        Data
+                        Data  do Relato
                     </th>
                     <th></th>
                 </tr>
@@ -39,7 +45,16 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.InformacoesRoubos.Id)
+                            @Html.DisplayFor(modelItem => item.Cidade)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Estado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LocalAdicional)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InformacoesRoubos.Relato)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Pessoas.Nome)
@@ -48,10 +63,7 @@
                             @Html.DisplayFor(modelItem => item.Relato)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Local)
-                        </td>
-                        <td>
-                            @item.Data.ToString("dd/MM/yyyy")
+                            @item.DataRelato.ToString("dd/MM/yyyy")
                         </td>
                         <td>
                             <div class="btn" role="group">

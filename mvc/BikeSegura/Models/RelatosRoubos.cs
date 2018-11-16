@@ -12,24 +12,91 @@ namespace BikeSegura.Models
         [Key]
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "Cidade onde a bicicleta roubada foi vista é obrigatório")]
+        [DisplayName("Cidade onde a bicicleta roubada foi vista (*)")]
+        [MaxLength(50, ErrorMessage = "Cidade deve ter no máximo 50 caracteres")]
+        public string Cidade { get; set; }
+
+        [Required(ErrorMessage = "Estado onde a bicicleta roubada foi vista obrigatório")]
+        [DisplayName("Estado onde a bicicleta roubada foi vista (*)")]
+        [EnumDataType(typeof(OpcaoEstadoRelatosRoubos))]
+        public OpcaoEstadoRelatosRoubos Estado { get; set; }
+        public enum OpcaoEstadoRelatosRoubos
+        {
+            [Display(Name = "Acre")]
+            AC,
+            [Display(Name = "Alagoas")]
+            AL,
+            [Display(Name = "Amapá")]
+            AP,
+            [Display(Name = "Amazonas")]
+            AM,
+            [Display(Name = "Bahia")]
+            BA,
+            [Display(Name = "Ceará")]
+            CE,
+            [Display(Name = "Distrito Federal")]
+            DF,
+            [Display(Name = "Espirito Santo")]
+            ES,
+            [Display(Name = "Goiás")]
+            GO,
+            [Display(Name = "Maranhão")]
+            MA,
+            [Display(Name = "Mato Grosso")]
+            MT,
+            [Display(Name = "Mato Grosso do Sul")]
+            MS,
+            [Display(Name = "Minas Gerais")]
+            MG,
+            [Display(Name = "Pará")]
+            PA,
+            [Display(Name = "Paraíba")]
+            PB,
+            [Display(Name = "Paraná")]
+            PR,
+            [Display(Name = "Pernambuco")]
+            PE,
+            [Display(Name = "Piauí")]
+            PI,
+            [Display(Name = "Rio de Janeiro")]
+            RJ,
+            [Display(Name = "Rio Grande do Norte")]
+            RN,
+            [Display(Name = "Rio Grande do Sul")]
+            RS,
+            [Display(Name = "Rondônia")]
+            RO,
+            [Display(Name = "Roraima")]
+            RR,
+            [Display(Name = "Santa Catarina")]
+            SC,
+            [Display(Name = "São Paulo")]
+            SP,
+            [Display(Name = "Sergipe")]
+            SE,
+            [Display(Name = "Tocantins")]
+            TO
+        }
+
         [Required(ErrorMessage = "Relato sobre o roubo é obrigatório")]
-        [DisplayName("Relato sobre a bicicleta roubada")]
+        [DisplayName("Informações sobre a bicicleta roubada (*)")]
         public string Relato { get; set; }
 
-        [Required(ErrorMessage = "Local é obrigatório")]
         [MaxLength(150, ErrorMessage = "Local deve ter no máximo 150 caracteres")]
-        [DisplayName("Local onde a bicicleta roubada foi vista")]
-        public string Local { get; set; }
+        [DisplayName("Informações adicionais do local onde a bicicleta roubada foi vista")]
+        public string LocalAdicional { get; set; }
 
-        [DisplayName("Data que a bicicleta roubada foi vista")]
+        [Required(ErrorMessage = "Data que a bicicleta foi vista é obrigatório")]
+        [DisplayName("Data que a bicicleta roubada foi vista (*)")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime Data { get; set; }
+        public DateTime DataRelato { get; set; }
 
-        [Required(ErrorMessage = "Pessoa é obrigatório")]
+        [Required(ErrorMessage = "Relator é obrigatório")]
         public int PessoasId { get; set; }
 
-        [Required(ErrorMessage = "Sobre qual bicicleta roubada")]
+        [Required(ErrorMessage = "Roubo é obrigatório")]
         public int InformacoesRoubosId { get; set; }
 
         [EnumDataType(typeof(OpcaoStatusRelatosRoubos))]

@@ -11,25 +11,40 @@
             <thead>
                 <tr>
                     <th>
+                        Cidade do Relato
+                    </th>
+                    <th>
+                        Estado do Relato
+                    </th>
+                    <th>
+                        Local Adicional
+                    </th>
+                    <th>
                         Roubo
                     </th>
                     <th>
                         Relator
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Relato)
+                        Relato
                     </th>
                     <th>
-                        Local
-                    </th>
-                    <th>
-                        Data
+                        Data do Relato
                     </th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.Cidade)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Estado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.LocalAdicional)
+                    </td>
                     <td>
                         @Html.DisplayFor(model => model.InformacoesRoubos.Relato)
                     </td>
@@ -40,10 +55,7 @@
                         @Html.DisplayFor(model => model.Relato)
                     </td>
                     <td>
-                        @Html.DisplayFor(model => model.Local)
-                    </td>                    
-                    <td>
-                        @Html.DisplayFor(model => model.Data)
+                        @Html.DisplayFor(model => model.DataRelato)
                     </td>
                     <td>
                         <div class="btn" role="group">
