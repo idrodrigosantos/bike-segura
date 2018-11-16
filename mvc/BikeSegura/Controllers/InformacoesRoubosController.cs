@@ -52,7 +52,7 @@ namespace BikeSegura.Controllers
         // POST: InformacoesRoubos/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Relato,Local,Data,BicicletasId,Ativo")] InformacoesRoubos informacoesRoubos)
+        public ActionResult Create([Bind(Include = "Id,Cidade,Estado,Relato,LocalAdicional,DataRoubo,BicicletasId,Ativo")] InformacoesRoubos informacoesRoubos)
         {
             if (ModelState.IsValid)
             {
@@ -84,7 +84,7 @@ namespace BikeSegura.Controllers
         // POST: InformacoesRoubos/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Relato,Local,Data,BicicletasId,Ativo")] InformacoesRoubos informacoesRoubos)
+        public ActionResult Edit([Bind(Include = "Id,Cidade,Estado,Relato,LocalAdicional,DataRoubo,BicicletasId,Ativo")] InformacoesRoubos informacoesRoubos)
         {
             if (ModelState.IsValid)
             {

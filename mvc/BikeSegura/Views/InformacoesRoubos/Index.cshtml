@@ -17,6 +17,15 @@
             <thead>
                 <tr>
                     <th>
+                        Cidade do Roubo
+                    </th>
+                    <th>
+                        Estado do Roubo
+                    </th>
+                    <th>
+                        Local Adicional
+                    </th>
+                    <th>
                         Marca
                     </th>
                     <th>
@@ -25,11 +34,9 @@
                     <th>
                         Informações sobre o roubo
                     </th>
+
                     <th>
-                        Local
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Data)
+                        Data do Roubo
                     </th>
                     <th></th>
                 </tr>
@@ -37,39 +44,45 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Bicicletas.Marcas.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Bicicletas.Modelo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Relato)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Local)
-                    </td>
-                    <td>
-                        @item.Data.ToString("dd/MM/yyyy")
-                    </td>
-                    <td>
-                        <div class="btn" role="group">
-                            <a class="btn btn-success" href="@Url.Action("Details", new { id = item.Id })" role="button">
-                                <i class="fas fa-list"></i>
-                                Detalhes
-                            </a>
-                            <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.Id })" role="button">
-                                <i class="fas fa-pen"></i>
-                                Editar
-                            </a>
-                            <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.Id })" role="button">
-                                <i class="fas fa-times"></i>
-                                Excluir
-                            </a>
-                        </div>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cidade)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Estado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LocalAdicional)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Bicicletas.Marcas.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Bicicletas.Modelo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Relato)
+                        </td>
+                        <td>
+                            @item.DataRoubo.ToString("dd/MM/yyyy")
+                        </td>
+                        <td>
+                            <div class="btn" role="group">
+                                <a class="btn btn-success" href="@Url.Action("Details", new { id = item.Id })" role="button">
+                                    <i class="fas fa-list"></i>
+                                    Detalhes
+                                </a>
+                                <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.Id })" role="button">
+                                    <i class="fas fa-pen"></i>
+                                    Editar
+                                </a>
+                                <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.Id })" role="button">
+                                    <i class="fas fa-times"></i>
+                                    Excluir
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>
