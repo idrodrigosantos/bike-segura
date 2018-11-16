@@ -59,10 +59,13 @@ Na página inicial, clique no botão `Cadastre-se`, na barra de navegação, no 
 Após o cadastro ser efetuado a página será redirecionada, na página de `Login`, digite o e-mail e senha cadastrados anteriormente, acesse o sistema e faça os testes desejados.
 
 ## Desenvolvido com
-* [ASP.NET MVC](https://github.com/aspnet/Mvc)
+* ASP.NET MVC
+* MySQL
+* Entity Framework
 * [Bootstrap](https://github.com/twbs/bootstrap)
 * [jQuery](https://github.com/jquery/jquery)
 * [Font-Awesome](https://github.com/FortAwesome/Font-Awesome)
 * [Chart.js](https://github.com/chartjs/Chart.js)
+* [Popper.js](https://github.com/FezVrasta/popper.js)
 * [Toastr](https://github.com/CodeSeven/toastr)
 * [Holder](https://github.com/imsky/holder)
