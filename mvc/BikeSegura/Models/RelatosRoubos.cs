@@ -13,12 +13,10 @@ namespace BikeSegura.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Cidade onde a bicicleta roubada foi vista é obrigatório")]
-        [DisplayName("Cidade onde a bicicleta roubada foi vista (*)")]
         [MaxLength(50, ErrorMessage = "Cidade deve ter no máximo 50 caracteres")]
         public string Cidade { get; set; }
 
         [Required(ErrorMessage = "Estado onde a bicicleta roubada foi vista obrigatório")]
-        [DisplayName("Estado onde a bicicleta roubada foi vista (*)")]
         [EnumDataType(typeof(OpcaoEstadoRelatosRoubos))]
         public OpcaoEstadoRelatosRoubos Estado { get; set; }
         public enum OpcaoEstadoRelatosRoubos
@@ -80,22 +78,23 @@ namespace BikeSegura.Models
         }
 
         [Required(ErrorMessage = "Relato sobre o roubo é obrigatório")]
-        [DisplayName("Informações sobre a bicicleta roubada (*)")]
         public string Relato { get; set; }
 
         [MaxLength(150, ErrorMessage = "Local deve ter no máximo 150 caracteres")]
-        [DisplayName("Informações adicionais do local onde a bicicleta roubada foi vista")]
+        [DisplayName("Local Adicional")]
         public string LocalAdicional { get; set; }
 
         [Required(ErrorMessage = "Data que a bicicleta foi vista é obrigatório")]
-        [DisplayName("Data que a bicicleta roubada foi vista (*)")]
+        [DisplayName("Data do Relato")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DataRelato { get; set; }
 
         [Required(ErrorMessage = "Relator é obrigatório")]
+        [DisplayName("Relator")]
         public int PessoasId { get; set; }
 
+        [DisplayName("Roubo")]
         [Required(ErrorMessage = "Roubo é obrigatório")]
         public int InformacoesRoubosId { get; set; }
 
