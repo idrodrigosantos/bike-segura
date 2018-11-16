@@ -161,7 +161,7 @@ NomeContato, TelefoneContato, CelularContato, TipoUsuario, Ativo) values
 ('Administrador', 'adm@email.com', 'adm@email.com', '122705f49b13a7d2f378eedf8581f02222b6753a6cb6417d77cfbc4884df74ea6ae7699951470f06c34f5c782b7210c34e867f1d0e5d8fcc4e94adb5ab8e8e79', '122705f49b13a7d2f378eedf8581f02222b6753a6cb6417d77cfbc4884df74ea6ae7699951470f06c34f5c782b7210c34e867f1d0e5d8fcc4e94adb5ab8e8e79', 
 null, null, null, null, null, null, null, '(11) 1111-1111', null, '111.111.111-11', 
 null, null, 'user01.jpg', null, null, null, 1, 0), 
-('Usuário', 'usu@email.com', 'usu@email.com', '122705f49b13a7d2f378eedf8581f02222b6753a6cb6417d77cfbc4884df74ea6ae7699951470f06c34f5c782b7210c34e867f1d0e5d8fcc4e94adb5ab8e8e79', '122705f49b13a7d2f378eedf8581f02222b6753a6cb6417d77cfbc4884df74ea6ae7699951470f06c34f5c782b7210c34e867f1d0e5d8fcc4e94adb5ab8e8e79', 
+('Usuário', 'usuario@email.com', 'usu@email.com', '122705f49b13a7d2f378eedf8581f02222b6753a6cb6417d77cfbc4884df74ea6ae7699951470f06c34f5c782b7210c34e867f1d0e5d8fcc4e94adb5ab8e8e79', '122705f49b13a7d2f378eedf8581f02222b6753a6cb6417d77cfbc4884df74ea6ae7699951470f06c34f5c782b7210c34e867f1d0e5d8fcc4e94adb5ab8e8e79', 
 null, null, null, null, null, null, null, '(01) 0101-0101', null, '000.000.000-00', 
 null, null, 'user02.jpg', null, null, null, 0, 0), 
 ('VENDEDOR EXTERNO', 'vendedor@email.com', 'vendedor@email.com', '122705f49b13a7d2f378eedf8581f02222b6753a6cb6417d77cfbc4884df74ea6ae7699951470f06c34f5c782b7210c34e867f1d0e5d8fcc4e94adb5ab8e8e79', '122705f49b13a7d2f378eedf8581f02222b6753a6cb6417d77cfbc4884df74ea6ae7699951470f06c34f5c782b7210c34e867f1d0e5d8fcc4e94adb5ab8e8e79', 
