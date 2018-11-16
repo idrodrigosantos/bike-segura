@@ -13,35 +13,31 @@ namespace BikeSegura.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Nome completo é obrigatório")]
-        [DisplayName("Nome Completo*")]
         [MaxLength(100, ErrorMessage = "Nome completo deve ter no máximo 100 caracteres")]
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "Endereço de email é obrigatório")]
-        [DisplayName("Endereço de Email*")]
+        [DisplayName("E-mail")]
         [MaxLength(255, ErrorMessage = "Endereço de email deve ter no máximo 255 caracteres")]
         [EmailAddress(ErrorMessage = "Digite um endereço de email")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Você deve confirmar seu Email")]
-        [DisplayName("Confirmar Email*")]
+        [DisplayName("Confirmar E-mail")]
         [MaxLength(255, ErrorMessage = "Email deve ter no máximo 255 caracteres")]
         [EmailAddress(ErrorMessage = "Digite um endereço de email")]
         [Compare("Email", ErrorMessage = "Os endereços de email não correspondem")]
         public string ConfirmaEmail { get; set; }
 
         [Required(ErrorMessage = "Senha é obrigatória")]
-        [DisplayName("Senha*")]
         [MinLength(8, ErrorMessage = "Sua senha deve ter no mínimo 8 caracteres")]
-        //[MaxLength(32, ErrorMessage = "Sua senha deve ter no máximo 32 caracteres")]
         [RegularExpression(@"^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}$", ErrorMessage = "Senha deve ter letras e números")]
         [DataType(DataType.Password)]
         public string Senha { get; set; }
 
         [Required(ErrorMessage = "Você deve confirmar sua Senha")]
-        [DisplayName("Confirmar Senha*")]
+        [DisplayName("Confirmar Senha")]
         [MinLength(8, ErrorMessage = "Sua senha deve ter no mínimo 8 caracteres")]
-        //[MaxLength(32, ErrorMessage = "Sua senha deve ter no máximo 32 caracteres")]
         [RegularExpression(@"^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}$", ErrorMessage = "Senha deve ter letras e números")]
         [DataType(DataType.Password)]
         [Compare("Senha", ErrorMessage = "As senhas digitadas não correspondem")]
@@ -130,7 +126,6 @@ namespace BikeSegura.Models
         }
 
         [Required(ErrorMessage = "Telefone é obrigatório")]
-        [DisplayName("Telefone*")]
         [MinLength(10, ErrorMessage = "Telefone deve ter no mínimo 10 caracteres")]
         [MaxLength(14, ErrorMessage = "Telefone deve ter no máximo 13 caracteres")]
         public string Telefone { get; set; }
@@ -140,7 +135,7 @@ namespace BikeSegura.Models
         public string Celular { get; set; }
 
         [Required(ErrorMessage = "CPF é obrigatório")]
-        [DisplayName("CPF*")]
+        [DisplayName("CPF")]
         [MinLength(11, ErrorMessage = "CPF deve ter no mínimo 11 caracteres")]
         [MaxLength(14, ErrorMessage = "CPF deve ter no máximo 14 caracteres")]
         public string Cpf { get; set; }
@@ -168,12 +163,12 @@ namespace BikeSegura.Models
         [MaxLength(100, ErrorMessage = "Nome deve ter no máximo 100 caracteres")]
         public string NomeContato { get; set; }
 
-        [DisplayName("Telefone de Contato")]
+        [DisplayName("Telefone do Contato")]
         [MinLength(10, ErrorMessage = "Telefone para contato deve ter no mínimo 14 caracteres")]
         [MaxLength(14, ErrorMessage = "Telefone para contato deve ter no máximo 14 caracteres")]
         public string TelefoneContato { get; set; }
 
-        [DisplayName("Celular de Contato")]
+        [DisplayName("Celular do Contato")]
         [MinLength(11, ErrorMessage = "Celular deve ter no mínimo 11 caracteres")]
         [MaxLength(15, ErrorMessage = "Celular deve ter no máximo 15 caracteres")]
         public string CelularContato { get; set; }
