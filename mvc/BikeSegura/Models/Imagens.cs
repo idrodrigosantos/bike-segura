@@ -12,9 +12,10 @@ namespace BikeSegura.Models
         [Key]
         public int Id { get; set; }
 
-        [DisplayName("Foto(s) da Bicicleta")]
+        [DisplayName("Foto da Bicicleta")]
         public string Imagem { get; set; }
 
+        [DisplayName("Bicicleta")]
         [Required(ErrorMessage = "Bicicleta é obrigatório")]
         public int BicicletasId { get; set; }
 

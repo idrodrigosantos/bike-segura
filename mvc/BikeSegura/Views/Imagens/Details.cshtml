@@ -11,14 +11,11 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Bicicletas.Marcas)
+                        Marca
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Bicicletas.Modelo)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Bicicletas.Id)
-                    </th>
+                    </th>                    
                     <th>
                         @Html.DisplayNameFor(model => model.Imagem)
                     </th>
@@ -32,10 +29,7 @@
                     </td>
                     <td>
                         @Html.DisplayFor(model => model.Bicicletas.Modelo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => model.Bicicletas.Id)
-                    </td>
+                    </td>                    
                     <td>                        
                         <img src="~/Uploads/@Html.DisplayFor(model =>model.Imagem)" style="height:140px;width:200px;" />
                     </td>
