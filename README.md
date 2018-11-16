@@ -54,7 +54,7 @@ Senha: bike2018
 ```
 
 ### Caso queira criar um novo usuário
-Na página inicial, clique no botão `Cadastre-se`, na barra de navegação, no canto superior direito. Preenchar os campos obrigatórios.
+Na página inicial, clique no botão `Cadastre-se`, na barra de navegação, no canto superior direito. Preencha os campos obrigatórios.
 
 Após o cadastro ser efetuado a página será redirecionada, na página de `Login`, digite o e-mail e senha cadastrados anteriormente, acesse o sistema e faça os testes desejados.
 
