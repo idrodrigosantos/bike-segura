@@ -12,6 +12,7 @@ namespace BikeSegura.Models
         [Key]
         public int Id { get; set; }
 
+        [DisplayName("Marca")]
         [Required(ErrorMessage = "Marca é obrigatório")]
         public int MarcasId { get; set; }
 
@@ -19,6 +20,7 @@ namespace BikeSegura.Models
         [MaxLength(45, ErrorMessage = "Modelo deve ter no máximo 45 caracteres")]
         public string Modelo { get; set; }
 
+        [DisplayName("Tipo da Bicicleta")]
         [Required(ErrorMessage = "Tipo da bicicleta é obrigatório")]
         public int TiposId { get; set; }
 
@@ -26,11 +28,22 @@ namespace BikeSegura.Models
         [MaxLength(40, ErrorMessage = "Cor deve ter no máximo 40 caracteres")]
         public string Cor { get; set; }
 
+        [DisplayName("Câmbio Dianteiro")]
         public int? CambiosDianteirosId { get; set; }
+
+        [DisplayName("Câmbio Traseiro")]
         public int? CambiosTraseirosId { get; set; }
+
+        [DisplayName("Freios")]
         public int? FreiosId { get; set; }
+
+        [DisplayName("Suspensão")]
         public int? SuspensoesId { get; set; }
+
+        [DisplayName("Medida do Aro")]
         public int? ArosId { get; set; }
+
+        [DisplayName("Material do Quadro")]
         public int? QuadrosId { get; set; }
 
         [DisplayName("Tamanho do Quadro")]
