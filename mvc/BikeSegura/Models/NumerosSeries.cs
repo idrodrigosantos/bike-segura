@@ -17,6 +17,7 @@ namespace BikeSegura.Models
         [MaxLength(50, ErrorMessage = "Número de série deve ter no máximo 50 caracteres")]
         public string Numero { get; set; }
 
+        [DisplayName("Bicicleta")]
         [Required(ErrorMessage = "Bicicleta é obrigatório")]
         public int BicicletasId { get; set; }
 
