@@ -56,10 +56,10 @@ Senha: bike2018
 ### Caso queira criar um novo usuário
 Na página inicial, clique no botão `Cadastre-se`, na barra de navegação, no canto superior direito. Preenchar os campos obrigatórios.
 
-Após o cadastro ser efetuado a página será redirecionada, na página de `Login`, digite o e-mail e senha cadastrados anteriormente. Acesso o sistema e faça os testes desejados.
+Após o cadastro ser efetuado a página será redirecionada, na página de `Login`, digite o e-mail e senha cadastrados anteriormente, acesse o sistema e faça os testes desejados.
 
 ## Desenvolvido com
-* [ASP.NET MVC](https://github.com/aspnet/Mvc)
+* [ASP.NET MVC](https://github.com/aspnet/Mvc){:target="_blank"}
 * [Bootstrap](https://github.com/twbs/bootstrap)
 * [jQuery](https://github.com/jquery/jquery)
 * [Font-Awesome](https://github.com/FortAwesome/Font-Awesome)
