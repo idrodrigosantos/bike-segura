@@ -2,7 +2,7 @@
 Sistema de registro de bicicletas.
 
 ## Primeiros Passos
-Essas instruções farão com que você tenha uma cópia do projeto em execução na sua máquina local para fins de desenvolvimento e teste.
+Essas instruções farão com que você tenha uma cópia do projeto para executar na sua máquina local para fins de desenvolvimento e teste.
 
 ### Pré-requisitos
 Softwares necessários:
@@ -14,7 +14,7 @@ No Visual Studio, abra o arquivo `BikeSegura.sln` do projeto:
 ```
 File -> Open -> Project/Solution -> bike-segura -> mvc -> BikeSegura.sln
 ```
-Acesse o arquivo `Web.config` na raiz do projeto, e altere `database=bikesegura` para o nome do banco de dados que será criado ou mantenha o padrão `bikesegura`, altere a senha do banco de dados em `pwd='root'` para a senha do seu banco de dados, por padrão está a senha `root`:
+Acesse o arquivo `Web.config` na raiz do projeto, e altere `database=bikesegura` para o nome do banco de dados que será criado ou mantenha o padrão `bikesegura`. Altere a senha do banco de dados em `pwd='root'` para a senha do seu banco de dados, por padrão está a senha `root`:
 ```
 <connectionStrings>
 	<add name="StringConexao" providerName="MySql.Data.MySqlClient" connectionString="server=localhost;database=bikesegura;uid=root;pwd='root'" />
@@ -54,9 +54,9 @@ Senha: bike2018
 ```
 
 ### Caso queira criar um novo usuário
-Na página inicial, clique no botão `Cadastre-se`, na barra de navegação, no canto superior direito e preenchar os campos obrigatórios.
+Na página inicial, clique no botão `Cadastre-se`, na barra de navegação, no canto superior direito. Preenchar os campos obrigatórios.
 
-Após o cadastro será redirecionado para a página de `Login`, digite o e-mail e senha cadastrados anteriormente.
+Após o cadastro ser efetuado a página será redirecionada, na página de `Login`, digite o e-mail e senha cadastrados anteriormente. Acesso o sistema e faça os testes desejados.
 
 ## Desenvolvido com
 * [ASP.NET MVC](https://github.com/aspnet/Mvc)
