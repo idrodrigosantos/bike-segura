@@ -316,6 +316,179 @@ namespace BikeSegura.Controllers
             }
         }
 
+        [Authorize(Roles = "Administrador")]
+        // GET: Pessoas/DetailsAdm
+        public ActionResult DetailsAdm(int? id)
+        {
+            var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
+            if (System.Web.HttpContext.Current.User.IsInRole("Comum"))
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Pessoas pessoas = db.Pessoas.Find(id);
+                if (pessoas == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(pessoas);
+            }
+            else
+            {
+                Pessoas pessoas = db.Pessoas.Find(Convert.ToInt32(usu));
+                if (pessoas == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(pessoas);
+            }
+        }
+
+        [Authorize(Roles = "Administrador")]
+        // GET: Pessoas/EditAdm
+        public ActionResult EditAdm(int? id)
+        {
+            var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
+            if (System.Web.HttpContext.Current.User.IsInRole("Comum"))
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Pessoas pessoas = db.Pessoas.Find(id);
+                if (pessoas == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(pessoas);
+            }
+            else
+            {
+                Pessoas pessoas = db.Pessoas.Find(Convert.ToInt32(usu));
+                if (pessoas == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(pessoas);
+            }
+        }
+
+        // POST: Pessoas/EditAdm
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditAdm([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario,Ativo")] Pessoas pessoas, HttpPostedFileBase arquivoimg)
+        {
+            string valor = ""; // Faz parte do upload da imagem
+            if (ModelState.IsValid)
+            {
+                if (pessoas != null)
+                {
+                    // Verifica se o e-mail já está cadastrado no banco
+                    var verificaemail = db.Pessoas.Where(w => w.Email == pessoas.Email && w.Id != pessoas.Id).FirstOrDefault();
+                    if (verificaemail == null)
+                    {
+                        // Verifica se o CPF já está cadastrado no banco
+                        var verificacpf = db.Pessoas.Where(w => w.Cpf == pessoas.Cpf && w.Id != pessoas.Id).FirstOrDefault();
+                        if (verificacpf == null)
+                        {
+                            if (arquivoimg != null)
+                            {
+                                Upload.CriarDiretorio();
+                                string nomearquivo = "perfil" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(arquivoimg.FileName);
+                                valor = Upload.UploadArquivo(arquivoimg, nomearquivo);
+                                if (valor == "sucesso")
+                                {
+                                    // Se não estiver cadastrado e-mail ou CPF, salva no banco  junto com a imagem                                                                       
+                                    Upload.ExcluirArquivo(Request.PhysicalApplicationPath + "Uploads\\" + pessoas.Imagem);
+                                    pessoas.Imagem = nomearquivo;
+                                    pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
+                                    pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
+                                    db.Entry(pessoas).State = EntityState.Modified;
+                                    db.SaveChanges();
+                                    return RedirectToAction("DashboardAdm", "Pessoas");
+                                }
+                                else
+                                {
+                                    ModelState.AddModelError("", valor);
+                                }
+                            }
+                            else
+                            {
+                                pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
+                                pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
+                                db.Entry(pessoas).State = EntityState.Modified;
+                                db.SaveChanges();
+                                return RedirectToAction("DashboardAdm", "Pessoas");
+                            }
+                        }
+                        else
+                        {
+                            // Se CPF estiver cadastrado no banco, retorna mensagem de erro                                    
+                            ModelState.AddModelError("", "O CPF informado está em uso");
+                            return View();
+                        }
+                    }
+                    else
+                    {
+                        // Se e-mail estiver cadastrado no banco, retorna mensagem de erro                                
+                        ModelState.AddModelError("", "O e-mail informado está em uso");
+                        return View();
+                    }
+                }
+            }
+            return View(pessoas);
+        }
+
+        [Authorize(Roles = "Administrador")]
+        // GET: Pessoas/EditarSenhaAdm
+        public ActionResult EditarSenhaAdm(int? id)
+        {
+            var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
+            if (System.Web.HttpContext.Current.User.IsInRole("Comum"))
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Pessoas pessoas = db.Pessoas.Find(id);
+                if (pessoas == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(pessoas);
+            }
+            else
+            {
+                Pessoas pessoas = db.Pessoas.Find(Convert.ToInt32(usu));
+                if (pessoas == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(pessoas);
+            }
+        }
+
+        // POST: Pessoas/EditarSenhaAdm
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditarSenhaAdm([Bind(Include = "Id,Senha,ConfirmaSenha")] Pessoas pessoas)
+        {
+            try
+            {
+                Pessoas pes = db.Pessoas.Find(pessoas.Id);
+                pes.Senha = Funcoes.SHA512(pes.Senha); //Criptografia
+                pes.ConfirmaSenha = Funcoes.SHA512(pes.ConfirmaSenha); //Criptografia
+                db.Entry(pes).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("DashboardAdm", "Pessoas");
+            }
+            catch
+            {
+                return View(pessoas);
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
