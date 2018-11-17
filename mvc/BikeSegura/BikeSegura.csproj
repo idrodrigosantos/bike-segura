@@ -201,6 +201,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\estilo.css" />
     <Content Include="Content\fontawesome\css\all.min.css" />
     <Content Include="Content\fontawesome\webfonts\fa-brands-400.svg" />
@@ -221,6 +222,7 @@
     <Content Include="Img\marca-adm.png" />
     <Content Include="Img\marca-publico.png" />
     <Content Include="Img\marca-usuario.png" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Chart.min.js" />
     <Content Include="Content\fontawesome\webfonts\fa-brands-400.eot" />
     <Content Include="Content\fontawesome\webfonts\fa-brands-400.ttf" />
@@ -230,6 +232,8 @@
     <Content Include="Content\fontawesome\webfonts\fa-solid-900.ttf" />
     <Content Include="Content\fontawesome\webfonts\fa-solid-900.woff" />
     <Content Include="Content\fontawesome\webfonts\fa-solid-900.woff2" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\holder.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -245,6 +249,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Uploads\audax-ventus01.png" />
     <Content Include="Uploads\audax-ventus02.png" />
