@@ -62,4 +62,4 @@ Após o cadastro ser efetuado a página será redirecionada, na página de `Logi
 * ASP.NET MVC
 * MySQL
 * Entity Framework
-* [Bootstrap](https://github.com/twbs/bootstrap)
+* Bootstrap
