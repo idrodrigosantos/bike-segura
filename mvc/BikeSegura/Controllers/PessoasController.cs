@@ -238,7 +238,7 @@ namespace BikeSegura.Controllers
             return RedirectToAction("Index");
         }
 
-        [Authorize(Roles = "Comum")]
+        [Authorize]
         // GET: DashboardUsuario
         public ActionResult DashboardUsuario()
         {
