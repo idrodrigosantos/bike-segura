@@ -1,0 +1,163 @@
+﻿@model BikeSegura.Models.Pessoas
+
+@{
+    ViewBag.Title = "Editar Administrador";
+    Layout = "~/Views/Shared/_Administrador.cshtml";
+}
+
+@using (Html.BeginForm("Edit", "Pessoas", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="container conteudo">
+        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+        @Html.HiddenFor(model => model.Id)
+        <div class="row">
+            <div class="form-group col-sm-12">
+                @Html.LabelFor(model => model.Nome, "Nome Completo (*)", htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome Completo" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-6">
+                @Html.LabelFor(model => model.Email, "Endereço de E-mail (*)", htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "nome@email.com" } })
+                <small class="form-text">
+                    Digite um email válido.
+                </small>
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-6">
+                @Html.LabelFor(model => model.ConfirmaEmail, "Confirmar E-mail (*)", htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.ConfirmaEmail, new { htmlAttributes = new { @class = "form-control", @placeholder = "nome@email.com" } })
+                @Html.ValidationMessageFor(model => model.ConfirmaEmail, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-6" style="display:none;">
+                @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-6" style="display:none;">
+                @Html.LabelFor(model => model.ConfirmaSenha, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.ConfirmaSenha, new { htmlAttributes = new { @class = "form-control" } })
+                <small class="form-text">
+                    As senhas digitadas devem ser iguais.
+                </small>
+                @Html.ValidationMessageFor(model => model.ConfirmaSenha, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-12 col-md-8">
+                @Html.LabelFor(model => model.Endereco, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Endereco, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Endereco, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-6 col-md-4">
+                @Html.LabelFor(model => model.Numero, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-6 col-md-4">
+                @Html.LabelFor(model => model.Complemento, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Complemento, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Complemento, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-6 col-md-3">
+                @Html.LabelFor(model => model.Cep, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Cep, new { htmlAttributes = new { @class = "form-control cepmask" } })
+                @Html.ValidationMessageFor(model => model.Cep, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-6 col-md-5">
+                @Html.LabelFor(model => model.Bairro, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Bairro, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Bairro, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-6 col-md-7">
+                @Html.LabelFor(model => model.Cidade, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Cidade, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Cidade, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-6 col-md-5">
+                @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label" })
+                @Html.EnumDropDownListFor(model => model.Estado, "Selecione Estado", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-6">
+                @Html.LabelFor(model => model.Telefone, "Telefone (*)", htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control telmask" } })
+                @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-6 col-md-6">
+                @Html.LabelFor(model => model.Celular, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Celular, new { htmlAttributes = new { @class = "form-control celmask" } })
+                @Html.ValidationMessageFor(model => model.Celular, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-6">
+                @Html.LabelFor(model => model.Cpf, "CPF (*)", htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control cpfmask" } })
+                @Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-12 col-md-6">
+                @Html.LabelFor(model => model.DataNascimento, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-6">
+                @Html.LabelFor(model => model.Genero, htmlAttributes: new { @class = "control-label" })
+                <div class="form-check">
+                    @Html.RadioButtonFor(model => model.Genero, "M")
+                    @Html.Label("Masculino")
+                </div>
+                <div class="form-check">
+                    @Html.RadioButtonFor(model => model.Genero, "F")
+                    @Html.Label("Feminino")
+                </div>
+                @Html.ValidationMessageFor(model => model.Genero, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-6">
+                @Html.LabelFor(model => model.Imagem, htmlAttributes: new { @class = "control-label" })
+                <input type="file" name="arquivoimg" class="form-control-file" />
+                <small class="form-text">
+                    Envie imagem no formato .JPG ou .PNG
+                </small>
+                @Html.ValidationMessageFor(model => model.Imagem, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-12 col-md-4">
+                @Html.LabelFor(model => model.NomeContato, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.NomeContato, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NomeContato, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-6 col-md-4">
+                @Html.LabelFor(model => model.TelefoneContato, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.TelefoneContato, new { htmlAttributes = new { @class = "form-control telmask" } })
+                @Html.ValidationMessageFor(model => model.TelefoneContato, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-6 col-md-4">
+                @Html.LabelFor(model => model.CelularContato, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.CelularContato, new { htmlAttributes = new { @class = "form-control celmask" } })
+                @Html.ValidationMessageFor(model => model.CelularContato, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-12">
+                <div class="botao-salvar">
+                    <a class="btn btn-danger" href="@Url.Action("DashboardUsuario", "Pessoas")" role="button">
+                        <i class="fas fa-times"></i>
+                        Cancelar
+                    </a>
+                    <button type="submit" value="Save" class="btn btn-success">
+                        <i class="fas fa-save"></i>
+                        Salvar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquerymask")
+    <script>
+        $(document).ready(function () {
+            $('.cepmask').mask('00000-000', { placeholder: "00000-000" });
+            $('.telmask').mask('(00) 0000-0000', { placeholder: "(DD) 0000-0000" });
+            $('.celmask').mask('(00) 00000-0000', { placeholder: "(DD) 00000-0000" });
+            $('.cpfmask').mask('000.000.000-00', { placeholder: "000.000.000-00" });
+        });
+    </script>
+}

@@ -436,6 +436,9 @@
     <Content Include="Views\InformacoesRoubos\ListaUsuario.cshtml" />
     <Content Include="Views\RelatosRoubos\ListaUsuario.cshtml" />
     <Content Include="Views\Imagens\ListaUsuario.cshtml" />
+    <Content Include="Views\Pessoas\DetailsAdm.cshtml" />
+    <Content Include="Views\Pessoas\EditAdm.cshtml" />
+    <Content Include="Views\Pessoas\EditarSenhaAdm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

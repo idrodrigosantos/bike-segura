@@ -1,0 +1,49 @@
+﻿@model BikeSegura.Models.Pessoas
+
+@{
+    ViewBag.Title = "Editar Senha";
+    Layout = "~/Views/Shared/_Administrador.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container conteudo">
+        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+        @Html.HiddenFor(model => model.Id)
+        <div class="row">
+            <div class="form-group col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                @Html.LabelFor(model => model.Senha, "Senha (*)", htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control", @maxlength = "32" } })
+                <small class="form-text">
+                    Sua senha deve ter entre 8 e 32 caracteres, os quais devem ser letras e números, sem espaços, caracteres especiais ou emojis.
+                </small>
+                @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                @Html.LabelFor(model => model.ConfirmaSenha, "Confirmar Senha (*)", htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.ConfirmaSenha, new { htmlAttributes = new { @class = "form-control", @maxlength = "32" } })
+                <small class="form-text">
+                    As senhas digitadas devem ser iguais.
+                </small>
+                @Html.ValidationMessageFor(model => model.ConfirmaSenha, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                <div class="botao-salvar">
+                    <a class="btn btn-danger" href="@Url.Action("DashboardAdm", "Pessoas")" role="button">
+                        <i class="fas fa-times"></i>
+                        Cancelar
+                    </a>
+                    <button type="submit" value="Save" class="btn btn-success">
+                        <i class="fas fa-save"></i>
+                        Salvar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
