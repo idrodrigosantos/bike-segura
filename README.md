@@ -28,7 +28,7 @@ Após executar o projeto e o banco de dados for criado, pare a execução do pro
 ```
 Debug -> Stop Debugging
 ```
-Acesse o MySQL e execute o arquivo `inserts.sql`, este arquivo irá popular o banco:
+Execute o arquivo `inserts.sql` no MySQL, este arquivo irá popular o banco:
 ```
 bike-segura -> banco-de-dados -> inserts.sql
 ```
