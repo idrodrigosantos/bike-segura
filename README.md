@@ -20,7 +20,9 @@ Acesse o arquivo `Web.config` na raiz do projeto, e altere `database=bikesegura`
 	<add name="StringConexao" providerName="MySql.Data.MySqlClient" connectionString="server=localhost;database=bikesegura;uid=root;pwd='root'" />
 </connectionStrings>
 ```
-Execute o projeto:
+Antes de rodar o projeto, verifique se o MySQL esteja em execução.
+
+Execute o projeto no Visual Studio:
 ```
 Debug -> Start Debugging
 ```
