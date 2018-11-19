@@ -10,7 +10,7 @@ Softwares necessários:
 * MySQL
 
 ### Instalando
-No MySQL, execute o arquivo `create-database.sql` que está na pasta `banco-de-dados` no projeto:
+No MySQL, execute o arquivo `create-database.sql` que está na pasta `banco-de-dados` do projeto:
 ```
 bike-segura -> banco-de-dados -> create-database.sql
 ```
@@ -24,19 +24,11 @@ No Visual Studio, abra o arquivo `BikeSegura.sln`:
 ```
 File -> Open -> Project/Solution -> bike-segura -> mvc -> BikeSegura.sln
 ```
-Execute o projeto no Visual Studio:
+Execute o projeto:
 ```
 Debug -> Start Debugging
 ```
-Após executar o projeto e o banco de dados for criado, pare a execução do projeto:
-```
-Debug -> Stop Debugging
-```
-Execute o arquivo `inserts.sql` no MySQL, este arquivo irá popular o banco:
-```
-bike-segura -> banco-de-dados -> inserts.sql
-```
-Após o banco de dados estiver populado, execute o projeto novamente e realize os testes.
+Com o projeto em execução realize os testes desejados.
 
 ## Executando os testes
 Para acessar o sistema, pode ser por um administrador ou usuário comum.
