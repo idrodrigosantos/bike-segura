@@ -20,39 +20,34 @@ Após criar o banco de dados, execute o arquivo `inserts.sql` no MySQL, este arq
 ```
 bike-segura -> banco-de-dados -> inserts.sql
 ```
-No Visual Studio, abra o arquivo `BikeSegura.sln`:
+No Visual Studio, abra o arquivo `BikeSegura.sln` que está na pasta `mvc` do projeto:
 ```
 File -> Open -> Project/Solution -> bike-segura -> mvc -> BikeSegura.sln
 ```
-Execute o projeto:
+Apos abrir o projeto execute-o:
 ```
 Debug -> Start Debugging
 ```
-Com o projeto em execução realize os testes desejados.
+Com o projeto em execução realize os testes e alterações desejados.
 
 ## Executando os testes
-Para acessar o sistema, pode ser por um administrador ou usuário comum.
+Para acessar o sistema, pode ser por um administrador ou usuário comum. Na página inicial, clique no botão `Entrar`, na barra de navegação, no canto superior direito e preenchar os campos `E-mail` e `Senha`.
 
 Administrador:
 ```
-Usuário: adm@email.com
+E-mail: adm@email.com
 Senha: bike2018
 ```
 Usuário Comum:
 ```
-Usuário: usuario@email.com
+E-mail: usuario@email.com
 Senha: bike2018
 ```
-Ou acesse por algum usuário do banco de dados, por padrão todos estão com a senha `bike2018`:
-```
-Usuário: usuáriodesejado@email.com
-Senha: bike2018
-```
+Ou acesse por algum usuário do banco de dados, por padrão todos estão com a senha `bike2018`.
 
 ### Caso queira criar um novo usuário
 Na página inicial, clique no botão `Cadastre-se`, na barra de navegação, no canto superior direito. Preencha os campos obrigatórios.
-
-Após o cadastro ser efetuado a página será redirecionada, na página de `Login`, digite o e-mail e senha cadastrados anteriormente, acesse o sistema e faça os testes desejados.
+Após o cadastro ser efetuado com sucesso, a página será redirecionada para a página de login, na página de login, digite o e-mail e senha cadastrados anteriormente, acesse o sistema e faça os testes e alterações desejados.
 
 ## Desenvolvido com
 * ASP.NET MVC
