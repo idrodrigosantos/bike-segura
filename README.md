@@ -10,18 +10,20 @@ Softwares necessários:
 * MySQL
 
 ### Instalando
-No Visual Studio, abra o arquivo `BikeSegura.sln` do projeto:
+No MySQL, execute o arquivo `create-database.sql` que está na pasta `banco-de-dados` no projeto:
+```
+bike-segura -> banco-de-dados -> create-database.sql
+```
+Este arquivo irá criar um banco de dados no MySQL chamado `bikesegura`.
+
+Após criar o banco de dados, execute o arquivo `inserts.sql` no MySQL, este arquivo irá popular o banco de dados:
+```
+bike-segura -> banco-de-dados -> inserts.sql
+```
+No Visual Studio, abra o arquivo `BikeSegura.sln`:
 ```
 File -> Open -> Project/Solution -> bike-segura -> mvc -> BikeSegura.sln
 ```
-Acesse o arquivo `Web.config` na raiz do projeto, e altere `database=bikesegura` para o nome do banco de dados que será criado ou mantenha o padrão `bikesegura`. Altere a senha do banco de dados em `pwd='root'` para a senha do seu banco de dados, por padrão está a senha `root`:
-```
-<connectionStrings>
-	<add name="StringConexao" providerName="MySql.Data.MySqlClient" connectionString="server=localhost;database=bikesegura;uid=root;pwd='root'" />
-</connectionStrings>
-```
-Antes de rodar o projeto, verifique se o MySQL esteja em execução.
-
 Execute o projeto no Visual Studio:
 ```
 Debug -> Start Debugging
