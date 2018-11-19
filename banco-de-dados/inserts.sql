@@ -2,6 +2,7 @@
 	Todos os dados deste banco de dados são apenas para fins didáticos, gerados aleatoriamente,
 	qualquer semelhança com informaçãoes e dados reais, são mera coincidência.
 */
+use bikesegura;
 
 insert into aros (Medida, Ativo) values 
 ('Aro 12', 0), ('Aro 14', 0), ('Aro 16', 0), ('Aro 20', 0), ('Aro 24', 0), ('Aro 26', 0), 
@@ -135,11 +136,11 @@ QuadrosId, Informacoes, AlertaRoubo, Vendendo, Ativo) values
 (96, 'Andes', 10, 'Vermelha', '18"', 3, 7, 2, 2, 6, 1, 'Aro Aero', 0, 0, 0),
 (266, 'GTS M1 Advanced New', 8, 'Preta', '29"', 3, 8, 4, null, 9, 2, 'Freio à disco Shimano hidráulico e câmbio Shimano 24 marchas.', 0, 1, 0),
 (96, '100 Sport', 10, 'Preta/Amarela', '18"', 3, 7, 2, 2, 6, 2, null, 1, 0, 0),
-(101, 'CAAD OPTIMO SORA', 4, 'Branca', '56', 2, 9, 5, 1, 10, 3, null, 2, 0, 0),
+(101, 'CAAD OPTIMO SORA', 4, 'Branca', '56', 2, 9, 5, 1, 10, 3, null, 1, 0, 0),
 (96, 'TRS', 8, 'Azul', '18"', 3, 7, 2, 2, 6, 2, null, 0, 1, 0),
 (259, 'SLAP70', 8, 'Azul', 'M', 1, 11, 4, 5, 9, 2, 'Alavanca de Freio Shimano BL-MT400 Hidráulico. Freio Shimano Disco BR-MT400 Hidráulico. Cubos "Hub" Shimano SLX M7010/M7010 Dianteiro eixo 15mm Traseiro 12mm/142mm.', 0, 0, 0),
 (96, 'T-Type', 8, 'Preta Fosco', '18"', 3, 7, 1, 3, 6, 2, 'Trocador Shimano Easy Fire, Câmbio traseiro Shimano', 1, 0, 0),
-(26, 'Ventus 3000', 4, 'Vermelha', null, 2, 11, 5, 1, 10, 3, null, 1, 0, 0),
+(26, 'Ventus 3000', 4, 'Vermelha', null, 2, 11, 5, 1, 10, 3, null, 0, 0, 0),
 (96, '10', 4, 'Preta/Dourada', 'M', 2, 7, 5, 1, 1, 2, 'Câmbio traseiro Shimano, câmbio dianteiro Shimano, pedivela Shimano', 0, 0, 0);
 
 insert into imagens (Imagem, BicicletasId) values 
