@@ -348,9 +348,8 @@ namespace BikeSegura.Controllers
         // POST: Pessoas/EditAdm
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditAdm([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario,Ativo")] Pessoas pessoas, HttpPostedFileBase arquivoimg)
+        public ActionResult EditAdm([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario,Ativo")] Pessoas pessoas)
         {
-            string valor = ""; // Faz parte do upload da imagem
             if (ModelState.IsValid)
             {
                 if (pessoas != null)
@@ -363,35 +362,10 @@ namespace BikeSegura.Controllers
                         var verificacpf = db.Pessoas.Where(w => w.Cpf == pessoas.Cpf && w.Id != pessoas.Id).FirstOrDefault();
                         if (verificacpf == null)
                         {
-                            if (arquivoimg != null)
-                            {
-                                Upload.CriarDiretorio();
-                                string nomearquivo = "perfil" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(arquivoimg.FileName);
-                                valor = Upload.UploadArquivo(arquivoimg, nomearquivo);
-                                if (valor == "sucesso")
-                                {
-                                    // Se não estiver cadastrado e-mail ou CPF, salva no banco  junto com a imagem                                                                       
-                                    Upload.ExcluirArquivo(Request.PhysicalApplicationPath + "Uploads\\" + pessoas.Imagem);
-                                    pessoas.Imagem = nomearquivo;
-                                    pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
-                                    pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
-                                    db.Entry(pessoas).State = EntityState.Modified;
-                                    db.SaveChanges();
-                                    return RedirectToAction("DashboardAdm", "Pessoas");
-                                }
-                                else
-                                {
-                                    ModelState.AddModelError("", valor);
-                                }
-                            }
-                            else
-                            {
-                                pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
-                                pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
-                                db.Entry(pessoas).State = EntityState.Modified;
-                                db.SaveChanges();
-                                return RedirectToAction("DashboardAdm", "Pessoas");
-                            }
+                            db.Entry(pessoas).State = EntityState.Modified;
+                            db.Entry(pessoas).Property(p => p.Imagem).IsModified = false; // Não altera o campo imagem
+                            db.SaveChanges();
+                            return RedirectToAction("DashboardAdm", "Pessoas");
                         }
                         else
                         {
