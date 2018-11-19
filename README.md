@@ -24,21 +24,21 @@ No Visual Studio, abra o arquivo `BikeSegura.sln` que está na pasta `mvc` do pr
 ```
 File -> Open -> Project/Solution -> bike-segura -> mvc -> BikeSegura.sln
 ```
-Apos abrir o projeto, execute-o:
+Após abrir o projeto, execute-o:
 ```
 Debug -> Start Debugging
 ```
 
 ## Executando os testes
 ### Acessar o sistema
-Para acessar o sistema, pode ser por um administrador ou usuário comum. Na página inicial, clique no botão `Entrar`, na barra de navegação, no canto superior direito e preenchar os campos `E-mail` e `Senha`.
+Para acessar o sistema, pode ser por um administrador ou usuário comum. Na página inicial, clique no botão `Entrar`, na barra de navegação, no canto superior direito, preencha os campos `E-mail` e `Senha`.
 
 Administrador:
 ```
 E-mail: adm@email.com
 Senha: bike2018
 ```
-Usuário Comum:
+Usuário comum:
 ```
 E-mail: usuario@email.com
 Senha: bike2018
@@ -46,9 +46,9 @@ Senha: bike2018
 Ou acesse por algum usuário do banco de dados, por padrão todos estão com a senha `bike2018`.
 
 ### Criar novo usuário
-Caso queira criar um novo usuário, na página inicial, clique no botão `Cadastre-se`, na barra de navegação, no canto superior direito. Preencha os campos obrigatórios.
+Caso queira criar um novo usuário, na página inicial, clique no botão `Cadastre-se`, na barra de navegação, no canto superior direito, preencha os campos obrigatórios.
 
-Após o cadastro ser efetuado com sucesso, a página será redirecionada para a página de login, na página de login, digite o e-mail e senha cadastrados anteriormente, acesse o sistema e faça os testes e alterações desejados.
+Após o cadastro ser efetuado com sucesso, a página será redirecionada para a página de login. Na página de login, digite o e-mail e senha cadastrados anteriormente, acesse o sistema e faça os testes e alterações desejados.
 
 ## Softwares utilizados no desenvolvimento
 * ASP.NET MVC
