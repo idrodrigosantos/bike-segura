@@ -489,6 +489,64 @@ namespace BikeSegura.Controllers
             }
         }
 
+        [Authorize]
+        // GET: Pessoas/EditarImagem
+        public ActionResult EditarImagem(int? id)
+        {
+            var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
+            if (System.Web.HttpContext.Current.User.IsInRole("Administrador"))
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Pessoas pessoas = db.Pessoas.Find(id);
+                if (pessoas == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(pessoas);
+            }
+            else
+            {
+                Pessoas pessoas = db.Pessoas.Find(Convert.ToInt32(usu));
+                if (pessoas == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(pessoas);
+            }
+        }
+
+        // POST: Pessoas/EditarImagem
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditarImagem([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Telefone,Cpf,Imagem,TipoUsuario,Ativo")] Pessoas pessoas, HttpPostedFileBase arquivoimg)
+        {
+            string valor = "";
+            if (ModelState.IsValid)
+            {
+                if (arquivoimg != null)
+                {
+                    Upload.CriarDiretorio();
+                    string nomearquivo = "perfil" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(arquivoimg.FileName);
+                    valor = Upload.UploadArquivo(arquivoimg, nomearquivo);
+                    if (valor == "sucesso")
+                    {
+                        pessoas.Imagem = nomearquivo;
+                        db.Entry(pessoas).State = EntityState.Modified;
+                        db.SaveChanges();
+                        return RedirectToAction("DashboardUsuario", "Pessoas");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", valor);
+                    }
+                }
+            }
+            return View(pessoas);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
