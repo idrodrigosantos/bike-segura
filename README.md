@@ -50,7 +50,7 @@ Caso queira criar um novo usuário, na página inicial, clique no botão `Cadast
 
 Após o cadastro ser efetuado com sucesso, a página será redirecionada para a página de login. Na página de login, digite o e-mail e senha cadastrados anteriormente, acesse o sistema e faça os testes e alterações desejados.
 
-## Softwares utilizados no desenvolvimento
+## Desenvolvido com
 * ASP.NET MVC
 * MySQL
 * Entity Framework
