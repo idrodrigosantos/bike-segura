@@ -273,21 +273,18 @@ namespace BikeSegura.Controllers
         // POST: Pessoas/EditarSenha
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditarSenha([Bind(Include = "Id,Senha,ConfirmaSenha")] Pessoas pessoas)
+        public ActionResult EditarSenha([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario,Ativo")] Pessoas pessoas)
         {
-            try
+            if (ModelState.IsValid)
             {
-                Pessoas pes = db.Pessoas.Find(pessoas.Id);
-                pes.Senha = Funcoes.SHA512(pes.Senha); //Criptografia
-                pes.ConfirmaSenha = Funcoes.SHA512(pes.ConfirmaSenha); //Criptografia
-                db.Entry(pes).State = EntityState.Modified;
+                pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
+                pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
+                db.Entry(pessoas).State = EntityState.Modified;
+                db.Entry(pessoas).Property(p => p.Imagem).IsModified = false; // Não altera o campo imagem
                 db.SaveChanges();
                 return RedirectToAction("DashboardUsuario", "Pessoas");
             }
-            catch
-            {
-                return View(pessoas);
-            }
+            return View(pessoas);
         }
 
         [Authorize(Roles = "Administrador")]
