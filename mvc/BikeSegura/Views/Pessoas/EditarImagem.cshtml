@@ -48,7 +48,15 @@
                 @Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-md-8 offset-md-2 col-lg-6 offset-lg-3">
-                @Html.LabelFor(model => model.Imagem, htmlAttributes: new { @class = "control-label" })
+                <label><strong>Imagem de Perfil Atual</strong></label>
+            </div>
+            <div class="form-group col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                <label>
+                    <img src="~/Uploads/@Html.DisplayFor(model =>model.Imagem)" style="height:200px;width:200px;" />
+                </label>
+            </div>
+            <div class="form-group col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                <label><strong>Adicionar Nova Imagem de Perfil</strong></label>
                 <input type="file" name="arquivoimg" class="form-control-file" />
                 <small class="form-text">
                     Envie imagem no formato .JPG ou .PNG
