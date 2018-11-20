@@ -204,7 +204,7 @@
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\estilo.css" />
+    <Content Include="Content\meu-estilo.css" />
     <Content Include="Content\fontawesome\css\all.min.css" />
     <Content Include="Content\fontawesome\webfonts\fa-brands-400.svg" />
     <Content Include="Content\fontawesome\webfonts\fa-solid-900.svg" />
