@@ -208,6 +208,16 @@ namespace BikeSegura.Controllers
             return View(numerosSeries);
         }
 
+        [Authorize]
+        // GET: ListaNumerosSeries
+        public ActionResult ListaNumerosSeries()
+        {
+            var numerosSeries = db.NumerosSeries.Include(n => n.Bicicletas);
+            var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
+            int idlogado = Convert.ToInt32(usu);
+            return View(numerosSeries.Where(w => w.Ativo == 0 && w.Bicicletas.Pessoas.Id == idlogado).ToList());
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
