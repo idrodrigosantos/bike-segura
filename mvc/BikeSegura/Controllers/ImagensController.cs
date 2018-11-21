@@ -157,22 +157,6 @@ namespace BikeSegura.Controllers
             return RedirectToAction("ListaUsuario", "Imagens");
         }
 
-        // Ação para excluir a imagem sem precisar confirmar Delete
-        [AcceptVerbs(HttpVerbs.Post)]
-        [ValidateInput(false)]
-        public JsonResult ExcluirFoto(string id)
-        {
-            Imagens f = db.Imagens.Find(Convert.ToInt32(id));
-            if (f != null)
-            {
-                db.Imagens.Remove(f);
-                db.SaveChanges();
-                return Json("s");
-            }
-            else
-            {
-                return Json("n");
-            }
         }
 
         [Authorize]
