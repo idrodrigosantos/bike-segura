@@ -96,7 +96,7 @@ namespace BikeSegura.Controllers
             {
                 db.Entry(historicos).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("DashboardUsuario", "Pessoas");
+                return RedirectToAction("ListaBicicletas", "Historicos");
             }
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", historicos.BicicletasId);
             ViewBag.CompradorId = new SelectList(db.Pessoas, "Id", "Nome", historicos.CompradorId);
