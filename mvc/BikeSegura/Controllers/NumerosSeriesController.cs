@@ -97,13 +97,13 @@ namespace BikeSegura.Controllers
             {
                 db.Entry(numerosSeries).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ListaNumerosSeries");
             }
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", numerosSeries.BicicletasId);
             return View(numerosSeries);
         }
 
-        [Authorize(Roles = "Administrador")]
+        [Authorize]
         // GET: NumerosSeries/Delete
         public ActionResult Delete(int? id)
         {
@@ -129,7 +129,7 @@ namespace BikeSegura.Controllers
             //Antes excluia do banco, agora altera o status
             numerosSeries.Ativo = (OpcaoStatusNumerosSeries)1;
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ListaNumerosSeries");
         }
 
         // Método buscar número de série - usuário público

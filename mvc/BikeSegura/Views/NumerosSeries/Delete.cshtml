@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Excluir Número de Série";
-    Layout = "~/Views/Shared/_Administrador.cshtml";
+    Layout = "~/Views/Shared/_Usuario.cshtml";
 }
 
 <div class="container conteudo">
@@ -62,7 +62,7 @@
                             @using (Html.BeginForm())
                             {
                                 @Html.AntiForgeryToken()
-                                <a class="btn btn-success" href="@Url.Action("Index", "NumerosSeries")" role="button">
+                                <a class="btn btn-success" href="@Url.Action("ListaNumerosSeries", "NumerosSeries")" role="button">
                                     <i class="fas fa-reply"></i>
                                     Voltar
                                 </a>

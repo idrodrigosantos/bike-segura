@@ -30,6 +30,9 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Bicicletas.Vendendo)
                     </th>
+                    <th>
+                        Proprietário
+                    </th>
                     <th></th>
                 </tr>
             </thead>
@@ -55,6 +58,9 @@
                     </td>
                     <td>
                         @Html.DisplayFor(model => model.Bicicletas.Vendendo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Bicicletas.Pessoas.Nome)
                     </td>
                     <td>
                         <div class="btn" role="group">
