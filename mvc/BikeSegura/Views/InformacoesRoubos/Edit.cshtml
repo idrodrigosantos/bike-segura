@@ -22,7 +22,7 @@
                 @Html.EnumDropDownListFor(model => model.Estado, "Selecione Estado", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
             </div>
-            <div class="form-group col-sm-12">
+            <div class="form-group col-sm-6">
                 @Html.LabelFor(model => model.LocalAdicional, "Informações adicionais do local onde a bicicleta foi roubada (*)", htmlAttributes: new { @class = "control-label" })
                 @Html.EditorFor(model => model.LocalAdicional, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.LocalAdicional, "", new { @class = "text-danger" })
@@ -31,11 +31,6 @@
                 @Html.LabelFor(model => model.DataRoubo, "Data do Roubo (*)", htmlAttributes: new { @class = "control-label" })
                 @Html.EditorFor(model => model.DataRoubo, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DataRoubo, "", new { @class = "text-danger" })
-            </div>
-            <div class="form-group col-sm-6">
-                @Html.LabelFor(model => model.BicicletasId, "Bicicleta Roubada (*)", htmlAttributes: new { @class = "control-label" })
-                @Html.DropDownList("BicicletasId", (SelectList)ViewBag.MyList, "Selecione Bicicleta", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.BicicletasId, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-12">
                 @Html.LabelFor(model => model.Relato, "Informações sobre o roubo (*)", htmlAttributes: new { @class = "control-label" })
@@ -54,6 +49,13 @@
                     </button>
                 </div>
             </div>
+            @*Campo não está sendo mostrado*@
+            <div class="form-group" style="display:none;">
+                @Html.LabelFor(model => model.BicicletasId, htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownList("BicicletasId", (SelectList)ViewBag.MyList, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.BicicletasId, "", new { @class = "text-danger" })
+            </div>
+            @*Campo não está sendo mostrado*@
             <div class="form-group col-sm-12">
                 <small class="form-text">
                     Campos marcados com (*) são obrigatórios

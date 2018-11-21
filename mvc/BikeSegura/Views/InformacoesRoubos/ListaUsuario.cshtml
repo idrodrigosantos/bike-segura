@@ -30,10 +30,7 @@
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Bicicletas.Modelo)
-                    </th>
-                    <th>
-                        Informações sobre o roubo
-                    </th>
+                    </th>                    
                     <th>
                         @Html.DisplayNameFor(model => model.DataRoubo)
                     </th>
@@ -58,10 +55,7 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Bicicletas.Modelo)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Relato)
-                        </td>
+                        </td>                        
                         <td>
                             @item.DataRoubo.ToString("dd/MM/yyyy")
                         </td>

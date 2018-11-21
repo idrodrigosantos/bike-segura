@@ -6,74 +6,107 @@
 }
 
 <div class="container conteudo">
-    <div class="table-responsive">
+    <div class="table-responsive table-sm">
         <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Cidade)
-                    <th>
-                        @Html.DisplayNameFor(model => model.Estado)
-                    </th>
-                    <th>
-                        Informações adicionais sobre o local
-                    </th>
-                    <th>
-                        Marca
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Bicicletas.Modelo)
-                    </th>
-                    <th>
-                        Informações sobre o roubo
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DataRoubo)
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        @Html.DisplayFor(model => model.Cidade)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => model.Estado)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => model.LocalAdicional)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => model.Bicicletas.Marcas.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => model.Bicicletas.Modelo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => model.Relato)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => model.DataRoubo)
-                    </td>
-                    <td>
-                        <div class="btn" role="group">
-                            @using (Html.BeginForm())
-                            {
-                                @Html.AntiForgeryToken()
-                                <a class="btn btn-success" href="@Url.Action("ListaUsuario", "InformacoesRoubos")" role="button">
-                                    <i class="fas fa-reply"></i>
-                                    Voltar
-                                </a>
-                                <button type="submit" value="Delete" class="btn btn-danger">
-                                    <i class="fas fa-times"></i>
-                                    Excluir
-                                </button>
-                            }
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Cidade)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Cidade)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Estado)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Estado)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Informações adicionais sobre o local</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.LocalAdicional)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Marca</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Bicicletas.Marcas.Nome)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Bicicletas.Modelo)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Bicicletas.Modelo)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Informações sobre o roubo</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Relato)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.DataRoubo)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.DataRoubo)
+                </td>
+            </tr>
         </table>
+    </div>
+    <div class="row">
+        <div class="form-group col-sm-12">
+            <div class="botao-salvar">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <a class="btn btn-success" href="@Url.Action("ListaUsuario", "InformacoesRoubos")" role="button">
+                        <i class="fas fa-reply"></i>
+                        Voltar
+                    </a>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalExcluir">
+                        <i class="fas fa-times"></i>
+                        Excluir
+                    </button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Confirmação Excluir-->
+<div class="modal fade" id="modalExcluir" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Excluir Informação</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Deseja realmente excluir a informação sobre o roubo?
+            </div>
+            <div class="modal-footer">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Não</button>
+                    <button type="submit" value="Delete" class="btn btn-danger">Sim</button>
+                }
+            </div>
+        </div>
     </div>
 </div>
