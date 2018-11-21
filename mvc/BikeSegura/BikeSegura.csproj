@@ -421,6 +421,7 @@
     <Content Include="Views\Pessoas\EditarImagem.cshtml" />
     <Content Include="Views\Pessoas\EditarImagemAdm.cshtml" />
     <Content Include="Views\NumerosSeries\ListaNumerosSeries.cshtml" />
+    <Content Include="Views\NumerosSeries\CreateNumeros.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

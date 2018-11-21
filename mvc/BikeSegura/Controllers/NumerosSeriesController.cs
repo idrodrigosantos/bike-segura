@@ -72,6 +72,32 @@ namespace BikeSegura.Controllers
         }
 
         [Authorize]
+        // GET: NumerosSeries/Create
+        //public ActionResult Create()
+        public ActionResult CreateNumeros()
+        {
+            var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
+            int idlogado = Convert.ToInt32(usu);            
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0 && w.Pessoas.Id == idlogado), "Id", "Modelo");
+            return View();
+        }
+
+        // POST: NumerosSeries/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateNumeros([Bind(Include = "Id,Numero,BicicletasId,Ativo,Tipo")] NumerosSeries numerosSeries)
+        {
+            if (ModelState.IsValid)
+            {
+                db.NumerosSeries.Add(numerosSeries);
+                db.SaveChanges();
+                return RedirectToAction("ListaNumerosSeries", "NumerosSeries");
+            }
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", numerosSeries.BicicletasId);
+            return View(numerosSeries);
+        }
+
+        [Authorize]
         // GET: NumerosSeries/Edit
         public ActionResult Edit(int? id)
         {
