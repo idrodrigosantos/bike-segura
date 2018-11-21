@@ -1,10 +1,8 @@
 ﻿@model BikeSegura.Models.RelatosRoubos
 
 @{
-                /**/
-
-                ViewBag.Title = "Excluir Relato";
-                Layout = "~/Views/Shared/_Usuario.cshtml";
+    ViewBag.Title = "Excluir Relato";
+    Layout = "~/Views/Shared/_Usuario.cshtml";
 }
 
 <div class="container conteudo">
@@ -62,7 +60,7 @@
     </div>
     <div class="row">
         <div class="form-group col-sm-12">
-            <div class="botao-salvar">                
+            <div class="botao-salvar">
                 @using (Html.BeginForm())
                 {
                     @Html.AntiForgeryToken()
