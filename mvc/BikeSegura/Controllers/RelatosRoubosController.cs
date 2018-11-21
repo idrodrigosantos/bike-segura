@@ -46,7 +46,10 @@ namespace BikeSegura.Controllers
         public ActionResult Create()
         {
             ViewBag.InformacoesRoubosId = new SelectList(db.InformacoesRoubos.Where(w => w.Ativo == 0), "Id", "Relato");
-            ViewBag.PessoasId = new SelectList(db.Pessoas.Where(w => w.Ativo == 0), "Id", "Nome");
+            //Mostrar apenas o usuário logado
+            var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
+            int idlogado = Convert.ToInt32(usu);
+            ViewBag.PessoasId = new SelectList(db.Pessoas.Where(w => w.Id == idlogado), "Id", "Nome");
             return View();
         }
 
@@ -134,9 +137,11 @@ namespace BikeSegura.Controllers
         public ActionResult ListaUsuario()
         {
             var relatosRoubos = db.RelatosRoubos.Include(r => r.InformacoesRoubos).Include(r => r.Pessoas);
+            var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
+            int idlogado = Convert.ToInt32(usu);
             //return View(relatosRoubos.ToList());
             //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
-            return View(relatosRoubos.Where(w => w.Ativo == 0).ToList());
+            return View(relatosRoubos.Where(w => w.Ativo == 0 && w.Pessoas.Id == idlogado).ToList());
         }
 
         protected override void Dispose(bool disposing)
