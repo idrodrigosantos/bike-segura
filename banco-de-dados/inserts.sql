@@ -157,8 +157,8 @@ insert into numerosseries (Numero, BicicletasId, Ativo) values
 
 insert into pessoas (Nome, Email, ConfirmaEmail, Senha, ConfirmaSenha, 
 Endereco, Numero, Complemento, Cep, Bairro, Cidade, Estado, 
-Telefone, Celular, Cpf, DataNascimento, Genero, Imagem, 
-NomeContato, TelefoneContato, CelularContato, TipoUsuario, Ativo) values 
+TelefoneUm, TelefoneDois, Cpf, DataNascimento, Genero, Imagem, 
+NomeContato, TelefoneContatoUm, TelefoneContatoDois, TipoUsuario, Ativo) values 
 ('Administrador', 'adm@email.com', 'adm@email.com', '122705f49b13a7d2f378eedf8581f02222b6753a6cb6417d77cfbc4884df74ea6ae7699951470f06c34f5c782b7210c34e867f1d0e5d8fcc4e94adb5ab8e8e79', '122705f49b13a7d2f378eedf8581f02222b6753a6cb6417d77cfbc4884df74ea6ae7699951470f06c34f5c782b7210c34e867f1d0e5d8fcc4e94adb5ab8e8e79', 
 null, null, null, null, null, null, null, '(11) 1111-1111', null, '111.111.111-11', 
 null, null, 'user01.jpg', null, null, null, 1, 0), 

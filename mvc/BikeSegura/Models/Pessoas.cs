@@ -125,14 +125,15 @@ namespace BikeSegura.Models
             TO
         }
 
-        [Required(ErrorMessage = "Telefone é obrigatório")]
-        [MinLength(10, ErrorMessage = "Telefone deve ter no mínimo 10 caracteres")]
-        [MaxLength(14, ErrorMessage = "Telefone deve ter no máximo 13 caracteres")]
-        public string Telefone { get; set; }
+        [DisplayName("Telefone ou Celular 1")]
+        [MinLength(10, ErrorMessage = "Telefone/Celular deve ter no mínimo 10 caracteres")]
+        [MaxLength(15, ErrorMessage = "Telefone/Celular deve ter no máximo 15 caracteres")]
+        public string TelefoneUm { get; set; }
 
-        [MinLength(11, ErrorMessage = "Celular deve ter no mínimo 11 caracteres")]
-        [MaxLength(15, ErrorMessage = "Celular deve ter no máximo 15 caracteres")]
-        public string Celular { get; set; }
+        [DisplayName("Telefone ou Celular 2")]
+        [MinLength(10, ErrorMessage = "Telefone/Celular deve ter no mínimo 10 caracteres")]
+        [MaxLength(15, ErrorMessage = "Telefone/Celular deve ter no máximo 15 caracteres")]
+        public string TelefoneDois { get; set; }
 
         [Required(ErrorMessage = "CPF é obrigatório")]
         [DisplayName("CPF")]
@@ -163,15 +164,15 @@ namespace BikeSegura.Models
         [MaxLength(100, ErrorMessage = "Nome deve ter no máximo 100 caracteres")]
         public string NomeContato { get; set; }
 
-        [DisplayName("Telefone do Contato")]
-        [MinLength(10, ErrorMessage = "Telefone para contato deve ter no mínimo 14 caracteres")]
-        [MaxLength(14, ErrorMessage = "Telefone para contato deve ter no máximo 14 caracteres")]
-        public string TelefoneContato { get; set; }
+        [DisplayName("Telefone ou Celular do Contato 1")]
+        [MinLength(10, ErrorMessage = "Telefone/Celular para contato deve ter no mínimo 10 caracteres")]
+        [MaxLength(15, ErrorMessage = "Telefone/Celular para contato deve ter no máximo 15 caracteres")]
+        public string TelefoneContatoUm { get; set; }
 
-        [DisplayName("Celular do Contato")]
-        [MinLength(11, ErrorMessage = "Celular deve ter no mínimo 11 caracteres")]
-        [MaxLength(15, ErrorMessage = "Celular deve ter no máximo 15 caracteres")]
-        public string CelularContato { get; set; }
+        [DisplayName("Telefone ou Celular do Contato 2")]
+        [MinLength(10, ErrorMessage = "Telefone/Celular deve ter no mínimo 10 caracteres")]
+        [MaxLength(15, ErrorMessage = "Telefone/Celular deve ter no máximo 15 caracteres")]
+        public string TelefoneContatoDois { get; set; }
 
         [DisplayName("Tipo de Usuário")]
         [EnumDataType(typeof(OpcaoUsuario))]

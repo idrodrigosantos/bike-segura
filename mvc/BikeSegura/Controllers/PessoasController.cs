@@ -65,7 +65,7 @@ namespace BikeSegura.Controllers
         // POST: Pessoas/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario,Ativo")] Pessoas pessoas, string mensagem, string assunto)
+        public ActionResult Create([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,TelefoneUm,TelefoneDois,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContatoUm,TelefoneContatoDois,TipoUsuario,Ativo")] Pessoas pessoas, string mensagem, string assunto)
         {
             if (pessoas != null)
             {
@@ -145,7 +145,7 @@ namespace BikeSegura.Controllers
         // POST: Pessoas/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario,Ativo")] Pessoas pessoas)
+        public ActionResult Edit([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,TelefoneUm,TelefoneDois,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContatoUm,TelefoneContatoDois,TipoUsuario,Ativo")] Pessoas pessoas)
         {
             if (ModelState.IsValid)
             {
@@ -266,7 +266,7 @@ namespace BikeSegura.Controllers
         // POST: Pessoas/EditarSenha
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditarSenha([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario,Ativo")] Pessoas pessoas)
+        public ActionResult EditarSenha([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,TelefoneUm,TelefoneDois,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContatoUm,TelefoneContatoDois,TipoUsuario,Ativo")] Pessoas pessoas)
         {
             if (ModelState.IsValid)
             {
@@ -312,7 +312,7 @@ namespace BikeSegura.Controllers
         // POST: Pessoas/EditarImagem
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditarImagem([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Telefone,Cpf,Imagem,TipoUsuario,Ativo")] Pessoas pessoas, HttpPostedFileBase arquivoimg)
+        public ActionResult EditarImagem([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Cpf,Imagem,TipoUsuario,Ativo")] Pessoas pessoas, HttpPostedFileBase arquivoimg)
         {
             string valor = "";
             if (ModelState.IsValid)
@@ -406,7 +406,7 @@ namespace BikeSegura.Controllers
         // POST: Pessoas/EditAdm
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditAdm([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario,Ativo")] Pessoas pessoas)
+        public ActionResult EditAdm([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,TelefoneUm,TelefoneDois,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContatoUm,TelefoneContatoDois,TipoUsuario,Ativo")] Pessoas pessoas)
         {
             if (ModelState.IsValid)
             {
@@ -475,7 +475,7 @@ namespace BikeSegura.Controllers
         // POST: Pessoas/EditarSenhaAdm
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditarSenhaAdm([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,Telefone,Celular,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContato,TipoUsuario,Ativo")] Pessoas pessoas)
+        public ActionResult EditarSenhaAdm([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,TelefoneUm,TelefoneDois,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContato,CelularContatoUm,CelularContatoDois,Ativo")] Pessoas pessoas)
         {
             if (ModelState.IsValid)
             {
@@ -521,7 +521,7 @@ namespace BikeSegura.Controllers
         // POST: Pessoas/EditarImagemAdm
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditarImagemAdm([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Telefone,Cpf,Imagem,TipoUsuario,Ativo")] Pessoas pessoas, HttpPostedFileBase arquivoimg)
+        public ActionResult EditarImagemAdm([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Cpf,Imagem,TipoUsuario,Ativo")] Pessoas pessoas, HttpPostedFileBase arquivoimg)
         {
             string valor = "";
             if (ModelState.IsValid)

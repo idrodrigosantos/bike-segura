@@ -12,10 +12,18 @@
         @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
         @Html.HiddenFor(model => model.Id)
         <div class="row">
-            <div class="form-group col-sm-12">
+            <div class="form-group col-sm-6">
                 @Html.LabelFor(model => model.Nome, "Nome Completo (*)", htmlAttributes: new { @class = "control-label" })
                 @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome Completo" } })
                 @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-6">
+                @Html.LabelFor(model => model.Cpf, "CPF (*)", htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control cpfmask" } })
+                <small class="form-text">
+                    Digite um CPF válido.
+                </small>
+                @Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-6">
                 @Html.LabelFor(model => model.Email, "Endereço de E-mail (*)", htmlAttributes: new { @class = "control-label" })
@@ -28,6 +36,9 @@
             <div class="form-group col-sm-6">
                 @Html.LabelFor(model => model.ConfirmaEmail, "Confirmar E-mail (*)", htmlAttributes: new { @class = "control-label" })
                 @Html.EditorFor(model => model.ConfirmaEmail, new { htmlAttributes = new { @class = "form-control", @placeholder = "nome@email.com" } })
+                <small class="form-text">
+                    Digite um email válido.
+                </small>
                 @Html.ValidationMessageFor(model => model.ConfirmaEmail, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-6" style="display:none;">
@@ -79,19 +90,14 @@
                 @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-6">
-                @Html.LabelFor(model => model.Telefone, "Telefone (*)", htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control telmask" } })
-                @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
+                @Html.LabelFor(model => model.TelefoneUm, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.TelefoneUm, new { htmlAttributes = new { @class = "form-control telmask", @placeholder = "(00) 0000-0000" } })
+                @Html.ValidationMessageFor(model => model.TelefoneUm, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-6 col-md-6">
-                @Html.LabelFor(model => model.Celular, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.Celular, new { htmlAttributes = new { @class = "form-control celmask" } })
-                @Html.ValidationMessageFor(model => model.Celular, "", new { @class = "text-danger" })
-            </div>
-            <div class="form-group col-sm-6">
-                @Html.LabelFor(model => model.Cpf, "CPF (*)", htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control cpfmask" } })
-                @Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
+                @Html.LabelFor(model => model.TelefoneDois, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.TelefoneDois, new { htmlAttributes = new { @class = "form-control telmask", @placeholder = "(00) 0000-0000" } })
+                @Html.ValidationMessageFor(model => model.TelefoneDois, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-12 col-md-6">
                 @Html.LabelFor(model => model.DataNascimento, htmlAttributes: new { @class = "control-label" })
@@ -110,20 +116,20 @@
                 </div>
                 @Html.ValidationMessageFor(model => model.Genero, "", new { @class = "text-danger" })
             </div>
-            <div class="form-group col-sm-6">
+            <div class="form-group col-sm-6 col-md-12 col-lg-4">
                 @Html.LabelFor(model => model.NomeContato, htmlAttributes: new { @class = "control-label" })
                 @Html.EditorFor(model => model.NomeContato, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NomeContato, "", new { @class = "text-danger" })
             </div>
-            <div class="form-group col-sm-6">
-                @Html.LabelFor(model => model.TelefoneContato, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.TelefoneContato, new { htmlAttributes = new { @class = "form-control telmask" } })
-                @Html.ValidationMessageFor(model => model.TelefoneContato, "", new { @class = "text-danger" })
+            <div class="form-group col-sm-6 col-lg-4">
+                @Html.LabelFor(model => model.TelefoneContatoUm, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.TelefoneContatoUm, new { htmlAttributes = new { @class = "form-control telmask", @placeholder = "(00) 0000-0000" } })
+                @Html.ValidationMessageFor(model => model.TelefoneContatoUm, "", new { @class = "text-danger" })
             </div>
-            <div class="form-group col-sm-6">
-                @Html.LabelFor(model => model.CelularContato, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.CelularContato, new { htmlAttributes = new { @class = "form-control celmask" } })
-                @Html.ValidationMessageFor(model => model.CelularContato, "", new { @class = "text-danger" })
+            <div class="form-group col-sm-6 col-lg-4">
+                @Html.LabelFor(model => model.TelefoneContatoDois, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.TelefoneContatoDois, new { htmlAttributes = new { @class = "form-control telmask", @placeholder = "(00) 0000-0000" } })
+                @Html.ValidationMessageFor(model => model.TelefoneContatoDois, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-sm-12">
                 <div class="botao-salvar">
@@ -137,6 +143,11 @@
                     </button>
                 </div>
             </div>
+            <div class="form-group col-sm-12">
+                <small class="form-text">
+                    Campos marcados com (*) são obrigatórios
+                </small>
+            </div>
         </div>
     </div>
 }
@@ -147,9 +158,15 @@
     <script>
         $(document).ready(function () {
             $('.cepmask').mask('00000-000', { placeholder: "00000-000" });
-            $('.telmask').mask('(00) 0000-0000', { placeholder: "(DD) 0000-0000" });
-            $('.celmask').mask('(00) 00000-0000', { placeholder: "(DD) 00000-0000" });
             $('.cpfmask').mask('000.000.000-00', { placeholder: "000.000.000-00" });
+
+            var masks = ['(00) 00000-0000', '(00) 0000-00009'];
+            $('.telmask').mask(masks[1], {
+                onKeyPress:
+                    function (val, e, field, options) {
+                        field.mask(val.length > 14 ? masks[0] : masks[1], options);
+                    }
+            });
         });
     </script>
 }
