@@ -19,7 +19,7 @@ namespace BikeSegura.Controllers
         // GET: Bicicletas
         public ActionResult Index()
         {
-            var bicicletas = db.Bicicletas.Include(b => b.Aros).Include(b => b.CambiosDianteiros).Include(b => b.CambiosTraseiros).Include(b => b.Freios).Include(b => b.Marcas).Include(b => b.Quadros).Include(b => b.Suspensoes).Include(b => b.Tipos);
+            var bicicletas = db.Bicicletas.Include(b => b.Aros).Include(b => b.CambiosDianteiros).Include(b => b.CambiosTraseiros).Include(b => b.Freios).Include(b => b.Marcas).Include(b => b.Quadros).Include(b => b.Suspensoes).Include(b => b.Tipos).Include(b => b.Pessoas);
             //return View(bicicletas.ToList());
             //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
             return View(bicicletas.Where(w => w.Ativo == 0).ToList());
@@ -53,13 +53,17 @@ namespace BikeSegura.Controllers
             ViewBag.QuadrosId = new SelectList(db.Quadros.Where(w => w.Ativo == 0), "Id", "Material");
             ViewBag.SuspensoesId = new SelectList(db.Suspensoes.Where(w => w.Ativo == 0), "Id", "Nome");
             ViewBag.TiposId = new SelectList(db.Tipos.Where(w => w.Ativo == 0), "Id", "Nome");
+            //Mostrar apenas o usuário logado
+            var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
+            int idlogado = Convert.ToInt32(usu);
+            ViewBag.PessoasId = new SelectList(db.Pessoas.Where(w => w.Id == idlogado), "Id", "Nome");
             return View();
         }
 
         // POST: Bicicletas/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,MarcasId,Modelo,TiposId,Cor,Imagem,CambiosDianteirosId,CambiosTraseirosId,FreiosId,SuspensoesId,ArosId,QuadrosId,Informacoes,Tamanho,AlertaRoubo,Vendendo,Ativo")] Bicicletas bicicletas)
+        public ActionResult Create([Bind(Include = "Id,MarcasId,Modelo,TiposId,Cor,Imagem,CambiosDianteirosId,CambiosTraseirosId,FreiosId,SuspensoesId,ArosId,QuadrosId,Informacoes,Tamanho,AlertaRoubo,Vendendo,Ativo,PessoasId")] Bicicletas bicicletas)
         {
             if (ModelState.IsValid)
             {
@@ -78,6 +82,7 @@ namespace BikeSegura.Controllers
             ViewBag.QuadrosId = new SelectList(db.Quadros, "Id", "Material", bicicletas.QuadrosId);
             ViewBag.SuspensoesId = new SelectList(db.Suspensoes, "Id", "Nome", bicicletas.SuspensoesId);
             ViewBag.TiposId = new SelectList(db.Tipos, "Id", "Nome", bicicletas.TiposId);
+            ViewBag.PessoasId = new SelectList(db.Pessoas, "Id", "Nome", bicicletas.PessoasId);
             return View(bicicletas);
         }
 
@@ -102,13 +107,17 @@ namespace BikeSegura.Controllers
             ViewBag.QuadrosId = new SelectList(db.Quadros.Where(w => w.Ativo == 0), "Id", "Material", bicicletas.QuadrosId);
             ViewBag.SuspensoesId = new SelectList(db.Suspensoes.Where(w => w.Ativo == 0), "Id", "Nome", bicicletas.SuspensoesId);
             ViewBag.TiposId = new SelectList(db.Tipos.Where(w => w.Ativo == 0), "Id", "Nome", bicicletas.TiposId);
+            //Mostrar apenas o usuário logado
+            var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
+            int idlogado = Convert.ToInt32(usu);
+            ViewBag.PessoasId = new SelectList(db.Pessoas.Where(w => w.Id == idlogado), "Id", "Nome");
             return View(bicicletas);
         }
 
         // POST: Bicicletas/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,MarcasId,Modelo,TiposId,Cor,Imagem,CambiosDianteirosId,CambiosTraseirosId,FreiosId,SuspensoesId,ArosId,QuadrosId,Informacoes,Tamanho,AlertaRoubo,Vendendo,Ativo")] Bicicletas bicicletas)
+        public ActionResult Edit([Bind(Include = "Id,MarcasId,Modelo,TiposId,Cor,Imagem,CambiosDianteirosId,CambiosTraseirosId,FreiosId,SuspensoesId,ArosId,QuadrosId,Informacoes,Tamanho,AlertaRoubo,Vendendo,Ativo,PessoasId")] Bicicletas bicicletas)
         {
             if (ModelState.IsValid)
             {
@@ -124,6 +133,7 @@ namespace BikeSegura.Controllers
             ViewBag.QuadrosId = new SelectList(db.Quadros, "Id", "Material", bicicletas.QuadrosId);
             ViewBag.SuspensoesId = new SelectList(db.Suspensoes, "Id", "Nome", bicicletas.SuspensoesId);
             ViewBag.TiposId = new SelectList(db.Tipos, "Id", "Nome", bicicletas.TiposId);
+            ViewBag.PessoasId = new SelectList(db.Pessoas, "Id", "Nome", bicicletas.PessoasId);
             return View(bicicletas);
         }
 

@@ -82,6 +82,13 @@
                 @Html.EnumDropDownListFor(model => model.Vendendo, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Vendendo, "", new { @class = "text-danger" })
             </div>
+            @*Campo não está sendo mostrado*@
+            <div class="form-group col-sm-12" style="display:none;">
+                @Html.LabelFor(model => model.PessoasId, htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownList("PessoasId", (SelectList)ViewBag.MyList, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PessoasId, "", new { @class = "text-danger" })
+            </div>
+            @*Campo não está sendo mostrado*@
             <div class="form-group col-sm-12">
                 <div class="botao-salvar">
                     <a class="btn btn-danger" href="@Url.Action("DashboardUsuario", "Pessoas")" role="button">
