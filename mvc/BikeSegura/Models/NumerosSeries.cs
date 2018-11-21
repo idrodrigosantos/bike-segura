@@ -21,6 +21,18 @@ namespace BikeSegura.Models
         [Required(ErrorMessage = "Bicicleta é obrigatório")]
         public int BicicletasId { get; set; }
 
+        [EnumDataType(typeof(OpcaoNumerosSeries))]
+        public OpcaoNumerosSeries Tipo { get; set; }
+        public enum OpcaoNumerosSeries
+        {
+            Quadro,
+            [Display(Name = "Suspensão Dianteira")]
+            SuspensaoDianteira,
+            [Display(Name = "Suspensão Traseira")]
+            SuspensaoTraseira,
+            Garfo
+        }
+
         [EnumDataType(typeof(OpcaoStatusNumerosSeries))]
         public OpcaoStatusNumerosSeries Ativo { get; set; }
         public enum OpcaoStatusNumerosSeries

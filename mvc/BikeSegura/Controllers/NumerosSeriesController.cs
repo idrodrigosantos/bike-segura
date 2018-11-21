@@ -59,7 +59,7 @@ namespace BikeSegura.Controllers
         // POST: NumerosSeries/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Numero,BicicletasId,Ativo")] NumerosSeries numerosSeries)
+        public ActionResult Create([Bind(Include = "Id,Numero,BicicletasId,Ativo,Tipo")] NumerosSeries numerosSeries)
         {
             if (ModelState.IsValid)
             {
@@ -117,7 +117,7 @@ namespace BikeSegura.Controllers
         // POST: NumerosSeries/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Numero,BicicletasId,Ativo")] NumerosSeries numerosSeries)
+        public ActionResult Edit([Bind(Include = "Id,Numero,BicicletasId,Ativo,Tipo")] NumerosSeries numerosSeries)
         {
             if (ModelState.IsValid)
             {
