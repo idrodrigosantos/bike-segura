@@ -14,22 +14,13 @@
                         @Html.DisplayNameFor(model => model.Numero)
                     </th>
                     <th>
+                        @Html.DisplayNameFor(model => model.Tipo)
+                    </th>
+                    <th>
                         Marca
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Bicicletas.Modelo)
-                    </th>
-                    <th>
-                        Tipo da Bicicleta
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Bicicletas.Cor)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Bicicletas.AlertaRoubo)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Bicicletas.Vendendo)
                     </th>
                     <th></th>
                 </tr>
@@ -40,22 +31,13 @@
                         @Html.DisplayFor(model => model.Numero)
                     </td>
                     <td>
+                        @Html.DisplayFor(model => model.Tipo)
+                    </td>
+                    <td>
                         @Html.DisplayFor(model => model.Bicicletas.Marcas.Nome)
                     </td>
                     <td>
                         @Html.DisplayFor(model => model.Bicicletas.Modelo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => model.Bicicletas.Tipos.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => model.Bicicletas.Cor)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => model.Bicicletas.AlertaRoubo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => model.Bicicletas.Vendendo)
                     </td>
                     <td>
                         <div class="btn" role="group">

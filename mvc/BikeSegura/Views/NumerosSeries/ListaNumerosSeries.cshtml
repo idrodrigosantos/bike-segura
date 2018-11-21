@@ -7,7 +7,7 @@
 
 <div class="container conteudo">
     <p>
-        <a class="btn btn-success" href="@Url.Action("Create", "NumerosSeries" )" role="button">
+        <a class="btn btn-success" href="@Url.Action("CreateNumeros", "NumerosSeries" )" role="button">
             <i class="fas fa-plus"></i>
             Cadastrar Número de Série
         </a>
@@ -24,12 +24,9 @@
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Bicicletas.Modelo)
-                    </th>
+                    </th>                    
                     <th>
-                        Tipo da Bicicleta
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Bicicletas.Cor)
+                        @Html.DisplayNameFor(model => model.Tipo)
                     </th>
                     <th></th>
                 </tr>
@@ -46,12 +43,9 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Bicicletas.Modelo)
-                        </td>
+                        </td>                        
                         <td>
-                            @Html.DisplayFor(modelItem => item.Bicicletas.Tipos.Nome)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Bicicletas.Cor)
+                            @Html.DisplayFor(modelItem => item.Tipo)
                         </td>
                         <td>
                             <div class="btn" role="group">
