@@ -21,10 +21,7 @@
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Bicicletas.Modelo)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Bicicletas.Id)
-                    </th>
+                    </th>                    
                     <th>
                         @Html.DisplayNameFor(model => model.Imagem)
                     </th>
@@ -40,10 +37,7 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Bicicletas.Modelo)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Bicicletas.Id)
-                        </td>
+                        </td>                        
                         <td>
                             <img src="~/Uploads/@item.Imagem" style="max-width:70px;" />
                         </td>
@@ -56,8 +50,8 @@
                                 <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.Id })" role="button">
                                     <i class="fas fa-pen"></i>
                                     Editar
-                                </a>
-                                <a class="btn btn-danger excluirfoto" href="#" role="button" rel="@item.Id">
+                                </a>                                
+                                <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.Id })" role="button">
                                     <i class="fas fa-times"></i>
                                     Excluir
                                 </a>
