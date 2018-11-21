@@ -5,13 +5,7 @@
     Layout = "~/Views/Shared/_Usuario.cshtml";
 }
 
-<div class="container conteudo">
-    <p>
-        <a class="btn btn-success" href="@Url.Action("Create", "Bicicletas" )" role="button">
-            <i class="fas fa-plus"></i>
-            Cadastrar Bicicleta
-        </a>
-    </p>
+<div class="container conteudo">    
     <div class="table-responsive">
         <table class="table table-hover">
             <thead>
@@ -63,7 +57,7 @@
                             <div class="btn" role="group">
                                 <a class="btn btn-success" href="@Url.Action("Details", "Historicos", new { id = item.Id })" role="button">
                                     <i class="fas fa-list"></i>
-                                    Histórico
+                                    Detalhes
                                 </a>
                                 <a class="btn btn-warning" href="@Url.Action("Edit", "Historicos", new { id = item.Id })" role="button">
                                     <i class="fas fa-pen"></i>
