@@ -80,6 +80,10 @@ namespace BikeSegura.Models
             Nao
         }
 
+        [DisplayName("Nome")]
+        [Required(ErrorMessage = "Pessoa é obrigatório")]
+        public int PessoasId { get; set; }
+
         public virtual Marcas Marcas { get; set; }
         public virtual Tipos Tipos { get; set; }
         public virtual CambiosDianteiros CambiosDianteiros { get; set; }
@@ -88,6 +92,7 @@ namespace BikeSegura.Models
         public virtual Suspensoes Suspensoes { get; set; }
         public virtual Aros Aros { get; set; }
         public virtual Quadros Quadros { get; set; }
+        public virtual Pessoas Pessoas { get; set; }
         public virtual ICollection<Imagens> Imagens { get; set; }
     }
 }
