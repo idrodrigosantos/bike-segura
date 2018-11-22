@@ -139,7 +139,7 @@ namespace BikeSegura.Controllers
         {
             var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
             int id = Convert.ToInt32(usu);
-            var historicos = db.Historicos.Include(h => h.Bicicletas).Include(h => h.Comprador).Include(h => h.Vendedor).Where(x => x.CompradorId == id && (int)x.TipoTransferencia == 2);
+            var historicos = db.Historicos.Where(x => x.CompradorId == id && x.TipoTransferencia == 0);
             return View(historicos.ToList());
         }
 
