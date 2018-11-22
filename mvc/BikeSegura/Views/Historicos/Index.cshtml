@@ -59,11 +59,17 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.TipoTransferencia)
                         </td>
+                        @*<td>
+                                @item.DataAquisicao.ToString("dd/MM/yyyy")
+                            </td>
+                            <td>
+                                @item.DataTransferencia.ToString("dd/MM/yyyy")
+                            </td>*@
                         <td>
-                            @item.DataAquisicao.ToString("dd/MM/yyyy")
+                            @Html.DisplayFor(modelItem => item.DataAquisicao)
                         </td>
                         <td>
-                            @item.DataTransferencia.ToString("dd/MM/yyyy")
+                            @Html.DisplayFor(modelItem => item.DataTransferencia)
                         </td>
                         <td>
                             <div class="btn" role="group">
