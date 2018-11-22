@@ -46,8 +46,12 @@ namespace BikeSegura.Controllers
         //public ActionResult Create()
         public ActionResult Create(int? id)
         {
-            var consultanumero = db.NumerosSeries.Where(w => w.BicicletasId == id).Select(s => s.Numero).FirstOrDefault();
-            ViewData["CONSULTANUMERO"] = consultanumero;
+            //var consultanumero = db.NumerosSeries.Where(w => w.BicicletasId == id).Select(s => s.Numero).FirstOrDefault();
+            //ViewData["CONSULTANUMERO"] = consultanumero;
+            var consultanumero = db.NumerosSeries.Where(w => w.BicicletasId == id).Select(s => s.Numero).ToList();
+            ViewBag.ConsultaNumero = consultanumero;
+            var consultatipo = db.NumerosSeries.Where(w => w.BicicletasId == id).Select(s => s.Tipo).ToList();
+            ViewBag.ConsultaTipo = consultatipo;            
             //ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo");            
             if (id == null)
                 ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0), "Id", "Modelo");

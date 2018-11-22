@@ -57,7 +57,20 @@
             <tbody>
                 <tr>
                     <td>
-                        @ViewData["CONSULTANUMERO"]
+                        @*@ViewData["CONSULTANUMERO"]*@
+                        @{foreach (var i in ViewBag.ConsultaNumero)
+                            {
+                                <p>@i</p>
+                            }
+                        }
+                    </td>
+                    <td>
+                        @*@ViewData["CONSULTANUMERO"]*@
+                        @{foreach (var e in ViewBag.ConsultaTipo)
+                            {
+                                <p>@e</p>
+                            }
+                        }
                     </td>
                 </tr>
             </tbody>
