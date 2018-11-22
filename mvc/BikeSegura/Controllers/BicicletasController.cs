@@ -69,6 +69,15 @@ namespace BikeSegura.Controllers
             {
                 db.Bicicletas.Add(bicicletas);
                 db.SaveChanges();
+                // Salva na tabela Históricos - início
+                Historicos hist = new Historicos();
+                var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
+                int idlogado = Convert.ToInt32(usu);
+                hist.CompradorId = idlogado;
+                hist.BicicletasId = 5;
+                db.Historicos.Add(hist);
+                db.SaveChanges();
+                // Salva na tabela Históricos - fim
                 // Antes, após cadastrar a bicicleta a página era redirecionada para a index,
                 //  agora a página é redirecionada para a página de cadastro de número de série
                 //return RedirectToAction("Index");
