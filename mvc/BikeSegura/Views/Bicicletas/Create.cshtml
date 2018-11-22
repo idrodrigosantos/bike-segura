@@ -70,14 +70,7 @@
                 @Html.LabelFor(model => model.Informacoes, htmlAttributes: new { @class = "control-label" })
                 @Html.TextAreaFor(model => model.Informacoes, new { @class = "form-control", rows = "3" })
                 @Html.ValidationMessageFor(model => model.Informacoes, "", new { @class = "text-danger" })
-            </div>
-            @*Campo não está sendo mostrado*@
-            <div class="form-group col-sm-12" style="display:none;">
-                @Html.LabelFor(model => model.PessoasId, htmlAttributes: new { @class = "control-label" })
-                @Html.DropDownList("PessoasId", (SelectList)ViewBag.MyList, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.PessoasId, "", new { @class = "text-danger" })
-            </div>
-            @*Campo não está sendo mostrado*@
+            </div>            
             <div class="form-group col-sm-12">
                 <div class="botao-salvar">
                     <a class="btn btn-danger" href="@Url.Action("DashboardUsuario", "Pessoas")" role="button">
