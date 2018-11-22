@@ -45,7 +45,8 @@ namespace BikeSegura.Controllers
         {
             var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
             int idlogado = Convert.ToInt32(usu);
-            ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0 && w.Pessoas.Id == idlogado), "Id", "Modelo");
+            //ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0 && w.Pessoas.Id == idlogado), "Id", "Modelo");
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0), "Id", "Modelo");
             return View();
         }
 
@@ -166,7 +167,8 @@ namespace BikeSegura.Controllers
             var imagens = db.Imagens.Include(i => i.Bicicletas);
             var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
             int idlogado = Convert.ToInt32(usu);
-            return View(imagens.Where(w => w.Bicicletas.Pessoas.Id == idlogado).ToList());
+            //return View(imagens.Where(w => w.Bicicletas.Pessoas.Id == idlogado).ToList());
+            return View(imagens.ToList());
         }
 
         protected override void Dispose(bool disposing)
