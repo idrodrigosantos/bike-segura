@@ -38,10 +38,14 @@ namespace BikeSegura
             bundles.Add(new ScriptBundle("~/bundles/toastr").Include(
                       "~/Scripts/toastr.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap-select").Include(
+                      "~/Scripts/bootstrap-select.min.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.min.css",
                       "~/Content/meu-estilo.css",
                       "~/Content/fontawesome/css/all.min.css",
+                      "~/Content/bootstrap-select.min.css",
                       "~/Content/toastr.min.css"));
         }
     }
