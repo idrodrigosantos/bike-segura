@@ -1,0 +1,86 @@
+﻿@model BikeSegura.Models.NumerosSeries
+
+@{
+    ViewBag.Title = "Cadastro Número de Série";
+    Layout = "~/Views/Shared/_Usuario.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container conteudo">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="form-group col-sm-12" style="display:none;">
+                @Html.LabelFor(model => model.BicicletasId, "Bicicleta (*)", htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownList("BicicletasId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.BicicletasId, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-4">
+                @Html.LabelFor(model => model.Tipo, "Parte da Bicicleta (*)", htmlAttributes: new { @class = "control-label" })
+                @Html.EnumDropDownListFor(model => model.Tipo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Tipo, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-8">
+                @Html.LabelFor(model => model.Numero, "Número de Série (*)", htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-12">
+                <div class="botao-salvar">
+                    <button type="submit" value="Create" id="botaoAlerta" class="btn btn-success">
+                        <i class="fas fa-list-ul"></i>
+                        Salvar Número de Série
+                    </button>
+                </div>
+            </div>
+        </div>
+        <br />
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Número de Série Cadastrado(s)
+                    </th>
+                    <th>
+                        Parte da Bicicleta
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @*@ViewData["CONSULTANUMERO"]*@
+                        @{foreach (var i in ViewBag.ConsultaNumero)
+                            {
+                                <p>@i</p>
+                            }
+                        }
+                    </td>
+                    <td>
+                        @*@ViewData["CONSULTANUMERO"]*@
+                        @{foreach (var e in ViewBag.ConsultaTipo)
+                            {
+                                <p>@e</p>
+                            }
+                        }
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="botao-finalizar-serie">
+                <div class="form-group col-sm-12">
+                    <a class="btn btn-warning btn-lg" href="@Url.Action("DashboardUsuario", "Pessoas")" role="button">
+                        <i class="fas fa-save"></i>
+                        Finalizar Cadastro
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
