@@ -79,7 +79,7 @@ namespace BikeSegura.Models
             Sim,
             Nao
         }
-        
+
         public virtual Marcas Marcas { get; set; }
         public virtual Tipos Tipos { get; set; }
         public virtual CambiosDianteiros CambiosDianteiros { get; set; }
@@ -87,7 +87,7 @@ namespace BikeSegura.Models
         public virtual Freios Freios { get; set; }
         public virtual Suspensoes Suspensoes { get; set; }
         public virtual Aros Aros { get; set; }
-        public virtual Quadros Quadros { get; set; }        
-        public virtual ICollection<Imagens> Imagens { get; set; }        
+        public virtual Quadros Quadros { get; set; }
+        public virtual ICollection<Imagens> Imagens { get; set; }
     }
 }
