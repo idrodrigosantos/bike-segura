@@ -41,7 +41,7 @@ namespace BikeSegura.Controllers
             return View(historicos);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         // GET: Historicos/Create
         public ActionResult Create()
         {
@@ -141,6 +141,42 @@ namespace BikeSegura.Controllers
             int id = Convert.ToInt32(usu);
             var historicos = db.Historicos.Where(x => x.CompradorId == id && x.TipoTransferencia == 0);
             return View(historicos.ToList());
+        }
+
+        [Authorize]
+        // GET: Historicos/Transferir
+        public ActionResult Transferir(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Historicos historicos = db.Historicos.Find(id);
+            if (historicos == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0), "Id", "Modelo", historicos.BicicletasId);
+            ViewBag.CompradorId = new SelectList(db.Pessoas.Where(w => w.Ativo == 0), "Id", "Nome", historicos.CompradorId);
+            ViewBag.VendedorId = new SelectList(db.Pessoas.Where(w => w.Ativo == 0), "Id", "Nome", historicos.VendedorId);
+            return View(historicos);
+        }
+
+        // POST: Historicos/Transferir
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Transferir([Bind(Include = "Id,TipoTransferencia,DataAquisicao,DataTransferencia,BicicletasId,VendedorId,CompradorId,Ativo")] Historicos historicos)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(historicos).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("ListaBicicletas", "Historicos");
+            }
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", historicos.BicicletasId);
+            ViewBag.CompradorId = new SelectList(db.Pessoas, "Id", "Nome", historicos.CompradorId);
+            ViewBag.VendedorId = new SelectList(db.Pessoas, "Id", "Nome", historicos.VendedorId);
+            return View(historicos);
         }
 
         protected override void Dispose(bool disposing)
