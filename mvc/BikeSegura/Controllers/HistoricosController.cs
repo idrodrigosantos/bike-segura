@@ -68,7 +68,7 @@ namespace BikeSegura.Controllers
             return View(historicos);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         // GET: Historicos/Edit
         public ActionResult Edit(int? id)
         {
