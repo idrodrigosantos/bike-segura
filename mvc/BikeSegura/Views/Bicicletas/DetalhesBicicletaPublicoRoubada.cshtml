@@ -1,0 +1,153 @@
+﻿@model BikeSegura.Models.Bicicletas
+
+@{
+    ViewBag.Title = "Detalhes Bicicleta";
+}
+
+<div class="container conteudo">
+    <div class="table-responsive table-sm">
+        <table class="table table-hover">
+            @*<tr>
+                    <td>
+                        <strong>Proprietário</strong>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Pessoas.Nome)
+                    </td>
+                </tr>*@
+            <tr>
+                <td>
+                    Imagem(s) da Bicicleta
+                </td>
+                <td colspan="2">
+                    @foreach (var item in Model.Imagens)
+                    {
+                        <img src="~/Uploads/@item.Imagem" style="height:140px;width:200px;" />
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Marca</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Marcas.Nome)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Modelo)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Modelo)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Tipos.Nome)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Tipos.Nome)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Cor)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Cor)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Tamanho)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Tamanho)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.CambiosDianteiros.Velocidade)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.CambiosDianteiros.Velocidade)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.CambiosTraseiros.Velocidade)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.CambiosTraseiros.Velocidade)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Freios.Nome)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Freios.Nome)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Suspensoes.Nome)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Suspensoes.Nome)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Aros.Medida)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Aros.Medida)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Quadros.Material)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Quadros.Material)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Informacoes)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Informacoes)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.AlertaRoubo)</strong>
+                </td>
+                <td>
+                    <div class="alert alert-danger" role="alert">
+                        @Html.DisplayFor(model => model.AlertaRoubo)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Vendendo)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Vendendo)
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+        <div class="botao-finalizar-serie">
+            <a class="btn btn-danger btn-lg" href="@Url.Action("Create", "RelatosRoubos")" role="button">
+                <i class="fas fa-exclamation-circle"></i>
+                Informar Sobre Bicicleta Roubada
+            </a>
+        </div>
+    </div>
+</div>
