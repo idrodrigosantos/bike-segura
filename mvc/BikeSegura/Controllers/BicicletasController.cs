@@ -69,12 +69,14 @@ namespace BikeSegura.Controllers
             {
                 db.Bicicletas.Add(bicicletas);
                 db.SaveChanges();
+                string modelo = bicicletas.Modelo;
+                var bike = db.Bicicletas.Where(t => t.Modelo == modelo).ToList().Last();
                 // Salva na tabela Históricos - início
                 Historicos hist = new Historicos();
                 var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
                 int idlogado = Convert.ToInt32(usu);
                 hist.CompradorId = idlogado;
-                hist.BicicletasId = 5;
+                hist.BicicletasId = bike.Id;
                 db.Historicos.Add(hist);
                 db.SaveChanges();
                 // Salva na tabela Históricos - fim
