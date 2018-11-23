@@ -171,34 +171,51 @@ namespace BikeSegura.Controllers
             {
                 var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
                 int idlogado = Convert.ToInt32(usu);
-                historicos.DataTransferencia = DateTime.Now;
-                historicos.VendedorId = idlogado;
                 var comprador = historicos.CompradorId;
                 var bike = historicos.BicicletasId;
-                db.Entry(historicos).State = EntityState.Modified;
-                db.SaveChanges();
-                // Salva um novo registro no histórico  
-                // Se for uma transferência externa, não houver comprador
-                if (comprador == null)
+                var status = historicos.TipoTransferencia;                
+                if (status != 0)
                 {
-                    Historicos hist = new Historicos();
-                    hist.BicicletasId = bike;
-                    hist.DataAquisicao = DateTime.Now;
-                    hist.Ativo = (OpcaoStatusHistoricos)1;
-                    hist.TipoTransferencia = (OpcaoTransferencia)2;
-                    db.Historicos.Add(hist);
-                    db.SaveChanges();
-                    return RedirectToAction("ListaBicicletas", "Historicos");
+                    if (comprador != idlogado)
+                    {
+                        historicos.DataTransferencia = DateTime.Now;
+                        historicos.VendedorId = idlogado;
+                        db.Entry(historicos).State = EntityState.Modified;
+                        db.SaveChanges();
+                        // Salva um novo registro no histórico  
+                        // Se for uma transferência externa, não houver comprador
+                        if (comprador == null)
+                        {
+                            Historicos hist = new Historicos();
+                            hist.BicicletasId = bike;
+                            hist.DataAquisicao = DateTime.Now;
+                            hist.Ativo = (OpcaoStatusHistoricos)1;
+                            hist.TipoTransferencia = (OpcaoTransferencia)2;
+                            db.Historicos.Add(hist);
+                            db.SaveChanges();
+                            return RedirectToAction("ListaBicicletas", "Historicos");
+                        }
+                        // Se for transferência interna, houve comprador
+                        else
+                        {
+                            Historicos hist = new Historicos();
+                            hist.CompradorId = comprador;
+                            hist.BicicletasId = bike;
+                            hist.DataAquisicao = DateTime.Now;
+                            db.Historicos.Add(hist);
+                            db.SaveChanges();
+                            return RedirectToAction("ListaBicicletas", "Historicos");
+                        }
+                    }
+                    else
+                    {
+                        // Colocar mensagem de erro aqui - comprador não pode ser o mesmo logado
+                        return RedirectToAction("ListaBicicletas", "Historicos");
+                    }
                 }
-                // Se for transferência interna, houve comprador
                 else
                 {
-                    Historicos hist = new Historicos();
-                    hist.CompradorId = comprador;
-                    hist.BicicletasId = bike;
-                    hist.DataAquisicao = DateTime.Now;
-                    db.Historicos.Add(hist);
-                    db.SaveChanges();
+                    // Colocar mensagem de erro aqui - situãção atual não pode ser proprietário o atual
                     return RedirectToAction("ListaBicicletas", "Historicos");
                 }
             }
