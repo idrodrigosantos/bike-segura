@@ -2,20 +2,19 @@
 
 @{
     ViewBag.Title = "Detalhes Bicicleta";
-    Layout = "~/Views/Shared/_Usuario.cshtml";
 }
 
 <div class="container conteudo">
     <div class="table-responsive table-sm">
         <table class="table table-hover">
             @*<tr>
-                <td>
-                    <strong>Proprietário</strong>
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.Pessoas.Nome)
-                </td>
-            </tr>*@
+                    <td>
+                        <strong>Proprietário</strong>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Pessoas.Nome)
+                    </td>
+                </tr>*@
             <tr>
                 <td>
                     Imagem(s) da Bicicleta
@@ -128,7 +127,9 @@
                     <strong>@Html.DisplayNameFor(model => model.AlertaRoubo)</strong>
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.AlertaRoubo)
+                    <div class="alert alert-success" role="alert">
+                        @Html.DisplayFor(model => model.AlertaRoubo)
+                    </div>
                 </td>
             </tr>
             <tr>
