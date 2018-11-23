@@ -17,22 +17,22 @@
                 @Html.EnumDropDownListFor(model => model.TipoTransferencia, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.TipoTransferencia, "", new { @class = "text-danger" })
             </div>
-            <div class="form-group col-sm-6">
+            <div class="form-group col-sm-6" style="display:none;">
                 @Html.LabelFor(model => model.BicicletasId, "Bicicleta (*)", htmlAttributes: new { @class = "control-label" })
                 @Html.DropDownList("BicicletasId", (SelectList)ViewBag.MyList, "Selecione Bicicleta", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.BicicletasId, "", new { @class = "text-danger" })
             </div>
-            <div class="form-group col-sm-6">
+            <div class="form-group col-sm-6" style="display:none;">
                 @Html.LabelFor(model => model.DataAquisicao, "Data de Aquisição (*)", htmlAttributes: new { @class = "control-label" })
                 @Html.EditorFor(model => model.DataAquisicao, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DataAquisicao, "", new { @class = "text-danger" })
             </div>
-            <div class="form-group col-sm-6">
+            <div class="form-group col-sm-6" style="display:none;">
                 @Html.LabelFor(model => model.DataTransferencia, "Data de Transferência (*)", htmlAttributes: new { @class = "control-label" })
                 @Html.EditorFor(model => model.DataTransferencia, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DataTransferencia, "", new { @class = "text-danger" })
             </div>
-            <div class="form-group col-sm-6">
+            <div class="form-group col-sm-6" style="display:none;">
                 @Html.LabelFor(model => model.VendedorId, "Vendedor (*)", htmlAttributes: new { @class = "control-label" })
                 @Html.DropDownList("VendedorId", (SelectList)ViewBag.MyList, "Selecione Vendedor", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.VendedorId, "", new { @class = "text-danger" })
@@ -42,15 +42,27 @@
                 @Html.DropDownList("CompradorId", (SelectList)ViewBag.MyList, "Selecione Comprador", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CompradorId, "", new { @class = "text-danger" })
             </div>
+            @*<div class="form-group col-sm-12">
+                    <div class="botao-salvar">
+                        <a class="btn btn-danger" href="@Url.Action("ListaBicicletas", "Historicos")" role="button">
+                            <i class="fas fa-times"></i>
+                            Cancelar
+                        </a>
+                        <button type="submit" value="Save" class="btn btn-warning">
+                            <i class="fas fa-save"></i>
+                            Transferir
+                        </button>
+                    </div>
+                </div>*@
             <div class="form-group col-sm-12">
                 <div class="botao-salvar">
                     <a class="btn btn-danger" href="@Url.Action("ListaBicicletas", "Historicos")" role="button">
                         <i class="fas fa-times"></i>
                         Cancelar
                     </a>
-                    <button type="submit" value="Save" class="btn btn-success">
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalTransferir">
                         <i class="fas fa-save"></i>
-                        Salvar
+                        Transferir
                     </button>
                 </div>
             </div>
@@ -60,8 +72,35 @@
                 </small>
             </div>
         </div>
+
+        <!-- Modal Confirmação Excluir-->
+        <div class="modal fade" id="modalTransferir" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel" style="color:black;">Transferir Bicicleta</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="color:black;">
+                        Deseja realmente transferir a bicicleta?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Não</button>
+                        <button type="submit" value="Save" class="btn btn-danger">
+                            <i class="fas fa-exclamation-circle"></i>
+                            Sim
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 }
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

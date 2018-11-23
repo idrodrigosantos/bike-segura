@@ -169,9 +169,38 @@ namespace BikeSegura.Controllers
         {
             if (ModelState.IsValid)
             {
+                var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
+                int idlogado = Convert.ToInt32(usu);
+                historicos.DataTransferencia = DateTime.Now;
+                historicos.VendedorId = idlogado;
+                var comprador = historicos.CompradorId;
+                var bike = historicos.BicicletasId;
                 db.Entry(historicos).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("ListaBicicletas", "Historicos");
+                // Salva um novo registro no histórico  
+                // Se for uma transferência externa, não houver comprador
+                if (comprador == null)
+                {
+                    Historicos hist = new Historicos();
+                    hist.BicicletasId = bike;
+                    hist.DataAquisicao = DateTime.Now;
+                    hist.Ativo = (OpcaoStatusHistoricos)1;
+                    hist.TipoTransferencia = (OpcaoTransferencia)2;
+                    db.Historicos.Add(hist);
+                    db.SaveChanges();
+                    return RedirectToAction("ListaBicicletas", "Historicos");
+                }
+                // Se for transferência interna, houve comprador
+                else
+                {
+                    Historicos hist = new Historicos();
+                    hist.CompradorId = comprador;
+                    hist.BicicletasId = bike;
+                    hist.DataAquisicao = DateTime.Now;
+                    db.Historicos.Add(hist);
+                    db.SaveChanges();
+                    return RedirectToAction("ListaBicicletas", "Historicos");
+                }
             }
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", historicos.BicicletasId);
             ViewBag.CompradorId = new SelectList(db.Pessoas, "Id", "Nome", historicos.CompradorId);
