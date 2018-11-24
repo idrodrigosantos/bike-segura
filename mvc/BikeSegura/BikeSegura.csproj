@@ -430,6 +430,9 @@
     <Content Include="Views\Historicos\Transferir.cshtml" />
     <Content Include="Views\Bicicletas\DetalhesBicicletaUsuarioRoubada.cshtml" />
     <Content Include="Views\Bicicletas\DetalhesBicicletaPublicoRoubada.cshtml" />
+    <Content Include="Views\Bicicletas\ListaBicicletasRoubadasPublico.cshtml" />
+    <Content Include="Views\Bicicletas\ListaBicicletasRoubadasUsuario.cshtml" />
+    <Content Include="Views\Bicicletas\ListaBicicletasVendendo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

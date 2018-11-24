@@ -1,0 +1,60 @@
+﻿@model IEnumerable<BikeSegura.Models.Bicicletas>
+
+@{
+    ViewBag.Title = "Lista de Bicicletas Roubadas";
+}
+
+<div class="container conteudo">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Marca
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Modelo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tipos.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cor)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Marcas.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Modelo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tipos.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cor)
+                        </td>
+                        <td>
+                            <div class="btn" role="group">
+                                <a class="btn btn-success" href="@Url.Action("DetalhesBicicletaPublicoRoubada", new { id = item.Id })" role="button">
+                                    <i class="fas fa-list"></i>
+                                    Detalhes
+                                </a>
+                                <a class="btn btn-danger" href="@Url.Action("Create", "RelatosRoubos")" role="button">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    Informar Sobre Bicicleta Roubada
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

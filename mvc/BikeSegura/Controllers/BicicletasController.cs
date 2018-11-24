@@ -80,7 +80,7 @@ namespace BikeSegura.Controllers
                 hist.BicicletasId = bike.Id;
                 hist.DataAquisicao = DateTime.Now;
                 db.Historicos.Add(hist);
-                db.SaveChanges();                
+                db.SaveChanges();
                 // Antes, após cadastrar a bicicleta a página era redirecionada para a index,
                 //  agora a página é redirecionada para a página de cadastro de número de série
                 //return RedirectToAction("Index");
@@ -236,6 +236,27 @@ namespace BikeSegura.Controllers
                 return HttpNotFound();
             }
             return View(bicicletas);
+        }
+
+        // GET: ListaBicicletasRoubadasPublico
+        public ActionResult ListaBicicletasRoubadasPublico()
+        {
+            var bicicletas = db.Bicicletas.Include(b => b.Aros).Include(b => b.CambiosDianteiros).Include(b => b.CambiosTraseiros).Include(b => b.Freios).Include(b => b.Marcas).Include(b => b.Quadros).Include(b => b.Suspensoes).Include(b => b.Tipos);
+            return View(bicicletas.Where(w => w.Ativo == 0 && (int)w.AlertaRoubo == 1).ToList());
+        }
+
+        // GET: ListaBicicletasRoubadasUsuario
+        public ActionResult ListaBicicletasRoubadasUsuario()
+        {
+            var bicicletas = db.Bicicletas.Include(b => b.Aros).Include(b => b.CambiosDianteiros).Include(b => b.CambiosTraseiros).Include(b => b.Freios).Include(b => b.Marcas).Include(b => b.Quadros).Include(b => b.Suspensoes).Include(b => b.Tipos);
+            return View(bicicletas.Where(w => w.Ativo == 0 && (int)w.AlertaRoubo == 1).ToList());
+        }
+
+        // GET: ListaBicicletasVendendo
+        public ActionResult ListaBicicletasVendendo()
+        {
+            var bicicletas = db.Bicicletas.Include(b => b.Aros).Include(b => b.CambiosDianteiros).Include(b => b.CambiosTraseiros).Include(b => b.Freios).Include(b => b.Marcas).Include(b => b.Quadros).Include(b => b.Suspensoes).Include(b => b.Tipos);
+            return View(bicicletas.Where(w => w.Ativo == 0 && (int)w.Vendendo == 1).ToList());
         }
 
         protected override void Dispose(bool disposing)
