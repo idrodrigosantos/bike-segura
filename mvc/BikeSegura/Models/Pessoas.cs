@@ -190,5 +190,7 @@ namespace BikeSegura.Models
             Sim,
             Nao
         }
+
+        public DateTime? DataCadastro { get; set; }
     }
 }

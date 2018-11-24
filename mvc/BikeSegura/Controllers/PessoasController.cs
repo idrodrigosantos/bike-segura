@@ -65,7 +65,7 @@ namespace BikeSegura.Controllers
         // POST: Pessoas/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,TelefoneUm,TelefoneDois,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContatoUm,TelefoneContatoDois,TipoUsuario,Ativo")] Pessoas pessoas, string mensagem, string assunto)
+        public ActionResult Create([Bind(Include = "Id,Nome,Email,ConfirmaEmail,Senha,ConfirmaSenha,Endereco,Numero,Complemento,Cep,Bairro,Cidade,Estado,TelefoneUm,TelefoneDois,Cpf,DataNascimento,Genero,Imagem,NomeContato,TelefoneContatoUm,TelefoneContatoDois,TipoUsuario,Ativo,DataCadastro")] Pessoas pessoas, string mensagem, string assunto)
         {
             if (pessoas != null)
             {
@@ -80,6 +80,8 @@ namespace BikeSegura.Controllers
                         // Se não estiver cadastrado e-mail ou CPF, salva no banco
                         pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
                         pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
+                        // Salva data e hora do cadastro
+                        pessoas.DataCadastro = DateTime.Now;
                         //Enviar e-mail para o e-mail cadastrado
                         mensagem = "Seu cadastro foi efetuado com sucesso.";
                         assunto = "Bike Segura - Cadastro";
