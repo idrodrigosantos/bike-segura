@@ -202,7 +202,9 @@ namespace BikeSegura.Controllers
         {
             if (id != null)
             {
-                var numeroserie = db.NumerosSeries.Where(w => w.Numero == id).FirstOrDefault();
+                //var numeroserie = db.NumerosSeries.Where(w => w.Numero == id).FirstOrDefault();
+                // Busca parte no número digitado, sql like
+                var numeroserie = db.NumerosSeries.Where(w => w.Numero.Contains(id)).FirstOrDefault();
                 if (numeroserie != null)
                 {
                     if (numeroserie.Bicicletas.AlertaRoubo == 0)
@@ -232,7 +234,9 @@ namespace BikeSegura.Controllers
         {
             if (id != null)
             {
-                var numeroserie = db.NumerosSeries.Where(w => w.Numero == id).FirstOrDefault();
+                //var numeroserie = db.NumerosSeries.Where(w => w.Numero == id).FirstOrDefault();
+                // Busca parte no número digitado, sql like
+                var numeroserie = db.NumerosSeries.Where(w => w.Numero.Contains(id)).FirstOrDefault();
                 if (numeroserie != null)
                 {
                     if (numeroserie.Bicicletas.AlertaRoubo == 0)
