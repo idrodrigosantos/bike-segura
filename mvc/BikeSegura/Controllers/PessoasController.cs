@@ -215,28 +215,6 @@ namespace BikeSegura.Controllers
         }
 
         [Authorize]
-        // GET: DashboardUsuario
-        public ActionResult DashboardUsuario()
-        {
-            var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
-            int id = Convert.ToInt32(usu);
-            var historicos = db.Historicos.Where(x => x.CompradorId == id && x.TipoTransferencia == 0);
-            // Consulta banco, número de bicicletas seguras 
-            var totalBikeSegura = db.Bicicletas.Where(w => (int)w.AlertaRoubo == 0).Count();
-            ViewData["TOTALBIKESEGURA"] = totalBikeSegura;
-            // Consulta banco, número de bicicletas roubadas
-            var totalBikeRoubada = db.Bicicletas.Where(w => (int)w.AlertaRoubo == 1).Count();
-            ViewData["TOTALBIKEROUBADA"] = totalBikeRoubada;
-            // Consulta banco, número de bicicletas que não está a venda 
-            var totalBikeSemVender = db.Bicicletas.Where(w => (int)w.Vendendo == 0).Count();
-            ViewData["TOTALBIKESEMVENDER"] = totalBikeSemVender;
-            // Consulta banco, número de bicicletas que estão a venda
-            var totalBikeVendendo = db.Bicicletas.Where(w => (int)w.Vendendo == 1).Count();
-            ViewData["TOTALBIKEVENDENDO"] = totalBikeVendendo;
-            return View(historicos.ToList());
-        }
-
-        [Authorize]
         // GET: Pessoas/EditarSenha
         public ActionResult EditarSenha(int? id)
         {
@@ -338,13 +316,6 @@ namespace BikeSegura.Controllers
                 }
             }
             return View(pessoas);
-        }
-
-        [Authorize(Roles = "Administrador")]
-        // GET: DashboardAdm
-        public ActionResult DashboardAdm()
-        {
-            return View(db.Pessoas.ToList());
         }
 
         [Authorize(Roles = "Administrador")]
@@ -547,6 +518,317 @@ namespace BikeSegura.Controllers
                 }
             }
             return View(pessoas);
+        }
+
+        [Authorize]
+        // GET: DashboardUsuario
+        public ActionResult DashboardUsuario()
+        {
+            var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
+            int id = Convert.ToInt32(usu);
+            var historicos = db.Historicos.Where(x => x.CompradorId == id && x.TipoTransferencia == 0);
+            // Consulta banco, número de bicicletas seguras 
+            var totalBikeSegura = db.Bicicletas.Where(w => (int)w.AlertaRoubo == 0).Count();
+            ViewData["TOTALBIKESEGURA"] = totalBikeSegura;
+            // Consulta banco, número de bicicletas roubadas
+            var totalBikeRoubada = db.Bicicletas.Where(w => (int)w.AlertaRoubo == 1).Count();
+            ViewData["TOTALBIKEROUBADA"] = totalBikeRoubada;
+            // Consulta banco, número de bicicletas que não está a venda 
+            var totalBikeSemVender = db.Bicicletas.Where(w => (int)w.Vendendo == 0).Count();
+            ViewData["TOTALBIKESEMVENDER"] = totalBikeSemVender;
+            // Consulta banco, número de bicicletas que estão a venda
+            var totalBikeVendendo = db.Bicicletas.Where(w => (int)w.Vendendo == 1).Count();
+            ViewData["TOTALBIKEVENDENDO"] = totalBikeVendendo;
+            // Consuta banco, número de bicicletas por estado
+            var totalBikeAC = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 0).Count();
+            ViewData["BIKEAC"] = totalBikeAC;
+            var totalBikeAL = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 1).Count();
+            ViewData["BIKEAL"] = totalBikeAL;
+            var totalBikeAP = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 2).Count();
+            ViewData["BIKEAP"] = totalBikeAP;
+            var totalBikeAM = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 3).Count();
+            ViewData["BIKEAM"] = totalBikeAM;
+            var totalBikeBA = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 4).Count();
+            ViewData["BIKEBA"] = totalBikeBA;
+            var totalBikeCE = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 5).Count();
+            ViewData["BIKECE"] = totalBikeCE;
+            var totalBikeDF = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 6).Count();
+            ViewData["BIKEDF"] = totalBikeDF;
+            var totalBikeES = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 7).Count();
+            ViewData["BIKEES"] = totalBikeES;
+            var totalBikeGO = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 8).Count();
+            ViewData["BIKEGO"] = totalBikeGO;
+            var totalBikeMA = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 9).Count();
+            ViewData["BIKEMA"] = totalBikeMA;
+            var totalBikeMT = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 10).Count();
+            ViewData["BIKEMT"] = totalBikeMT;
+            var totalBikeMS = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 11).Count();
+            ViewData["BIKEMS"] = totalBikeMS;
+            var totalBikeMG = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 12).Count();
+            ViewData["BIKEMG"] = totalBikeMG;
+            var totalBikePA = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 13).Count();
+            ViewData["BIKEPA"] = totalBikePA;
+            var totalBikePB = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 14).Count();
+            ViewData["BIKEPB"] = totalBikePB;
+            var totalBikePR = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 15).Count();
+            ViewData["BIKEPR"] = totalBikePR;
+            var totalBikePE = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 16).Count();
+            ViewData["BIKEPE"] = totalBikePE;
+            var totalBikePI = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 17).Count();
+            ViewData["BIKEPI"] = totalBikePI;
+            var totalBikeRJ = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 18).Count();
+            ViewData["BIKERJ"] = totalBikeRJ;
+            var totalBikeRN = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 19).Count();
+            ViewData["BIKERN"] = totalBikeRN;
+            var totalBikeRS = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 20).Count();
+            ViewData["BIKERS"] = totalBikeRS;
+            var totalBikeRO = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 21).Count();
+            ViewData["BIKERO"] = totalBikeRO;
+            var totalBikeRR = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 22).Count();
+            ViewData["BIKERR"] = totalBikeRR;
+            var totalBikeSC = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 23).Count();
+            ViewData["BIKESC"] = totalBikeSC;
+            var totalBikeSP = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 24).Count();
+            ViewData["BIKESP"] = totalBikeSP;
+            var totalBikeSE = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 25).Count();
+            ViewData["BIKESE"] = totalBikeSE;
+            var totalBikeTO = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 26).Count();
+            ViewData["BIKETO"] = totalBikeTO;
+            // Consuta banco, número de bicicletas roubadas por estado
+            var totalBikeRoubadaAC = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 0).Count();
+            ViewData["BIKEROUBADAAC"] = totalBikeRoubadaAC;
+            var totalBikeRoubadaAL = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 1).Count();
+            ViewData["BIKEROUBADAAL"] = totalBikeRoubadaAL;
+            var totalBikeRoubadaAP = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 2).Count();
+            ViewData["BIKEROUBADAAP"] = totalBikeRoubadaAP;
+            var totalBikeRoubadaAM = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 3).Count();
+            ViewData["BIKEROUBADAAM"] = totalBikeRoubadaAM;
+            var totalBikeRoubadaBA = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 4).Count();
+            ViewData["BIKEROUBADABA"] = totalBikeRoubadaBA;
+            var totalBikeRoubadaCE = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 5).Count();
+            ViewData["BIKEROUBADACE"] = totalBikeRoubadaCE;
+            var totalBikeRoubadaDF = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 6).Count();
+            ViewData["BIKEROUBADADF"] = totalBikeRoubadaDF;
+            var totalBikeRoubadaES = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 7).Count();
+            ViewData["BIKEROUBADAES"] = totalBikeRoubadaES;
+            var totalBikeRoubadaGO = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 8).Count();
+            ViewData["BIKEROUBADAGO"] = totalBikeRoubadaGO;
+            var totalBikeRoubadaMA = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 9).Count();
+            ViewData["BIKEROUBADAMA"] = totalBikeRoubadaMA;
+            var totalBikeRoubadaMT = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 10).Count();
+            ViewData["BIKEROUBADAMT"] = totalBikeRoubadaMT;
+            var totalBikeRoubadaMS = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 11).Count();
+            ViewData["BIKEROUBADAMS"] = totalBikeRoubadaMS;
+            var totalBikeRoubadaMG = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 12).Count();
+            ViewData["BIKEROUBADAMG"] = totalBikeRoubadaMG;
+            var totalBikeRoubadaPA = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 13).Count();
+            ViewData["BIKEROUBADAPA"] = totalBikeRoubadaPA;
+            var totalBikeRoubadaPB = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 14).Count();
+            ViewData["BIKEROUBADAPB"] = totalBikeRoubadaPB;
+            var totalBikeRoubadaPR = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 15).Count();
+            ViewData["BIKEROUBADAPR"] = totalBikeRoubadaPR;
+            var totalBikeRoubadaPE = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 16).Count();
+            ViewData["BIKEROUBADAPE"] = totalBikeRoubadaPE;
+            var totalBikeRoubadaPI = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 17).Count();
+            ViewData["BIKEROUBADAPI"] = totalBikeRoubadaPI;
+            var totalBikeRoubadaRJ = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 18).Count();
+            ViewData["BIKEROUBADARJ"] = totalBikeRoubadaRJ;
+            var totalBikeRoubadaRN = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 19).Count();
+            ViewData["BIKEROUBADARN"] = totalBikeRoubadaRN;
+            var totalBikeRoubadaRS = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 20).Count();
+            ViewData["BIKEROUBADARS"] = totalBikeRoubadaRS;
+            var totalBikeRoubadaRO = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 21).Count();
+            ViewData["BIKEROUBADARO"] = totalBikeRoubadaRO;
+            var totalBikeRoubadaRR = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 22).Count();
+            ViewData["BIKEROUBADARR"] = totalBikeRoubadaRR;
+            var totalBikeRoubadaSC = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 23).Count();
+            ViewData["BIKEROUBADASC"] = totalBikeRoubadaSC;
+            var totalBikeRoubadaSP = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 24).Count();
+            ViewData["BIKEROUBADASP"] = totalBikeRoubadaSP;
+            var totalBikeRoubadaSE = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 25).Count();
+            ViewData["BIKEROUBADASE"] = totalBikeRoubadaSE;
+            var totalBikeRoubadaTO = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 26).Count();
+            ViewData["BIKEROUBADATO"] = totalBikeRoubadaTO;
+            return View(historicos.ToList());
+        }
+
+        [Authorize(Roles = "Administrador")]
+        // GET: DashboardAdm
+        public ActionResult DashboardAdm()
+        {
+            // Consulta banco, número de bicicletas seguras 
+            var totalBikeSegura = db.Bicicletas.Where(w => (int)w.AlertaRoubo == 0).Count();
+            ViewData["TOTALBIKESEGURA"] = totalBikeSegura;
+            // Consulta banco, número de bicicletas roubadas
+            var totalBikeRoubada = db.Bicicletas.Where(w => (int)w.AlertaRoubo == 1).Count();
+            ViewData["TOTALBIKEROUBADA"] = totalBikeRoubada;
+            // Consulta banco, número de bicicletas que não está a venda 
+            var totalBikeSemVender = db.Bicicletas.Where(w => (int)w.Vendendo == 0).Count();
+            ViewData["TOTALBIKESEMVENDER"] = totalBikeSemVender;
+            // Consulta banco, número de bicicletas que estão a venda
+            var totalBikeVendendo = db.Bicicletas.Where(w => (int)w.Vendendo == 1).Count();
+            ViewData["TOTALBIKEVENDENDO"] = totalBikeVendendo;
+            // Consuta banco, número de bicicletas por estado
+            var totalBikeAC = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 0).Count();
+            ViewData["BIKEAC"] = totalBikeAC;
+            var totalBikeAL = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 1).Count();
+            ViewData["BIKEAL"] = totalBikeAL;
+            var totalBikeAP = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 2).Count();
+            ViewData["BIKEAP"] = totalBikeAP;
+            var totalBikeAM = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 3).Count();
+            ViewData["BIKEAM"] = totalBikeAM;
+            var totalBikeBA = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 4).Count();
+            ViewData["BIKEBA"] = totalBikeBA;
+            var totalBikeCE = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 5).Count();
+            ViewData["BIKECE"] = totalBikeCE;
+            var totalBikeDF = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 6).Count();
+            ViewData["BIKEDF"] = totalBikeDF;
+            var totalBikeES = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 7).Count();
+            ViewData["BIKEES"] = totalBikeES;
+            var totalBikeGO = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 8).Count();
+            ViewData["BIKEGO"] = totalBikeGO;
+            var totalBikeMA = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 9).Count();
+            ViewData["BIKEMA"] = totalBikeMA;
+            var totalBikeMT = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 10).Count();
+            ViewData["BIKEMT"] = totalBikeMT;
+            var totalBikeMS = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 11).Count();
+            ViewData["BIKEMS"] = totalBikeMS;
+            var totalBikeMG = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 12).Count();
+            ViewData["BIKEMG"] = totalBikeMG;
+            var totalBikePA = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 13).Count();
+            ViewData["BIKEPA"] = totalBikePA;
+            var totalBikePB = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 14).Count();
+            ViewData["BIKEPB"] = totalBikePB;
+            var totalBikePR = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 15).Count();
+            ViewData["BIKEPR"] = totalBikePR;
+            var totalBikePE = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 16).Count();
+            ViewData["BIKEPE"] = totalBikePE;
+            var totalBikePI = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 17).Count();
+            ViewData["BIKEPI"] = totalBikePI;
+            var totalBikeRJ = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 18).Count();
+            ViewData["BIKERJ"] = totalBikeRJ;
+            var totalBikeRN = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 19).Count();
+            ViewData["BIKERN"] = totalBikeRN;
+            var totalBikeRS = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 20).Count();
+            ViewData["BIKERS"] = totalBikeRS;
+            var totalBikeRO = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 21).Count();
+            ViewData["BIKERO"] = totalBikeRO;
+            var totalBikeRR = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 22).Count();
+            ViewData["BIKERR"] = totalBikeRR;
+            var totalBikeSC = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 23).Count();
+            ViewData["BIKESC"] = totalBikeSC;
+            var totalBikeSP = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 24).Count();
+            ViewData["BIKESP"] = totalBikeSP;
+            var totalBikeSE = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 25).Count();
+            ViewData["BIKESE"] = totalBikeSE;
+            var totalBikeTO = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Comprador.Estado == 26).Count();
+            ViewData["BIKETO"] = totalBikeTO;
+            // Consuta banco, número de bicicletas roubadas por estado
+            var totalBikeRoubadaAC = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 0).Count();
+            ViewData["BIKEROUBADAAC"] = totalBikeRoubadaAC;
+            var totalBikeRoubadaAL = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 1).Count();
+            ViewData["BIKEROUBADAAL"] = totalBikeRoubadaAL;
+            var totalBikeRoubadaAP = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 2).Count();
+            ViewData["BIKEROUBADAAP"] = totalBikeRoubadaAP;
+            var totalBikeRoubadaAM = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 3).Count();
+            ViewData["BIKEROUBADAAM"] = totalBikeRoubadaAM;
+            var totalBikeRoubadaBA = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 4).Count();
+            ViewData["BIKEROUBADABA"] = totalBikeRoubadaBA;
+            var totalBikeRoubadaCE = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 5).Count();
+            ViewData["BIKEROUBADACE"] = totalBikeRoubadaCE;
+            var totalBikeRoubadaDF = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 6).Count();
+            ViewData["BIKEROUBADADF"] = totalBikeRoubadaDF;
+            var totalBikeRoubadaES = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 7).Count();
+            ViewData["BIKEROUBADAES"] = totalBikeRoubadaES;
+            var totalBikeRoubadaGO = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 8).Count();
+            ViewData["BIKEROUBADAGO"] = totalBikeRoubadaGO;
+            var totalBikeRoubadaMA = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 9).Count();
+            ViewData["BIKEROUBADAMA"] = totalBikeRoubadaMA;
+            var totalBikeRoubadaMT = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 10).Count();
+            ViewData["BIKEROUBADAMT"] = totalBikeRoubadaMT;
+            var totalBikeRoubadaMS = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 11).Count();
+            ViewData["BIKEROUBADAMS"] = totalBikeRoubadaMS;
+            var totalBikeRoubadaMG = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 12).Count();
+            ViewData["BIKEROUBADAMG"] = totalBikeRoubadaMG;
+            var totalBikeRoubadaPA = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 13).Count();
+            ViewData["BIKEROUBADAPA"] = totalBikeRoubadaPA;
+            var totalBikeRoubadaPB = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 14).Count();
+            ViewData["BIKEROUBADAPB"] = totalBikeRoubadaPB;
+            var totalBikeRoubadaPR = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 15).Count();
+            ViewData["BIKEROUBADAPR"] = totalBikeRoubadaPR;
+            var totalBikeRoubadaPE = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 16).Count();
+            ViewData["BIKEROUBADAPE"] = totalBikeRoubadaPE;
+            var totalBikeRoubadaPI = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 17).Count();
+            ViewData["BIKEROUBADAPI"] = totalBikeRoubadaPI;
+            var totalBikeRoubadaRJ = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 18).Count();
+            ViewData["BIKEROUBADARJ"] = totalBikeRoubadaRJ;
+            var totalBikeRoubadaRN = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 19).Count();
+            ViewData["BIKEROUBADARN"] = totalBikeRoubadaRN;
+            var totalBikeRoubadaRS = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 20).Count();
+            ViewData["BIKEROUBADARS"] = totalBikeRoubadaRS;
+            var totalBikeRoubadaRO = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 21).Count();
+            ViewData["BIKEROUBADARO"] = totalBikeRoubadaRO;
+            var totalBikeRoubadaRR = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 22).Count();
+            ViewData["BIKEROUBADARR"] = totalBikeRoubadaRR;
+            var totalBikeRoubadaSC = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 23).Count();
+            ViewData["BIKEROUBADASC"] = totalBikeRoubadaSC;
+            var totalBikeRoubadaSP = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 24).Count();
+            ViewData["BIKEROUBADASP"] = totalBikeRoubadaSP;
+            var totalBikeRoubadaSE = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 25).Count();
+            ViewData["BIKEROUBADASE"] = totalBikeRoubadaSE;
+            var totalBikeRoubadaTO = db.Historicos.Where(w => w.Ativo == 0 && w.TipoTransferencia == 0 && (int)w.Bicicletas.AlertaRoubo == 1 && (int)w.Comprador.Estado == 26).Count();
+            ViewData["BIKEROUBADATO"] = totalBikeRoubadaTO;
+            // Consulta banco, número de pessoas cadastradas por mês           
+            var dataCadastro1 = db.Pessoas.Count(w => w.DataCadastro.Value.Month == 1);
+            ViewData["DATACADASTRO1"] = dataCadastro1;
+            var dataCadastro2 = db.Pessoas.Count(w => w.DataCadastro.Value.Month == 2);
+            ViewData["DATACADASTRO2"] = dataCadastro2;
+            var dataCadastro3 = db.Pessoas.Count(w => w.DataCadastro.Value.Month == 3);
+            ViewData["DATACADASTRO3"] = dataCadastro3;
+            var dataCadastro4 = db.Pessoas.Count(w => w.DataCadastro.Value.Month == 4);
+            ViewData["DATACADASTRO4"] = dataCadastro4;
+            var dataCadastro5 = db.Pessoas.Count(w => w.DataCadastro.Value.Month == 5);
+            ViewData["DATACADASTRO5"] = dataCadastro5;
+            var dataCadastro6 = db.Pessoas.Count(w => w.DataCadastro.Value.Month == 6);
+            ViewData["DATACADASTRO6"] = dataCadastro6;
+            var dataCadastro7 = db.Pessoas.Count(w => w.DataCadastro.Value.Month == 7);
+            ViewData["DATACADASTRO7"] = dataCadastro7;
+            var dataCadastro8 = db.Pessoas.Count(w => w.DataCadastro.Value.Month == 8);
+            ViewData["DATACADASTRO8"] = dataCadastro8;
+            var dataCadastro9 = db.Pessoas.Count(w => w.DataCadastro.Value.Month == 9);
+            ViewData["DATACADASTRO9"] = dataCadastro9;
+            var dataCadastro10 = db.Pessoas.Count(w => w.DataCadastro.Value.Month == 10);
+            ViewData["DATACADASTRO10"] = dataCadastro10;
+            var dataCadastro11 = db.Pessoas.Count(w => w.DataCadastro.Value.Month == 11);
+            ViewData["DATACADASTRO11"] = dataCadastro11;
+            var dataCadastro12 = db.Pessoas.Count(w => w.DataCadastro.Value.Month == 12);
+            ViewData["DATACADASTRO12"] = dataCadastro12;
+            // Consulta banco, número de bicicletas cadastradas por mês           
+            var dataBike1 = db.Historicos.Count(w => w.DataAquisicao.Value.Month == 1 && w.DataAquisicao.Value.Year == 2018);
+            ViewData["DATABIKE1"] = dataBike1;
+            var dataBike2 = db.Historicos.Count(w => w.DataAquisicao.Value.Month == 2 && w.DataAquisicao.Value.Year == 2018);
+            ViewData["DATABIKE2"] = dataBike2;
+            var dataBike3 = db.Historicos.Count(w => w.DataAquisicao.Value.Month == 3 && w.DataAquisicao.Value.Year == 2018);
+            ViewData["DATABIKE3"] = dataBike3;
+            var dataBike4 = db.Historicos.Count(w => w.DataAquisicao.Value.Month == 4 && w.DataAquisicao.Value.Year == 2018);
+            ViewData["DATABIKE4"] = dataBike4;
+            var dataBike5 = db.Historicos.Count(w => w.DataAquisicao.Value.Month == 5 && w.DataAquisicao.Value.Year == 2018);
+            ViewData["DATABIKE5"] = dataBike5;
+            var dataBike6 = db.Historicos.Count(w => w.DataAquisicao.Value.Month == 6 && w.DataAquisicao.Value.Year == 2018);
+            ViewData["DATABIKE6"] = dataBike6;
+            var dataBike7 = db.Historicos.Count(w => w.DataAquisicao.Value.Month == 7 && w.DataAquisicao.Value.Year == 2018);
+            ViewData["DATABIKE7"] = dataBike7;
+            var dataBike8 = db.Historicos.Count(w => w.DataAquisicao.Value.Month == 8 && w.DataAquisicao.Value.Year == 2018);
+            ViewData["DATABIKE8"] = dataBike8;
+            var dataBike9 = db.Historicos.Count(w => w.DataAquisicao.Value.Month == 9 && w.DataAquisicao.Value.Year == 2018);
+            ViewData["DATABIKE9"] = dataBike9;
+            var dataBike10 = db.Historicos.Count(w => w.DataAquisicao.Value.Month == 10 && w.DataAquisicao.Value.Year == 2018);
+            ViewData["DATABIKE10"] = dataBike10;
+            var dataBike11 = db.Historicos.Count(w => w.DataAquisicao.Value.Month == 11 && w.DataAquisicao.Value.Year == 2018);
+            ViewData["DATABIKE11"] = dataBike11;
+            var dataBike12 = db.Historicos.Count(w => w.DataAquisicao.Value.Month == 12 && w.DataAquisicao.Value.Year == 2018);
+            ViewData["DATABIKE12"] = dataBike12;
+            return View(db.Pessoas.ToList());
         }
 
         protected override void Dispose(bool disposing)

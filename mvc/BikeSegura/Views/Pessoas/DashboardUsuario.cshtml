@@ -87,10 +87,20 @@
             <canvas class="my-4 w-100" id="myChart1" width="900" height="380" style="background-color:white;"></canvas>
         </div>
         <div class="col-lg-6">
-            <h4>Número de Bicicletas Seguras e Roubadas</h4>
+            <h4>Número de Bicicletas à Venda</h4>
             <canvas class="my-4 w-100" id="myChart2" width="900" height="380" style="background-color:white;"></canvas>
         </div>
     </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <h4>Número de Bicicletas Por Estados</h4>
+            <canvas class="my-4 w-100" id="myChart3" width="900" height="380" style="background-color:white;"></canvas>
+        </div>
+        <div class="col-lg-6">
+            <h4>Número de Bicicletas Roubadas Por Estados</h4>
+            <canvas class="my-4 w-100" id="myChart4" width="900" height="380" style="background-color:white;"></canvas>
+        </div>
+    </div>  
 </div>
 
 @section Scripts {
@@ -142,6 +152,176 @@
                     borderColor: [
                         'rgba(0, 0, 255, 1)',
                         'rgba(255,255,0,1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+    <script>
+        var ctx = document.getElementById("myChart3").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"],
+                //labels: ["Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espirito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais",
+                //    "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"],
+                datasets: [{
+                    label: 'Estados',
+                    data: [@ViewData["BIKEAC"], @ViewData["BIKEAL"], @ViewData["BIKEAP"], @ViewData["BIKEAM"], @ViewData["BIKEBA"], @ViewData["BIKECE"], @ViewData["BIKEDF"], @ViewData["BIKEES"],
+                           @ViewData["BIKEGO"], @ViewData["BIKEMA"], @ViewData["BIKEMT"], @ViewData["BIKEMS"], @ViewData["BIKEMG"], @ViewData["BIKEPA"], @ViewData["BIKEPB"], @ViewData["BIKEPR"],
+                           @ViewData["BIKEPE"], @ViewData["BIKEPI"], @ViewData["BIKERJ"], @ViewData["BIKERN"], @ViewData["BIKERS"], @ViewData["BIKERO"], @ViewData["BIKERR"], @ViewData["BIKESC"],
+                           @ViewData["BIKESP"], @ViewData["BIKESE"], @ViewData["BIKETO"]],
+                    backgroundColor: [
+                        'rgba(0, 153, 51, 0.2)',/*AC*/
+                        'rgba(255, 255, 0, 0.2)',/*AL*/
+                        'rgba(0, 153, 51, 0.2)',/*AP*/
+                        'rgba(0, 153, 51, 0.2)',/*AM*/
+                        'rgba(255, 255, 0, 0.2)',/*BA*/
+                        'rgba(255, 255, 0, 0.2)',/*CE*/
+                        'rgba(255, 153, 102, 0.2)',/*DF*/
+                        'rgba(255, 0, 0, 0.2)',/*ES*/
+                        'rgba(255, 153, 102, 0.2)',/*GO*/
+                        'rgba(255, 255, 0, 0.2)',/*MA*/
+                        'rgba(255, 153, 102, 0.2)',/*MT*/
+                        'rgba(255, 153, 102, 0.2)',/*MS*/
+                        'rgba(255, 0, 0, 0.2)',/*MG*/
+                        'rgba(0, 153, 51, 0.2)',/*PA*/
+                        'rgba(255, 255, 0, 0.2)',/*PB*/
+                        'rgba(0, 0, 255, 0.2)',/*PR*/
+                        'rgba(255, 255, 0, 0.2)',/*PE*/
+                        'rgba(255, 255, 0, 0.2)',/*PI*/
+                        'rgba(255, 0, 0, 0.2)',/*RJ*/
+                        'rgba(255, 255, 0, 0.2)',/*RN*/
+                        'rgba(0, 0, 255, 0.2)',/*RS*/
+                        'rgba(0, 153, 51, 0.2)',/*RO*/
+                        'rgba(0, 153, 51, 0.2)',/*RR*/
+                        'rgba(0, 0, 255, 0.2)',/*SC*/
+                        'rgba(255, 0, 0, 0.2)',/*SP*/
+                        'rgba(255, 255, 0, 0.2)',/*SE*/
+                        'rgba(0, 153, 51, 0.2)'/*TO*/
+                    ],
+                    borderColor: [
+                        'rgba(0, 51, 0, 1)',/*AC*/
+                        'rgba(255, 204, 0, 1)',/*AL*/
+                        'rgba(0, 51, 0, 1)',/*AP*/
+                        'rgba(0, 51, 0, 1)',/*AM*/
+                        'rgba(255, 204, 0, 1)',/*BA*/
+                        'rgba(255, 204, 0 ,1)',/*CE*/
+                        'rgba(255, 102, 0, 1)',/*DF*/
+                        'rgba(204, 0, 0, 1)',/*ES*/
+                        'rgba(255, 102, 0, 1)',/*GO*/
+                        'rgba(255, 204, 0, 1)',/*MA*/
+                        'rgba(2255, 102, 0, 1)',/*MT*/
+                        'rgba(255, 102, 0, 1)',/*MS*/
+                        'rgba(204, 0, 0, 1)',/*MG*/
+                        'rgba(0, 51, 0, 1)',/*PA*/
+                        'rgba(255, 204, 0, 1)',/*PB*/
+                        'rgba(0, 0, 204, 1)',/*PR*/
+                        'rgba(255, 204, 0, 1)',/*PE*/
+                        'rgba(255, 204, 0, 1)',/*PI*/
+                        'rgba(204, 0, 0, 1)',/*RJ*/
+                        'rgba(255, 204, 0, 1)',/*RN*/
+                        'rgba(0, 0, 204, 1)',/*RS*/
+                        'rgba(0, 51, 0, 1)',/*RO*/
+                        'rgba(0, 51, 0, 1)',/*RR*/
+                        'rgba(0, 0, 204, 1)',/*SC*/
+                        'rgba(204, 0, 0, 1)',/*SP*/
+                        'rgba(255, 204, 0, 1)',/*SE*/
+                        'rgba(0, 51, 0, 1)' /*TO*/
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+    <script>
+        var ctx = document.getElementById("myChart4").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"],
+                datasets: [{
+                    label: 'Estados',
+                    data: [@ViewData["BIKEROUBADAAC"], @ViewData["BIKEROUBADAAL"], @ViewData["BIKEROUBADAAP"], @ViewData["BIKEROUBADAAM"], @ViewData["BIKEROUBADABA"], @ViewData["BIKEROUBADACE"], @ViewData["BIKEROUBADADF"], @ViewData["BIKEROUBADAES"],
+                           @ViewData["BIKEROUBADAGO"], @ViewData["BIKEROUBADAMA"], @ViewData["BIKEROUBADAMT"], @ViewData["BIKEROUBADAMS"], @ViewData["BIKEROUBADAMG"], @ViewData["BIKEROUBADAPA"], @ViewData["BIKEROUBADAPB"], @ViewData["BIKEROUBADAPR"],
+                           @ViewData["BIKEROUBADAPE"], @ViewData["BIKEROUBADAPI"], @ViewData["BIKEROUBADARJ"], @ViewData["BIKEROUBADARN"], @ViewData["BIKEROUBADARS"], @ViewData["BIKEROUBADARO"], @ViewData["BIKEROUBADARR"], @ViewData["BIKEROUBADASC"],
+                           @ViewData["BIKEROUBADASP"], @ViewData["BIKEROUBADASE"], @ViewData["BIKEROUBADATO"]],
+                    backgroundColor: [
+                        'rgba(0, 153, 51, 0.2)',/*AC*/
+                        'rgba(255, 255, 0, 0.2)',/*AL*/
+                        'rgba(0, 153, 51, 0.2)',/*AP*/
+                        'rgba(0, 153, 51, 0.2)',/*AM*/
+                        'rgba(255, 255, 0, 0.2)',/*BA*/
+                        'rgba(255, 255, 0, 0.2)',/*CE*/
+                        'rgba(255, 153, 102, 0.2)',/*DF*/
+                        'rgba(255, 0, 0, 0.2)',/*ES*/
+                        'rgba(255, 153, 102, 0.2)',/*GO*/
+                        'rgba(255, 255, 0, 0.2)',/*MA*/
+                        'rgba(255, 153, 102, 0.2)',/*MT*/
+                        'rgba(255, 153, 102, 0.2)',/*MS*/
+                        'rgba(255, 0, 0, 0.2)',/*MG*/
+                        'rgba(0, 153, 51, 0.2)',/*PA*/
+                        'rgba(255, 255, 0, 0.2)',/*PB*/
+                        'rgba(0, 0, 255, 0.2)',/*PR*/
+                        'rgba(255, 255, 0, 0.2)',/*PE*/
+                        'rgba(255, 255, 0, 0.2)',/*PI*/
+                        'rgba(255, 0, 0, 0.2)',/*RJ*/
+                        'rgba(255, 255, 0, 0.2)',/*RN*/
+                        'rgba(0, 0, 255, 0.2)',/*RS*/
+                        'rgba(0, 153, 51, 0.2)',/*RO*/
+                        'rgba(0, 153, 51, 0.2)',/*RR*/
+                        'rgba(0, 0, 255, 0.2)',/*SC*/
+                        'rgba(255, 0, 0, 0.2)',/*SP*/
+                        'rgba(255, 255, 0, 0.2)',/*SE*/
+                        'rgba(0, 153, 51, 0.2)'/*TO*/
+                    ],
+                    borderColor: [
+                        'rgba(0, 51, 0, 1)',/*AC*/
+                        'rgba(255, 204, 0, 1)',/*AL*/
+                        'rgba(0, 51, 0, 1)',/*AP*/
+                        'rgba(0, 51, 0, 1)',/*AM*/
+                        'rgba(255, 204, 0, 1)',/*BA*/
+                        'rgba(255, 204, 0 ,1)',/*CE*/
+                        'rgba(255, 102, 0, 1)',/*DF*/
+                        'rgba(204, 0, 0, 1)',/*ES*/
+                        'rgba(255, 102, 0, 1)',/*GO*/
+                        'rgba(255, 204, 0, 1)',/*MA*/
+                        'rgba(2255, 102, 0, 1)',/*MT*/
+                        'rgba(255, 102, 0, 1)',/*MS*/
+                        'rgba(204, 0, 0, 1)',/*MG*/
+                        'rgba(0, 51, 0, 1)',/*PA*/
+                        'rgba(255, 204, 0, 1)',/*PB*/
+                        'rgba(0, 0, 204, 1)',/*PR*/
+                        'rgba(255, 204, 0, 1)',/*PE*/
+                        'rgba(255, 204, 0, 1)',/*PI*/
+                        'rgba(204, 0, 0, 1)',/*RJ*/
+                        'rgba(255, 204, 0, 1)',/*RN*/
+                        'rgba(0, 0, 204, 1)',/*RS*/
+                        'rgba(0, 51, 0, 1)',/*RO*/
+                        'rgba(0, 51, 0, 1)',/*RR*/
+                        'rgba(0, 0, 204, 1)',/*SC*/
+                        'rgba(204, 0, 0, 1)',/*SP*/
+                        'rgba(255, 204, 0, 1)',/*SE*/
+                        'rgba(0, 51, 0, 1)' /*TO*/
                     ],
                     borderWidth: 1
                 }]
