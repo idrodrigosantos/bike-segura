@@ -144,8 +144,8 @@ namespace BikeSegura.Controllers
         }
 
         [Authorize]
-        // GET: Historicos/Transferir
-        public ActionResult Transferir(int? id)
+        // GET: Historicos/TransferenciaInterna
+        public ActionResult TransferenciaInterna(int? id)
         {
             if (id == null)
             {
@@ -162,10 +162,10 @@ namespace BikeSegura.Controllers
             return View(historicos);
         }
 
-        // POST: Historicos/Transferir
+        // POST: Historicos/TransferenciaInterna
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Transferir([Bind(Include = "Id,TipoTransferencia,DataAquisicao,DataTransferencia,BicicletasId,VendedorId,CompradorId,Ativo")] Historicos historicos)
+        public ActionResult TransferenciaInterna([Bind(Include = "Id,TipoTransferencia,DataAquisicao,DataTransferencia,BicicletasId,VendedorId,CompradorId,Ativo")] Historicos historicos)
         {
             if (ModelState.IsValid)
             {
@@ -173,51 +173,73 @@ namespace BikeSegura.Controllers
                 int idlogado = Convert.ToInt32(usu);
                 var comprador = historicos.CompradorId;
                 var bike = historicos.BicicletasId;
-                var status = historicos.TipoTransferencia;                
-                if (status != 0)
+                if (comprador != idlogado)
                 {
-                    if (comprador != idlogado)
-                    {
-                        historicos.DataTransferencia = DateTime.Now;
-                        historicos.VendedorId = idlogado;
-                        db.Entry(historicos).State = EntityState.Modified;
-                        db.SaveChanges();
-                        // Salva um novo registro no histórico  
-                        // Se for uma transferência externa, não houver comprador
-                        if (comprador == null)
-                        {
-                            Historicos hist = new Historicos();
-                            hist.BicicletasId = bike;
-                            hist.DataAquisicao = DateTime.Now;
-                            hist.Ativo = (OpcaoStatusHistoricos)1;
-                            hist.TipoTransferencia = (OpcaoTransferencia)2;
-                            db.Historicos.Add(hist);
-                            db.SaveChanges();
-                            return RedirectToAction("ListaBicicletas", "Historicos");
-                        }
-                        // Se for transferência interna, houve comprador
-                        else
-                        {
-                            Historicos hist = new Historicos();
-                            hist.CompradorId = comprador;
-                            hist.BicicletasId = bike;
-                            hist.DataAquisicao = DateTime.Now;
-                            db.Historicos.Add(hist);
-                            db.SaveChanges();
-                            return RedirectToAction("ListaBicicletas", "Historicos");
-                        }
-                    }
-                    else
-                    {
-                        // Colocar mensagem de erro aqui - comprador não pode ser o mesmo logado
-                        return RedirectToAction("ListaBicicletas", "Historicos");
-                    }
+                    historicos.DataTransferencia = DateTime.Now;
+                    historicos.VendedorId = idlogado;
+                    historicos.TipoTransferencia = (OpcaoTransferencia)1;
+                    db.Entry(historicos).State = EntityState.Modified;
+                    db.SaveChanges();
+                    // Salva um novo registro no histórico
+                    // Se for transferência interna, houve comprador
+                    Historicos hist = new Historicos();
+                    hist.CompradorId = comprador;
+                    hist.BicicletasId = bike;
+                    hist.DataAquisicao = DateTime.Now;
+                    hist.TipoTransferencia = (OpcaoTransferencia)0;
+                    db.Historicos.Add(hist);
+                    db.SaveChanges();
+                    return RedirectToAction("ListaBicicletas", "Historicos");
                 }
                 else
                 {
-                    // Colocar mensagem de erro aqui - situãção atual não pode ser proprietário o atual
+                    // Colocar mensagem de erro aqui - comprador não pode ser o mesmo logado
                     return RedirectToAction("ListaBicicletas", "Historicos");
                 }
+
+            }
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", historicos.BicicletasId);
+            ViewBag.CompradorId = new SelectList(db.Pessoas, "Id", "Nome", historicos.CompradorId);
+            ViewBag.VendedorId = new SelectList(db.Pessoas, "Id", "Nome", historicos.VendedorId);
+            return View(historicos);
+        }
+
+        [Authorize]
+        // GET: Historicos/TransferenciaExterna
+        public ActionResult TransferenciaExterna(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Historicos historicos = db.Historicos.Find(id);
+            if (historicos == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0), "Id", "Modelo", historicos.BicicletasId);
+            ViewBag.CompradorId = new SelectList(db.Pessoas.Where(w => w.Ativo == 0), "Id", "Nome", historicos.CompradorId);
+            ViewBag.VendedorId = new SelectList(db.Pessoas.Where(w => w.Ativo == 0), "Id", "Nome", historicos.VendedorId);
+            return View(historicos);
+        }
+
+        // POST: Historicos/TransferenciaExterna
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult TransferenciaExterna([Bind(Include = "Id,TipoTransferencia,DataAquisicao,DataTransferencia,BicicletasId,VendedorId,CompradorId,Ativo")] Historicos historicos)
+        {
+            if (ModelState.IsValid)
+            {
+                var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
+                int idlogado = Convert.ToInt32(usu);
+                var bike = historicos.BicicletasId;
+                historicos.DataTransferencia = DateTime.Now;
+                historicos.VendedorId = idlogado;
+                historicos.TipoTransferencia = (OpcaoTransferencia)2;
+                historicos.Ativo = (OpcaoStatusHistoricos)1;
+                db.Entry(historicos).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("ListaBicicletas", "Historicos");
             }
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", historicos.BicicletasId);
             ViewBag.CompradorId = new SelectList(db.Pessoas, "Id", "Nome", historicos.CompradorId);
