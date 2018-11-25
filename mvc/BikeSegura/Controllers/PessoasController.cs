@@ -82,8 +82,11 @@ namespace BikeSegura.Controllers
                         pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
                         // Salva data e hora do cadastro
                         pessoas.DataCadastro = DateTime.Now;
+                        // Gera um código aleatório
+                        var codigoValidacao = DateTime.Now.ToString("yyyyMMddHHmmssffff") + Funcoes.CodigoAleatorio(8);
+                        pessoas.Codigo = codigoValidacao;
                         //Enviar e-mail para o e-mail cadastrado
-                        mensagem = "Seu cadastro foi efetuado com sucesso.";
+                        mensagem = "Seu cadastro foi efetuado com sucesso. Código de validação: " + codigoValidacao;
                         assunto = "Bike Segura - Cadastro";
                         if (mensagem != "" && pessoas.Email != "" && assunto != "")
                         {

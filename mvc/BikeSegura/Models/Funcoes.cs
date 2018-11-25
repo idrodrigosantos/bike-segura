@@ -66,5 +66,17 @@ namespace BikeSegura.Models
             }
             catch { return "error|Erro ao enviar e-mail de confirmação de cadastro."; }
         }
+
+        public static string CodigoAleatorio(int tamanho)
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var random = new Random();
+            var result = new string(
+                Enumerable.Repeat(chars, tamanho)
+                          .Select(s => s[random.Next(s.Length)])
+                          .ToArray());
+            return result;
+        }
+
     }
 }
