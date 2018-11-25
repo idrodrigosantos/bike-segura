@@ -46,13 +46,10 @@ namespace BikeSegura.Controllers
         //public ActionResult Create()
         public ActionResult Create(int? id)
         {
-            //var consultanumero = db.NumerosSeries.Where(w => w.BicicletasId == id).Select(s => s.Numero).FirstOrDefault();
-            //ViewData["CONSULTANUMERO"] = consultanumero;
             var consultanumero = db.NumerosSeries.Where(w => w.BicicletasId == id).Select(s => s.Numero).ToList();
             ViewBag.ConsultaNumero = consultanumero;
             var consultatipo = db.NumerosSeries.Where(w => w.BicicletasId == id).Select(s => s.Tipo).ToList();
             ViewBag.ConsultaTipo = consultatipo;
-            //ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo");            
             if (id == null)
                 ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0), "Id", "Modelo");
             else
@@ -65,6 +62,25 @@ namespace BikeSegura.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Numero,BicicletasId,Ativo,Tipo")] NumerosSeries numerosSeries)
         {
+            if (numerosSeries != null)
+            {
+                var verificanumero = db.NumerosSeries.Where(w => w.Numero == numerosSeries.Numero && w.Tipo == 0).FirstOrDefault();
+                if (verificanumero == null)
+                {
+                    db.NumerosSeries.Add(numerosSeries);
+                    db.SaveChanges();
+                    return RedirectToAction("CreateAdicional", "NumerosSeries", new { id = numerosSeries.BicicletasId });
+                }
+                else
+                {
+                    // Se CPF estiver cadastrado no banco, retorna mensagem de erro                
+                    ModelState.AddModelError("", "O número de série informado está em uso");
+                    ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", numerosSeries.BicicletasId);
+                    return View();
+                }
+            }
+            return View(numerosSeries);
+            /*
             if (ModelState.IsValid)
             {
                 db.NumerosSeries.Add(numerosSeries);
@@ -73,6 +89,7 @@ namespace BikeSegura.Controllers
             }
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", numerosSeries.BicicletasId);
             return View(numerosSeries);
+            */
         }
 
         [Authorize]
@@ -80,13 +97,10 @@ namespace BikeSegura.Controllers
         //public ActionResult Create()
         public ActionResult CreateAdicional(int? id)
         {
-            //var consultanumero = db.NumerosSeries.Where(w => w.BicicletasId == id).Select(s => s.Numero).FirstOrDefault();
-            //ViewData["CONSULTANUMERO"] = consultanumero;
             var consultanumero = db.NumerosSeries.Where(w => w.BicicletasId == id).Select(s => s.Numero).ToList();
             ViewBag.ConsultaNumero = consultanumero;
             var consultatipo = db.NumerosSeries.Where(w => w.BicicletasId == id).Select(s => s.Tipo).ToList();
             ViewBag.ConsultaTipo = consultatipo;
-            //ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo");            
             if (id == null)
                 ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0), "Id", "Modelo");
             else
@@ -110,14 +124,13 @@ namespace BikeSegura.Controllers
         }
 
         [Authorize]
-        // GET: NumerosSeries/Create
-        //public ActionResult Create()
+        // GET: NumerosSeries/Create        
         public ActionResult CreateNumeros()
         {
             var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
             int idlogado = Convert.ToInt32(usu);
-            //ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0 && w.Pessoas.Id == idlogado), "Id", "Modelo");
-            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo");
+            //ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0 && w.Pessoas.Id == idlogado), "Id", "Modelo");            
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0), "Id", "Modelo");
             return View();
         }
 
@@ -126,6 +139,25 @@ namespace BikeSegura.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateNumeros([Bind(Include = "Id,Numero,BicicletasId,Ativo,Tipo")] NumerosSeries numerosSeries)
         {
+            if (numerosSeries != null)
+            {
+                var verificanumero = db.NumerosSeries.Where(w => w.Numero == numerosSeries.Numero && w.Tipo == 0).FirstOrDefault();
+                if (verificanumero == null)
+                {
+                    db.NumerosSeries.Add(numerosSeries);
+                    db.SaveChanges();
+                    return RedirectToAction("ListaNumerosSeries", "NumerosSeries");
+                }
+                else
+                {
+                    // Se CPF estiver cadastrado no banco, retorna mensagem de erro                
+                    ModelState.AddModelError("", "O número de série informado está em uso");
+                    ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", numerosSeries.BicicletasId);
+                    return View();
+                }
+            }
+            return View(numerosSeries);
+            /*
             if (ModelState.IsValid)
             {
                 db.NumerosSeries.Add(numerosSeries);
@@ -134,6 +166,7 @@ namespace BikeSegura.Controllers
             }
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", numerosSeries.BicicletasId);
             return View(numerosSeries);
+            */
         }
 
         [Authorize]
