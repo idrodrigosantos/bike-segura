@@ -434,6 +434,7 @@
     <Content Include="Views\Bicicletas\ListaBicicletasVendendo.cshtml" />
     <Content Include="Views\Historicos\TransferenciaInterna.cshtml" />
     <Content Include="Views\Historicos\TransferenciaExterna.cshtml" />
+    <Content Include="Views\Pessoas\ValidarEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

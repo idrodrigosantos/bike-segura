@@ -91,7 +91,7 @@ namespace BikeSegura.Controllers
                         }
                         db.Pessoas.Add(pessoas);
                         db.SaveChanges();
-                        return RedirectToAction("Login", "Home");
+                        return RedirectToAction("ValidarEmail", "Pessoas");
                     }
                     else
                     {
@@ -519,6 +519,32 @@ namespace BikeSegura.Controllers
             }
             return View(pessoas);
         }
+
+        // Login início
+        public ActionResult ValidarEmail()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ValidarEmail(string email, string codigo, string ReturnUrl)
+        {
+            Pessoas usuarios = db.Pessoas.Where(t => t.Email == email && t.Codigo == codigo).ToList().FirstOrDefault();
+            if (usuarios != null)
+            {
+                usuarios.Ativo = (OpcaoStatusPessoas)1;
+                usuarios.Codigo = null;
+                db.Entry(usuarios).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("PrimeiroAcesso", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("", "E-mail ou Código de Validação estão incorretos");
+                return View();
+            }
+        }
+        // Login fim
 
         [Authorize]
         // GET: DashboardUsuario
