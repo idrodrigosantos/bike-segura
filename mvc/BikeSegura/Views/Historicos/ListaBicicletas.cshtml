@@ -28,52 +28,55 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Bicicletas.Vendendo)
                     </th>
-                    <th></th>
+                    <th>Detalhes</th>
+                    <th>
+                        Tipo de Transferência
+                    </th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Bicicletas.Marcas.Nome)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Bicicletas.Modelo)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Bicicletas.Tipos.Nome)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Bicicletas.Cor)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Bicicletas.AlertaRoubo)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Bicicletas.Vendendo)
-                        </td>
-                        <td>
-                            <div class="btn" role="group">
-                                <a class="btn btn-success" href="@Url.Action("Details", "Historicos", new { id = item.Id })" role="button">
-                                    <i class="fas fa-list"></i>
-                                    Detalhes
-                                </a>
-                                @*<a class="btn btn-primary" href="@Url.Action("Edit", "Historicos", new { id = item.Id })" role="button">
-                                    <i class="fas fa-pen"></i>
-                                    Editar
-                                </a>*@
-                                <a class="btn btn-warning" href="@Url.Action("Transferir", "Historicos", new { id = item.Id })" role="button">
-                                    <i class="fas fa-pen"></i>
-                                    Transferir
-                                </a>
-                                @*<a class="btn btn-danger" href="@Url.Action("Delete", "Historicos", new { id = item.Id })" role="button">
-                                        <i class="fas fa-times"></i>
-                                        Excluir
-                                    </a>*@
-                            </div>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Bicicletas.Marcas.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Bicicletas.Modelo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Bicicletas.Tipos.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Bicicletas.Cor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Bicicletas.AlertaRoubo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Bicicletas.Vendendo)
+                    </td>
+                    <td>
+                        <div class="btn" role="group">
+                            <a class="btn btn-success" href="@Url.Action("Details", "Historicos", new { id = item.Id })" role="button">
+                                <i class="fas fa-list"></i>
+                                Detalhes
+                            </a>                            
+                        </div>
+                    </td>
+                    <td>
+                        <div class="btn" role="group">                            
+                            <a class="btn btn-warning" href="@Url.Action("TransferenciaInterna", "Historicos", new { id = item.Id })" role="button">
+                                <i class="fas fa-pen"></i>
+                                Transferência Interna
+                            </a>
+                            <a class="btn btn-danger" href="@Url.Action("TransferenciaExterna", "Historicos", new { id = item.Id })" role="button">
+                                <i class="fas fa-pen"></i>
+                                Transferência Externa
+                            </a>
+                        </div>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>
