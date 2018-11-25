@@ -9,7 +9,7 @@
 {
     @Html.AntiForgeryToken()
     <div class="container conteudo">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
         @Html.HiddenFor(model => model.Id)
         <div class="row">
             <div class="form-group col-md-8 offset-md-2 col-lg-6 offset-lg-3">
