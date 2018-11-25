@@ -14,7 +14,7 @@ namespace BikeSegura.Models
 
         [DisplayName("Tipo de Transferência")]
         [EnumDataType(typeof(OpcaoTransferencia))]
-        public OpcaoTransferencia TipoTransferencia { get; set; }
+        public OpcaoTransferencia? TipoTransferencia { get; set; }
         public enum OpcaoTransferencia
         {
             [Display(Name = "Proprietário Atual")]
@@ -22,7 +22,7 @@ namespace BikeSegura.Models
             [Display(Name = "Transferência Interna")]
             Interna,
             [Display(Name = "Transferência Externa")]
-            Externa            
+            Externa
         }
 
         [DisplayName("Data de Aquisição")]
@@ -35,13 +35,13 @@ namespace BikeSegura.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? DataTransferencia { get; set; }
 
-        [DisplayName("Bicicleta")]        
+        [DisplayName("Bicicleta")]
         public int BicicletasId { get; set; }
 
-        [DisplayName("Vendedor")]        
+        [DisplayName("Vendedor")]
         public int? VendedorId { get; set; }
 
-        [DisplayName("Comprador")]        
+        [DisplayName("Comprador")]
         public int? CompradorId { get; set; }
 
         [EnumDataType(typeof(OpcaoStatusHistoricos))]
