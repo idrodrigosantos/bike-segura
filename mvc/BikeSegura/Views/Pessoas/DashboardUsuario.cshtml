@@ -68,11 +68,7 @@
                                 <a class="btn btn-primary" href="@Url.Action("Edit", "Bicicletas", new { id = item.BicicletasId })" role="button">
                                     <i class="fas fa-pen"></i>
                                     Editar
-                                </a>
-                                @*<a class="btn btn-danger" href="@Url.Action("Delete", "Bicicletas", new { id = item.BicicletasId })" role="button">
-                                        <i class="fas fa-times"></i>
-                                        Excluir
-                                    </a>*@
+                                </a>                                
                             </div>
                         </td>
                     </tr>
@@ -100,7 +96,7 @@
             <h4>Número de Bicicletas Roubadas Por Estados</h4>
             <canvas class="my-4 w-100" id="myChart4" width="900" height="380" style="background-color:white;"></canvas>
         </div>
-    </div>  
+    </div>
 </div>
 
 @section Scripts {
