@@ -187,9 +187,11 @@ namespace BikeSegura.Models
         public OpcaoStatusPessoas Ativo { get; set; }
         public enum OpcaoStatusPessoas
         {
-            Sim,
-            Nao
+            Nao,
+            Sim
         }
+
+        public string Codigo { get; set; }
 
         public DateTime? DataCadastro { get; set; }
     }
