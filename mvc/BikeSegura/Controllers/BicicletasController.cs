@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using BikeSegura.Models;
 using static BikeSegura.Models.Bicicletas;
+using static BikeSegura.Models.Historicos;
 
 namespace BikeSegura.Controllers
 {
@@ -78,6 +79,7 @@ namespace BikeSegura.Controllers
                 int idlogado = Convert.ToInt32(usu);
                 hist.CompradorId = idlogado;
                 hist.BicicletasId = bike.Id;
+                hist.TipoTransferencia = (OpcaoTransferencia)0;
                 hist.DataAquisicao = DateTime.Now;
                 db.Historicos.Add(hist);
                 db.SaveChanges();
