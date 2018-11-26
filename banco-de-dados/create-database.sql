@@ -149,7 +149,7 @@ create table pessoas (
   TelefoneContatoDois varchar(15) ,
   TipoUsuario int(11) not null,
   Ativo int(11) not null,
-  Codigo longtext,
+  CodigoValidarEmail longtext,
   CodigoEsqueceuSenha longtext,
   DataCadastro datetime default null,
   primary key (Id),
