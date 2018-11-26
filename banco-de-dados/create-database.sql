@@ -116,6 +116,7 @@ create table numerosseries (
   Id int(11) not null auto_increment,
   Numero varchar(50) not null,
   BicicletasId int(11) not null,
+  Tipo int(11) NOT NULL,
   Ativo int(11) not null,
   primary key (Id),
   unique key Id (Id),
@@ -148,6 +149,9 @@ create table pessoas (
   TelefoneContatoDois varchar(15) ,
   TipoUsuario int(11) not null,
   Ativo int(11) not null,
+  Codigo longtext,
+  CodigoEsqueceuSenha longtext,
+  DataCadastro datetime DEFAULT NULL,
   primary key (Id),
   unique key Id (Id)
 );
@@ -187,12 +191,12 @@ create table relatosroubos (
 
 create table historicos (
   Id int(11) not null auto_increment,
-  TipoTransferencia int(11) not null,
-  DataAquisicao datetime not null,
-  DataTransferencia datetime not null,
+  TipoTransferencia int(11) default null,
+  DataAquisicao datetime default null,
+  DataTransferencia datetime default null,
   BicicletasId int(11) not null,
-  VendedorId int(11) not null,
-  CompradorId int(11) not null,
+  VendedorId int(11) default null,
+  CompradorId int(11) default null,
   Ativo int(11) not null,
   primary key (Id),
   unique key Id (Id),
