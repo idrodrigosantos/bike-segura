@@ -2,7 +2,8 @@
 
 @{
     ViewBag.Title = "Editar Histórico";
-    Layout = "~/Views/Shared/_Usuario.cshtml";
+    Layout = "~/Views/Shared/_Administrador.cshtml";
+}
 }
 
 @using (Html.BeginForm())
@@ -44,7 +45,7 @@
             </div>
             <div class="form-group col-sm-12">
                 <div class="botao-salvar">
-                    <a class="btn btn-danger" href="@Url.Action("ListaBicicletas", "Historicos")" role="button">
+                    <a class="btn btn-danger" href="@Url.Action("Index", "Historicos")" role="button">
                         <i class="fas fa-times"></i>
                         Cancelar
                     </a>
