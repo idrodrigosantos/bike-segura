@@ -24,7 +24,7 @@ namespace BikeSegura.Controllers
         {
             //return View(db.Pessoas.ToList());
             //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
-            return View(db.Pessoas.Where(w => w.Ativo == 0).ToList());
+            return View(db.Pessoas.Where(w => w.Ativo == (OpcaoStatusPessoas)1).ToList());
         }
 
         [Authorize]
@@ -211,11 +211,10 @@ namespace BikeSegura.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Pessoas pessoas = db.Pessoas.Find(id);
-            Upload.ExcluirArquivo(Request.PhysicalApplicationPath + "Uploads\\" + pessoas.Imagem);
+            Pessoas pessoas = db.Pessoas.Find(id);            
             //db.Pessoas.Remove(pessoas);
             //Antes excluia do banco, agora altera o status
-            pessoas.Ativo = (OpcaoStatusPessoas)1;
+            pessoas.Ativo = (OpcaoStatusPessoas)0;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -175,7 +175,7 @@ namespace BikeSegura.Controllers
             //Antes excluia do banco, agora altera o status
             bicicletas.Ativo = (OpcaoStatusBicicletas)1;
             db.SaveChanges();
-            return RedirectToAction("DashboardUsuario", "Pessoas");
+            return RedirectToAction("Index", "Bicicletas");
         }
 
         // GET: Bicicletas/DetalhesBicicletaPublicoSegura

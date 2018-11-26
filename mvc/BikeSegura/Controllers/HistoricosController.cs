@@ -61,7 +61,7 @@ namespace BikeSegura.Controllers
             {
                 db.Historicos.Add(historicos);
                 db.SaveChanges();
-                return RedirectToAction("ListaBicicletas", "Historicos");
+                return RedirectToAction("Index", "Historicos");
             }
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", historicos.BicicletasId);
             ViewBag.CompradorId = new SelectList(db.Pessoas, "Id", "Nome", historicos.CompradorId);
@@ -83,8 +83,8 @@ namespace BikeSegura.Controllers
                 return HttpNotFound();
             }
             ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0), "Id", "Modelo", historicos.BicicletasId);
-            ViewBag.CompradorId = new SelectList(db.Pessoas.Where(w => w.Ativo == 0), "Id", "Nome", historicos.CompradorId);
-            ViewBag.VendedorId = new SelectList(db.Pessoas.Where(w => w.Ativo == 0), "Id", "Nome", historicos.VendedorId);
+            ViewBag.CompradorId = new SelectList(db.Pessoas.Where(w => w.Ativo == (OpcaoStatusPessoas)1), "Id", "Nome", historicos.CompradorId);
+            ViewBag.VendedorId = new SelectList(db.Pessoas.Where(w => w.Ativo == (OpcaoStatusPessoas)1), "Id", "Nome", historicos.VendedorId);
             return View(historicos);
         }
 
@@ -97,7 +97,7 @@ namespace BikeSegura.Controllers
             {
                 db.Entry(historicos).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("ListaBicicletas", "Historicos");
+                return RedirectToAction("Index", "Historicos");
             }
             ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", historicos.BicicletasId);
             ViewBag.CompradorId = new SelectList(db.Pessoas, "Id", "Nome", historicos.CompradorId);
