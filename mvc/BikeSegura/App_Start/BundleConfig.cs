@@ -33,10 +33,7 @@ namespace BikeSegura
                       "~/Scripts/Chart.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/holder").Include(
-                      "~/Scripts/holder.min.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/toastr").Include(
-                      "~/Scripts/toastr.min.js"));
+                      "~/Scripts/holder.min.js"));            
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap-select").Include(
                       "~/Scripts/bootstrap-select.min.js"));
