@@ -164,6 +164,7 @@ namespace BikeSegura.Controllers
                         var verificacpf = db.Pessoas.Where(w => w.Cpf == pessoas.Cpf && w.Id != pessoas.Id).FirstOrDefault();
                         if (verificacpf == null)
                         {
+                            pessoas.Ativo = (OpcaoStatusPessoas)1;
                             db.Entry(pessoas).State = EntityState.Modified;
                             db.Entry(pessoas).Property(p => p.Imagem).IsModified = false; // Não altera o campo imagem
                             db.SaveChanges();
@@ -255,6 +256,7 @@ namespace BikeSegura.Controllers
             {
                 pessoas.Senha = Funcoes.SHA512(pessoas.Senha); //Criptografia
                 pessoas.ConfirmaSenha = Funcoes.SHA512(pessoas.ConfirmaSenha); //Criptografia
+                pessoas.Ativo = (OpcaoStatusPessoas)1;
                 db.Entry(pessoas).State = EntityState.Modified;
                 db.Entry(pessoas).Property(p => p.Imagem).IsModified = false; // Não altera o campo imagem
                 db.SaveChanges();
@@ -307,6 +309,7 @@ namespace BikeSegura.Controllers
                     valor = Upload.UploadArquivo(arquivoimg, nomearquivo);
                     if (valor == "sucesso")
                     {
+                        pessoas.Ativo = (OpcaoStatusPessoas)1;
                         pessoas.Imagem = nomearquivo;
                         db.Entry(pessoas).State = EntityState.Modified;
                         db.SaveChanges();
@@ -523,14 +526,14 @@ namespace BikeSegura.Controllers
             return View(pessoas);
         }
 
-        // Login início
+        // ValidarEmail início
         public ActionResult ValidarEmail()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult ValidarEmail(string email, string codigo, string ReturnUrl)
+        public ActionResult ValidarEmail(string email, string codigo)
         {
             Pessoas usuarios = db.Pessoas.Where(t => t.Email == email && t.Codigo == codigo).ToList().FirstOrDefault();
             if (usuarios != null)
@@ -547,7 +550,77 @@ namespace BikeSegura.Controllers
                 return View();
             }
         }
-        // Login fim
+        // ValidarEmail fim
+
+        // EsqueceuSenha início
+        public ActionResult EsqueceuSenha()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult EsqueceuSenha(string email, string cpf, string mensagem, string assunto)
+        {
+            Pessoas usuarios = db.Pessoas.Where(t => t.Email == email && t.Cpf == cpf).ToList().FirstOrDefault();
+            if (usuarios != null)
+            {
+                // Gera um código aleatório
+                var codigoEsqueceuSenha = DateTime.Now.ToString("yyyyMMddHHmmssffff") + Funcoes.CodigoAleatorio(8);
+                usuarios.CodigoEsqueceuSenha = codigoEsqueceuSenha;
+                //Enviar e-mail para o e-mail cadastrado
+                mensagem = "Para alterar sua senha use esse código de validação: " + codigoEsqueceuSenha;
+                assunto = "Bike Segura - Esqueceu Senha";
+                if (mensagem != "" && usuarios.Email != "" && assunto != "")
+                {
+                    TempData["MSG"] = Funcoes.EnviarEmail(usuarios.Email, assunto, mensagem);
+                }
+                db.Entry(usuarios).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("ValidarEsqueceuSenha", "Pessoas");
+            }
+            else
+            {
+                ModelState.AddModelError("", "E-mail ou CPF estão incorretos");
+                return View();
+            }
+        }
+        // EsqueceuSenha fim
+
+        // ValidarEsqueceuSenha início
+        public ActionResult ValidarEsqueceuSenha()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ValidarEsqueceuSenha(string email, string codigo, string mensagem, string assunto)
+        {
+            Pessoas usuarios = db.Pessoas.Where(t => t.Email == email && t.CodigoEsqueceuSenha == codigo).ToList().FirstOrDefault();
+            if (usuarios != null)
+            {
+                // Gera um código aleatório
+                var novaSenha = Funcoes.CodigoAleatorio(16);
+                //Enviar e-mail para o e-mail cadastrado
+                mensagem = "Sua nova senha: " + novaSenha;
+                assunto = "Bike Segura - Nova Senha";
+                if (mensagem != "" && usuarios.Email != "" && assunto != "")
+                {
+                    TempData["MSG"] = Funcoes.EnviarEmail(usuarios.Email, assunto, mensagem);
+                }
+                usuarios.Senha = Funcoes.SHA512(novaSenha); //Criptografia
+                usuarios.ConfirmaSenha = Funcoes.SHA512(novaSenha); //Criptografia
+                usuarios.CodigoEsqueceuSenha = null;
+                db.Entry(usuarios).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("LoginRecuperarSenha", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("", "E-mail ou Código de Validação estão incorretos");
+                return View();
+            }
+        }
+        // ValidarEsqueceuSenha fim
 
         [Authorize]
         // GET: DashboardUsuario

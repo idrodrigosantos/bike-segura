@@ -436,6 +436,9 @@
     <Content Include="Views\Historicos\TransferenciaExterna.cshtml" />
     <Content Include="Views\Pessoas\ValidarEmail.cshtml" />
     <Content Include="Views\Home\PrimeiroAcesso.cshtml" />
+    <Content Include="Views\Pessoas\EsqueceuSenha.cshtml" />
+    <Content Include="Views\Pessoas\ValidarEsqueceuSenha.cshtml" />
+    <Content Include="Views\Home\LoginRecuperarSenha.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "ValidarEsqueceuSenha";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container conteudo">
+        <form>
+            <div class="row">
+                <div class="form-group col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                    <h4>Confirme suas Informações</h4>
+                    <p>Digite seu e-mail e o código de validação enviado para o seu e-mail.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                    <label>E-mail (*)</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="nome@email.com" required="required">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                    <label>Código de Validação (*)</label>
+                    <input type="text" class="form-control" id="codigo" value="" name="codigo" required="required">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                    <button type="submit" class="btn btn-success btn-lg btn-block">
+                        <i class="fas fa-check"></i>
+                        Validar
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-6 offset-sm-3">
+                    @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+                </div>
+            </div>
+        </form>
+    </div>
+}
