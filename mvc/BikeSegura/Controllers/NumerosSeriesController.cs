@@ -223,11 +223,19 @@ namespace BikeSegura.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             NumerosSeries numerosSeries = db.NumerosSeries.Find(id);
-            //db.NumerosSeries.Remove(numerosSeries);
-            //Antes excluia do banco, agora altera o status
-            numerosSeries.Ativo = (OpcaoStatusNumerosSeries)1;
-            db.SaveChanges();
-            return RedirectToAction("ListaNumerosSeries");
+            if (numerosSeries.Tipo != 0)
+            {
+                //db.NumerosSeries.Remove(numerosSeries);
+                //Antes excluia do banco, agora altera o status
+                numerosSeries.Ativo = (OpcaoStatusNumerosSeries)1;
+                db.SaveChanges();
+                return RedirectToAction("ListaNumerosSeries");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Número de série do quadro não pode ser excluído.");
+                return View(numerosSeries);
+            }
         }
 
         // Método buscar número de série - usuário público
@@ -363,7 +371,7 @@ namespace BikeSegura.Controllers
             var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
             int idlogado = Convert.ToInt32(usu);
             //return View(numerosSeries.Where(w => w.Ativo == 0 && w.Bicicletas.Pessoas.Id == idlogado).ToList());
-            return View(numerosSeries.ToList());
+            return View(numerosSeries.Where(w => w.Ativo == 0).ToList());
         }
 
         protected override void Dispose(bool disposing)

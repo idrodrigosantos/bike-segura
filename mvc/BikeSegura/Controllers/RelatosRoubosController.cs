@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BikeSegura.Models;
+using static BikeSegura.Models.Pessoas;
 using static BikeSegura.Models.RelatosRoubos;
 
 namespace BikeSegura.Controllers
@@ -83,7 +84,7 @@ namespace BikeSegura.Controllers
                 return HttpNotFound();
             }
             ViewBag.InformacoesRoubosId = new SelectList(db.InformacoesRoubos.Where(w => w.Ativo == 0), "Id", "Relato", relatosRoubos.InformacoesRoubosId);
-            ViewBag.PessoasId = new SelectList(db.Pessoas.Where(w => w.Ativo == 0), "Id", "Nome", relatosRoubos.PessoasId);
+            ViewBag.PessoasId = new SelectList(db.Pessoas.Where(w => w.Ativo == (OpcaoStatusPessoas)1), "Id", "Nome", relatosRoubos.PessoasId);
             return View(relatosRoubos);
         }
 

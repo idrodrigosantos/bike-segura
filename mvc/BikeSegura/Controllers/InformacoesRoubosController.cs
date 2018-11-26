@@ -48,6 +48,7 @@ namespace BikeSegura.Controllers
             var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
             int idlogado = Convert.ToInt32(usu);
             //ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0 && w.Pessoas.Id == idlogado), "Id", "Modelo");
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0), "Id", "Modelo");
             return View();
         }
 
@@ -137,7 +138,7 @@ namespace BikeSegura.Controllers
             //return View(informacoesRoubos.ToList());
             //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
             //return View(informacoesRoubos.Where(w => w.Ativo == 0 && w.Bicicletas.Pessoas.Id == idlogado).ToList());
-            return View(informacoesRoubos.ToList());
+            return View(informacoesRoubos.Where(w => w.Ativo == 0).ToList());
         }
 
         protected override void Dispose(bool disposing)

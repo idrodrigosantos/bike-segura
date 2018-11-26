@@ -92,6 +92,7 @@ namespace BikeSegura.Controllers
                         {
                             TempData["MSG"] = Funcoes.EnviarEmail(pessoas.Email, assunto, mensagem);
                         }
+                        pessoas.Imagem = "user02.jpg";
                         db.Pessoas.Add(pessoas);
                         db.SaveChanges();
                         return RedirectToAction("ValidarEmail", "Pessoas");
@@ -167,6 +168,7 @@ namespace BikeSegura.Controllers
                             pessoas.Ativo = (OpcaoStatusPessoas)1;
                             db.Entry(pessoas).State = EntityState.Modified;
                             db.Entry(pessoas).Property(p => p.Imagem).IsModified = false; // Não altera o campo imagem
+                            db.Entry(pessoas).Property(p => p.DataCadastro).IsModified = false; // Não altera o campo data de cadastro
                             db.SaveChanges();
                             return RedirectToAction("DashboardUsuario", "Pessoas");
                         }
@@ -259,6 +261,7 @@ namespace BikeSegura.Controllers
                 pessoas.Ativo = (OpcaoStatusPessoas)1;
                 db.Entry(pessoas).State = EntityState.Modified;
                 db.Entry(pessoas).Property(p => p.Imagem).IsModified = false; // Não altera o campo imagem
+                db.Entry(pessoas).Property(p => p.DataCadastro).IsModified = false; // Não altera o campo data de cadastro
                 db.SaveChanges();
                 return RedirectToAction("DashboardUsuario", "Pessoas");
             }

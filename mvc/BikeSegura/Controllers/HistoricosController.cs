@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using BikeSegura.Models;
 using static BikeSegura.Models.Historicos;
+using static BikeSegura.Models.Pessoas;
 
 namespace BikeSegura.Controllers
 {
@@ -157,8 +158,8 @@ namespace BikeSegura.Controllers
                 return HttpNotFound();
             }
             ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0), "Id", "Modelo", historicos.BicicletasId);
-            ViewBag.CompradorId = new SelectList(db.Pessoas.Where(w => w.Ativo == 0), "Id", "Nome", historicos.CompradorId);
-            ViewBag.VendedorId = new SelectList(db.Pessoas.Where(w => w.Ativo == 0), "Id", "Nome", historicos.VendedorId);
+            ViewBag.CompradorId = new SelectList(db.Pessoas.Where(w => w.Ativo == (OpcaoStatusPessoas)1), "Id", "Nome", historicos.CompradorId);
+            ViewBag.VendedorId = new SelectList(db.Pessoas.Where(w => w.Ativo == (OpcaoStatusPessoas)1), "Id", "Nome", historicos.VendedorId);
             return View(historicos);
         }
 
@@ -250,8 +251,8 @@ namespace BikeSegura.Controllers
                 return HttpNotFound();
             }
             ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0), "Id", "Modelo", historicos.BicicletasId);
-            ViewBag.CompradorId = new SelectList(db.Pessoas.Where(w => w.Ativo == 0), "Id", "Nome", historicos.CompradorId);
-            ViewBag.VendedorId = new SelectList(db.Pessoas.Where(w => w.Ativo == 0), "Id", "Nome", historicos.VendedorId);
+            ViewBag.CompradorId = new SelectList(db.Pessoas.Where(w => w.Ativo == (OpcaoStatusPessoas)1), "Id", "Nome", historicos.CompradorId);
+            ViewBag.VendedorId = new SelectList(db.Pessoas.Where(w => w.Ativo == (OpcaoStatusPessoas)1), "Id", "Nome", historicos.VendedorId);
             return View(historicos);
         }
 
