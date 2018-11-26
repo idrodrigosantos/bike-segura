@@ -138,7 +138,7 @@ create table pessoas (
   Bairro varchar(50) default null,
   Cidade varchar(50) default null,
   Estado int(11) default null,
-  TelefoneUm varchar(15) not null,
+  TelefoneUm varchar(15) default null,
   TelefoneDois varchar(15) default null,
   Cpf varchar(14) not null,
   DataNascimento datetime default null,
@@ -151,7 +151,7 @@ create table pessoas (
   Ativo int(11) not null,
   Codigo longtext,
   CodigoEsqueceuSenha longtext,
-  DataCadastro datetime DEFAULT NULL,
+  DataCadastro datetime default null,
   primary key (Id),
   unique key Id (Id)
 );
