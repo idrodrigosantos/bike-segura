@@ -84,31 +84,27 @@ namespace BikeSegura.Controllers
                         pessoas.DataCadastro = DateTime.Now;
                         // Gera um código aleatório
                         var codigoValidacao = DateTime.Now.ToString("yyyyMMddHHmmssffff") + Funcoes.CodigoAleatorio(8);
-                        pessoas.Codigo = codigoValidacao;
-                        //Enviar e-mail para o e-mail cadastrado
-                        mensagem = "Seu cadastro foi efetuado com sucesso. Código de validação: " + codigoValidacao;
-                        assunto = "Bike Segura - Cadastro";
-                        if (mensagem != "" && pessoas.Email != "" && assunto != "")
-                        {
-                            TempData["MSG"] = Funcoes.EnviarEmail(pessoas.Email, assunto, mensagem);
-                        }
+                        pessoas.Codigo = codigoValidacao;                        
+                        // Adiciona uma imagem padrão
                         pessoas.Imagem = "user02.jpg";
                         db.Pessoas.Add(pessoas);
                         db.SaveChanges();
+                        //Enviar e-mail para o e-mail cadastrado
+                        assunto = "Bike Segura - Cadastro";
+                        mensagem = "Seu cadastro foi efetuado com sucesso. Código de validação: " + codigoValidacao;                        
+                        Funcoes.EnviarEmail(pessoas.Email, assunto, mensagem);
                         return RedirectToAction("ValidarEmail", "Pessoas");
                     }
                     else
                     {
-                        // Se CPF estiver cadastrado no banco, retorna mensagem de erro
-                        TempData["MSG"] = "warning|Preencha o campo CPF, com um CPF válido."; // Mensagem Toastr
+                        // Se CPF estiver cadastrado no banco, retorna mensagem de erro                        
                         ModelState.AddModelError("", "O CPF informado está em uso");
                         return View();
                     }
                 }
                 else
                 {
-                    // Se e-mail estiver cadastrado no banco, retorna mensagem de erro
-                    TempData["MSG"] = "warning|Preencha o campo email, com um email válido."; // Mensagem Toastr
+                    // Se e-mail estiver cadastrado no banco, retorna mensagem de erro                    
                     ModelState.AddModelError("", "O e-mail informado está em uso");
                     return View();
                 }
@@ -211,7 +207,7 @@ namespace BikeSegura.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Pessoas pessoas = db.Pessoas.Find(id);            
+            Pessoas pessoas = db.Pessoas.Find(id);
             //db.Pessoas.Remove(pessoas);
             //Antes excluia do banco, agora altera o status
             pessoas.Ativo = (OpcaoStatusPessoas)0;
@@ -572,10 +568,7 @@ namespace BikeSegura.Controllers
                 //Enviar e-mail para o e-mail cadastrado
                 mensagem = "Para alterar sua senha use esse código de validação: " + codigoEsqueceuSenha;
                 assunto = "Bike Segura - Esqueceu Senha";
-                if (mensagem != "" && usuarios.Email != "" && assunto != "")
-                {
-                    TempData["MSG"] = Funcoes.EnviarEmail(usuarios.Email, assunto, mensagem);
-                }
+                Funcoes.EnviarEmail(usuarios.Email, assunto, mensagem);
                 db.Entry(usuarios).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("ValidarEsqueceuSenha", "Pessoas");
@@ -605,10 +598,7 @@ namespace BikeSegura.Controllers
                 //Enviar e-mail para o e-mail cadastrado
                 mensagem = "Sua nova senha: " + novaSenha;
                 assunto = "Bike Segura - Nova Senha";
-                if (mensagem != "" && usuarios.Email != "" && assunto != "")
-                {
-                    TempData["MSG"] = Funcoes.EnviarEmail(usuarios.Email, assunto, mensagem);
-                }
+                Funcoes.EnviarEmail(usuarios.Email, assunto, mensagem);
                 usuarios.Senha = Funcoes.SHA512(novaSenha); //Criptografia
                 usuarios.ConfirmaSenha = Funcoes.SHA512(novaSenha); //Criptografia
                 usuarios.CodigoEsqueceuSenha = null;
