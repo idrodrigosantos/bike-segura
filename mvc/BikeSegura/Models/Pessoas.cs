@@ -191,7 +191,7 @@ namespace BikeSegura.Models
             Sim
         }
 
-        public string Codigo { get; set; }
+        public string CodigoValidarEmail { get; set; }
         public string CodigoEsqueceuSenha { get; set; }
 
         public DateTime? DataCadastro { get; set; }
