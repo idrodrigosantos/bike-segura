@@ -30,7 +30,9 @@ namespace BikeSegura.Models
             SuspensaoDianteira,
             [Display(Name = "Suspensão Traseira")]
             SuspensaoTraseira,
-            Garfo
+            Garfo,
+            [Display(Name = "OUTRO")]
+            Outro
         }
 
         [EnumDataType(typeof(OpcaoStatusNumerosSeries))]
