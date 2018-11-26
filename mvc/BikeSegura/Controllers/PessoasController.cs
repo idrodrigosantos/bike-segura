@@ -84,14 +84,14 @@ namespace BikeSegura.Controllers
                         pessoas.DataCadastro = DateTime.Now;
                         // Gera um código aleatório
                         var codigoValidacao = DateTime.Now.ToString("yyyyMMddHHmmssffff") + Funcoes.CodigoAleatorio(8);
-                        pessoas.Codigo = codigoValidacao;                        
+                        pessoas.CodigoValidarEmail = codigoValidacao;
                         // Adiciona uma imagem padrão
                         pessoas.Imagem = "user02.jpg";
                         db.Pessoas.Add(pessoas);
                         db.SaveChanges();
                         //Enviar e-mail para o e-mail cadastrado
                         assunto = "Bike Segura - Cadastro";
-                        mensagem = "Seu cadastro foi efetuado com sucesso. Código de validação: " + codigoValidacao;                        
+                        mensagem = "Seu cadastro foi efetuado com sucesso. Código de validação: " + codigoValidacao;
                         Funcoes.EnviarEmail(pessoas.Email, assunto, mensagem);
                         return RedirectToAction("ValidarEmail", "Pessoas");
                     }
@@ -533,11 +533,11 @@ namespace BikeSegura.Controllers
         [HttpPost]
         public ActionResult ValidarEmail(string email, string codigo)
         {
-            Pessoas usuarios = db.Pessoas.Where(t => t.Email == email && t.Codigo == codigo).ToList().FirstOrDefault();
+            Pessoas usuarios = db.Pessoas.Where(t => t.Email == email && t.CodigoValidarEmail == codigo).ToList().FirstOrDefault();
             if (usuarios != null)
             {
                 usuarios.Ativo = (OpcaoStatusPessoas)1;
-                usuarios.Codigo = null;
+                usuarios.CodigoValidarEmail = null;
                 db.Entry(usuarios).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("PrimeiroAcesso", "Home");
