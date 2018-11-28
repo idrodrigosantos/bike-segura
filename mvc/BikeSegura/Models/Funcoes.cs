@@ -23,7 +23,6 @@ namespace BikeSegura.Models
             SHA512Managed SHhash = new SHA512Managed();
             // Declara variável string
             string strHex = "";
-
             // Chama HashValue, chama o ComputeHash que vai receber a mensagem(MessageBytes), 
             //      que já tem bytes para gerar outros bytes
             HashValue = SHhash.ComputeHash(MessageBytes);
@@ -42,6 +41,7 @@ namespace BikeSegura.Models
             return "";
         }
 
+        // Enviar E-mail
         public static string EnviarEmail(string emailDestinatario, string assunto, string corpomsg)
         {
             //Cria o endereço de email do remetente
@@ -63,6 +63,7 @@ namespace BikeSegura.Models
             return "";
         }
 
+        // Gerar Código Aleatório
         public static string CodigoAleatorio(int tamanho)
         {
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -73,6 +74,5 @@ namespace BikeSegura.Models
                           .ToArray());
             return result;
         }
-
     }
 }
