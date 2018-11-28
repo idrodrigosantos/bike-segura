@@ -58,8 +58,8 @@ namespace BikeSegura.Models
         public OpcaoAlertaRoubo AlertaRoubo { get; set; }
         public enum OpcaoAlertaRoubo
         {
-            Segura = 0,
-            Roubada = 1
+            Segura,
+            Roubada
         }
 
         [DisplayName("Bicicleta à Venda")]
@@ -68,8 +68,8 @@ namespace BikeSegura.Models
         public enum OpcaoVendendo
         {
             [Display(Name = "Não")]
-            Nao = 0,
-            Sim = 1
+            Nao,
+            Sim
         }
 
         [EnumDataType(typeof(OpcaoStatusBicicletas))]
