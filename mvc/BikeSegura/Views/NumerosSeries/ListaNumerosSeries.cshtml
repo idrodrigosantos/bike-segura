@@ -28,53 +28,43 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Tipo)
                     </th>
-                    <th></th>
+                    @*<th>Opções</th>*@
                 </tr>
             </thead>
             <tbody>
-                @*@foreach (var item in Model)
-                {*@
                 <tr>
-                    @*<td>
-            @Html.DisplayFor(modelItem => item.Numero)
-        </td>*@
                     <td>
-                        @Html.Raw(ViewData["DADOS"].ToString())
+                        @Html.Raw(ViewData["NUMERO"].ToString())
                     </td>
                     <td>
-                        @*@{foreach (var i in ViewBag.ConsultaNum)
-                            {
-                                <p>@i</p>
-                            }
-                        }*@
+                        @Html.Raw(ViewData["MARCA"].ToString())
                     </td>
-                    @*<td>
-            @Html.DisplayFor(modelItem => item.Bicicletas.Marcas.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Bicicletas.Modelo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tipo)
-        </td>*@
                     <td>
-                        @*<div class="btn" role="group">
-                <a class="btn btn-success" href="@Url.Action("Details", new { id = item.Id })" role="button">
-                    <i class="fas fa-list"></i>
-                    Detalhes
-                </a>
-                <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.Id })" role="button">
-                    <i class="fas fa-pen"></i>
-                    Editar
-                </a>
-                <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.Id })" role="button">
-                    <i class="fas fa-times"></i>
-                    Excluir
-                </a>
-            </div>*@
+                        @Html.Raw(ViewData["MODELO"].ToString())
                     </td>
+                    <td>
+                        @Html.Raw(ViewData["TIPO"].ToString())
+                    </td>
+                    @*@foreach (var item in Model)
+                    {
+                        <td>
+                            <div class="btn" role="group">
+                                <a class="btn btn-success" href="@Url.Action("Details", new { id = item.Id })" role="button">
+                                    <i class="fas fa-list"></i>
+                                    Detalhes
+                                </a>
+                                <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.Id })" role="button">
+                                    <i class="fas fa-pen"></i>
+                                    Editar
+                                </a>
+                                <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.Id })" role="button">
+                                    <i class="fas fa-times"></i>
+                                    Excluir
+                                </a>
+                            </div>
+                        </td>
+                    }*@
                 </tr>
-                @*}*@
             </tbody>
         </table>
     </div>
