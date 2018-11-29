@@ -302,68 +302,6 @@ namespace BikeSegura.Controllers
             }
         }
 
-        // GET: NumerosSeries/DetalhesBuscaPublicoSegura
-        public ActionResult DetalhesBuscaPublicoSegura(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            NumerosSeries numerosSeries = db.NumerosSeries.Find(id);
-            if (numerosSeries == null)
-            {
-                return HttpNotFound();
-            }
-            return View(numerosSeries);
-        }
-
-        // GET: NumerosSeries/DetalhesBuscaPublicoRoubada
-        public ActionResult DetalhesBuscaPublicoRoubada(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            NumerosSeries numerosSeries = db.NumerosSeries.Find(id);
-            if (numerosSeries == null)
-            {
-                return HttpNotFound();
-            }
-            return View(numerosSeries);
-        }
-
-        [Authorize]
-        // GET: NumerosSeries/DetalhesBuscaUsuarioSegura
-        public ActionResult DetalhesBuscaUsuarioSegura(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            NumerosSeries numerosSeries = db.NumerosSeries.Find(id);
-            if (numerosSeries == null)
-            {
-                return HttpNotFound();
-            }
-            return View(numerosSeries);
-        }
-
-        [Authorize]
-        // GET: NumerosSeries/DetalhesBuscaUsuarioRoubada
-        public ActionResult DetalhesBuscaUsuarioRoubada(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            NumerosSeries numerosSeries = db.NumerosSeries.Find(id);
-            if (numerosSeries == null)
-            {
-                return HttpNotFound();
-            }
-            return View(numerosSeries);
-        }
-
         [Authorize]
         // GET: ListaNumerosSeries
         public ActionResult ListaNumerosSeries()

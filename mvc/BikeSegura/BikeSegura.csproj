@@ -399,10 +399,8 @@
     <Content Include="Views\Historicos\ListaBicicletas.cshtml" />
     <Content Include="Views\Home\IndexUsuario.cshtml" />
     <Content Include="Views\Home\IndexAdm.cshtml" />
-    <Content Include="Views\NumerosSeries\DetalhesBuscaPublicoSegura.cshtml" />
     <Content Include="Views\Bicicletas\DetalhesBicicletaPublicoSegura.cshtml" />
     <Content Include="Views\NumerosSeries\BuscarUsuario.cshtml" />
-    <Content Include="Views\NumerosSeries\DetalhesBuscaUsuarioSegura.cshtml" />
     <Content Include="Views\Bicicletas\DetalhesBicicletaUsuarioSegura.cshtml" />
     <Content Include="Views\Pessoas\EditarSenha.cshtml" />
     <Content Include="Views\InformacoesRoubos\ListaUsuario.cshtml" />
@@ -423,8 +421,6 @@
     <Content Include="Views\Pessoas\EditarImagemAdm.cshtml" />
     <Content Include="Views\NumerosSeries\ListaNumerosSeries.cshtml" />
     <Content Include="Views\NumerosSeries\CreateNumeros.cshtml" />
-    <Content Include="Views\NumerosSeries\DetalhesBuscaUsuarioRoubada.cshtml" />
-    <Content Include="Views\NumerosSeries\DetalhesBuscaPublicoRoubada.cshtml" />
     <Content Include="Views\NumerosSeries\CreateAdicional.cshtml" />
     <Content Include="Views\Bicicletas\DetalhesBicicletaUsuarioRoubada.cshtml" />
     <Content Include="Views\Bicicletas\DetalhesBicicletaPublicoRoubada.cshtml" />
