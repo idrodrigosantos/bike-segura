@@ -65,65 +65,6 @@ create table marcas (
   unique key Id (Id)
 );
 
-create table bicicletas (
-  Id int(11) not null auto_increment,
-  MarcasId int(11) not null,
-  Modelo varchar(45) not null,
-  TiposId int(11) not null,
-  Cor varchar(40) default null,
-  CambiosDianteirosId int(11) default null,
-  CambiosTraseirosId int(11) default null,
-  FreiosId int(11) default null,
-  SuspensoesId int(11) default null,
-  ArosId int(11) default null,
-  QuadrosId int(11) default null,
-  Tamanho varchar(20) default null,
-  Informacoes longtext,
-  AlertaRoubo int(11) not null,
-  Vendendo int(11) not null,
-  Ativo int(11) not null,
-  primary key (Id),
-  unique key Id (Id),
-  key ArosId (ArosId),
-  key CambiosDianteirosId (CambiosDianteirosId),
-  key CambiosTraseirosId (CambiosTraseirosId),
-  key FreiosId (FreiosId),
-  key MarcasId (MarcasId),
-  key QuadrosId (QuadrosId),
-  key SuspensoesId (SuspensoesId),
-  key TiposId (TiposId),
-  constraint Bicicletas_Aros foreign key (ArosId) references aros (id),
-  constraint Bicicletas_CambiosDianteiros foreign key (CambiosDianteirosId) references cambiosdianteiros (id),
-  constraint Bicicletas_CambiosTraseiros foreign key (CambiosTraseirosId) references cambiostraseiros (id),
-  constraint Bicicletas_Freios foreign key (FreiosId) references freios (id),
-  constraint Bicicletas_Marcas foreign key (MarcasId) references marcas (id) on delete cascade,
-  constraint Bicicletas_Quadros foreign key (QuadrosId) references quadros (id),
-  constraint Bicicletas_Suspensoes foreign key (SuspensoesId) references suspensoes (id),
-  constraint Bicicletas_Tipos foreign key (TiposId) references tipos (id) on delete cascade
-);
-
-create table imagens (
-  Id int(11) not null auto_increment,
-  Imagem longtext,
-  BicicletasId int(11) not null,
-  primary key (Id),
-  unique key Id (Id),
-  key BicicletasId (BicicletasId),
-  constraint Imagens_Bicicletas foreign key (BicicletasId) references bicicletas (id) on delete cascade
-);
-
-create table numerosseries (
-  Id int(11) not null auto_increment,
-  Numero varchar(50) not null,
-  BicicletasId int(11) not null,
-  Tipo int(11) NOT NULL,
-  Ativo int(11) not null,
-  primary key (Id),
-  unique key Id (Id),
-  key BicicletasId (BicicletasId),
-  constraint NumerosSeries_Bicicletas foreign key (BicicletasId) references bicicletas (id) on delete cascade
-);
-
 create table pessoas (
   Id int(11) not null auto_increment,
   Nome varchar(100) not null,
@@ -154,6 +95,68 @@ create table pessoas (
   DataCadastro datetime default null,
   primary key (Id),
   unique key Id (Id)
+);
+
+create table bicicletas (
+  Id int(11) not null auto_increment,
+  MarcasId int(11) not null,
+  Modelo varchar(45) not null,
+  TiposId int(11) not null,
+  Cor varchar(40) default null,
+  CambiosDianteirosId int(11) default null,
+  CambiosTraseirosId int(11) default null,
+  FreiosId int(11) default null,
+  SuspensoesId int(11) default null,
+  ArosId int(11) default null,
+  QuadrosId int(11) default null,
+  Tamanho varchar(20) default null,
+  Informacoes longtext,
+  AlertaRoubo int(11) not null,
+  Vendendo int(11) not null,
+  Ativo int(11) not null,
+  PessoasId int(11) default null,
+  primary key (Id),
+  unique key Id (Id),
+  key ArosId (ArosId),
+  key CambiosDianteirosId (CambiosDianteirosId),
+  key CambiosTraseirosId (CambiosTraseirosId),
+  key FreiosId (FreiosId),
+  key MarcasId (MarcasId),
+  key PessoasId (PessoasId),
+  key QuadrosId (QuadrosId),
+  key SuspensoesId (SuspensoesId),
+  key TiposId (TiposId),
+  constraint Bicicletas_Aros foreign key (ArosId) references aros (id),
+  constraint Bicicletas_CambiosDianteiros foreign key (CambiosDianteirosId) references cambiosdianteiros (id),
+  constraint Bicicletas_CambiosTraseiros foreign key (CambiosTraseirosId) references cambiostraseiros (id),
+  constraint Bicicletas_Freios foreign key (FreiosId) references freios (id),
+  constraint Bicicletas_Marcas foreign key (MarcasId) references marcas (id) on delete cascade,
+  constraint Bicicletas_Pessoas foreign key (PessoasId) references pessoas (id),
+  constraint Bicicletas_Quadros foreign key (QuadrosId) references quadros (id),
+  constraint Bicicletas_Suspensoes foreign key (SuspensoesId) references suspensoes (id),
+  constraint Bicicletas_Tipos foreign key (TiposId) references tipos (id) on delete cascade
+);
+
+create table imagens (
+  Id int(11) not null auto_increment,
+  Imagem longtext,
+  BicicletasId int(11) not null,
+  primary key (Id),
+  unique key Id (Id),
+  key BicicletasId (BicicletasId),
+  constraint Imagens_Bicicletas foreign key (BicicletasId) references bicicletas (id) on delete cascade
+);
+
+create table numerosseries (
+  Id int(11) not null auto_increment,
+  Numero varchar(50) not null,
+  BicicletasId int(11) not null,
+  Tipo int(11) NOT NULL,
+  Ativo int(11) not null,
+  primary key (Id),
+  unique key Id (Id),
+  key BicicletasId (BicicletasId),
+  constraint NumerosSeries_Bicicletas foreign key (BicicletasId) references bicicletas (id) on delete cascade
 );
 
 create table informacoesroubos (
