@@ -7,17 +7,17 @@
 <div class="container conteudo">
     <div class="table-responsive table-sm">
         <table class="table table-hover">
-            @*<tr>
-                    <td>
-                        <strong>Proprietário</strong>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => model.Pessoas.Nome)
-                    </td>
-                </tr>*@
             <tr>
                 <td>
-                    Imagem(s) da Bicicleta
+                    <strong>Proprietário</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Pessoas.Nome)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Imagem(s) da Bicicleta</strong>                    
                 </td>
                 <td colspan="2">
                     @foreach (var item in Model.Imagens)

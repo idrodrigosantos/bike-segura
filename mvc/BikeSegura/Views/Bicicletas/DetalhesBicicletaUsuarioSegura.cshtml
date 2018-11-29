@@ -8,17 +8,17 @@
 <div class="container conteudo">
     <div class="table-responsive table-sm">
         <table class="table table-hover">
-            @*<tr>
+            <tr>
                 <td>
                     <strong>Proprietário</strong>
                 </td>
                 <td>
                     @Html.DisplayFor(model => model.Pessoas.Nome)
                 </td>
-            </tr>*@
+            </tr>
             <tr>
                 <td>
-                    Imagem(s) da Bicicleta
+                    <strong>Imagem(s) da Bicicleta</strong>
                 </td>
                 <td colspan="2">
                     @foreach (var item in Model.Imagens)
@@ -130,7 +130,7 @@
                 <td>
                     <div class="alert alert-success" role="alert">
                         @Html.DisplayFor(model => model.AlertaRoubo)
-                    </div>                    
+                    </div>
                 </td>
             </tr>
             <tr>
