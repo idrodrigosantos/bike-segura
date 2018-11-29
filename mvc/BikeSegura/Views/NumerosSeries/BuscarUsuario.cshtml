@@ -1,4 +1,4 @@
-﻿@model BikeSegura.Models.NumerosSeries
+﻿@model IEnumerable<BikeSegura.Models.NumerosSeries>
 
 @{
     ViewBag.Title = "Buscar Número de Série";
@@ -12,9 +12,10 @@
         <div class="row">
             <div class="form-group col-lg-8 offset-lg-2">
                 @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
-                @Html.LabelFor(model => model.Numero, "Número de Série da Bicicleta", htmlAttributes: new { @class = "control-label" })
-                <input class="form-control" type="text" name="id" />
-                @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+
+                <label class="control-label">Número de Série da Bicicleta</label>
+                <input class="form-control" type="text" name="nome" />
+
             </div>
             <div class="form-group col-lg-8 offset-lg-2">
                 <button class="btn btn-primary" id="Buscar" value="Buscar" name="Buscar" formmethod="post">
@@ -23,5 +24,83 @@
                 </button>
             </div>
         </div>
+        @if (Model != null)
+        {
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Numero)
+                            </th>
+                            <th>
+                                Marca
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Bicicletas.Modelo)
+                            </th>
+                            <th>
+                                Tipo da Bicicleta
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Bicicletas.Cor)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Bicicletas.AlertaRoubo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Bicicletas.Vendendo)
+                            </th>
+                            @*<th>
+                                Proprietário
+                            </th>*@
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(model => item.Numero)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => item.Bicicletas.Marcas.Nome)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => item.Bicicletas.Modelo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => item.Bicicletas.Tipos.Nome)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => item.Bicicletas.Cor)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => item.Bicicletas.AlertaRoubo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => item.Bicicletas.Vendendo)
+                                </td>
+                                @*<td>
+                                    @Html.DisplayFor(model => item.Bicicletas.Pessoas.Nome)
+                                </td>*@
+                                <td>
+                                    <div class="btn" role="group">
+                                        @using (Html.BeginForm())
+                                        {
+                                            <a class="btn btn-success" href="@Url.Action("DetalhesBicicletaUsuario", "Bicicletas", new { id = item.BicicletasId })" role="button">
+                                                <i class="fas fa-list"></i>
+                                                Detalhes Bicicleta
+                                            </a>
+                                        }
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
     </div>
 }

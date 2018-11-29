@@ -239,24 +239,21 @@ namespace BikeSegura.Controllers
         }
 
         // Método buscar número de série - usuário público
-        public ActionResult BuscarPublico(string id)
+        public ActionResult BuscarPublico()
         {
-            if (id != null)
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult BuscarPublico(string nome)
+        {
+            if (!String.IsNullOrEmpty(nome))
             {
-                //var numeroserie = db.NumerosSeries.Where(w => w.Numero == id).FirstOrDefault();
                 // Busca parte no número digitado, sql like
-                var numeroserie = db.NumerosSeries.Where(w => w.Numero.Contains(id)).FirstOrDefault();
+                var numeroserie = db.NumerosSeries.Where(w => w.Numero.Contains(nome)).ToList();
                 if (numeroserie != null)
                 {
-                    //return RedirectToAction("DetalhesBuscaPublicoSegura", "NumerosSeries", new { id = numeroserie.Id });
-                    if (numeroserie.Bicicletas.AlertaRoubo == 0)
-                    {
-                        return RedirectToAction("DetalhesBuscaPublicoSegura", "NumerosSeries", new { id = numeroserie.Id });
-                    }
-                    else
-                    {
-                        return RedirectToAction("DetalhesBuscaPublicoRoubada", "NumerosSeries", new { id = numeroserie.Id });
-                    }
+                    return View(numeroserie);
                 }
                 else
                 {
@@ -272,23 +269,21 @@ namespace BikeSegura.Controllers
 
         [Authorize]
         // Método buscar número de série - usuário logado
-        public ActionResult BuscarUsuario(string id)
+        public ActionResult BuscarUsuario()
         {
-            if (id != null)
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult BuscarUsuario(string nome)
+        {
+            if (!String.IsNullOrEmpty(nome))
             {
-                //var numeroserie = db.NumerosSeries.Where(w => w.Numero == id).FirstOrDefault();
                 // Busca parte no número digitado, sql like
-                var numeroserie = db.NumerosSeries.Where(w => w.Numero.Contains(id)).FirstOrDefault();
+                var numeroserie = db.NumerosSeries.Where(w => w.Numero.Contains(nome)).ToList();
                 if (numeroserie != null)
                 {
-                    if (numeroserie.Bicicletas.AlertaRoubo == 0)
-                    {
-                        return RedirectToAction("DetalhesBuscaUsuarioSegura", "NumerosSeries", new { id = numeroserie.Id });
-                    }
-                    else
-                    {
-                        return RedirectToAction("DetalhesBuscaUsuarioRoubada", "NumerosSeries", new { id = numeroserie.Id });
-                    }
+                    return View(numeroserie);
                 }
                 else
                 {
@@ -306,39 +301,50 @@ namespace BikeSegura.Controllers
         // GET: ListaNumerosSeries
         public ActionResult ListaNumerosSeries()
         {
-            var numerosSeries = db.NumerosSeries.Include(n => n.Bicicletas);
+            //var numerosSeries = db.NumerosSeries.Include(n => n.Bicicletas);
             var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
             int idlogado = Convert.ToInt32(usu);
-            //return View(numerosSeries.Where(w => w.Ativo == 0).ToList());
-            return View(numerosSeries.Where(w => w.Ativo == 0 && w.Bicicletas.PessoasId == idlogado).ToList());
 
-            //var resultado = db.NumerosSeries
-            //    .Join(db.Bicicletas, num => num.BicicletasId, bic => bic.Id, (num, bic) => new { num, bic })
-            //    .Join(db.Historicos, num => num.bic.Id, his => his.BicicletasId, (num, his) => new { num, his })
-            //    .Select(x => new
-            //    {
-            //        x.his.CompradorId,
-            //        x.num.num.Numero,
-            //        x.num.num.Tipo,
-            //        x.num.bic.Modelo,
-            //        x.num.bic.Marcas.Nome
-            //    }).Where(w => w.CompradorId == idlogado).ToList();
+            var resultado = db.NumerosSeries
+                .Join(db.Bicicletas, num => num.BicicletasId, bic => bic.Id, (num, bic) => new { num, bic })
+                .Join(db.Historicos, num => num.bic.Id, his => his.BicicletasId, (num, his) => new { num, his })
+                .Select(x => new
+                {
+                    x.his.CompradorId,
+                    x.num.num.Numero,
+                    x.num.num.Tipo,
+                    x.num.bic.Modelo,
+                    x.num.bic.Marcas.Nome,
+                    x.num.num.Id
+                }).Where(w => w.CompradorId == idlogado).ToList();
 
-            //string resulNumero = "", resulMarca = "", resulModelo = "", resulTipo = "";
-            //foreach (var i in resultado)
-            //{
-            //    resulNumero += "<p>" + i.Numero + "</p>";
-            //    resulMarca += "<p>" + i.Nome + "</p>";
-            //    resulModelo += "<p>" + i.Modelo + "</p>";
-            //    resulTipo += "<p>" + i.Tipo + "</p>";
-            //}
+            string resulNumero = "", resulMarca = "", resulModelo = "", resulTipo = "";
+            foreach (var i in resultado)
+            {
+                resulNumero += "<tr><td>" + i.Numero + "</td>";
+                resulNumero += "<td>" + i.Nome + "</td>";
+                resulNumero += "<td>" + i.Modelo + "</td>";
+                resulNumero += "<td>" + i.Tipo + "</td>";
+                resulNumero += @"<td><a class='btn btn-success' href='/NumerosSeries/Details/" + i.Id + @"' role='button'>
+                                    <i class='fas fa-list'></i>
+                                    Detalhes
+                                </a></td>";
+                resulNumero += @"<td><a class='btn btn-primary' href='/NumerosSeries/Edit/" + i.Id + @"' role='button'>
+                                    <i class='fas fa-pen'></i>
+                                    Editar
+                                </a></td>";
+                resulNumero += @"<td><a class='btn btn-danger' href='/NumerosSeries/Delete/" + i.Id + @"' role='button'>
+                                    <i class='fas fa-times'></i>
+                                    Excluir
+                                </a></td></tr>";
+            }
 
-            //ViewData["NUMERO"] = resulNumero;
-            //ViewData["MARCA"] = resulMarca;
-            //ViewData["MODELO"] = resulModelo;
-            //ViewData["TIPO"] = resulTipo;
+            ViewData["NUMERO"] = resulNumero;
+            ViewData["MARCA"] = resulMarca;
+            ViewData["MODELO"] = resulModelo;
+            ViewData["TIPO"] = resulTipo;
 
-            //return View();
+            return View();
         }
 
         protected override void Dispose(bool disposing)
