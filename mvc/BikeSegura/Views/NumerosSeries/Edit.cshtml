@@ -13,11 +13,6 @@
         @Html.HiddenFor(model => model.Id)
         <div class="row">
             <div class="form-group col-md-8 offset-md-2 col-lg-6 offset-lg-3">
-                @Html.LabelFor(model => model.Tipo, "Tipo (*)", htmlAttributes: new { @class = "control-label" })
-                @Html.EnumDropDownListFor(model => model.Tipo, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Tipo, "", new { @class = "text-danger" })
-            </div>
-            <div class="form-group col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                 @Html.LabelFor(model => model.Numero, "Número de Série (*)", htmlAttributes: new { @class = "control-label" })
                 @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
@@ -34,13 +29,18 @@
                     </button>
                 </div>
             </div>
-            @*Campo não está sendo mostrado*@
+            @*Campos não estão sendo mostrados*@
+            <div class="form-group" style="display:none;">
+                @Html.LabelFor(model => model.Tipo, htmlAttributes: new { @class = "control-label" })
+                @Html.EnumDropDownListFor(model => model.Tipo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Tipo, "", new { @class = "text-danger" })
+            </div>
             <div class="form-group" style="display:none;">
                 @Html.LabelFor(model => model.BicicletasId, htmlAttributes: new { @class = "control-label" })
                 @Html.DropDownList("BicicletasId", (SelectList)ViewBag.MyList, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.BicicletasId, "", new { @class = "text-danger" })
             </div>
-            @*Campo não está sendo mostrado*@
+            @*Campos não estão sendo mostrados*@
         </div>
     </div>
 }
