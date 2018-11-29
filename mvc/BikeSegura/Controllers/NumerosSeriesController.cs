@@ -371,16 +371,6 @@ namespace BikeSegura.Controllers
             var numerosSeries = db.NumerosSeries.Include(n => n.Bicicletas);
             var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
             int idlogado = Convert.ToInt32(usu);
-            //return View(numerosSeries.Where(w => w.Ativo == 0 && w.Bicicletas.Pessoas.Id == idlogado).ToList());
-            //var a = from h in db.Historicos
-            //        join b in db.Bicicletas on h.BicicletasId equals b.Id
-            //        join n in db.NumerosSeries on b.Id equals n.BicicletasId
-            //        select new
-            //        {
-            //            h,
-            //            b,
-            //            n
-            //        };
 
             var resultado = db.NumerosSeries
                 .Join(db.Bicicletas, num => num.BicicletasId, bic => bic.Id, (num, bic) => new { num, bic })
@@ -389,24 +379,26 @@ namespace BikeSegura.Controllers
                 {
                     x.his.CompradorId,
                     x.num.num.Numero,
-                    x.num.bic.Modelo
-                }).Where(w=> w.CompradorId == idlogado).ToList();
+                    x.num.num.Tipo,
+                    x.num.bic.Modelo,
+                    x.num.bic.Marcas.Nome
+                }).Where(w => w.CompradorId == idlogado).ToList();
 
-            string p = "";
+            string resulNumero = "", resulMarca = "", resulModelo = "", resulTipo = "";
             foreach (var i in resultado)
             {
-                p += "<p>"+i.Modelo+" - "+i.Numero+"</p>";
+                resulNumero += "<p>" + i.Numero + "</p>";
+                resulMarca += "<p>" + i.Nome + "</p>";
+                resulModelo += "<p>" + i.Modelo + "</p>";
+                resulTipo += "<p>" + i.Tipo + "</p>";
             }
 
-            ViewData["DADOS"] = p;
-            ViewBag.ConsultaNum = resultado;
-
-            //var resultadoToList = resultado.ToList();
-            //ViewData["DADOS"] = resultadoToList;
-            //ViewBag.ConsultaNum = resultadoToList;
+            ViewData["NUMERO"] = resulNumero;
+            ViewData["MARCA"] = resulMarca;
+            ViewData["MODELO"] = resulModelo;
+            ViewData["TIPO"] = resulTipo;
 
             //return View(numerosSeries.Where(w => w.Ativo == 0).ToList());
-            //return View(resultadoToList);
             return View();
         }
 
