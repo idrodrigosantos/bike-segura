@@ -248,14 +248,15 @@ namespace BikeSegura.Controllers
                 var numeroserie = db.NumerosSeries.Where(w => w.Numero.Contains(id)).FirstOrDefault();
                 if (numeroserie != null)
                 {
-                    if (numeroserie.Bicicletas.AlertaRoubo == 0)
-                    {
-                        return RedirectToAction("DetalhesBuscaPublicoSegura", "NumerosSeries", new { id = numeroserie.Id });
-                    }
-                    else
-                    {
-                        return RedirectToAction("DetalhesBuscaPublicoRoubada", "NumerosSeries", new { id = numeroserie.Id });
-                    }
+                    return RedirectToAction("DetalhesBuscaPublicoSegura", "NumerosSeries", new { id = numeroserie.Id });
+                    //if (numeroserie.Bicicletas.AlertaRoubo == 0)
+                    //{
+                    //    return RedirectToAction("DetalhesBuscaPublicoSegura", "NumerosSeries", new { id = numeroserie.Id });
+                    //}
+                    //else
+                    //{
+                    //    return RedirectToAction("DetalhesBuscaPublicoRoubada", "NumerosSeries", new { id = numeroserie.Id });
+                    //}
                 }
                 else
                 {
@@ -371,7 +372,42 @@ namespace BikeSegura.Controllers
             var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
             int idlogado = Convert.ToInt32(usu);
             //return View(numerosSeries.Where(w => w.Ativo == 0 && w.Bicicletas.Pessoas.Id == idlogado).ToList());
-            return View(numerosSeries.Where(w => w.Ativo == 0).ToList());
+            //var a = from h in db.Historicos
+            //        join b in db.Bicicletas on h.BicicletasId equals b.Id
+            //        join n in db.NumerosSeries on b.Id equals n.BicicletasId
+            //        select new
+            //        {
+            //            h,
+            //            b,
+            //            n
+            //        };
+
+            var resultado = db.NumerosSeries
+                .Join(db.Bicicletas, num => num.BicicletasId, bic => bic.Id, (num, bic) => new { num, bic })
+                .Join(db.Historicos, num => num.bic.Id, his => his.BicicletasId, (num, his) => new { num, his })
+                .Select(x => new
+                {
+                    x.his.CompradorId,
+                    x.num.num.Numero,
+                    x.num.bic.Modelo
+                }).Where(w=> w.CompradorId == idlogado).ToList();
+
+            string p = "";
+            foreach (var i in resultado)
+            {
+                p += "<p>"+i.Modelo+" - "+i.Numero+"</p>";
+            }
+
+            ViewData["DADOS"] = p;
+            ViewBag.ConsultaNum = resultado;
+
+            //var resultadoToList = resultado.ToList();
+            //ViewData["DADOS"] = resultadoToList;
+            //ViewBag.ConsultaNum = resultadoToList;
+
+            //return View(numerosSeries.Where(w => w.Ativo == 0).ToList());
+            //return View(resultadoToList);
+            return View();
         }
 
         protected override void Dispose(bool disposing)
