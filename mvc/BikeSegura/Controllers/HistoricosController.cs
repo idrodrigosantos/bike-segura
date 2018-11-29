@@ -179,6 +179,7 @@ namespace BikeSegura.Controllers
                     historicos.DataTransferencia = DateTime.Now;
                     historicos.VendedorId = idlogado;
                     historicos.TipoTransferencia = (OpcaoTransferencia)1;
+                    historicos.Ativo = (OpcaoStatusHistoricos)1;
                     db.Entry(historicos).State = EntityState.Modified;
                     db.SaveChanges();
                     // Salva um novo registro no histórico
