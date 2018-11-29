@@ -28,25 +28,25 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Tipo)
                     </th>
-                    @*<th>Opções</th>*@
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        @Html.Raw(ViewData["NUMERO"].ToString())
-                    </td>
-                    <td>
-                        @Html.Raw(ViewData["MARCA"].ToString())
-                    </td>
-                    <td>
-                        @Html.Raw(ViewData["MODELO"].ToString())
-                    </td>
-                    <td>
-                        @Html.Raw(ViewData["TIPO"].ToString())
-                    </td>
-                    @*@foreach (var item in Model)
-                    {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Numero)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Bicicletas.Marcas.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Bicicletas.Modelo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tipo)
+                        </td>
                         <td>
                             <div class="btn" role="group">
                                 <a class="btn btn-success" href="@Url.Action("Details", new { id = item.Id })" role="button">
@@ -63,8 +63,20 @@
                                 </a>
                             </div>
                         </td>
-                    }*@
-                </tr>
+                        @*<td>
+                                @Html.Raw(ViewData["NUMERO"].ToString())
+                            </td>
+                            <td>
+                                @Html.Raw(ViewData["MARCA"].ToString())
+                            </td>
+                            <td>
+                                @Html.Raw(ViewData["MODELO"].ToString())
+                            </td>
+                            <td>
+                                @Html.Raw(ViewData["TIPO"].ToString())
+                            </td>*@
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
