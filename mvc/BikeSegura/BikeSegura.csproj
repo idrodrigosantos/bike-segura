@@ -399,9 +399,9 @@
     <Content Include="Views\Historicos\ListaBicicletas.cshtml" />
     <Content Include="Views\Home\IndexUsuario.cshtml" />
     <Content Include="Views\Home\IndexAdm.cshtml" />
-    <Content Include="Views\Bicicletas\DetalhesBicicletaPublicoSegura.cshtml" />
+    <Content Include="Views\Bicicletas\DetalhesBicicletaPublico.cshtml" />
     <Content Include="Views\NumerosSeries\BuscarUsuario.cshtml" />
-    <Content Include="Views\Bicicletas\DetalhesBicicletaUsuarioSegura.cshtml" />
+    <Content Include="Views\Bicicletas\DetalhesBicicletaUsuario.cshtml" />
     <Content Include="Views\Pessoas\EditarSenha.cshtml" />
     <Content Include="Views\InformacoesRoubos\ListaUsuario.cshtml" />
     <Content Include="Views\RelatosRoubos\ListaUsuario.cshtml" />

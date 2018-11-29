@@ -174,23 +174,8 @@ namespace BikeSegura.Controllers
             return RedirectToAction("Index", "Bicicletas");
         }
 
-        // GET: Bicicletas/DetalhesBicicletaPublicoSegura
-        public ActionResult DetalhesBicicletaPublicoSegura(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Bicicletas bicicletas = db.Bicicletas.Find(id);
-            if (bicicletas == null)
-            {
-                return HttpNotFound();
-            }
-            return View(bicicletas);
-        }
-
-        // GET: Bicicletas/DetalhesBicicletaPublicoRoubada
-        public ActionResult DetalhesBicicletaPublicoRoubada(int? id)
+        // GET: Bicicletas/DetalhesBicicletaPublico
+        public ActionResult DetalhesBicicletaPublico(int? id)
         {
             if (id == null)
             {
@@ -205,24 +190,8 @@ namespace BikeSegura.Controllers
         }
 
         [Authorize]
-        // GET: Bicicletas/DetalhesBicicletaUsuarioSegura
-        public ActionResult DetalhesBicicletaUsuarioSegura(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Bicicletas bicicletas = db.Bicicletas.Find(id);
-            if (bicicletas == null)
-            {
-                return HttpNotFound();
-            }
-            return View(bicicletas);
-        }
-
-        [Authorize]
-        // GET: Bicicletas/DetalhesBicicletaUsuarioRoubada
-        public ActionResult DetalhesBicicletaUsuarioRoubada(int? id)
+        // GET: Bicicletas/DetalhesBicicletaUsuario
+        public ActionResult DetalhesBicicletaUsuario(int? id)
         {
             if (id == null)
             {
