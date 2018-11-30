@@ -30,6 +30,49 @@
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Bicicletas.Modelo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataRoubo)
+                    </th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    @Html.Raw(ViewData["NUMERO"].ToString())
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@*<div class="container conteudo">
+    <p>
+        <a class="btn btn-success" href="@Url.Action("Create", "InformacoesRoubos" )" role="button">
+            <i class="fas fa-plus"></i>
+            Informações de Roubo
+        </a>
+    </p>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cidade)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Estado)
+                    </th>
+                    <th>
+                        Informações adicionais sobre o local
+                    </th>
+                    <th>
+                        Marca
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Bicicletas.Modelo)
                     </th>                    
                     <th>
                         @Html.DisplayNameFor(model => model.DataRoubo)
@@ -80,4 +123,4 @@
             </tbody>
         </table>
     </div>
-</div>
+</div>*@

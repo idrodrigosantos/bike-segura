@@ -1,11 +1,46 @@
 ﻿@model IEnumerable<BikeSegura.Models.Imagens>
 
 @{
-    ViewBag.Title = "ListaUsuario";
+    ViewBag.Title = "Lista de Imagens";
     Layout = "~/Views/Shared/_Usuario.cshtml";
 }
 
 <div class="container conteudo">
+    <p>
+        <a class="btn btn-success" href="@Url.Action("Create", "Imagens")" role="button">
+            <i class="fas fa-plus"></i>
+            Adicionar Imagem
+        </a>
+    </p>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Marca
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Bicicletas.Modelo)
+                    </th>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.Imagem)
+                        <img src="~/Uploads/@item.Imagem" style="max-width:70px;" />
+                    </th>*@
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    @Html.Raw(ViewData["NUMERO"].ToString())
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@*<div class="container conteudo">
     <p>
         <a class="btn btn-success" href="@Url.Action("Create", "Imagens")" role="button">
             <i class="fas fa-plus"></i>
@@ -62,4 +97,4 @@
             </tbody>
         </table>
     </div>
-</div>
+</div>*@
