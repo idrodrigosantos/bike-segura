@@ -129,8 +129,17 @@ namespace BikeSegura.Controllers
         {
             var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
             int idlogado = Convert.ToInt32(usu);
-            ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0 && w.PessoasId == idlogado), "Id", "Modelo");
-            //ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0), "Id", "Modelo");
+
+            var resultado = db.Bicicletas
+                .Join(db.Historicos, inf => inf.Id, his => his.BicicletasId, (inf, his) => new { inf, his })
+                .Select(x => new
+                {
+                    x.his.CompradorId,
+                    x.inf.Id,
+                    x.inf.Modelo
+                }).Where(w => w.CompradorId == idlogado).ToList();
+
+            ViewBag.BicicletasId = new SelectList(resultado, "Id", "Modelo");
             return View();
         }
 

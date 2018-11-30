@@ -47,29 +47,17 @@ namespace BikeSegura.Controllers
         {
             var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
             int idlogado = Convert.ToInt32(usu);
-            ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0 && w.PessoasId == idlogado), "Id", "Modelo");
 
-            //var resultado = db.InformacoesRoubos
-            //    .Join(db.Bicicletas, inf => inf.BicicletasId, bic => bic.Id, (inf, bic) => new { inf, bic })
-            //    .Join(db.Historicos, inf => inf.bic.Id, his => his.BicicletasId, (inf, his) => new { inf, his })
-            //    .Select(x => new
-            //    {
-            //        x.his.CompradorId,
-            //        //x.inf.inf.Cidade,
-            //        //x.inf.inf.Estado,
-            //        //x.inf.inf.LocalAdicional,
-            //        //x.inf.inf.DataRoubo,
-            //        //x.inf.bic.Modelo,
-            //        //x.inf.bic.Marcas.Nome,
-            //        //x.inf.inf.Id
-            //        x.inf.bic.Id
-            //    }).Where(w => w.CompradorId == idlogado).ToList();
-            //foreach(var x in resultado)
-            //{
-            //    x.Id;
-            //}
-            //ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Id == 0), "Id", "Modelo");
+            var resultado = db.Bicicletas
+                .Join(db.Historicos, inf => inf.Id, his => his.BicicletasId, (inf, his) => new { inf, his })
+                .Select(x => new
+                {
+                    x.his.CompradorId,
+                    x.inf.Id,
+                    x.inf.Modelo
+                }).Where(w => w.CompradorId == idlogado).ToList();
 
+            ViewBag.BicicletasId = new SelectList(resultado, "Id", "Modelo");
             return View();
         }
 
