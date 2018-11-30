@@ -47,7 +47,7 @@ namespace BikeSegura.Controllers
         {
             var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
             int idlogado = Convert.ToInt32(usu);
-            //ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0 && w.PessoasId == idlogado), "Id", "Modelo");
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0 && w.PessoasId == idlogado), "Id", "Modelo");
 
             //var resultado = db.InformacoesRoubos
             //    .Join(db.Bicicletas, inf => inf.BicicletasId, bic => bic.Id, (inf, bic) => new { inf, bic })
@@ -68,7 +68,8 @@ namespace BikeSegura.Controllers
             //{
             //    x.Id;
             //}
-            ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Id == 0), "Id", "Modelo");
+            //ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Id == 0), "Id", "Modelo");
+
             return View();
         }
 
@@ -149,10 +150,9 @@ namespace BikeSegura.Controllers
         }
 
         [Authorize]
-        // GET: ListaNumerosSeries
+        // GET: ListaInformacoesRoubos
         public ActionResult ListaUsuario()
         {
-            //var numerosSeries = db.NumerosSeries.Include(n => n.Bicicletas);
             var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
             int idlogado = Convert.ToInt32(usu);
 
@@ -165,40 +165,35 @@ namespace BikeSegura.Controllers
                     x.inf.inf.Cidade,
                     x.inf.inf.Estado,
                     x.inf.inf.LocalAdicional,
-                    x.inf.inf.DataRoubo,
-                    x.inf.bic.Modelo,
                     x.inf.bic.Marcas.Nome,
+                    x.inf.bic.Modelo,
+                    x.inf.inf.DataRoubo,
                     x.inf.inf.Id
                 }).Where(w => w.CompradorId == idlogado).ToList();
 
-            string resulNumero = "", resulMarca = "", resulModelo = "", resulTipo = "";
+            string resultInfo = "";
             foreach (var i in resultado)
             {
-                resulNumero += "<tr><td>" + i.Cidade + "</td>";
-                resulNumero += "<td>" + i.Estado + "</td>";
-                resulNumero += "<td>" + i.LocalAdicional + "</td>";
-                resulNumero += "<td>" + i.Nome + "</td>";
-                resulNumero += "<td>" + i.Modelo + "</td>";
-                resulNumero += "<td>" + i.DataRoubo.ToString("dd/MM/yyyy") + "</td>";
-                resulNumero += @"<td><a class='btn btn-success' href='/InformacoesRoubos/Details/" + i.Id + @"' role='button'>
+                resultInfo += "<tr><td>" + i.Cidade + "</td>";
+                resultInfo += "<td>" + i.Estado + "</td>";
+                resultInfo += "<td>" + i.LocalAdicional + "</td>";
+                resultInfo += "<td>" + i.Nome + "</td>";
+                resultInfo += "<td>" + i.Modelo + "</td>";
+                resultInfo += "<td>" + i.DataRoubo.ToString("dd/MM/yyyy") + "</td>";
+                resultInfo += @"<td><a class='btn btn-success' href='/InformacoesRoubos/Details/" + i.Id + @"' role='button'>
                                     <i class='fas fa-list'></i>
                                     Detalhes
                                 </a></td>";
-                resulNumero += @"<td><a class='btn btn-primary' href='/InformacoesRoubos/Edit/" + i.Id + @"' role='button'>
+                resultInfo += @"<td><a class='btn btn-primary' href='/InformacoesRoubos/Edit/" + i.Id + @"' role='button'>
                                     <i class='fas fa-pen'></i>
                                     Editar
                                 </a></td>";
-                resulNumero += @"<td><a class='btn btn-danger' href='/InformacoesRoubos/Delete/" + i.Id + @"' role='button'>
+                resultInfo += @"<td><a class='btn btn-danger' href='/InformacoesRoubos/Delete/" + i.Id + @"' role='button'>
                                     <i class='fas fa-times'></i>
                                     Excluir
                                 </a></td></tr>";
             }
-
-            ViewData["NUMERO"] = resulNumero;
-            ViewData["MARCA"] = resulMarca;
-            ViewData["MODELO"] = resulModelo;
-            ViewData["TIPO"] = resulTipo;
-
+            ViewData["INFO"] = resultInfo;
             return View();
         }
 

@@ -301,7 +301,6 @@ namespace BikeSegura.Controllers
         // GET: ListaNumerosSeries
         public ActionResult ListaNumerosSeries()
         {
-            //var numerosSeries = db.NumerosSeries.Include(n => n.Bicicletas);
             var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
             int idlogado = Convert.ToInt32(usu);
 
@@ -312,38 +311,33 @@ namespace BikeSegura.Controllers
                 {
                     x.his.CompradorId,
                     x.num.num.Numero,
-                    x.num.num.Tipo,
-                    x.num.bic.Modelo,
                     x.num.bic.Marcas.Nome,
+                    x.num.bic.Modelo,
+                    x.num.num.Tipo,
                     x.num.num.Id
                 }).Where(w => w.CompradorId == idlogado).ToList();
 
-            string resulNumero = "", resulMarca = "", resulModelo = "", resulTipo = "";
+            string resultNumero = "";
             foreach (var i in resultado)
             {
-                resulNumero += "<tr><td>" + i.Numero + "</td>";
-                resulNumero += "<td>" + i.Nome + "</td>";
-                resulNumero += "<td>" + i.Modelo + "</td>";
-                resulNumero += "<td>" + i.Tipo + "</td>";
-                resulNumero += @"<td><a class='btn btn-success' href='/NumerosSeries/Details/" + i.Id + @"' role='button'>
+                resultNumero += "<tr><td>" + i.Numero + "</td>";
+                resultNumero += "<td>" + i.Nome + "</td>";
+                resultNumero += "<td>" + i.Modelo + "</td>";
+                resultNumero += "<td>" + i.Tipo + "</td>";
+                resultNumero += @"<td><a class='btn btn-success' href='/NumerosSeries/Details/" + i.Id + @"' role='button'>
                                     <i class='fas fa-list'></i>
                                     Detalhes
                                 </a></td>";
-                resulNumero += @"<td><a class='btn btn-primary' href='/NumerosSeries/Edit/" + i.Id + @"' role='button'>
+                resultNumero += @"<td><a class='btn btn-primary' href='/NumerosSeries/Edit/" + i.Id + @"' role='button'>
                                     <i class='fas fa-pen'></i>
                                     Editar
                                 </a></td>";
-                resulNumero += @"<td><a class='btn btn-danger' href='/NumerosSeries/Delete/" + i.Id + @"' role='button'>
+                resultNumero += @"<td><a class='btn btn-danger' href='/NumerosSeries/Delete/" + i.Id + @"' role='button'>
                                     <i class='fas fa-times'></i>
                                     Excluir
                                 </a></td></tr>";
             }
-
-            ViewData["NUMERO"] = resulNumero;
-            ViewData["MARCA"] = resulMarca;
-            ViewData["MODELO"] = resulModelo;
-            ViewData["TIPO"] = resulTipo;
-
+            ViewData["NUMERO"] = resultNumero;
             return View();
         }
 
