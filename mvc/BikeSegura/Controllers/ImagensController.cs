@@ -197,7 +197,7 @@ namespace BikeSegura.Controllers
             {
                 resultImagem += "<tr><td>" + i.Nome + "</td>";
                 resultImagem += "<td>" + i.Modelo + "</td>";
-                //resultImagem += "<td>" + i.Imagem + "</td>";
+                //resultImagem += @"<td><img src='~/Uploads/" + i.Imagem + @"' style='max-width:70px;' /></td>";
                 resultImagem += @"<td><a class='btn btn-success' href='/Imagens/Details/" + i.Id + @"' role='button'>
                                     <i class='fas fa-list'></i>
                                     Detalhes
