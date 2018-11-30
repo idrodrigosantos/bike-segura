@@ -187,18 +187,18 @@ null, null, null, 0, 0),
 
 insert into bicicletas (MarcasId, Modelo, TiposId, Cor, Tamanho, 
 CambiosDianteirosId, CambiosTraseirosId, FreiosId, SuspensoesId, ArosId, 
-QuadrosId, Informacoes, AlertaRoubo, Vendendo, Ativo, PessoasId) values 
-(638, 'TB NINER', 10, 'Branca', '21"', 3, 7, 3, 3, 9, 1, null, 0, 0, 0, 4),
-(96, 'Twister', 10, 'Amerela', '18"', 3, 7, 2, 1, 6, 1, null, 1, 0, 0, 4),
-(96, 'Andes', 10, 'Vermelha', '18"', 3, 7, 2, 2, 6, 1, 'Aro Aero', 0, 0, 0, 5),
-(266, 'GTS M1 Advanced New', 8, 'Preta', '29"', 3, 8, 4, null, 9, 2, 'Freio à disco Shimano hidráulico e câmbio Shimano 24 marchas.', 0, 1, 0, 6),
-(96, '100 Sport', 10, 'Preta/Amarela', '18"', 3, 7, 2, 2, 6, 2, null, 1, 0, 0, 7),
-(101, 'CAAD OPTIMO SORA', 4, 'Branca', '56', 2, 9, 5, 1, 10, 3, null, 1, 0, 0, 8),
-(96, 'TRS', 8, 'Azul', '18"', 3, 7, 2, 2, 6, 2, null, 0, 1, 0, 9),
-(259, 'SLAP70', 8, 'Azul', 'M', 1, 11, 4, 5, 9, 2, 'Alavanca de Freio Shimano BL-MT400 Hidráulico. Freio Shimano Disco BR-MT400 Hidráulico. Cubos "Hub" Shimano SLX M7010/M7010 Dianteiro eixo 15mm Traseiro 12mm/142mm.', 0, 0, 0, 10),
-(96, 'T-Type', 8, 'Preta Fosco', '18"', 3, 7, 1, 3, 6, 2, 'Trocador Shimano Easy Fire, Câmbio traseiro Shimano', 1, 0, 0, 11),
-(26, 'Ventus 3000', 4, 'Vermelha', null, 2, 11, 5, 1, 10, 3, null, 0, 0, 0, 12),
-(96, '10', 4, 'Preta/Dourada', 'M', 2, 7, 5, 1, 1, 2, 'Câmbio traseiro Shimano, câmbio dianteiro Shimano, pedivela Shimano', 0, 0, 0, 12);
+QuadrosId, Informacoes, AlertaRoubo, Vendendo, Ativo) values 
+(638, 'TB NINER', 10, 'Branca', '21"', 3, 7, 3, 3, 9, 1, null, 0, 0, 0),
+(96, 'Twister', 10, 'Amerela', '18"', 3, 7, 2, 1, 6, 1, null, 1, 0, 0),
+(96, 'Andes', 10, 'Vermelha', '18"', 3, 7, 2, 2, 6, 1, 'Aro Aero', 0, 0, 0),
+(266, 'GTS M1 Advanced New', 8, 'Preta', '29"', 3, 8, 4, null, 9, 2, 'Freio à disco Shimano hidráulico e câmbio Shimano 24 marchas.', 0, 1, 0),
+(96, '100 Sport', 10, 'Preta/Amarela', '18"', 3, 7, 2, 2, 6, 2, null, 1, 0, 0),
+(101, 'CAAD OPTIMO SORA', 4, 'Branca', '56', 2, 9, 5, 1, 10, 3, null, 1, 0, 0),
+(96, 'TRS', 8, 'Azul', '18"', 3, 7, 2, 2, 6, 2, null, 0, 1, 0),
+(259, 'SLAP70', 8, 'Azul', 'M', 1, 11, 4, 5, 9, 2, 'Alavanca de Freio Shimano BL-MT400 Hidráulico. Freio Shimano Disco BR-MT400 Hidráulico. Cubos "Hub" Shimano SLX M7010/M7010 Dianteiro eixo 15mm Traseiro 12mm/142mm.', 0, 0, 0),
+(96, 'T-Type', 8, 'Preta Fosco', '18"', 3, 7, 1, 3, 6, 2, 'Trocador Shimano Easy Fire, Câmbio traseiro Shimano', 1, 0, 0),
+(26, 'Ventus 3000', 4, 'Vermelha', null, 2, 11, 5, 1, 10, 3, null, 0, 0, 0),
+(96, '10', 4, 'Preta/Dourada', 'M', 2, 7, 5, 1, 1, 2, 'Câmbio traseiro Shimano, câmbio dianteiro Shimano, pedivela Shimano', 0, 0, 0);
 
 insert into imagens (Imagem, BicicletasId) values 
 ('tb_niner.png', 1), ('caloi-twister.jpg', 2), ('caloi-andes.jpg', 3), ('gts-m1-advanced-new.jpg', 4),
