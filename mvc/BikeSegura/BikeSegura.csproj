@@ -432,6 +432,7 @@
     <Content Include="Views\Pessoas\EsqueceuSenha.cshtml" />
     <Content Include="Views\Pessoas\ValidarEsqueceuSenha.cshtml" />
     <Content Include="Views\Home\LoginRecuperarSenha.cshtml" />
+    <Content Include="Views\Home\Logout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

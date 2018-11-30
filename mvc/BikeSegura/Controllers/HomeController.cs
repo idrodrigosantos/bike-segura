@@ -207,5 +207,19 @@ namespace BikeSegura.Controllers
             }
         }
         // LoginRecuperarSenha fim
+
+        // Logout início
+        public ActionResult Logout()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Logout(string sair)
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
+        // Logout fim
     }
 }

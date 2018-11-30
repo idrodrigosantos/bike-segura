@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Sair";
+    Layout = "~/Views/Shared/_Usuario.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container conteudo">
+        <form>
+            <div class="row">
+                <div class="form-group col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                    <h3>Deseja realmente sair?</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="botao-finalizar-serie">
+                    <div class="form-group col-lg-12">
+                        <a class="btn btn-success btn-lg" href="@Url.Action("DashboardUsuario", "Pessoas")" role="button">
+                            <i class="fas fa-times"></i>
+                            Não
+                        </a>
+                        <button type="submit" name="sair" class="btn btn-danger btn-lg">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Sim
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+}
