@@ -128,33 +128,6 @@ insert into marcas (Nome, Ativo) values
 ('YETI', 0), ('YOELEO', 0), ('YOSEMITE', 0), ('YT INDUSTRIES', 0), ('YUNBIKE', 0), ('ZENITH', 0), ('ZEPPELIN', 0), 
 ('ZIPP', 0), ('ZOHRER', 0), ('ZUMMI', 0), ('ZYMMER', 0), ('OUTRA', 0);
 
-insert into bicicletas (MarcasId, Modelo, TiposId, Cor, Tamanho, 
-CambiosDianteirosId, CambiosTraseirosId, FreiosId, SuspensoesId, ArosId, 
-QuadrosId, Informacoes, AlertaRoubo, Vendendo, Ativo) values 
-(638, 'TB NINER', 10, 'Branca', '21"', 3, 7, 3, 3, 9, 1, null, 0, 0, 0),
-(96, 'Twister', 10, 'Amerela', '18"', 3, 7, 2, 1, 6, 1, null, 1, 0, 0),
-(96, 'Andes', 10, 'Vermelha', '18"', 3, 7, 2, 2, 6, 1, 'Aro Aero', 0, 0, 0),
-(266, 'GTS M1 Advanced New', 8, 'Preta', '29"', 3, 8, 4, null, 9, 2, 'Freio à disco Shimano hidráulico e câmbio Shimano 24 marchas.', 0, 1, 0),
-(96, '100 Sport', 10, 'Preta/Amarela', '18"', 3, 7, 2, 2, 6, 2, null, 1, 0, 0),
-(101, 'CAAD OPTIMO SORA', 4, 'Branca', '56', 2, 9, 5, 1, 10, 3, null, 1, 0, 0),
-(96, 'TRS', 8, 'Azul', '18"', 3, 7, 2, 2, 6, 2, null, 0, 1, 0),
-(259, 'SLAP70', 8, 'Azul', 'M', 1, 11, 4, 5, 9, 2, 'Alavanca de Freio Shimano BL-MT400 Hidráulico. Freio Shimano Disco BR-MT400 Hidráulico. Cubos "Hub" Shimano SLX M7010/M7010 Dianteiro eixo 15mm Traseiro 12mm/142mm.', 0, 0, 0),
-(96, 'T-Type', 8, 'Preta Fosco', '18"', 3, 7, 1, 3, 6, 2, 'Trocador Shimano Easy Fire, Câmbio traseiro Shimano', 1, 0, 0),
-(26, 'Ventus 3000', 4, 'Vermelha', null, 2, 11, 5, 1, 10, 3, null, 0, 0, 0),
-(96, '10', 4, 'Preta/Dourada', 'M', 2, 7, 5, 1, 1, 2, 'Câmbio traseiro Shimano, câmbio dianteiro Shimano, pedivela Shimano', 0, 0, 0);
-
-insert into imagens (Imagem, BicicletasId) values 
-('tb_niner.png', 1), ('caloi-twister.jpg', 2), ('caloi-andes.jpg', 3), ('gts-m1-advanced-new.jpg', 4),
-('caloi-100.jpg', 5), ('cannondale-cadd-optimo-sora.png', 6), ('caloi-trs.jpg', 7), ('groove-slap70.png', 8),
-('caloi-ttype.jpg', 9), ('audax-ventus01.png', 10), ('audax-ventus02.png', 10), ('audax-ventus03.png', 10), 
-('caloi-10.jpg', 11);
-
-insert into numerosseries (Numero, BicicletasId, Ativo) values 
-('ABC1234CBA', 1, 0), ('987654321BR', 2, 0), ('TR1234', 3, 0), ('BR2018QWERTY', 4, 0),
-('987123', 5, 0), ('ZXCVB102030', 6, 0), ('ASDF9090', 7, 0), ('YTREWQ100NBVCXZ', 8, 0),
-('753ABC159', 9, 0), ('VENT123', 10, 0), ('VENT456', 10, 0), ('VENT789', 10, 0),
-('1020304050', 11, 0);
-
 insert into pessoas (Nome, Email, ConfirmaEmail, Senha, ConfirmaSenha, 
 Endereco, Numero, Complemento, Cep, Bairro, Cidade, Estado, 
 TelefoneUm, TelefoneDois, Cpf, DataNascimento, Genero, Imagem, 
@@ -211,6 +184,33 @@ null, null, null, 0, 0),
 'Travessa Natália Barros', '2', 'Casa', '10010-010', 'Cajá', 'Vitória de Santo Antão', 16, 
 '(99) 1001-0010', '(99) 91001-0010', '100.100.100-99', '1979-04-20', 1, 'perfil10.jpg', 
 'Leonardo Barros', '(81) 3917-9425', null, 0, 0);
+
+insert into bicicletas (MarcasId, Modelo, TiposId, Cor, Tamanho, 
+CambiosDianteirosId, CambiosTraseirosId, FreiosId, SuspensoesId, ArosId, 
+QuadrosId, Informacoes, AlertaRoubo, Vendendo, Ativo, PessoasId) values 
+(638, 'TB NINER', 10, 'Branca', '21"', 3, 7, 3, 3, 9, 1, null, 0, 0, 0, 4),
+(96, 'Twister', 10, 'Amerela', '18"', 3, 7, 2, 1, 6, 1, null, 1, 0, 0, 4),
+(96, 'Andes', 10, 'Vermelha', '18"', 3, 7, 2, 2, 6, 1, 'Aro Aero', 0, 0, 0, 5),
+(266, 'GTS M1 Advanced New', 8, 'Preta', '29"', 3, 8, 4, null, 9, 2, 'Freio à disco Shimano hidráulico e câmbio Shimano 24 marchas.', 0, 1, 0, 6),
+(96, '100 Sport', 10, 'Preta/Amarela', '18"', 3, 7, 2, 2, 6, 2, null, 1, 0, 0, 7),
+(101, 'CAAD OPTIMO SORA', 4, 'Branca', '56', 2, 9, 5, 1, 10, 3, null, 1, 0, 0, 8),
+(96, 'TRS', 8, 'Azul', '18"', 3, 7, 2, 2, 6, 2, null, 0, 1, 0, 9),
+(259, 'SLAP70', 8, 'Azul', 'M', 1, 11, 4, 5, 9, 2, 'Alavanca de Freio Shimano BL-MT400 Hidráulico. Freio Shimano Disco BR-MT400 Hidráulico. Cubos "Hub" Shimano SLX M7010/M7010 Dianteiro eixo 15mm Traseiro 12mm/142mm.', 0, 0, 0, 10),
+(96, 'T-Type', 8, 'Preta Fosco', '18"', 3, 7, 1, 3, 6, 2, 'Trocador Shimano Easy Fire, Câmbio traseiro Shimano', 1, 0, 0, 11),
+(26, 'Ventus 3000', 4, 'Vermelha', null, 2, 11, 5, 1, 10, 3, null, 0, 0, 0, 12),
+(96, '10', 4, 'Preta/Dourada', 'M', 2, 7, 5, 1, 1, 2, 'Câmbio traseiro Shimano, câmbio dianteiro Shimano, pedivela Shimano', 0, 0, 0, 12);
+
+insert into imagens (Imagem, BicicletasId) values 
+('tb_niner.png', 1), ('caloi-twister.jpg', 2), ('caloi-andes.jpg', 3), ('gts-m1-advanced-new.jpg', 4),
+('caloi-100.jpg', 5), ('cannondale-cadd-optimo-sora.png', 6), ('caloi-trs.jpg', 7), ('groove-slap70.png', 8),
+('caloi-ttype.jpg', 9), ('audax-ventus01.png', 10), ('audax-ventus02.png', 10), ('audax-ventus03.png', 10), 
+('caloi-10.jpg', 11);
+
+insert into numerosseries (Numero, BicicletasId, Ativo) values 
+('ABC1234CBA', 1, 0), ('987654321BR', 2, 0), ('TR1234', 3, 0), ('BR2018QWERTY', 4, 0),
+('987123', 5, 0), ('ZXCVB102030', 6, 0), ('ASDF9090', 7, 0), ('YTREWQ100NBVCXZ', 8, 0),
+('753ABC159', 9, 0), ('VENT123', 10, 0), ('VENT456', 10, 0), ('VENT789', 10, 0),
+('1020304050', 11, 0);
 
 insert into informacoesroubos (Cidade, Estado, Relato, LocalAdicional, DataRoubo, BicicletasId, Ativo) values 
 ('Caraguatatuba', 24, 'A bicicleta foi roubada no estacionamento do supermercado, no período da noite. Ela estava trancada no bicicletário, junto com outras bicicletas.', 
