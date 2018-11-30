@@ -61,13 +61,12 @@ namespace BikeSegura.Controllers
         // POST: Bicicletas/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,MarcasId,Modelo,TiposId,Cor,Imagem,CambiosDianteirosId,CambiosTraseirosId,FreiosId,SuspensoesId,ArosId,QuadrosId,Informacoes,Tamanho,AlertaRoubo,Vendendo,Ativo,PessoasId")] Bicicletas bicicletas)
+        public ActionResult Create([Bind(Include = "Id,MarcasId,Modelo,TiposId,Cor,Imagem,CambiosDianteirosId,CambiosTraseirosId,FreiosId,SuspensoesId,ArosId,QuadrosId,Informacoes,Tamanho,AlertaRoubo,Vendendo,Ativo")] Bicicletas bicicletas)
         {
             if (ModelState.IsValid)
             {
                 var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
                 int idlogado = Convert.ToInt32(usu);
-                bicicletas.PessoasId = idlogado;
                 db.Bicicletas.Add(bicicletas);
                 db.SaveChanges();
                 // Pega o ID da bicicleta cadastrada
@@ -118,14 +117,13 @@ namespace BikeSegura.Controllers
             ViewBag.QuadrosId = new SelectList(db.Quadros.Where(w => w.Ativo == 0), "Id", "Material", bicicletas.QuadrosId);
             ViewBag.SuspensoesId = new SelectList(db.Suspensoes.Where(w => w.Ativo == 0), "Id", "Nome", bicicletas.SuspensoesId);
             ViewBag.TiposId = new SelectList(db.Tipos.Where(w => w.Ativo == 0), "Id", "Nome", bicicletas.TiposId);
-            ViewBag.PessoasId = new SelectList(db.Pessoas.Where(w => w.Ativo == (OpcaoStatusPessoas)1), "Id", "Nome", bicicletas.PessoasId);
             return View(bicicletas);
         }
 
         // POST: Bicicletas/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,MarcasId,Modelo,TiposId,Cor,Imagem,CambiosDianteirosId,CambiosTraseirosId,FreiosId,SuspensoesId,ArosId,QuadrosId,Informacoes,Tamanho,AlertaRoubo,Vendendo,Ativo,PessoasId")] Bicicletas bicicletas)
+        public ActionResult Edit([Bind(Include = "Id,MarcasId,Modelo,TiposId,Cor,Imagem,CambiosDianteirosId,CambiosTraseirosId,FreiosId,SuspensoesId,ArosId,QuadrosId,Informacoes,Tamanho,AlertaRoubo,Vendendo,Ativo")] Bicicletas bicicletas)
         {
             if (ModelState.IsValid)
             {
@@ -141,7 +139,6 @@ namespace BikeSegura.Controllers
             ViewBag.QuadrosId = new SelectList(db.Quadros, "Id", "Material", bicicletas.QuadrosId);
             ViewBag.SuspensoesId = new SelectList(db.Suspensoes, "Id", "Nome", bicicletas.SuspensoesId);
             ViewBag.TiposId = new SelectList(db.Tipos, "Id", "Nome", bicicletas.TiposId);
-            ViewBag.PessoasId = new SelectList(db.Pessoas, "Id", "Nome", bicicletas.PessoasId);
             return View(bicicletas);
         }
 
