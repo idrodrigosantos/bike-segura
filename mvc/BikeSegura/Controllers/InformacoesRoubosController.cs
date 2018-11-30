@@ -47,8 +47,28 @@ namespace BikeSegura.Controllers
         {
             var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
             int idlogado = Convert.ToInt32(usu);
-            ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0 && w.PessoasId == idlogado), "Id", "Modelo");
-            //ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0), "Id", "Modelo");
+            //ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0 && w.PessoasId == idlogado), "Id", "Modelo");
+
+            //var resultado = db.InformacoesRoubos
+            //    .Join(db.Bicicletas, inf => inf.BicicletasId, bic => bic.Id, (inf, bic) => new { inf, bic })
+            //    .Join(db.Historicos, inf => inf.bic.Id, his => his.BicicletasId, (inf, his) => new { inf, his })
+            //    .Select(x => new
+            //    {
+            //        x.his.CompradorId,
+            //        //x.inf.inf.Cidade,
+            //        //x.inf.inf.Estado,
+            //        //x.inf.inf.LocalAdicional,
+            //        //x.inf.inf.DataRoubo,
+            //        //x.inf.bic.Modelo,
+            //        //x.inf.bic.Marcas.Nome,
+            //        //x.inf.inf.Id
+            //        x.inf.bic.Id
+            //    }).Where(w => w.CompradorId == idlogado).ToList();
+            //foreach(var x in resultado)
+            //{
+            //    x.Id;
+            //}
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Id == 0), "Id", "Modelo");
             return View();
         }
 
@@ -129,14 +149,57 @@ namespace BikeSegura.Controllers
         }
 
         [Authorize]
-        // GET: InformacoesRoubos
+        // GET: ListaNumerosSeries
         public ActionResult ListaUsuario()
         {
-            var informacoesRoubos = db.InformacoesRoubos.Include(i => i.Bicicletas);
+            //var numerosSeries = db.NumerosSeries.Include(n => n.Bicicletas);
             var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
             int idlogado = Convert.ToInt32(usu);
-            return View(informacoesRoubos.Where(w => w.Ativo == 0 && w.Bicicletas.PessoasId == idlogado).ToList());
-            //return View(informacoesRoubos.Where(w => w.Ativo == 0).ToList());
+
+            var resultado = db.InformacoesRoubos
+                .Join(db.Bicicletas, inf => inf.BicicletasId, bic => bic.Id, (inf, bic) => new { inf, bic })
+                .Join(db.Historicos, inf => inf.bic.Id, his => his.BicicletasId, (inf, his) => new { inf, his })
+                .Select(x => new
+                {
+                    x.his.CompradorId,
+                    x.inf.inf.Cidade,
+                    x.inf.inf.Estado,
+                    x.inf.inf.LocalAdicional,
+                    x.inf.inf.DataRoubo,
+                    x.inf.bic.Modelo,
+                    x.inf.bic.Marcas.Nome,
+                    x.inf.inf.Id
+                }).Where(w => w.CompradorId == idlogado).ToList();
+
+            string resulNumero = "", resulMarca = "", resulModelo = "", resulTipo = "";
+            foreach (var i in resultado)
+            {
+                resulNumero += "<tr><td>" + i.Cidade + "</td>";
+                resulNumero += "<td>" + i.Estado + "</td>";
+                resulNumero += "<td>" + i.LocalAdicional + "</td>";
+                resulNumero += "<td>" + i.Nome + "</td>";
+                resulNumero += "<td>" + i.Modelo + "</td>";
+                resulNumero += "<td>" + i.DataRoubo.ToString("dd/MM/yyyy") + "</td>";
+                resulNumero += @"<td><a class='btn btn-success' href='/InformacoesRoubos/Details/" + i.Id + @"' role='button'>
+                                    <i class='fas fa-list'></i>
+                                    Detalhes
+                                </a></td>";
+                resulNumero += @"<td><a class='btn btn-primary' href='/InformacoesRoubos/Edit/" + i.Id + @"' role='button'>
+                                    <i class='fas fa-pen'></i>
+                                    Editar
+                                </a></td>";
+                resulNumero += @"<td><a class='btn btn-danger' href='/InformacoesRoubos/Delete/" + i.Id + @"' role='button'>
+                                    <i class='fas fa-times'></i>
+                                    Excluir
+                                </a></td></tr>";
+            }
+
+            ViewData["NUMERO"] = resulNumero;
+            ViewData["MARCA"] = resulMarca;
+            ViewData["MODELO"] = resulModelo;
+            ViewData["TIPO"] = resulTipo;
+
+            return View();
         }
 
         protected override void Dispose(bool disposing)
