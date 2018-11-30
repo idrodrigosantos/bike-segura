@@ -45,8 +45,21 @@ namespace BikeSegura.Controllers
         {
             var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
             int idlogado = Convert.ToInt32(usu);
-            ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0 && w.PessoasId == idlogado), "Id", "Modelo");
-            //ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0), "Id", "Modelo");
+            //ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0 && w.PessoasId == idlogado), "Id", "Modelo");
+
+            //var resultado = db.Imagens
+            //    .Join(db.Bicicletas, ima => ima.BicicletasId, bic => bic.Id, (ima, bic) => new { ima, bic })
+            //    .Join(db.Historicos, ima => ima.bic.Id, his => his.BicicletasId, (ima, his) => new { ima, his })
+            //    .Select(x => new
+            //    {
+            //        x.his.CompradorId,
+            //        //x.ima.ima.Imagem,
+            //        //x.ima.bic.Modelo,
+            //        //x.ima.bic.Marcas.Nome,
+            //        x.ima.ima.Id
+            //    }).Where(w => w.CompradorId == idlogado).ToList();
+
+            ViewBag.BicicletasId = new SelectList(db.Bicicletas.Where(w => w.Ativo == 0), "Id", "Modelo");
             return View();
         }
 
@@ -161,15 +174,54 @@ namespace BikeSegura.Controllers
         }
 
         [Authorize]
-        // Index de Imagens do Usuário
+        // GET: ListaNumerosSeries
         public ActionResult ListaUsuario()
         {
-            var imagens = db.Imagens.Include(i => i.Bicicletas);
             var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
             int idlogado = Convert.ToInt32(usu);
-            return View(imagens.Where(w => w.Bicicletas.PessoasId == idlogado).ToList());
-            //return View(imagens.ToList());
+
+            var resultado = db.Imagens
+                .Join(db.Bicicletas, ima => ima.BicicletasId, bic => bic.Id, (ima, bic) => new { ima, bic })
+                .Join(db.Historicos, ima => ima.bic.Id, his => his.BicicletasId, (ima, his) => new { ima, his })
+                .Select(x => new
+                {
+                    x.his.CompradorId,
+                    //x.ima.ima.Imagem,
+                    x.ima.bic.Modelo,
+                    x.ima.bic.Marcas.Nome,
+                    x.ima.ima.Id
+                }).Where(w => w.CompradorId == idlogado).ToList();
+
+            string resulNumero = "", resulMarca = "", resulModelo = "", resulTipo = "";
+            foreach (var i in resultado)
+            {
+                resulNumero += "<tr><td>" + i.Nome + "</td>";
+                resulNumero += "<td>" + i.Modelo + "</td>";
+                //resulNumero += "<td>" + i.Imagem + "</td>";
+                resulNumero += @"<td><a class='btn btn-success' href='/Imagens/Details/" + i.Id + @"' role='button'>
+                                    <i class='fas fa-list'></i>
+                                    Detalhes
+                                </a></td>";
+                resulNumero += @"<td><a class='btn btn-primary' href='/Imagens/Edit/" + i.Id + @"' role='button'>
+                                    <i class='fas fa-pen'></i>
+                                    Editar
+                                </a></td>";
+                resulNumero += @"<td><a class='btn btn-danger' href='/Imagens/Delete/" + i.Id + @"' role='button'>
+                                    <i class='fas fa-times'></i>
+                                    Excluir
+                                </a></td></tr>";
+            }
+
+            ViewData["NUMERO"] = resulNumero;
+            ViewData["MARCA"] = resulMarca;
+            ViewData["MODELO"] = resulModelo;
+            ViewData["TIPO"] = resulTipo;
+
+            return View();
         }
+
+
+
 
         protected override void Dispose(bool disposing)
         {
