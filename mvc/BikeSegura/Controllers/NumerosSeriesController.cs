@@ -320,11 +320,12 @@ namespace BikeSegura.Controllers
                 {
                     x.his.CompradorId,
                     x.num.num.Numero,
+                    x.num.num.Ativo,
                     x.num.bic.Marcas.Nome,
                     x.num.bic.Modelo,
                     x.num.num.Tipo,
                     x.num.num.Id
-                }).Where(w => w.CompradorId == idlogado).ToList();
+                }).Where(w => w.CompradorId == idlogado && w.Ativo == 0).ToList();
 
             string resultNumero = "";
             foreach (var i in resultado)

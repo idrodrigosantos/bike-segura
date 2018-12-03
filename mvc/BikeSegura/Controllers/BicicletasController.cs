@@ -127,9 +127,18 @@ namespace BikeSegura.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(bicicletas).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("DashboardUsuario", "Pessoas");
+                if (bicicletas.AlertaRoubo == (OpcaoAlertaRoubo)1)
+                {
+                    db.Entry(bicicletas).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Create", "InformacoesRoubos");
+                }
+                else
+                {
+                    db.Entry(bicicletas).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("DashboardUsuario", "Pessoas");
+                }
             }
             ViewBag.ArosId = new SelectList(db.Aros, "Id", "Medida", bicicletas.ArosId);
             ViewBag.CambiosDianteirosId = new SelectList(db.CambiosDianteiros, "Id", "Velocidade", bicicletas.CambiosDianteirosId);

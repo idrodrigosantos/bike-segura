@@ -153,11 +153,12 @@ namespace BikeSegura.Controllers
                     x.inf.inf.Cidade,
                     x.inf.inf.Estado,
                     x.inf.inf.LocalAdicional,
+                    x.inf.inf.Ativo,
                     x.inf.bic.Marcas.Nome,
                     x.inf.bic.Modelo,
                     x.inf.inf.DataRoubo,
                     x.inf.inf.Id
-                }).Where(w => w.CompradorId == idlogado).ToList();
+                }).Where(w => w.CompradorId == idlogado && w.Ativo == 0).ToList();
 
             string resultInfo = "";
             foreach (var i in resultado)
