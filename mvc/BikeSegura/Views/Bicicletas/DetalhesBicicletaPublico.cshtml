@@ -8,13 +8,29 @@
     <div class="table-responsive table-sm">
         <table class="table table-hover">
             @*<tr>
+                    <td>
+                        <strong>Proprietário</strong>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Pessoas.Nome)
+                    </td>
+                </tr>*@
+            <tr>
                 <td>
-                    <strong>Proprietário</strong>
+                    <strong>@Html.DisplayNameFor(model => model.AlertaRoubo)</strong>
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.Pessoas.Nome)
+                    @Html.DisplayFor(model => model.AlertaRoubo)
                 </td>
-            </tr>*@
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.DisplayNameFor(model => model.Vendendo)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Vendendo)
+                </td>
+            </tr>
             <tr>
                 <td>
                     <strong>Imagem(s) da Bicicleta</strong>
@@ -122,22 +138,11 @@
                     @Html.DisplayFor(model => model.Informacoes)
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <strong>@Html.DisplayNameFor(model => model.AlertaRoubo)</strong>
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.AlertaRoubo)
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>@Html.DisplayNameFor(model => model.Vendendo)</strong>
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.Vendendo)
-                </td>
-            </tr>
         </table>
+        <div class="form-group col-sm-12">
+            <div class="botao-salvar">
+                <input type="button" class="btn btn-success" value="Voltar" onClick="history.go(-1)">
+            </div>
+        </div>
     </div>
 </div>

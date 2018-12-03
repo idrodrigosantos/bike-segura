@@ -18,7 +18,7 @@
             </div>
             <div class="form-group col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                 @Html.LabelFor(model => model.Imagem, "Foto(s) da Bicicleta (*)", htmlAttributes: new { @class = "control-label" })
-                <input type="file" name="arquivoimg" class="form-control-file" multiple />
+                <input type="file" name="arquivoimg" class="form-control-file" multiple required="required" />
                 @Html.ValidationMessageFor(model => model.Imagem, "", new { @class = "text-danger" })
             </div>
             <div class="form-group col-md-8 offset-md-2 col-lg-6 offset-lg-3">

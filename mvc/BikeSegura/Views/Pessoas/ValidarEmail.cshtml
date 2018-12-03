@@ -9,6 +9,12 @@
         <form>
             <div class="row">
                 <div class="form-group col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                    <h4>Validar E-mail.</h4>
+                    <p>Para validar seu e-mail, digite seu e-mail e o código de validação enviado para seu e-mail.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                     <label>E-mail (*)</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="nome@email.com" required="required">
                 </div>
@@ -36,34 +42,6 @@
     </div>
 }
 
-<!-- Modal -->
-<div class="modal fade" id="modalValidacao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Validar E-mail</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="alert alert-success" role="alert">
-                    Cadastro realizado com sucesso.
-                </div>
-                Para validar seu e-mail, digite seu e-mail e o código de validação enviado para seu e-mail.
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        $(document).ready(function () {
-            $('#modalValidacao').modal('show');
-        })
-    </script>
+    @Scripts.Render("~/bundles/jqueryval")    
 }
