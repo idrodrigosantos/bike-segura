@@ -145,6 +145,32 @@ namespace BikeSegura.Controllers
             return View(relatosRoubos.Where(w => w.Ativo == 0 && w.Pessoas.Id == idlogado).ToList());
         }
 
+        [Authorize]
+        // GET: RelatosBicicleta
+        public ActionResult RelatosBicicleta()
+        {
+            var relatosRoubos = db.RelatosRoubos.Include(r => r.InformacoesRoubos).Include(r => r.Pessoas);
+            var usu = System.Web.HttpContext.Current.User.Identity.Name.Split('|')[0];
+            int idlogado = Convert.ToInt32(usu);
+            return View(relatosRoubos.Where(w => w.Ativo == 0).ToList());            
+        }
+
+        [Authorize]
+        // GET: RelatosRoubos/DetalhesRelatosBicicleta
+        public ActionResult DetalhesRelatosBicicleta(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            RelatosRoubos relatosRoubos = db.RelatosRoubos.Find(id);
+            if (relatosRoubos == null)
+            {
+                return HttpNotFound();
+            }
+            return View(relatosRoubos);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
