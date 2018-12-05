@@ -186,7 +186,6 @@ namespace BikeSegura.Controllers
                     x.his.Ativo,
                     x.ima.bic.Marcas.Nome,
                     x.ima.bic.Modelo,
-                    //x.ima.ima.Imagem,
                     x.ima.ima.Id
                 }).Where(w => w.CompradorId == idlogado && w.Ativo == 0).ToList();
 
@@ -195,7 +194,6 @@ namespace BikeSegura.Controllers
             {
                 resultImagem += "<tr><td>" + i.Nome + "</td>";
                 resultImagem += "<td>" + i.Modelo + "</td>";
-                //resultImagem += @"<td><img src='~/Uploads/" + i.Imagem + @"' style='max-width:70px;' /></td>";
                 resultImagem += @"<td><a class='btn btn-success' href='/Imagens/Details/" + i.Id + @"' role='button'>
                                     <i class='fas fa-list'></i>
                                     Detalhes

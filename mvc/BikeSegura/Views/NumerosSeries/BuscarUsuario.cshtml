@@ -13,7 +13,7 @@
             <div class="form-group col-lg-8 offset-lg-2">
                 @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
                 <label class="control-label">Número de Série da Bicicleta</label>
-                <input class="form-control" type="text" name="nome" required="required"/>
+                <input class="form-control" type="text" name="nome" required="required" />
             </div>
             <div class="form-group col-lg-8 offset-lg-2">
                 <button class="btn btn-primary" id="Buscar" value="Buscar" name="Buscar" formmethod="post">
@@ -49,9 +49,6 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.Bicicletas.Vendendo)
                             </th>
-                            @*<th>
-                                Proprietário
-                            </th>*@
                             <th></th>
                         </tr>
                     </thead>
@@ -80,9 +77,6 @@
                                 <td>
                                     @Html.DisplayFor(model => item.Bicicletas.Vendendo)
                                 </td>
-                                @*<td>
-                                    @Html.DisplayFor(model => item.Bicicletas.Pessoas.Nome)
-                                </td>*@
                                 <td>
                                     <div class="btn" role="group">
                                         @using (Html.BeginForm())

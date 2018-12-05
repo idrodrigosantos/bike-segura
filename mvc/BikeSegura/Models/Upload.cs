@@ -13,7 +13,7 @@ namespace BikeSegura.Models
             string novodiretorio = HttpContext.Current.Request.PhysicalApplicationPath + "Uploads\\";
             if (!Directory.Exists(novodiretorio))
             {
-                //Caso não exista devermos criar
+                //Caso não exista deve criar
                 Directory.CreateDirectory(novodiretorio);
                 return true;
             }

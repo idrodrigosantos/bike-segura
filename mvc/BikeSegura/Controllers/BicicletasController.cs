@@ -80,9 +80,9 @@ namespace BikeSegura.Controllers
                 hist.DataAquisicao = DateTime.Now;
                 db.Historicos.Add(hist);
                 db.SaveChanges();
+                //return RedirectToAction("Index");
                 // Antes, após cadastrar a bicicleta a página era redirecionada para a index,
                 //  agora a página é redirecionada para a página de cadastro de número de série
-                //return RedirectToAction("Index");
                 return RedirectToAction("Create", "NumerosSeries", new { id = bicicletas.Id });
             }
             ViewBag.ArosId = new SelectList(db.Aros, "Id", "Medida", bicicletas.ArosId);

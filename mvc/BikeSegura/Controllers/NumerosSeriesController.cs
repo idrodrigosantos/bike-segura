@@ -80,16 +80,6 @@ namespace BikeSegura.Controllers
                 }
             }
             return View(numerosSeries);
-            /*
-            if (ModelState.IsValid)
-            {
-                db.NumerosSeries.Add(numerosSeries);
-                db.SaveChanges();
-                return RedirectToAction("CreateAdicional", "NumerosSeries", new { id = numerosSeries.BicicletasId });
-            }
-            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", numerosSeries.BicicletasId);
-            return View(numerosSeries);
-            */
         }
 
         [Authorize]
@@ -167,16 +157,6 @@ namespace BikeSegura.Controllers
                 }
             }
             return View(numerosSeries);
-            /*
-            if (ModelState.IsValid)
-            {
-                db.NumerosSeries.Add(numerosSeries);
-                db.SaveChanges();
-                return RedirectToAction("ListaNumerosSeries", "NumerosSeries");
-            }
-            ViewBag.BicicletasId = new SelectList(db.Bicicletas, "Id", "Modelo", numerosSeries.BicicletasId);
-            return View(numerosSeries);
-            */
         }
 
         [Authorize]
