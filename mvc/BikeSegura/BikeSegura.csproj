@@ -203,7 +203,6 @@
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.min.css" />
-    <Content Include="Content\bootstrap-select.min.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\meu-estilo.css" />
     <Content Include="Content\fontawesome\css\all.min.css" />
@@ -226,7 +225,6 @@
     <Content Include="Img\marca-publico.png" />
     <Content Include="Img\marca-usuario.png" />
     <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Scripts\bootstrap-select.min.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\Chart.min.js" />

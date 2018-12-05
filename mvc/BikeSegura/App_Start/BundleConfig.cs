@@ -33,16 +33,12 @@ namespace BikeSegura
                       "~/Scripts/Chart.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/holder").Include(
-                      "~/Scripts/holder.min.js"));            
-
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap-select").Include(
-                      "~/Scripts/bootstrap-select.min.js"));
+                      "~/Scripts/holder.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.min.css",
                       "~/Content/meu-estilo.css",
-                      "~/Content/fontawesome/css/all.min.css",
-                      "~/Content/bootstrap-select.min.css",
+                      "~/Content/fontawesome/css/all.min.css",                      
                       "~/Content/toastr.min.css"));
         }
     }
