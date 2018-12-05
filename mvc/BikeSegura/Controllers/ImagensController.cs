@@ -51,9 +51,10 @@ namespace BikeSegura.Controllers
                 .Select(x => new
                 {
                     x.his.CompradorId,
+                    x.his.Ativo,
                     x.inf.Id,
                     x.inf.Modelo
-                }).Where(w => w.CompradorId == idlogado).ToList();
+                }).Where(w => w.CompradorId == idlogado && w.Ativo == 0).ToList();
 
             ViewBag.BicicletasId = new SelectList(resultado, "Id", "Modelo");
             return View();
@@ -182,11 +183,12 @@ namespace BikeSegura.Controllers
                 .Select(x => new
                 {
                     x.his.CompradorId,
+                    x.his.Ativo,
                     x.ima.bic.Marcas.Nome,
                     x.ima.bic.Modelo,
                     //x.ima.ima.Imagem,
                     x.ima.ima.Id
-                }).Where(w => w.CompradorId == idlogado).ToList();
+                }).Where(w => w.CompradorId == idlogado && w.Ativo == 0).ToList();
 
             string resultImagem = "";
             foreach (var i in resultado)
