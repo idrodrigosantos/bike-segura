@@ -209,6 +209,9 @@
     <Content Include="Content\fontawesome\webfonts\fa-brands-400.svg" />
     <Content Include="Content\fontawesome\webfonts\fa-solid-900.svg" />
     <Content Include="Content\toastr.min.css" />
+    <Content Include="Database\create-database.sql" />
+    <Content Include="Database\inserts.sql" />
+    <Content Include="Database\modelo-entidade-relacionamento.png" />
     <Content Include="favicon.ico" />
     <Content Include="faviconbike.ico" />
     <Content Include="Global.asax" />
