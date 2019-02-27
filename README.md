@@ -10,19 +10,19 @@ Softwares necessários:
 * MySQL Community Server
 
 ### Instalando
-No MySQL, execute o arquivo `create-database.sql` que está na pasta `banco-de-dados` do projeto:
+No MySQL, execute o arquivo `create-database.sql` que está na pasta `Database` do projeto:
 ```
-bike-segura -> banco-de-dados -> create-database.sql
+BikeSegura -> Database -> create-database.sql
 ```
 Este arquivo irá criar o banco de dados chamado `bikesegura`.
 
 Após criar o banco de dados, execute o arquivo `inserts.sql` no MySQL, este arquivo irá popular o banco de dados:
 ```
-bike-segura -> banco-de-dados -> inserts.sql
+BikeSegura -> Database -> inserts.sql
 ```
 No Visual Studio, abra o arquivo `BikeSegura.sln` que está na pasta `mvc` do projeto:
 ```
-File -> Open -> Project/Solution -> bike-segura -> mvc -> BikeSegura.sln
+File -> Open -> Project/Solution -> bike-segura -> BikeSegura -> BikeSegura.sln
 ```
 Após abrir o projeto, execute-o:
 ```
@@ -44,11 +44,6 @@ E-mail: usuario@email.com
 Senha: bike2018
 ```
 Ou acesse por algum usuário do banco de dados, por padrão todos estão com a senha `bike2018`.
-
-### Criar novo usuário
-Caso queira criar um novo usuário, na página inicial, clique no botão `Cadastre-se`, na barra de navegação, no canto superior direito, preencha os campos obrigatórios.
-
-Após o cadastro ser efetuado com sucesso, a página será redirecionada para a página de login. Na página de login, digite o e-mail e senha cadastrados anteriormente, acesse o sistema e faça os testes e alterações desejados.
 
 ## Desenvolvido com
 * ASP.NET MVC
