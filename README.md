@@ -1,5 +1,5 @@
 # Bike Segura
-Sistema de registro de bicicletas.
+Sistema de registro de bicicletas desenvolvido para o trabalho de graduação do curso de análise e desenvolvimento de sistemas.
 
 ## Primeiros passos
 Essas instruções farão com que você tenha uma cópia do projeto para executar na sua máquina local para fins de desenvolvimento e teste.
