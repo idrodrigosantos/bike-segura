@@ -2,35 +2,35 @@
 	Todos os dados deste banco de dados são apenas para fins didáticos, gerados aleatoriamente,
 	qualquer semelhança com informaçãoes e dados reais, são mera coincidência.
 */
-use bikesegura;
+USE bikesegura;
 
-insert into aros (Medida, Ativo) values 
+INSERT INTO aros (Medida, Ativo) VALUES 
 ('Aro 12', 0), ('Aro 14', 0), ('Aro 16', 0), ('Aro 20', 0), ('Aro 24', 0), ('Aro 26', 0), 
 ('Aro 27,5', 0), ('Aro 28', 0), ('Aro 29', 0), ('Aro 700', 0), ('OUTRO', 0);
 
-insert into cambiosdianteiros (Velocidade, Ativo) values 
+INSERT INTO cambiosdianteiros (Velocidade, Ativo) VALUES 
 ('1 Velocidade', 0), ('2 Velocidades', 0), ('3 Velocidades', 0), ('OUTRA', 0);
 
-insert into cambiostraseiros (Velocidade, Ativo) values 
+INSERT INTO cambiostraseiros (Velocidade, Ativo) VALUES 
 ('1 Velocidade', 0), ('2 Velocidades', 0), ('3 Velocidades', 0), ('4 Velocidades', 0), ('5 Velocidades', 0), 
 ('6 Velocidades', 0), ('7 Velocidades', 0), ('8 Velocidades', 0), ('9 Velocidades', 0), ('10 Velocidades', 0), 
 ('11 Velocidades', 0), ('OUTRA', 0);
 
-insert into freios (Nome, Ativo) values 
+INSERT INTO freios (Nome, Ativo) VALUES 
 ('Cantilever', 0), ('V-Break', 0), ('Freio à disco mecânico', 0), ('Freio à disco hidráulico', 0), 
 ('Tipo Ferradura / Caliper', 0), ('Hidráulico', 0),  ('OUTRO', 0);
 
-insert into quadros (Material, Ativo) values 
+INSERT INTO quadros (Material, Ativo) VALUES 
 ('Aço', 0), ('Alumínio', 0), ('Fibra de Carbono', 0), ('OUTRO', 0);
 
-insert into suspensoes (Nome, Ativo) values 
+INSERT INTO suspensoes (Nome, Ativo) VALUES 
 ('Rígida', 0), ('Eslastômeros', 0), ('Molas', 0), ('Hidráulica (Ar/Óleo)', 0), ('Full Suspension', 0), ('OUTRO', 0);
 
-insert into tipos (Nome, Ativo) values 
+INSERT INTO tipos (Nome, Ativo) VALUES 
 ('BMX / Cross', 0), ('Dobrável', 0), ('Downhill', 0), ('Estrada / Speed / Road / Corrida', 0), ('Handbike', 0), ('Híbrida', 0), ('Infantil', 0), 
 ('Mountain Bike', 0), ('Triatlo', 0), ('Urbana', 0), ('Infantil', 0), ('Elétrica', 0), ('Fixa / Fixed Gear Bike / Bike Fixa', 0), ('OUTRO', 0);
 
-insert into marcas (Nome, Ativo) values
+INSERT INTO marcas (Nome, Ativo) VALUES
 ('24SEVEN', 0), ('4EVER', 0), ('88', 0), ('ABICI', 0), ('ABSOLUTE', 0), ('ACADEMY', 0), ('ADVENTURE', 0), ('AEGIS', 0), 
 ('AEROTECH', 0), ('AIRBORNE', 0), ('AIRWALK', 0), ('AKRON', 0), ('ALEOCA', 0), ('ALFAMEQ', 0), ('ALL-CITY', 0), 
 ('AMF GLORIA MILANO', 0), ('APEX', 0), ('APOLLO', 0), ('ARAYA', 0), ('ARGON 18', 0), ('AROPEC', 0), ('ASPRILLE', 0), 
@@ -128,10 +128,10 @@ insert into marcas (Nome, Ativo) values
 ('YETI', 0), ('YOELEO', 0), ('YOSEMITE', 0), ('YT INDUSTRIES', 0), ('YUNBIKE', 0), ('ZENITH', 0), ('ZEPPELIN', 0), 
 ('ZIPP', 0), ('ZOHRER', 0), ('ZUMMI', 0), ('ZYMMER', 0), ('OUTRA', 0);
 
-insert into pessoas (Nome, Email, ConfirmaEmail, Senha, ConfirmaSenha, 
+INSERT INTO pessoas (Nome, Email, ConfirmaEmail, Senha, ConfirmaSenha, 
 Endereco, Numero, Complemento, Cep, Bairro, Cidade, Estado, 
 TelefoneUm, TelefoneDois, Cpf, DataNascimento, Genero, Imagem, 
-NomeContato, TelefoneContatoUm, TelefoneContatoDois, TipoUsuario, Ativo, DataCadastro) values 
+NomeContato, TelefoneContatoUm, TelefoneContatoDois, TipoUsuario, Ativo, DataCadastro) VALUES 
 ('Administrador', 'adm@email.com', 'adm@email.com', '122705f49b13a7d2f378eedf8581f02222b6753a6cb6417d77cfbc4884df74ea6ae7699951470f06c34f5c782b7210c34e867f1d0e5d8fcc4e94adb5ab8e8e79', '122705f49b13a7d2f378eedf8581f02222b6753a6cb6417d77cfbc4884df74ea6ae7699951470f06c34f5c782b7210c34e867f1d0e5d8fcc4e94adb5ab8e8e79', 
 null, null, null, null, null, null, null, '(11) 1111-1111', null, '111.111.111-11', 
 null, null, 'user01.jpg', null, null, null, 1, 1, null), 
@@ -179,9 +179,9 @@ null, null, null, 0, 1, '2018-10-11'),
 '(99) 1001-0010', '(99) 91001-0010', '100.100.100-99', '1979-04-20', 1, 'perfil10.jpg', 
 'Leonardo Barros', '(81) 3917-9425', null, 0, 1, '2018-11-10');
 
-insert into bicicletas (MarcasId, Modelo, TiposId, Cor, Tamanho, 
+INSERT INTO bicicletas (MarcasId, Modelo, TiposId, Cor, Tamanho, 
 CambiosDianteirosId, CambiosTraseirosId, FreiosId, SuspensoesId, ArosId, 
-QuadrosId, Informacoes, AlertaRoubo, Vendendo, Ativo) values 
+QuadrosId, Informacoes, AlertaRoubo, Vendendo, Ativo) VALUES 
 (638, 'TB NINER', 10, 'Branca', '21"', 3, 7, 3, 3, 9, 1, null, 0, 0, 0),
 (96, 'Twister', 10, 'Amerela', '18"', 3, 7, 2, 1, 6, 1, null, 1, 0, 0),
 (96, 'Andes', 10, 'Vermelha', '18"', 3, 7, 2, 2, 6, 1, 'Aro Aero', 0, 0, 0),
@@ -194,19 +194,19 @@ QuadrosId, Informacoes, AlertaRoubo, Vendendo, Ativo) values
 (26, 'Ventus 3000', 4, 'Vermelha', null, 2, 11, 5, 1, 10, 3, null, 0, 0, 0),
 (96, '10', 4, 'Preta/Dourada', 'M', 2, 7, 5, 1, 1, 2, 'Câmbio traseiro Shimano, câmbio dianteiro Shimano, pedivela Shimano', 0, 0, 0);
 
-insert into imagens (Imagem, BicicletasId) values 
+INSERT INTO imagens (Imagem, BicicletasId) VALUES 
 ('tb_niner.png', 1), ('caloi-twister.jpg', 2), ('caloi-andes.jpg', 3), ('gts-m1-advanced-new.jpg', 4),
 ('caloi-100.jpg', 5), ('cannondale-cadd-optimo-sora.png', 6), ('caloi-trs.jpg', 7), ('groove-slap70.png', 8),
 ('caloi-ttype.jpg', 9), ('audax-ventus01.png', 10), ('audax-ventus02.png', 10), ('audax-ventus03.png', 10), 
 ('caloi-10.jpg', 11);
 
-insert into numerosseries (Numero, BicicletasId, Tipo, Ativo) values 
+INSERT INTO numerosseries (Numero, BicicletasId, Tipo, Ativo) VALUES 
 ('ABC123', 1, 0, 0), ('7582135BR', 2, 0, 0), ('TR1234', 3, 0, 0), ('78797RGT2312412412', 4, 0, 0),
 ('987123', 5, 0, 0), ('QJENGLOPRK10', 6, 0, 0), ('GJU7UDJ', 7, 0, 0), ('GHDBRYQIA10', 8, 0, 0),
 ('456ADC789', 9, 0, 0), ('VENT728325', 10, 0, 0), ('VENT859481', 10, 0, 0), ('VENT193748', 10, 0, 0),
 ('15258514DAG', 11, 0, 0);
 
-insert into informacoesroubos (Cidade, Estado, Relato, LocalAdicional, DataRoubo, BicicletasId, Ativo) values 
+INSERT INTO informacoesroubos (Cidade, Estado, Relato, LocalAdicional, DataRoubo, BicicletasId, Ativo) VALUES 
 ('Caraguatatuba', 24, 'A bicicleta foi roubada no estacionamento do supermercado, no período da noite. Ela estava trancada no bicicletário, junto com outras bicicletas.', 
 'Centro', '2017-12-20', 2, 0),
 ('Londrina', 15, 'A bicicleta estava trancada em um poste em frente a lotérica, entre às 10h00 e 10h30.', 
@@ -216,13 +216,13 @@ insert into informacoesroubos (Cidade, Estado, Relato, LocalAdicional, DataRoubo
 ('Bauru', 24, 'Foi roubada na praça do centro.', 
 'Centro', '2018-10-20', 9, 0);
 
-insert into relatosroubos (Cidade, Estado, Relato, LocalAdicional, DataRelato, PessoasId, InformacoesRoubosId, Ativo) values 
+INSERT INTO relatosroubos (Cidade, Estado, Relato, LocalAdicional, DataRelato, PessoasId, InformacoesRoubosId, Ativo) VALUES 
 ('Caraguatatuba', 24, 'A bicicleta esta à venda no site de classificados, neste link: https://exemplosite.com.br/ciclismo/caloi-twister-123456', 
 'Site da Internet', '2018-02-25', 11, 1, 0),
 ('Londrina', 15, 'Vi o anúncio de venda da bicicleta no classificados do jornal, liguei e combinei de ver a bicileta com o vendedor. Após verificar o número de série, vi que não era de quem estava vendendo. Quem estava vendendo se chama Fulano, celular (99)99999-9999', 
 'Centro', '2018-06-29', 10, 2, 0);
 
-insert into historicos (TipoTransferencia, DataAquisicao, DataTransferencia, BicicletasId, VendedorId, CompradorId, Ativo) values 
+INSERT INTO historicos (TipoTransferencia, DataAquisicao, DataTransferencia, BicicletasId, VendedorId, CompradorId, Ativo) VALUES 
 (1, '2018-01-15', '2018-06-23', 1, 3, 4, 0),
 (0, '2018-06-23', null, 1, null, 4, 0),
 (0, '2018-05-05', null, 2, null, 5, 0),
