@@ -201,19 +201,36 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
     <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\fontawesome\all.css" />
+    <Content Include="Content\fontawesome\all.min.css" />
+    <Content Include="Content\fontawesome\brands.css" />
+    <Content Include="Content\fontawesome\brands.min.css" />
+    <Content Include="Content\fontawesome\fontawesome.css" />
+    <Content Include="Content\fontawesome\fontawesome.min.css" />
+    <Content Include="Content\fontawesome\regular.css" />
+    <Content Include="Content\fontawesome\regular.min.css" />
+    <Content Include="Content\fontawesome\solid.css" />
+    <Content Include="Content\fontawesome\solid.min.css" />
+    <Content Include="Content\fontawesome\svg-with-js.css" />
+    <Content Include="Content\fontawesome\svg-with-js.min.css" />
+    <Content Include="Content\fontawesome\v4-shims.css" />
+    <Content Include="Content\fontawesome\v4-shims.min.css" />
     <Content Include="Content\meu-estilo.css" />
-    <Content Include="Content\fontawesome\css\all.min.css" />
-    <Content Include="Content\fontawesome\webfonts\fa-brands-400.svg" />
-    <Content Include="Content\fontawesome\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
+    <Content Include="Content\webfonts\fa-brands-400.svg" />
+    <Content Include="Content\webfonts\fa-regular-400.svg" />
+    <Content Include="Content\webfonts\fa-solid-900.svg" />
     <Content Include="Database\create-database.sql" />
     <Content Include="Database\inserts.sql" />
     <Content Include="Database\modelo-entidade-relacionamento.png" />
     <Content Include="favicon.ico" />
-    <Content Include="faviconbike.ico" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -227,38 +244,80 @@
     <Content Include="Img\marca-adm.png" />
     <Content Include="Img\marca-publico.png" />
     <Content Include="Img\marca-usuario.png" />
-    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
-    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\Chart.min.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
     <Content Include="Scripts\esm\popper.min.js" />
     <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\fontawesome\webfonts\fa-brands-400.eot" />
-    <Content Include="Content\fontawesome\webfonts\fa-brands-400.ttf" />
-    <Content Include="Content\fontawesome\webfonts\fa-brands-400.woff" />
-    <Content Include="Content\fontawesome\webfonts\fa-brands-400.woff2" />
-    <Content Include="Content\fontawesome\webfonts\fa-solid-900.eot" />
-    <Content Include="Content\fontawesome\webfonts\fa-solid-900.ttf" />
-    <Content Include="Content\fontawesome\webfonts\fa-solid-900.woff" />
-    <Content Include="Content\fontawesome\webfonts\fa-solid-900.woff2" />
-    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\webfonts\fa-solid-900.woff2" />
+    <Content Include="Content\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\webfonts\fa-solid-900.eot" />
+    <Content Include="Content\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\webfonts\fa-regular-400.woff" />
+    <Content Include="Content\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\webfonts\fa-regular-400.eot" />
+    <Content Include="Content\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\webfonts\fa-brands-400.woff" />
+    <Content Include="Content\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\webfonts\fa-brands-400.eot" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
+    <Content Include="Scripts\fontawesome\all.js" />
+    <Content Include="Scripts\fontawesome\all.min.js" />
+    <Content Include="Scripts\fontawesome\brands.js" />
+    <Content Include="Scripts\fontawesome\brands.min.js" />
+    <Content Include="Scripts\fontawesome\fontawesome.js" />
+    <Content Include="Scripts\fontawesome\fontawesome.min.js" />
+    <Content Include="Scripts\fontawesome\regular.js" />
+    <Content Include="Scripts\fontawesome\regular.min.js" />
+    <Content Include="Scripts\fontawesome\solid.js" />
+    <Content Include="Scripts\fontawesome\solid.min.js" />
+    <Content Include="Scripts\fontawesome\v4-shims.js" />
+    <Content Include="Scripts\fontawesome\v4-shims.min.js" />
+    <Content Include="Scripts\holder.js" />
     <Content Include="Scripts\holder.min.js" />
-    <Content Include="Scripts\jquery-3.3.1.intellisense.min.js" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.mask.js" />
     <Content Include="Scripts\jquery.mask.min.js" />
-    <Content Include="Scripts\jquery.validate-vsdoc.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.8.3.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Uploads\audax-ventus01.png" />
     <Content Include="Uploads\audax-ventus02.png" />
@@ -393,10 +452,6 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Pessoas\DashboardUsuario.cshtml" />
     <Content Include="Views\Pessoas\DashboardAdm.cshtml" />
-    <Content Include="Scripts\umd\popper.min.js.map" />
-    <Content Include="Scripts\umd\popper-utils.min.js.map" />
-    <Content Include="Scripts\popper.min.js.map" />
-    <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Views\Historicos\ListaBicicletas.cshtml" />
     <Content Include="Views\Home\IndexUsuario.cshtml" />
     <Content Include="Views\Home\IndexAdm.cshtml" />
@@ -410,14 +465,21 @@
     <Content Include="Views\Pessoas\DetailsAdm.cshtml" />
     <Content Include="Views\Pessoas\EditAdm.cshtml" />
     <Content Include="Views\Pessoas\EditarSenhaAdm.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Views\Pessoas\EditarImagem.cshtml" />
     <Content Include="Views\Pessoas\EditarImagemAdm.cshtml" />
     <Content Include="Views\NumerosSeries\ListaNumerosSeries.cshtml" />
@@ -436,9 +498,14 @@
     <Content Include="Views\Home\Logout.cshtml" />
     <Content Include="Views\RelatosRoubos\RelatosBicicleta.cshtml" />
     <Content Include="Views\RelatosRoubos\DetalhesRelatosBicicleta.cshtml" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
