@@ -19,8 +19,6 @@ namespace BikeSegura.Controllers
         // GET: Tipos
         public ActionResult Index()
         {
-            //return View(db.Tipos.ToList());
-            //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
             return View(db.Tipos.Where(w => w.Ativo == 0).ToList());
         }
 
@@ -109,8 +107,6 @@ namespace BikeSegura.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Tipos tipos = db.Tipos.Find(id);
-            //db.Tipos.Remove(tipos);
-            //Antes excluia do banco, agora altera o status
             tipos.Ativo = (OpcaoStatusTipos)1;
             db.SaveChanges();
             return RedirectToAction("Index");

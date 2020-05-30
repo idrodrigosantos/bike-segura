@@ -22,8 +22,7 @@ namespace BikeSegura.Controllers
         public ActionResult Index()
         {
             var bicicletas = db.Bicicletas.Include(b => b.Aros).Include(b => b.CambiosDianteiros).Include(b => b.CambiosTraseiros).Include(b => b.Freios).Include(b => b.Marcas).Include(b => b.Quadros).Include(b => b.Suspensoes).Include(b => b.Tipos);
-            //return View(bicicletas.ToList());
-            //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
+
             return View(bicicletas.Where(w => w.Ativo == 0).ToList());
         }
 
@@ -80,9 +79,7 @@ namespace BikeSegura.Controllers
                 hist.DataAquisicao = DateTime.Now;
                 db.Historicos.Add(hist);
                 db.SaveChanges();
-                //return RedirectToAction("Index");
-                // Antes, após cadastrar a bicicleta a página era redirecionada para a index,
-                //  agora a página é redirecionada para a página de cadastro de número de série
+
                 return RedirectToAction("Create", "NumerosSeries", new { id = bicicletas.Id });
             }
             ViewBag.ArosId = new SelectList(db.Aros, "Id", "Medida", bicicletas.ArosId);
@@ -173,8 +170,6 @@ namespace BikeSegura.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Bicicletas bicicletas = db.Bicicletas.Find(id);
-            //db.Bicicletas.Remove(bicicletas);
-            //Antes excluia do banco, agora altera o status
             bicicletas.Ativo = (OpcaoStatusBicicletas)1;
             db.SaveChanges();
             return RedirectToAction("Index", "Bicicletas");

@@ -19,8 +19,6 @@ namespace BikeSegura.Controllers
         // GET: CambiosDianteiros
         public ActionResult Index()
         {
-            //return View(db.CambiosDianteiros.ToList());
-            //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
             return View(db.CambiosDianteiros.Where(w => w.Ativo == 0).ToList());
         }
 
@@ -109,8 +107,6 @@ namespace BikeSegura.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             CambiosDianteiros cambiosDianteiros = db.CambiosDianteiros.Find(id);
-            //db.CambiosDianteiros.Remove(cambiosDianteiros);
-            //Antes excluia do banco, agora altera o status
             cambiosDianteiros.Ativo = (OpcaoStatusCambiosDianteiros)1;
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -19,8 +19,6 @@ namespace BikeSegura.Controllers
         // GET: Aros
         public ActionResult Index()
         {
-            //return View(db.Aros.ToList());
-            //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
             return View(db.Aros.Where(w => w.Ativo == 0).ToList());
         }
 
@@ -109,8 +107,6 @@ namespace BikeSegura.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Aros aros = db.Aros.Find(id);
-            //db.Aros.Remove(aros);
-            //Antes excluia do banco, agora altera o status
             aros.Ativo = (OpcaoStatusAros)1;
             db.SaveChanges();
             return RedirectToAction("Index");

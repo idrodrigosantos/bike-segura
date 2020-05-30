@@ -20,8 +20,7 @@ namespace BikeSegura.Controllers
         public ActionResult Index()
         {
             var numerosSeries = db.NumerosSeries.Include(n => n.Bicicletas);
-            //return View(numerosSeries.ToList());
-            //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
+
             return View(numerosSeries.Where(w => w.Ativo == 0).ToList());
         }
 
@@ -43,7 +42,6 @@ namespace BikeSegura.Controllers
 
         [Authorize]
         // GET: NumerosSeries/Create
-        //public ActionResult Create()
         public ActionResult Create(int? id)
         {
             var consultanumero = db.NumerosSeries.Where(w => w.BicicletasId == id).Select(s => s.Numero).ToList();
@@ -84,7 +82,6 @@ namespace BikeSegura.Controllers
 
         [Authorize]
         // GET: NumerosSeries/CreateAdicional
-        //public ActionResult Create()
         public ActionResult CreateAdicional(int? id)
         {
             var consultanumero = db.NumerosSeries.Where(w => w.BicicletasId == id).Select(s => s.Numero).ToList();
@@ -215,8 +212,6 @@ namespace BikeSegura.Controllers
             NumerosSeries numerosSeries = db.NumerosSeries.Find(id);
             if (numerosSeries.Tipo != 0)
             {
-                //db.NumerosSeries.Remove(numerosSeries);
-                //Antes excluia do banco, agora altera o status
                 numerosSeries.Ativo = (OpcaoStatusNumerosSeries)1;
                 db.SaveChanges();
                 return RedirectToAction("ListaNumerosSeries");

@@ -19,8 +19,6 @@ namespace BikeSegura.Controllers
         // GET: Freios
         public ActionResult Index()
         {
-            //return View(db.Freios.ToList());
-            //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
             return View(db.Freios.Where(w => w.Ativo == 0).ToList());
         }
 
@@ -109,8 +107,6 @@ namespace BikeSegura.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Freios freios = db.Freios.Find(id);
-            //db.Freios.Remove(freios);
-            //Antes excluia do banco, agora altera o status
             freios.Ativo = (OpcaoStatusFreios)1;
             db.SaveChanges();
             return RedirectToAction("Index");

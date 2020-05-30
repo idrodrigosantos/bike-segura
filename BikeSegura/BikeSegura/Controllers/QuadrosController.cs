@@ -19,8 +19,6 @@ namespace BikeSegura.Controllers
         // GET: Quadros
         public ActionResult Index()
         {
-            //return View(db.Quadros.ToList());
-            //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
             return View(db.Quadros.Where(w => w.Ativo == 0).ToList());
         }
 
@@ -109,8 +107,6 @@ namespace BikeSegura.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Quadros quadros = db.Quadros.Find(id);
-            //db.Quadros.Remove(quadros);
-            //Antes excluia do banco, agora altera o status
             quadros.Ativo = (OpcaoStatusQuadros)1;
             db.SaveChanges();
             return RedirectToAction("Index");
