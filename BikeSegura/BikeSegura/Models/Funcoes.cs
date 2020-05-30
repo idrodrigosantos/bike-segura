@@ -24,7 +24,7 @@ namespace BikeSegura.Models
             // Declara variável string
             string strHex = "";
             // Chama HashValue, chama o ComputeHash que vai receber a mensagem(MessageBytes), 
-            //      que já tem bytes para gerar outros bytes
+            // que já tem bytes para gerar outros bytes
             HashValue = SHhash.ComputeHash(MessageBytes);
             foreach (byte b in HashValue)
             {
@@ -44,21 +44,21 @@ namespace BikeSegura.Models
         // Enviar E-mail
         public static string EnviarEmail(string emailDestinatario, string assunto, string corpomsg)
         {
-            //Cria o endereço de email do remetente
+            // Cria o endereço de email do remetente
             MailAddress de = new MailAddress("email@email.com");
-            //Cria o endereço de email do destinatário -->
+            // Cria o endereço de email do destinatário -->
             MailAddress para = new MailAddress(emailDestinatario);
             MailMessage mensagem = new MailMessage(de, para);
             mensagem.IsBodyHtml = true;
-            //Assunto do email
+            // Assunto do email
             mensagem.Subject = assunto;
-            //Conteúdo do email
+            // Conteúdo do email
             mensagem.Body = corpomsg;
-            //Prioridade E-mail
+            // Prioridade E-mail
             mensagem.Priority = MailPriority.Normal;
-            //Cria o objeto que envia o e-mail
+            // Cria o objeto que envia o e-mail
             SmtpClient cliente = new SmtpClient();
-            //Envia o email
+            // Envia o email
             cliente.Send(mensagem);
             return "";
         }

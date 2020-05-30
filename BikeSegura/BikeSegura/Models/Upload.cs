@@ -13,12 +13,14 @@ namespace BikeSegura.Models
             string novodiretorio = HttpContext.Current.Request.PhysicalApplicationPath + "Uploads\\";
             if (!Directory.Exists(novodiretorio))
             {
-                //Caso não exista deve criar
+                // Caso não exista deve criar
                 Directory.CreateDirectory(novodiretorio);
                 return true;
             }
             else
+            {
                 return false;
+            }
         }
 
         public static bool ExcluirArquivo(string arquivoimg)
@@ -29,7 +31,9 @@ namespace BikeSegura.Models
                 return true;
             }
             else
+            {
                 return false;
+            }
         }
 
         public static string UploadArquivo(HttpPostedFileBase arquivoUpload, string nome)
@@ -44,9 +48,13 @@ namespace BikeSegura.Models
                     string extensao = Path.GetExtension(arquivoUpload.FileName);
                     string diretorio = HttpContext.Current.Request.PhysicalApplicationPath + "Uploads\\" + nome;
                     if (tamanho > permitido)
+                    {
                         return "Tamanho Máximo permitido é de " + permitido + " kb!";
+                    }
                     else if ((extensao != ".png" && extensao != ".jpg"))
+                    {
                         return "Extensão inválida, só são permitidas .png e .jpg!";
+                    }
                     else
                     {
                         if (!File.Exists(diretorio))
@@ -55,13 +63,20 @@ namespace BikeSegura.Models
                             return "sucesso";
                         }
                         else
+                        {
                             return "Já existe um arquivo com esse nome!";
+                        }
                     }
                 }
                 else
+                {
                     return "Erro no Upload!";
+                }
             }
-            catch { return "Erro no Upload"; }
+            catch
+            {
+                return "Erro no Upload";
+            }
         }
     }
 }
