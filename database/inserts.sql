@@ -12,9 +12,8 @@ INSERT INTO cambiosdianteiros (Velocidade, Ativo) VALUES
 ('1 Velocidade', 0), ('2 Velocidades', 0), ('3 Velocidades', 0), ('OUTRA', 0);
 
 INSERT INTO cambiostraseiros (Velocidade, Ativo) VALUES 
-('1 Velocidade', 0), ('2 Velocidades', 0), ('3 Velocidades', 0), ('4 Velocidades', 0), ('5 Velocidades', 0), 
-('6 Velocidades', 0), ('7 Velocidades', 0), ('8 Velocidades', 0), ('9 Velocidades', 0), ('10 Velocidades', 0), 
-('11 Velocidades', 0), ('OUTRA', 0);
+('1 Velocidade', 0), ('2 Velocidades', 0), ('3 Velocidades', 0), ('4 Velocidades', 0), ('5 Velocidades', 0), ('6 Velocidades', 0), 
+('7 Velocidades', 0), ('8 Velocidades', 0), ('9 Velocidades', 0), ('10 Velocidades', 0), ('11 Velocidades', 0), ('OUTRA', 0);
 
 INSERT INTO freios (Nome, Ativo) VALUES 
 ('Cantilever', 0), ('V-Break', 0), ('Freio à disco mecânico', 0), ('Freio à disco hidráulico', 0), 
@@ -128,9 +127,8 @@ INSERT INTO marcas (Nome, Ativo) VALUES
 ('YETI', 0), ('YOELEO', 0), ('YOSEMITE', 0), ('YT INDUSTRIES', 0), ('YUNBIKE', 0), ('ZENITH', 0), ('ZEPPELIN', 0), 
 ('ZIPP', 0), ('ZOHRER', 0), ('ZUMMI', 0), ('ZYMMER', 0), ('OUTRA', 0);
 
-INSERT INTO pessoas (Nome, Email, ConfirmaEmail, Senha, ConfirmaSenha, 
-Endereco, Numero, Complemento, Cep, Bairro, Cidade, Estado, 
-TelefoneUm, TelefoneDois, Cpf, DataNascimento, Genero, Imagem, 
+INSERT INTO pessoas (Nome, Email, ConfirmaEmail, Senha, ConfirmaSenha, Endereco, Numero, Complemento, 
+Cep, Bairro, Cidade, Estado, TelefoneUm, TelefoneDois, Cpf, DataNascimento, Genero, Imagem, 
 NomeContato, TelefoneContatoUm, TelefoneContatoDois, TipoUsuario, Ativo, DataCadastro) VALUES 
 ('Administrador', 'adm@email.com', 'adm@email.com', '122705f49b13a7d2f378eedf8581f02222b6753a6cb6417d77cfbc4884df74ea6ae7699951470f06c34f5c782b7210c34e867f1d0e5d8fcc4e94adb5ab8e8e79', '122705f49b13a7d2f378eedf8581f02222b6753a6cb6417d77cfbc4884df74ea6ae7699951470f06c34f5c782b7210c34e867f1d0e5d8fcc4e94adb5ab8e8e79', 
 null, null, null, null, null, null, null, '(11) 1111-1111', null, '111.111.111-11', 
@@ -179,9 +177,8 @@ null, null, null, 0, 1, '2018-10-11'),
 '(99) 1001-0010', '(99) 91001-0010', '100.100.100-99', '1979-04-20', 1, 'perfil10.jpg', 
 'Leonardo Barros', '(81) 3917-9425', null, 0, 1, '2018-11-10');
 
-INSERT INTO bicicletas (MarcasId, Modelo, TiposId, Cor, Tamanho, 
-CambiosDianteirosId, CambiosTraseirosId, FreiosId, SuspensoesId, ArosId, 
-QuadrosId, Informacoes, AlertaRoubo, Vendendo, Ativo) VALUES 
+INSERT INTO bicicletas (MarcasId, Modelo, TiposId, Cor, Tamanho, CambiosDianteirosId, CambiosTraseirosId, 
+FreiosId, SuspensoesId, ArosId, QuadrosId, Informacoes, AlertaRoubo, Vendendo, Ativo) VALUES 
 (638, 'TB NINER', 10, 'Branca', '21"', 3, 7, 3, 3, 9, 1, null, 0, 0, 0),
 (96, 'Twister', 10, 'Amerela', '18"', 3, 7, 2, 1, 6, 1, null, 1, 0, 0),
 (96, 'Andes', 10, 'Vermelha', '18"', 3, 7, 2, 2, 6, 1, 'Aro Aero', 0, 0, 0),
@@ -201,10 +198,9 @@ INSERT INTO imagens (Imagem, BicicletasId) VALUES
 ('caloi-10.jpg', 11);
 
 INSERT INTO numerosseries (Numero, BicicletasId, Tipo, Ativo) VALUES 
-('ABC123', 1, 0, 0), ('7582135BR', 2, 0, 0), ('TR1234', 3, 0, 0), ('78797RGT2312412412', 4, 0, 0),
-('987123', 5, 0, 0), ('QJENGLOPRK10', 6, 0, 0), ('GJU7UDJ', 7, 0, 0), ('GHDBRYQIA10', 8, 0, 0),
-('456ADC789', 9, 0, 0), ('VENT728325', 10, 0, 0), ('VENT859481', 10, 0, 0), ('VENT193748', 10, 0, 0),
-('15258514DAG', 11, 0, 0);
+('ABC123', 1, 0, 0), ('7582135BR', 2, 0, 0), ('TR1234', 3, 0, 0), ('78797RGT2312412412', 4, 0, 0), ('987123', 5, 0, 0), 
+('QJENGLOPRK10', 6, 0, 0), ('GJU7UDJ', 7, 0, 0), ('GHDBRYQIA10', 8, 0, 0), ('456ADC789', 9, 0, 0), 
+('VENT728325', 10, 0, 0), ('VENT859481', 10, 0, 0), ('VENT193748', 10, 0, 0), ('15258514DAG', 11, 0, 0);
 
 INSERT INTO informacoesroubos (Cidade, Estado, Relato, LocalAdicional, DataRoubo, BicicletasId, Ativo) VALUES 
 ('Caraguatatuba', 24, 'A bicicleta foi roubada no estacionamento do supermercado, no período da noite. Ela estava trancada no bicicletário, junto com outras bicicletas.', 
