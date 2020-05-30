@@ -230,7 +230,7 @@
     <Content Include="Database\create-database.sql" />
     <Content Include="Database\inserts.sql" />
     <Content Include="Database\modelo-entidade-relacionamento.png" />
-    <Content Include="favicon.ico" />
+    <Content Include="Img\favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
