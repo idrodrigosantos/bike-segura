@@ -227,9 +227,6 @@
     <Content Include="Content\webfonts\fa-brands-400.svg" />
     <Content Include="Content\webfonts\fa-regular-400.svg" />
     <Content Include="Content\webfonts\fa-solid-900.svg" />
-    <Content Include="Database\create-database.sql" />
-    <Content Include="Database\inserts.sql" />
-    <Content Include="Database\modelo-entidade-relacionamento.png" />
     <Content Include="Img\favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
