@@ -21,8 +21,7 @@ namespace BikeSegura.Controllers
         public ActionResult Index()
         {
             var historicos = db.Historicos.Include(h => h.Bicicletas).Include(h => h.Comprador).Include(h => h.Vendedor);
-            //return View(historicos.ToList());
-            //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
+
             return View(historicos.Where(w => w.Ativo == 0).ToList());
         }
 
@@ -127,8 +126,6 @@ namespace BikeSegura.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Historicos historicos = db.Historicos.Find(id);
-            //db.Historicos.Remove(historicos);
-            //Antes excluia do banco, agora altera o status
             historicos.Ativo = (OpcaoStatusHistoricos)1;
             db.SaveChanges();
             return RedirectToAction("Index");

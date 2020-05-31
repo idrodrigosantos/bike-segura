@@ -28,7 +28,7 @@ namespace BikeSegura.Controllers
             return View();
         }
 
-        // Login início
+        // Login
         public ActionResult Login()
         {
             return View();
@@ -37,7 +37,8 @@ namespace BikeSegura.Controllers
         [HttpPost]
         public ActionResult Login(string email, string senha, string ReturnUrl)
         {
-            string senhacriptografada = Funcoes.SHA512(senha); //Compara a senha criptografada com a senha digitada
+            // Compara a senha criptografada com a senha digitada
+            string senhacriptografada = Funcoes.SHA512(senha);
             Pessoas usuarios = db.Pessoas.Where(t => t.Email == email && t.Senha == senhacriptografada && t.Ativo == (OpcaoStatusPessoas)1).ToList().FirstOrDefault();
             if (usuarios != null)
             {
@@ -86,9 +87,8 @@ namespace BikeSegura.Controllers
                 return View();
             }
         }
-        // Login fim
 
-        // PrimeiroAcesso início
+        // Primeiro Acesso
         public ActionResult PrimeiroAcesso()
         {
             return View();
@@ -97,7 +97,8 @@ namespace BikeSegura.Controllers
         [HttpPost]
         public ActionResult PrimeiroAcesso(string email, string senha, string ReturnUrl)
         {
-            string senhacriptografada = Funcoes.SHA512(senha); //Compara a senha criptografada com a senha digitada
+            // Compara a senha criptografada com a senha digitada
+            string senhacriptografada = Funcoes.SHA512(senha);
             Pessoas usuarios = db.Pessoas.Where(t => t.Email == email && t.Senha == senhacriptografada && t.Ativo == (OpcaoStatusPessoas)1).ToList().FirstOrDefault();
             if (usuarios != null)
             {
@@ -146,9 +147,8 @@ namespace BikeSegura.Controllers
                 return View();
             }
         }
-        // PrimeiroAcesso fim
 
-        // LoginRecuperarSenha início
+        // Login Recuperar Senha
         public ActionResult LoginRecuperarSenha()
         {
             return View();
@@ -157,7 +157,8 @@ namespace BikeSegura.Controllers
         [HttpPost]
         public ActionResult LoginRecuperarSenha(string email, string senha, string ReturnUrl)
         {
-            string senhacriptografada = Funcoes.SHA512(senha); //Compara a senha criptografada com a senha digitada
+            // Compara a senha criptografada com a senha digitada
+            string senhacriptografada = Funcoes.SHA512(senha);
             Pessoas usuarios = db.Pessoas.Where(t => t.Email == email && t.Senha == senhacriptografada && t.Ativo == (OpcaoStatusPessoas)1).ToList().FirstOrDefault();
             if (usuarios != null)
             {
@@ -206,9 +207,8 @@ namespace BikeSegura.Controllers
                 return View();
             }
         }
-        // LoginRecuperarSenha fim
 
-        // Logout início
+        // Logout
         public ActionResult Logout()
         {
             return View();
@@ -220,6 +220,5 @@ namespace BikeSegura.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
-        // Logout fim
     }
 }

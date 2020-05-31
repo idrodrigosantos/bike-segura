@@ -19,8 +19,6 @@ namespace BikeSegura.Controllers
         // GET: Marcas
         public ActionResult Index()
         {
-            //return View(db.Marcas.ToList());
-            //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
             return View(db.Marcas.Where(w => w.Ativo == 0).ToList());
         }
 
@@ -109,8 +107,6 @@ namespace BikeSegura.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Marcas marcas = db.Marcas.Find(id);
-            //db.Marcas.Remove(marcas);
-            //Antes excluia do banco, agora altera o status
             marcas.Ativo = (OpcaoStatusMarcas)1;
             db.SaveChanges();
             return RedirectToAction("Index");

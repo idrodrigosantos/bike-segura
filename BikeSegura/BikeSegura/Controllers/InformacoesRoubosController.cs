@@ -20,8 +20,7 @@ namespace BikeSegura.Controllers
         public ActionResult Index()
         {
             var informacoesRoubos = db.InformacoesRoubos.Include(i => i.Bicicletas);
-            //return View(informacoesRoubos.ToList());
-            //Antes listava todos registro, agora lista apenas os com status 0 (ativado)
+
             return View(informacoesRoubos.Where(w => w.Ativo == 0).ToList());
         }
 
@@ -131,8 +130,6 @@ namespace BikeSegura.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             InformacoesRoubos informacoesRoubos = db.InformacoesRoubos.Find(id);
-            //db.InformacoesRoubos.Remove(informacoesRoubos);
-            //Antes excluia do banco, agora altera o status
             informacoesRoubos.Ativo = (OpcaoStatusInformacoesRoubos)1;
             db.SaveChanges();
             return RedirectToAction("ListaUsuario", "InformacoesRoubos");
