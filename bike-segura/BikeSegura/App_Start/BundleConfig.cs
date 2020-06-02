@@ -30,7 +30,7 @@ namespace BikeSegura
                       "~/Scripts/jquery.mask.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/chartjs").Include(
-                      "~/Scripts/Chart.min.js"));
+                      "~/Scripts/chart.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/holder").Include(
                       "~/Scripts/holder.min.js"));
