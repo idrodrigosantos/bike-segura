@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B8AE9380-D1AC-4F7B-AA85-E6AB685A947C}</ProjectGuid>
+    <ProjectGuid>{C9D56D5B-9393-450C-B32A-48E1141B8915}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -26,7 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -126,33 +126,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="System.Diagnostics.DiagnosticSource">
-      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
-      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ApplicationInsights">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.2.5.1\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.Agent.Intercept">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.DependencyCollector">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.5.1\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.PerfCounterCollector">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.5.1\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.5.1\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.WindowsServer">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.5.1\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.Web">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.5.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -227,17 +200,14 @@
     <Content Include="Content\webfonts\fa-brands-400.svg" />
     <Content Include="Content\webfonts\fa-regular-400.svg" />
     <Content Include="Content\webfonts\fa-solid-900.svg" />
-    <Content Include="Img\favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Img\bicicleta01.jpg" />
     <Content Include="Img\bicicleta02.jpg" />
     <Content Include="Img\bicicleta03.jpg" />
     <Content Include="Img\bicicleta04-quadrado.jpg" />
     <Content Include="Img\bicicleta05-quadrado.jpg" />
     <Content Include="Img\bicicleta06-quadrado.jpg" />
+    <Content Include="Img\favicon.ico" />
     <Content Include="Img\marca-adm.png" />
     <Content Include="Img\marca-publico.png" />
     <Content Include="Img\marca-usuario.png" />
@@ -279,6 +249,19 @@
     <Content Include="Content\webfonts\fa-brands-400.eot" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <Content Include="Fonts\Roboto-Black.ttf" />
+    <Content Include="Fonts\Roboto-BlackItalic.ttf" />
+    <Content Include="Fonts\Roboto-Bold.ttf" />
+    <Content Include="Fonts\Roboto-BoldItalic.ttf" />
+    <Content Include="Fonts\Roboto-Italic.ttf" />
+    <Content Include="Fonts\Roboto-Light.ttf" />
+    <Content Include="Fonts\Roboto-LightItalic.ttf" />
+    <Content Include="Fonts\Roboto-Medium.ttf" />
+    <Content Include="Fonts\Roboto-MediumItalic.ttf" />
+    <Content Include="Fonts\Roboto-Regular.ttf" />
+    <Content Include="Fonts\Roboto-Thin.ttf" />
+    <Content Include="Fonts\Roboto-ThinItalic.ttf" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\fontawesome\all.js" />
     <Content Include="Scripts\fontawesome\all.min.js" />
     <Content Include="Scripts\fontawesome\brands.js" />
@@ -293,7 +276,6 @@
     <Content Include="Scripts\fontawesome\v4-shims.min.js" />
     <Content Include="Scripts\holder.js" />
     <Content Include="Scripts\holder.min.js" />
-    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -342,9 +324,7 @@
     <Content Include="Uploads\tb_niner.png" />
     <Content Include="Uploads\user01.jpg" />
     <Content Include="Uploads\user02.jpg" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -355,7 +335,18 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Aros\Create.cshtml" />
     <Content Include="Views\Aros\Delete.cshtml" />
     <Content Include="Views\Aros\Details.cshtml" />
@@ -364,8 +355,13 @@
     <Content Include="Views\Bicicletas\Create.cshtml" />
     <Content Include="Views\Bicicletas\Delete.cshtml" />
     <Content Include="Views\Bicicletas\Details.cshtml" />
+    <Content Include="Views\Bicicletas\DetalhesBicicletaPublico.cshtml" />
+    <Content Include="Views\Bicicletas\DetalhesBicicletaUsuario.cshtml" />
     <Content Include="Views\Bicicletas\Edit.cshtml" />
     <Content Include="Views\Bicicletas\Index.cshtml" />
+    <Content Include="Views\Bicicletas\ListaBicicletasRoubadasPublico.cshtml" />
+    <Content Include="Views\Bicicletas\ListaBicicletasRoubadasUsuario.cshtml" />
+    <Content Include="Views\Bicicletas\ListaBicicletasVendendo.cshtml" />
     <Content Include="Views\CambiosDianteiros\Create.cshtml" />
     <Content Include="Views\CambiosDianteiros\Delete.cshtml" />
     <Content Include="Views\CambiosDianteiros\Details.cshtml" />
@@ -381,26 +377,63 @@
     <Content Include="Views\Freios\Details.cshtml" />
     <Content Include="Views\Freios\Edit.cshtml" />
     <Content Include="Views\Freios\Index.cshtml" />
+    <Content Include="Views\Historicos\Create.cshtml" />
+    <Content Include="Views\Historicos\Delete.cshtml" />
+    <Content Include="Views\Historicos\Details.cshtml" />
+    <Content Include="Views\Historicos\Edit.cshtml" />
+    <Content Include="Views\Historicos\Index.cshtml" />
+    <Content Include="Views\Historicos\ListaBicicletas.cshtml" />
+    <Content Include="Views\Historicos\TransferenciaExterna.cshtml" />
+    <Content Include="Views\Historicos\TransferenciaInterna.cshtml" />
+    <Content Include="Views\Home\IndexAdm.cshtml" />
+    <Content Include="Views\Home\IndexUsuario.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\LoginRecuperarSenha.cshtml" />
+    <Content Include="Views\Home\Logout.cshtml" />
+    <Content Include="Views\Home\PrimeiroAcesso.cshtml" />
+    <Content Include="Views\Imagens\Create.cshtml" />
+    <Content Include="Views\Imagens\Delete.cshtml" />
+    <Content Include="Views\Imagens\Details.cshtml" />
+    <Content Include="Views\Imagens\Edit.cshtml" />
+    <Content Include="Views\Imagens\Index.cshtml" />
+    <Content Include="Views\Imagens\ListaUsuario.cshtml" />
     <Content Include="Views\InformacoesRoubos\Create.cshtml" />
     <Content Include="Views\InformacoesRoubos\Delete.cshtml" />
     <Content Include="Views\InformacoesRoubos\Details.cshtml" />
     <Content Include="Views\InformacoesRoubos\Edit.cshtml" />
     <Content Include="Views\InformacoesRoubos\Index.cshtml" />
+    <Content Include="Views\InformacoesRoubos\ListaUsuario.cshtml" />
     <Content Include="Views\Marcas\Create.cshtml" />
     <Content Include="Views\Marcas\Delete.cshtml" />
     <Content Include="Views\Marcas\Details.cshtml" />
     <Content Include="Views\Marcas\Edit.cshtml" />
     <Content Include="Views\Marcas\Index.cshtml" />
+    <Content Include="Views\NumerosSeries\BuscarPublico.cshtml" />
+    <Content Include="Views\NumerosSeries\BuscarUsuario.cshtml" />
     <Content Include="Views\NumerosSeries\Create.cshtml" />
+    <Content Include="Views\NumerosSeries\CreateAdicional.cshtml" />
+    <Content Include="Views\NumerosSeries\CreateNumeros.cshtml" />
     <Content Include="Views\NumerosSeries\Delete.cshtml" />
     <Content Include="Views\NumerosSeries\Details.cshtml" />
     <Content Include="Views\NumerosSeries\Edit.cshtml" />
     <Content Include="Views\NumerosSeries\Index.cshtml" />
+    <Content Include="Views\NumerosSeries\ListaNumerosSeries.cshtml" />
     <Content Include="Views\Pessoas\Create.cshtml" />
+    <Content Include="Views\Pessoas\DashboardAdm.cshtml" />
+    <Content Include="Views\Pessoas\DashboardUsuario.cshtml" />
     <Content Include="Views\Pessoas\Delete.cshtml" />
     <Content Include="Views\Pessoas\Details.cshtml" />
+    <Content Include="Views\Pessoas\DetailsAdm.cshtml" />
     <Content Include="Views\Pessoas\Edit.cshtml" />
+    <Content Include="Views\Pessoas\EditAdm.cshtml" />
+    <Content Include="Views\Pessoas\EditarImagem.cshtml" />
+    <Content Include="Views\Pessoas\EditarImagemAdm.cshtml" />
+    <Content Include="Views\Pessoas\EditarSenha.cshtml" />
+    <Content Include="Views\Pessoas\EditarSenhaAdm.cshtml" />
+    <Content Include="Views\Pessoas\EsqueceuSenha.cshtml" />
     <Content Include="Views\Pessoas\Index.cshtml" />
+    <Content Include="Views\Pessoas\ValidarEmail.cshtml" />
+    <Content Include="Views\Pessoas\ValidarEsqueceuSenha.cshtml" />
     <Content Include="Views\Quadros\Create.cshtml" />
     <Content Include="Views\Quadros\Delete.cshtml" />
     <Content Include="Views\Quadros\Details.cshtml" />
@@ -409,8 +442,13 @@
     <Content Include="Views\RelatosRoubos\Create.cshtml" />
     <Content Include="Views\RelatosRoubos\Delete.cshtml" />
     <Content Include="Views\RelatosRoubos\Details.cshtml" />
+    <Content Include="Views\RelatosRoubos\DetalhesRelatosBicicleta.cshtml" />
     <Content Include="Views\RelatosRoubos\Edit.cshtml" />
     <Content Include="Views\RelatosRoubos\Index.cshtml" />
+    <Content Include="Views\RelatosRoubos\ListaUsuario.cshtml" />
+    <Content Include="Views\RelatosRoubos\RelatosBicicleta.cshtml" />
+    <Content Include="Views\Shared\_Administrador.cshtml" />
+    <Content Include="Views\Shared\_Usuario.cshtml" />
     <Content Include="Views\Suspensoes\Create.cshtml" />
     <Content Include="Views\Suspensoes\Delete.cshtml" />
     <Content Include="Views\Suspensoes\Details.cshtml" />
@@ -421,88 +459,20 @@
     <Content Include="Views\Tipos\Details.cshtml" />
     <Content Include="Views\Tipos\Edit.cshtml" />
     <Content Include="Views\Tipos\Index.cshtml" />
-    <Content Include="Views\Shared\_Administrador.cshtml" />
-    <Content Include="Views\Shared\_Usuario.cshtml" />
-    <Content Include="Views\Historicos\Create.cshtml" />
-    <Content Include="Views\Historicos\Delete.cshtml" />
-    <Content Include="Views\Historicos\Details.cshtml" />
-    <Content Include="Views\Historicos\Edit.cshtml" />
-    <Content Include="Views\Historicos\Index.cshtml" />
-    <Content Include="Views\Imagens\Create.cshtml" />
-    <Content Include="Views\Imagens\Delete.cshtml" />
-    <Content Include="Views\Imagens\Details.cshtml" />
-    <Content Include="Views\Imagens\Edit.cshtml" />
-    <Content Include="Views\Imagens\Index.cshtml" />
-    <Content Include="Views\NumerosSeries\BuscarPublico.cshtml" />
-    <Content Include="Fonts\Roboto-Black.ttf" />
-    <Content Include="Fonts\Roboto-BlackItalic.ttf" />
-    <Content Include="Fonts\Roboto-Bold.ttf" />
-    <Content Include="Fonts\Roboto-BoldItalic.ttf" />
-    <Content Include="Fonts\Roboto-Italic.ttf" />
-    <Content Include="Fonts\Roboto-Light.ttf" />
-    <Content Include="Fonts\Roboto-LightItalic.ttf" />
-    <Content Include="Fonts\Roboto-Medium.ttf" />
-    <Content Include="Fonts\Roboto-MediumItalic.ttf" />
-    <Content Include="Fonts\Roboto-Regular.ttf" />
-    <Content Include="Fonts\Roboto-Thin.ttf" />
-    <Content Include="Fonts\Roboto-ThinItalic.ttf" />
-    <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Pessoas\DashboardUsuario.cshtml" />
-    <Content Include="Views\Pessoas\DashboardAdm.cshtml" />
-    <Content Include="Views\Historicos\ListaBicicletas.cshtml" />
-    <Content Include="Views\Home\IndexUsuario.cshtml" />
-    <Content Include="Views\Home\IndexAdm.cshtml" />
-    <Content Include="Views\Bicicletas\DetalhesBicicletaPublico.cshtml" />
-    <Content Include="Views\NumerosSeries\BuscarUsuario.cshtml" />
-    <Content Include="Views\Bicicletas\DetalhesBicicletaUsuario.cshtml" />
-    <Content Include="Views\Pessoas\EditarSenha.cshtml" />
-    <Content Include="Views\InformacoesRoubos\ListaUsuario.cshtml" />
-    <Content Include="Views\RelatosRoubos\ListaUsuario.cshtml" />
-    <Content Include="Views\Imagens\ListaUsuario.cshtml" />
-    <Content Include="Views\Pessoas\DetailsAdm.cshtml" />
-    <Content Include="Views\Pessoas\EditAdm.cshtml" />
-    <Content Include="Views\Pessoas\EditarSenhaAdm.cshtml" />
-    <Content Include="Scripts\umd\popper.min.js.map" />
-    <Content Include="Scripts\umd\popper.js.map" />
-    <Content Include="Scripts\umd\popper-utils.min.js.map" />
-    <Content Include="Scripts\umd\popper-utils.js.map" />
-    <Content Include="Scripts\README.md" />
-    <Content Include="Scripts\popper.min.js.map" />
-    <Content Include="Scripts\popper.js.map" />
-    <Content Include="Scripts\popper-utils.min.js.map" />
-    <Content Include="Scripts\popper-utils.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="Views\Pessoas\EditarImagem.cshtml" />
-    <Content Include="Views\Pessoas\EditarImagemAdm.cshtml" />
-    <Content Include="Views\NumerosSeries\ListaNumerosSeries.cshtml" />
-    <Content Include="Views\NumerosSeries\CreateNumeros.cshtml" />
-    <Content Include="Views\NumerosSeries\CreateAdicional.cshtml" />
-    <Content Include="Views\Bicicletas\ListaBicicletasRoubadasPublico.cshtml" />
-    <Content Include="Views\Bicicletas\ListaBicicletasRoubadasUsuario.cshtml" />
-    <Content Include="Views\Bicicletas\ListaBicicletasVendendo.cshtml" />
-    <Content Include="Views\Historicos\TransferenciaInterna.cshtml" />
-    <Content Include="Views\Historicos\TransferenciaExterna.cshtml" />
-    <Content Include="Views\Pessoas\ValidarEmail.cshtml" />
-    <Content Include="Views\Home\PrimeiroAcesso.cshtml" />
-    <Content Include="Views\Pessoas\EsqueceuSenha.cshtml" />
-    <Content Include="Views\Pessoas\ValidarEsqueceuSenha.cshtml" />
-    <Content Include="Views\Home\LoginRecuperarSenha.cshtml" />
-    <Content Include="Views\Home\Logout.cshtml" />
-    <Content Include="Views\RelatosRoubos\RelatosBicicleta.cshtml" />
-    <Content Include="Views\RelatosRoubos\DetalhesRelatosBicicleta.cshtml" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\index.d.ts" />
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -521,9 +491,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50693</DevelopmentServerPort>
+          <DevelopmentServerPort>54004</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50693/</IISUrl>
+          <IISUrl>http://localhost:54004/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
